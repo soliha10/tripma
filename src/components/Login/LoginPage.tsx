@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import close from '@/app/assets/images/x-close-no.svg';
 import logo from '@/app/assets/images/Wordmark.svg';
@@ -7,22 +8,35 @@ import calendar from '@/app/assets/images/calendar-with-dates.svg';
 import user from '@/app/assets/images/person-solid.svg';
 import bg from '@/app/assets/images/hero-login-bg.jpg';
 import LoginCookies from './LoginCookies';
+import LoginModal from './LoginModal';
+import { useState } from 'react';
 
 export default function LoginPage() {
+	const [isOpen, setIsOpen] = useState(false);
+	const [isVisible, setIsVisible] = useState(true);
 	return (
 		<>
 			<header>
-				<div className='bg-[#605DEC] '>
-					<div className='max-w-[1342px] w-full mx-auto px-5  '>
-						<div className='flex items-center justify-center py-4'>
-							<p className='mx-auto text-[#F6F6FE]  text-[18px] font-semibold  '>
-								Join Tripma today and save up to 20% on your flight using code
-								TRAVEL at checkout. Promotion valid for new users only.
-							</p>
-							<Image src={close} alt='icon' width={32} height={32} />
+				{isVisible && (
+					<div className='bg-[#605DEC] '>
+						<div className='max-w-[1342px] w-full mx-auto px-5  '>
+							<div className='flex items-center justify-center py-4'>
+								<p className='mx-auto text-[#F6F6FE]  text-[18px] font-semibold  '>
+									Join Tripma today and save up to 20% on your flight using code
+									TRAVEL at checkout. Promotion valid for new users only.
+								</p>
+								<Image
+									src={close}
+									alt='icon'
+									width={32}
+									height={32}
+									className='cursor-pointer'
+									onClick={() => setIsVisible(false)}
+								/>
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
 
 				<div className='max-w-[1342px] w-full mx-auto px-5  '>
 					<div className='py-[21px] flex justify-between items-center '>
@@ -65,6 +79,7 @@ export default function LoginPage() {
 								</li>
 								<li>
 									<button
+										onClick={() => setIsOpen(true)}
 										className='  lg:text-base  cursor-pointer bg-[#605DEC] rounded text-center lg:w-[95px] py-3 text-[#FAFAFA] '
 										type='submit'
 									>
@@ -86,7 +101,7 @@ export default function LoginPage() {
 				}}
 				className='h-screen relative'
 			>
-				<section >
+				<section>
 					<div className='max-w-[1342px] w-full mx-auto px-5  '>
 						<div className=' pt-[135px] w-[756px] mx-auto'>
 							<h1 className='text-[95px] text-center font-extrabold leading-24 bg-gradient-to-r from-[#62ACFD] via-[#893FFD]  to-[#5CA1FD]  text-transparent bg-clip-text  mb-[68px]'>
@@ -157,8 +172,13 @@ export default function LoginPage() {
 								Search
 							</button>
 						</form>
-            <LoginCookies  />
+						<LoginCookies />
 					</div>
+					{isOpen && (
+						<ul>
+							<LoginModal onClose={() => setIsOpen(false)} />
+						</ul>
+					)}
 				</section>
 			</main>
 		</>

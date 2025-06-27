@@ -1,6 +1,11 @@
+"use client"
 import Image from 'next/image';
 import close from '@/app/assets/images/close-cookie.svg';
+import { useState } from 'react';
 export default function LoginCookies() {
+
+	const [isVisible, setIsVisible] = useState(true);
+	if(!isVisible) return null;
 	return (
 		<div
 			className={`w-[300px] py-4 ps-6 pe-4 border border-[#605DEC] rounded-[8px] bg-[#F6F6FE] sticky bottom-10 `}
@@ -9,7 +14,7 @@ export default function LoginCookies() {
 				<span className='text-[18px] text-[#605DEC] '>
 					By using our site, you agree to eat our cookies.
 				</span>
-				<Image src={close} alt='' className='cursor-pointer' />
+				<Image src={close} alt='' className='cursor-pointer' onClick={() => setIsVisible(false)} />
 			</div>
 
 			<div>
