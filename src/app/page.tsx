@@ -1,9 +1,13 @@
-import Login from '@/pages/Login';
+import LoginHeader from '@/components/Login/LoginHeader';
+import LoginPage from '@/components/Login/LoginPage';
+import Adventure from '@/components/Main/Adventure';
 
 export default function Home() {
 	return (
 		<>
-			<Login />
+			<LoginHeader />
+			<LoginPage/>
+			<Adventure/>
 		</>
 	);
 }

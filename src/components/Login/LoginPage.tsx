@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
-import close from '@/app/assets/images/x-close-no.svg';
-import logo from '@/app/assets/images/Wordmark.svg';
+
 import go from '@/app/assets/images/departure.svg';
 import arrive from '@/app/assets/images/arrival.svg';
 import calendar from '@/app/assets/images/calendar-with-dates.svg';
@@ -11,7 +10,7 @@ import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
 import LoginCookies from './LoginCookies';
 import LoginModal from './LoginModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
 	Select,
 	SelectContent,
@@ -47,101 +46,23 @@ export default function LoginPage() {
 	const [tripType, setTripType] = useState<'round' | 'one'>('round');
 	const [isOpen, setIsOpen] = useState(false);
 	const [isCountOpen, setIsCountOpen] = useState(false);
-	const [isVisible, setIsVisible] = useState(true);
 	const [adultCount, setAdultCount] = useState(1);
 	const [minorCount, setMinorCount] = useState(0);
 
 	const toggle = () => {
-		setIsCountOpen((prev) => !prev)
-	}
+		setIsCountOpen((prev) => !prev);
+	};
 	return (
 		<>
-			<header>
-				{isVisible && (
-					<div className='bg-[#605DEC] '>
-						<div className='max-w-[1342px] w-full mx-auto px-5  '>
-							<div className='flex items-center justify-center py-4'>
-								<p className='mx-auto text-[#F6F6FE]  text-[18px] font-semibold  '>
-									Join Tripma today and save up to 20% on your flight using code
-									TRAVEL at checkout. Promotion valid for new users only.
-								</p>
-								<Image
-									src={close}
-									alt='icon'
-									width={32}
-									height={32}
-									className='cursor-pointer'
-									onClick={() => setIsVisible(false)}
-								/>
-							</div>
-						</div>
-					</div>
-				)}
-
-				<div className='max-w-[1342px] w-full mx-auto px-5  '>
-					<div className='py-[21px] flex justify-between items-center '>
-						<a href=''>
-							<Image src={logo} alt='' width={131} height={54} />
-						</a>
-						<nav>
-							<ul className='flex items-center'>
-								<li>
-									<a
-										href=''
-										className='text-[#7C8DB0]  lg:text-base hover:text-[#605DEC] lg:me-[36px] '
-									>
-										Flights
-									</a>
-								</li>
-								<li>
-									<a
-										href=''
-										className='text-[#7C8DB0]  lg:text-base hover:text-[#605DEC] lg:me-[36px] '
-									>
-										Hotels
-									</a>
-								</li>
-								<li>
-									<a
-										href=''
-										className='text-[#7C8DB0]  lg:text-base hover:text-[#605DEC] lg:me-[36px] '
-									>
-										Packages
-									</a>
-								</li>
-								<li>
-									<button
-										className='text-[#7C8DB0]  lg:text-base hover:text-[#605DEC] lg:me-[26px] cursor-pointer '
-										type='submit'
-									>
-										Sign in
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={() => setIsOpen(true)}
-										className='  lg:text-base  cursor-pointer bg-[#605DEC] rounded text-center lg:w-[95px] py-3 text-[#FAFAFA] '
-										type='submit'
-									>
-										Sign up
-									</button>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-
-			<main
-				style={{
-					backgroundImage: `url(${bg.src})`,
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: 'cover',
-					backgroundPosition: 'top center',
-				}}
-				className='h-screen relative'
-			>
-				<section>
+				<section
+					style={{
+						backgroundImage: `url(${bg.src})`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover',
+						backgroundPosition: 'top center',
+					}}
+					className='h-screen relative'
+				>
 					<div className='max-w-[1342px] w-full mx-auto px-5  '>
 						<div className=' pt-[135px] w-[756px] mx-auto'>
 							<h1 className='text-[95px] text-center font-extrabold leading-24 bg-gradient-to-r from-[#62ACFD] via-[#893FFD]  to-[#5CA1FD]  text-transparent bg-clip-text  mb-[68px]'>
@@ -315,7 +236,8 @@ export default function LoginPage() {
 								}}
 								onClick={toggle}
 							>
-								{adultCount} adult{adultCount > 1 ? 's' : ''} {minorCount > 0 ? `${minorCount} minor` : ''}
+								{adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
+								{minorCount > 0 ? `${minorCount} minor` : ''}
 								{isCountOpen && (
 									<div
 										className='w-[232px] absolute bottom-[-110px] bg-white left-6 p-4 lg:text-base rounded-md border border-[#CBD4E6] '
@@ -368,12 +290,10 @@ export default function LoginPage() {
 									</div>
 								)}
 							</div>
-
 							<button className='w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer '>
 								Search
 							</button>
 						</form>
-
 						<LoginCookies />
 					</div>
 					{isOpen && (
@@ -382,7 +302,7 @@ export default function LoginPage() {
 						</ul>
 					)}
 				</section>
-			</main>
+		
 		</>
 	);
 }
