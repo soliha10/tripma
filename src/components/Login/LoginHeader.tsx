@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import close from '@/app/assets/images/x-close-no.svg';
 import logo from '@/app/assets/images/Wordmark.svg';
+import LoginModal from './LoginModal';
 export default function LoginHeader() {
 	const [isVisible, setIsVisible] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
@@ -82,6 +83,11 @@ export default function LoginHeader() {
 					</nav>
 				</div>
 			</div>
+				{isOpen && (
+						<ul>
+							<LoginModal onClose={() => setIsOpen(false)} />
+						</ul>
+					)}
 		</header>
 	);
 }

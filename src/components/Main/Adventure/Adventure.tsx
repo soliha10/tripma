@@ -2,7 +2,9 @@ import bund from '@/app/assets/images/bund.png';
 import opera from '@/app/assets/images/opera.png';
 import kyoto from '@/app/assets/images/kyoto.png';
 import kenya from '@/app/assets/images/kenya.png';
+import arrow from '@/app/assets/images/arrowRight.svg';
 import AdventureCard from './AdventureCard';
+import Image from 'next/image';
 
 export interface Adventerus {
 	id: number;
@@ -45,28 +47,35 @@ export default function Adventure() {
 		<section className='py-10'>
 			<div className='max-w-[1342px] w-full mx-auto px-5  '>
 				<div>
-					<h2 className='text-[#6E7491] text-2xl font-bold mb-6 '>
-						Find your next adventure with these{' '}
-						<span className='text-[#605DEC]'>flight deals</span>
-					</h2>
+					<div className='flex items-center justify-between'>
+						<h2 className='text-[#6E7491] text-2xl font-bold mb-6 '>
+							Find your next adventure with these{' '}
+							<span className='text-[#605DEC]'>flight deals</span>
+						</h2>
+						<p className='flex items-center text-[#A1B0CC] text-2xl gap-1 '>
+							All
+							<button className='cursor-pointer'>
+								<Image src={arrow} alt='' />
+							</button>
+						</p>
+					</div>
 
 					<ul className='flex items-center   rounded-[12px] flex-wrap'>
-            <div  className='flex gap-10 mb-10'>
-						{adventures.map(({ id, image, name, city, price, desc }) => (
-                
-                <AdventureCard key={id}
-                  classname='w-[410px] rounded-[12px]'
-                  
-                  image={image}
-                  name={name}
-                  city={city}
-                  price={price}
-                  desc={desc}
-                />
-              ))}
-              </div>
+						<div className='flex gap-10 mb-10'>
+							{adventures.map(({ id, image, name, city, price, desc }) => (
+								<AdventureCard
+									key={id}
+									classname='w-[410px] rounded-[12px]'
+									image={image}
+									name={name}
+									city={city}
+									price={price}
+									desc={desc}
+								/>
+							))}
+						</div>
 						<AdventureCard
-            classname='w-full'
+							classname='w-full'
 							image={kenya}
 							name='Tsavo East National Park, '
 							city='Kenya'

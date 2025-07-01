@@ -9,7 +9,6 @@ import bg from '@/app/assets/images/hero-login-bg.jpg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
 import LoginCookies from './LoginCookies';
-import LoginModal from './LoginModal';
 import { useState } from 'react';
 import {
 	Select,
@@ -296,11 +295,7 @@ export default function LoginPage() {
 						</form>
 						<LoginCookies />
 					</div>
-					{isOpen && (
-						<ul>
-							<LoginModal onClose={() => setIsOpen(false)} />
-						</ul>
-					)}
+				
 				</section>
 		
 		</>
