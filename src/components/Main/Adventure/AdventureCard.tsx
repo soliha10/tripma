@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Adventerus } from './Adventure';
 
 export default function AdventureCard({
+	id,
 	image,
 	name,
 	city,
@@ -10,7 +11,7 @@ export default function AdventureCard({
 	classname,
 }: Adventerus) {
 	return (
-		<li
+		<li key={id}
 			className={`${classname} w-[410px] rounded-[12px] cursor-pointer `}
 			style={{
 				boxShadow:

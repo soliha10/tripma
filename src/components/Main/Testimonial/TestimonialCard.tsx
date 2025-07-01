@@ -4,7 +4,7 @@ interface Feedbacks {
 	userName: string;
 	userLocation: string;
 	time: string;
-	rating: any;
+	rating: StaticImageData ;
 	feedback: string;
 }
 export default function TestimonialCard({

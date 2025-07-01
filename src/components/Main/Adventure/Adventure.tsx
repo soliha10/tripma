@@ -4,17 +4,18 @@ import kyoto from '@/app/assets/images/kyoto.png';
 import kenya from '@/app/assets/images/kenya.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
 import AdventureCard from './AdventureCard';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 export interface Adventerus {
-	id: number;
-	// image: string;
+	id?: number;
+	image: StaticImageData;
 	name: string;
 	city: string;
-	price: string;
+	price?: string;
 	desc: string;
-	classname: string;
+	classname?: string;
 }
+
 export default function Adventure() {
 	const adventures: Adventerus[] = [
 		{
@@ -64,6 +65,7 @@ export default function Adventure() {
 						<div className='flex gap-10 mb-10'>
 							{adventures.map(({ id, image, name, city, price, desc }) => (
 								<AdventureCard
+									id={id}
 									key={id}
 									classname='w-[410px] rounded-[12px]'
 									image={image}
@@ -75,6 +77,7 @@ export default function Adventure() {
 							))}
 						</div>
 						<AdventureCard
+							
 							classname='w-full'
 							image={kenya}
 							name='Tsavo East National Park, '
