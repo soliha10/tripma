@@ -67,6 +67,17 @@ const flights = [
 		price: '$837',
 		tripType: 'round trip',
 	},
+	{
+		id: 6,
+		pic: qatnas,
+		duration: '16h 05m',
+		airlineType: 'Hawaiian Airlines',
+		time: '11:15 AM - 7:45 PM',
+		stop: 'Nonstop',
+		stopDuration: '',
+		price: '$837',
+		tripType: 'round trip',
+	},
 ];
 
 export function DepartingFlight() {
