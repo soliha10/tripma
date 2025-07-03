@@ -1,34 +1,32 @@
 'use client';
+
+import arrow from '@/app/assets/images/chevron-down.svg';
+
 import Image from 'next/image';
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '../../ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { Calendar } from '../../ui/calendar';
+import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 
 import go from '@/app/assets/images/departure.svg';
 import arrive from '@/app/assets/images/arrival.svg';
 import calendar from '@/app/assets/images/calendar-with-dates.svg';
 import user from '@/app/assets/images/person-solid.svg';
-import bg from '@/app/assets/images/hero-login-bg.jpg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
-import LoginCookies from './LoginCookies';
-import { useState } from 'react';
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from '@/components/ui/select';
-import { Calendar } from '@/components/ui/calendar';
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from '@/components/ui/popover';
-import { DateRange } from 'react-day-picker';
+import { DepartingFlight } from './DepartingFlight';
 
-export default function LoginPage() {
-	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined)
+export default function DetailHero() {
+	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
 	const [open, setOpen] = useState(false);
-	// const [date, setDate] = useState<Date | undefined>(new Date(2025, 5, 12));
 	const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
 	const arriveOptions = [
 		'NRT',
@@ -48,26 +46,14 @@ export default function LoginPage() {
 	const toggle = () => {
 		setIsCountOpen((prev) => !prev);
 	};
+
 	return (
-		<>
-			<section
-				style={{
-					backgroundImage: `url(${bg.src})`,
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: 'cover',
-					backgroundPosition: 'top center',
-				}}
-				className='h-screen relative'
-			>
-				<div className='max-w-[1342px] w-full mx-auto px-5  '>
-					<div className=' pt-[135px] w-[756px] mx-auto'>
-						<h1 className='text-[95px] text-center font-extrabold leading-24 bg-gradient-to-r from-[#62ACFD] via-[#893FFD]  to-[#5CA1FD]  text-transparent bg-clip-text  mb-[68px]'>
-							It’s more than just a trip
-						</h1>
-					</div>
+		<section>
+			<div className='max-w-[1342px] w-full mx-auto px-5  '>
+				<div>
 					<form
 						action=''
-						className='flex items-center justify-center mb-5 rounded w-fit border border-[#CBD4E6] bg-white  mx-auto '
+						className='flex items-center justify-start mb-6 rounded  w-fit ms-0  border border-[#CBD4E6] bg-white  mx-auto '
 						style={{
 							boxShadow:
 								'0px 2px 4px 0px rgba(7, 4, 146, 0.10), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 12px 24px 0px rgba(27, 59, 119, 0.05)',
@@ -76,7 +62,7 @@ export default function LoginPage() {
 						{/* go */}
 						<Select>
 							<SelectTrigger
-								className=' w-[324.5px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 '
+								className=' w-[174px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 '
 								style={{
 									backgroundImage: `url(${go.src})`,
 									backgroundRepeat: 'no-repeat',
@@ -108,7 +94,7 @@ export default function LoginPage() {
 						{/* arrive */}
 						<Select>
 							<SelectTrigger
-								className=' w-[324.5px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 '
+								className=' w-[174px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 '
 								style={{
 									backgroundImage: `url(${arrive.src})`,
 									backgroundRepeat: 'no-repeat',
@@ -143,7 +129,7 @@ export default function LoginPage() {
 							<PopoverTrigger asChild>
 								<div
 									onClick={() => setOpen(true)}
-									className='w-[252px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0] text-[18px] border-e border-[#CBD4E6] outline-0 cursor-pointer  bg-white'
+									className='w-[228px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0] text-[18px] border-e border-[#CBD4E6] outline-0 cursor-pointer  bg-white'
 									style={{
 										backgroundImage: `url(${calendar.src})`,
 										backgroundRepeat: 'no-repeat',
@@ -223,7 +209,7 @@ export default function LoginPage() {
 						</Popover>
 						{/* count */}
 						<div
-							className=' relative w-[200px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0]  text-[18px] outline-0 '
+							className=' relative w-[174px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0]  text-[18px] outline-0 '
 							style={{
 								backgroundImage: `url(${user.src})`,
 								backgroundRepeat: 'no-repeat',
@@ -290,9 +276,132 @@ export default function LoginPage() {
 							Search
 						</button>
 					</form>
-					<LoginCookies />
+
+					<div className='flex gap-4 items-center mb-12'>
+						<Select>
+							<SelectTrigger
+								className='w-[120px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='Max price' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>Max price</SelectItem>
+									<SelectItem value='banana'>Min price</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select>
+							<SelectTrigger
+								className='w-[95px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='Shops' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>Shops</SelectItem>
+									<SelectItem value='banana'>Cafes</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select>
+							<SelectTrigger
+								className='w-[95px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='Times' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>Morning</SelectItem>
+									<SelectItem value='banana'>Afternoon</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select>
+							<SelectTrigger
+								className='w-[105px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='Airlines' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>Airlines</SelectItem>
+									<SelectItem value='banana'>Airlines</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select>
+							<SelectTrigger
+								className='w-[123px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='Seat class' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>Seat class</SelectItem>
+									<SelectItem value='banana'>Seat class</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select>
+							<SelectTrigger
+								className='w-[87px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none '
+								style={{
+									backgroundImage: `url(${arrow})`,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: '30px 30px',
+									backgroundPosition: 'right 10px',
+								}}
+							>
+								<SelectValue placeholder='More' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value='apple'>More</SelectItem>
+									<SelectItem value='banana'>School</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+					</div>
+
+					<DepartingFlight />
 				</div>
-			</section>
-		</>
+			</div>
+		</section>
 	);
 }
