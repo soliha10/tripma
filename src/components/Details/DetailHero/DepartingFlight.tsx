@@ -82,10 +82,12 @@ const flights = [
 
 export function DepartingFlight() {
 	return (
-		<Table>
-			<TableCaption className='text-[#6E7491] text-[18px] font-semibold text-left mb-4'>Choose a <span className='text-[#605DEC]'>departing</span> flight</TableCaption>
+		<Table className='w-[872px] mb-6  '>
+			<TableCaption className='text-[#6E7491] text-[18px] font-semibold text-left mb-4'>
+				Choose a <span className='text-[#605DEC]'>departing</span> flight
+			</TableCaption>
 
-			<TableBody className='border border-[#E9E8FC] rounded-xl  '>
+			<TableBody className='border border-[#E9E8FC] rounded-xl p-4 '>
 				{flights.map(
 					({
 						id,
@@ -98,19 +100,22 @@ export function DepartingFlight() {
 						price,
 						tripType,
 					}) => (
-						<TableRow key={id}>
-							<TableCell className='font-medium'>
+						<TableRow key={id} className='text-[#27273F] flex '>
+							<TableCell className='font-medium me-6 '>
 								<Image src={pic} alt='pic' />
 							</TableCell>
-							<TableCell>
-								<span>{duration}</span> <span>{airlineType}</span>
+							<TableCell className='w-[156.5px] flex flex-col gap-1 me-[34px] '>
+								<span className='text-[#27273F]'>{duration}</span>{' '}
+								<span className='text-[#7C8DB0]'>{airlineType}</span>
 							</TableCell>
-							<TableCell>{time}</TableCell>
-							<TableCell className='text-right'>
-								<span>{stop}</span> <span>{stopDuration}</span>
+							<TableCell className='w-[156.5px] me-[34px]'>{time}</TableCell>
+							<TableCell className='text-right w-[156.5px] flex flex-col me-[34px] '>
+								<span>{stop}</span>
+								 <span className='text-[#7C8DB0]'>{stopDuration}</span>
 							</TableCell>
-							<TableCell className='text-right'>
-								<span>{price}</span> <span>{tripType}</span>
+							<TableCell className='text-right w-[156.5px] me-8 flex flex-col'>
+								<span>{price}</span> 
+								<span className='text-[#7C8DB0]'>{tripType}</span>
 							</TableCell>
 						</TableRow>
 					),

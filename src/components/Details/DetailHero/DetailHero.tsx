@@ -1,5 +1,4 @@
 'use client';
-
 import arrow from '@/app/assets/images/chevron-down.svg';
 
 import Image from 'next/image';
@@ -22,7 +21,11 @@ import calendar from '@/app/assets/images/calendar-with-dates.svg';
 import user from '@/app/assets/images/person-solid.svg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
+import map from '@/app/assets/images/Map.svg';
 import { DepartingFlight } from './DepartingFlight';
+import { Button } from '@/components/ui/button';
+import Price from './Price';
+import priceGraph from '@/app/assets/images/Price History.svg';
 
 export default function DetailHero() {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
@@ -399,7 +402,28 @@ export default function DetailHero() {
 						</Select>
 					</div>
 
-					<DepartingFlight />
+					<div className='flex justify-between items-start'>
+						<div className='w-[872px]'>
+							<DepartingFlight />
+							<Button className='border-[#605DEC] text-[#605DEC] bg-white border hover:bg-[#605DEC] ms-auto block lg:text-[18px] py-3 hover:text-white cursor-pointer mb-12 '>
+								Show all flights
+							</Button>
+							<Image src={map} alt='map' />
+						</div>
+
+						<div>
+							<Price />
+							<div>
+								<strong className='text-[#6E7491] mb-4 inline-block text-[18px] font-semibold'>Price history</strong>
+								<Image src={priceGraph} alt='graph' />
+							</div>
+
+							<div>
+								<strong></strong>
+								<span></span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
