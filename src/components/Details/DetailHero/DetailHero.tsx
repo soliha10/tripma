@@ -22,12 +22,14 @@ import user from '@/app/assets/images/person-solid.svg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
 import map from '@/app/assets/images/Map.svg';
-import { DepartingFlight } from './DepartingFlight';
+import { DepartingFlight, flights } from './DepartingFlight';
 import { Button } from '@/components/ui/button';
 import Price from './Price';
 import priceGraph from '@/app/assets/images/Price History.svg';
+import SelectedItem from './SelectedItem';
 
 export default function DetailHero() {
+	const [{ id, pic, duration, airlineType, time, stopDuration }] = flights;
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
 	const [open, setOpen] = useState(false);
 	const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
@@ -53,7 +55,7 @@ export default function DetailHero() {
 	return (
 		<section>
 			<div className='max-w-[1342px] w-full mx-auto px-5  '>
-				<div>
+				<div className='pb-[80px]'>
 					<form
 						action=''
 						className='flex items-center justify-start mb-6 rounded  w-fit ms-0  border border-[#CBD4E6] bg-white  mx-auto '
@@ -403,6 +405,7 @@ export default function DetailHero() {
 					</div>
 
 					<div className='flex justify-between items-start'>
+						{/* LEFT SIDE */}
 						<div className='w-[872px]'>
 							<DepartingFlight />
 							<Button className='border-[#605DEC] text-[#605DEC] bg-white border hover:bg-[#605DEC] ms-auto block lg:text-[18px] py-3 hover:text-white cursor-pointer mb-12 '>
@@ -410,17 +413,61 @@ export default function DetailHero() {
 							</Button>
 							<Image src={map} alt='map' />
 						</div>
+						{/* RIGHT SIDE */}
+						<div className='w-[400px] mt-[57px] '>
+							<SelectedItem
+								id={id}
+								pic={pic}
+								duration={duration}
+								airlineType={airlineType}
+								time={time}
+								stopDuration={stopDuration}
+							/>
+							<div className='p-4 text-right gap-2 flex flex-col text-[#27273F] font-semibold mb-8 '>
+								<div>
+									<span className='inline-block me-10 '>Subtotal</span>
+									<span>$503</span>
+								</div>
+								<div>
+									<span className='inline-block me-10 '>Taxes and Fees</span>
+									<span>$503</span>
+								</div>
+								<div>
+									<span className='inline-block me-10 '>Total</span>
+									<span>$503</span>
+								</div>
+							</div>
+							<Button className='text-[#605DEC] border border-[#605DEC] w-[180px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px]  hover:text-white cursor-pointer'>
+								Save and Close
+							</Button>
+						</div>
 
-						<div>
+						<div className='w-[400px] hidden'>
 							<Price />
-							<div>
-								<strong className='text-[#6E7491] mb-4 inline-block text-[18px] font-semibold'>Price history</strong>
+
+							<div className='mb-10'>
+								<strong className='text-[#6E7491] mb-4 inline-block text-[18px] font-semibold'>
+									Price history
+								</strong>
 								<Image src={priceGraph} alt='graph' />
 							</div>
 
 							<div>
-								<strong></strong>
-								<span></span>
+								<strong className='text-[#6E7491] text-[18px] font-semibold inline-block me-4 '>
+									Price rating
+								</strong>
+								<span className='w-[84px] bg-[#5CD6C0] rounded py-1 mb-[15px] text-white inline-block text-center '>
+									Buy soon
+								</span>
+
+								<p className='text-[#6E7491] lg:text-base mb-4 '>
+									We recommend booking soon. The average cost of this flight is
+									$750, but could rise 18% to $885 in two weeks.
+								</p>
+								<p className='text-[#A1B0CC]'>
+									Tripma analyzes thousands of flights, prices, and trends to
+									ensure you get the best deal.
+								</p>
 							</div>
 						</div>
 					</div>

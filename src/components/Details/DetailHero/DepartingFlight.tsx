@@ -11,7 +11,7 @@ import japan from '@/app/assets/images/image 27.svg';
 import delta from '@/app/assets/images/Delta Airlines.svg';
 import hawai2 from '@/app/assets/images/United Airlines.svg';
 import qatnas from '@/app/assets/images/image 28.svg';
-const flights = [
+export const flights = [
 	{
 		id: 1,
 		pic: hawai,
@@ -87,7 +87,7 @@ export function DepartingFlight() {
 				Choose a <span className='text-[#605DEC]'>departing</span> flight
 			</TableCaption>
 
-			<TableBody className='border border-[#E9E8FC] rounded-xl p-4 '>
+			<TableBody className='border border-[#E9E8FC] rounded-xl  h-[456px] overflow-auto  '>
 				{flights.map(
 					({
 						id,
@@ -100,7 +100,7 @@ export function DepartingFlight() {
 						price,
 						tripType,
 					}) => (
-						<TableRow key={id} className='text-[#27273F] flex '>
+						<TableRow key={id} className={`text-[#27273F] flex ${id == 1 ? 'pt-7' : "pt-4" } hover:bg-[#F6F6FE]  `}>
 							<TableCell className='font-medium me-6 '>
 								<Image src={pic} alt='pic' />
 							</TableCell>
@@ -109,11 +109,11 @@ export function DepartingFlight() {
 								<span className='text-[#7C8DB0]'>{airlineType}</span>
 							</TableCell>
 							<TableCell className='w-[156.5px] me-[34px]'>{time}</TableCell>
-							<TableCell className='text-right w-[156.5px] flex flex-col me-[34px] '>
+							<TableCell className='text-right w-[156.5px] flex flex-col gap-1 me-[34px] '>
 								<span>{stop}</span>
 								 <span className='text-[#7C8DB0]'>{stopDuration}</span>
 							</TableCell>
-							<TableCell className='text-right w-[156.5px] me-8 flex flex-col'>
+							<TableCell className='text-right w-[156.5px] me-8 flex gap-1 flex-col'>
 								<span>{price}</span> 
 								<span className='text-[#7C8DB0]'>{tripType}</span>
 							</TableCell>

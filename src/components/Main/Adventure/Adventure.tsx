@@ -10,7 +10,7 @@ export interface Adventerus {
 	id?: number;
 	image: StaticImageData;
 	name: string;
-	city: string;
+	city?: string;
 	price?: string;
 	desc: string;
 	classname?: string;

@@ -37,7 +37,7 @@ export default function Price() {
 		<Table className='w-[396px] mb-10'>
 			<TableCaption className='text-[#6E7491] text-[18px] font-semibold text-left mb-4'>Price grid <span className='text-[#7C8DB0]'>(flexible dates)</span> </TableCaption>
 			<TableHeader>
-				<TableRow className='border border-[#E9E8FC]'>
+				<TableRow className='border border-[#E9E8FC] '>
 					{headElements.map((item, index) => (
 						<TableHead
 							key={index}
