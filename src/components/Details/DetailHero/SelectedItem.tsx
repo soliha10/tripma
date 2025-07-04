@@ -16,7 +16,7 @@ export default function SelectedItem({
 	stopDuration,
 }: FlightType) {
 	return (
-		<div key={id} className='w-full border border-[#E9E8FC] rounded-xl p-6 text-[#27273F] flex items-start justify-between '>
+		<div key={id} className='w-full border-b border-[#E9E8FC]  pt-2 px-2 pb-6 text-[#27273F] flex items-start justify-between '>
 			<Image src={pic} alt='pic' width={40} height={40} />
 			<div className='lg:w-[148px] flex flex-col'>
 				<span>{airlineType}</span>

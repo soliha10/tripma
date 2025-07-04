@@ -24,6 +24,8 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover';
 import { DateRange } from 'react-day-picker';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined)
@@ -49,6 +51,11 @@ export default function LoginPage() {
 		setIsCountOpen((prev) => !prev);
 	};
 
+	const router = useRouter();
+	
+	const handleNavigate = () => {
+		router.push('/detail')
+	}
 	
 	return (
 		<>
@@ -288,9 +295,9 @@ export default function LoginPage() {
 								</div>
 							)}
 						</div>
-						<button className='w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer '>
+						<Button onClick={handleNavigate}  className='w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer '>
 							Search
-						</button>
+						</Button>
 					</form>
 
 

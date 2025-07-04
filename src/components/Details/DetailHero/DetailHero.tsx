@@ -414,15 +414,25 @@ export default function DetailHero() {
 							<Image src={map} alt='map' />
 						</div>
 						{/* RIGHT SIDE */}
-						<div className='w-[400px] mt-[57px] '>
-							<SelectedItem
-								id={id}
-								pic={pic}
-								duration={duration}
-								airlineType={airlineType}
-								time={time}
-								stopDuration={stopDuration}
-							/>
+						<div className='w-[400px] mt-[57px] hidden '>
+							<div className='border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 '>
+								<SelectedItem
+									id={id}
+									pic={pic}
+									duration={duration}
+									airlineType={airlineType}
+									time={time}
+									stopDuration={stopDuration}
+								/>
+								<SelectedItem
+									id={id}
+									pic={pic}
+									duration={duration}
+									airlineType={airlineType}
+									time={time}
+									stopDuration={stopDuration}
+								/>
+							</div>
 							<div className='p-4 text-right gap-2 flex flex-col text-[#27273F] font-semibold mb-8 '>
 								<div>
 									<span className='inline-block me-10 '>Subtotal</span>
@@ -442,7 +452,7 @@ export default function DetailHero() {
 							</Button>
 						</div>
 
-						<div className='w-[400px] hidden'>
+						<div className='w-[400px] '>
 							<Price />
 
 							<div className='mb-10'>
