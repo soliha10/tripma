@@ -12,7 +12,7 @@ import {
 } from '../../ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { Calendar } from '../../ui/calendar';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { DateRange } from 'react-day-picker';
 
 import go from '@/app/assets/images/departure.svg';
@@ -28,6 +28,7 @@ import Price from './Price';
 import priceGraph from '@/app/assets/images/Price History.svg';
 import SelectedItem from './SelectedItem';
 import { ReturningFlight } from './ReturningFlight';
+import { useRouter } from 'next/navigation';
 export type Flight = {
 	id: number;
 	pic: StaticImageData;
@@ -69,6 +70,13 @@ export default function DetailHero() {
 	const toggle = () => {
 		setIsCountOpen((prev) => !prev);
 	};
+
+	 const router = useRouter();
+			
+			const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+				e.preventDefault()
+				router.push('/order')
+			}
 
 	return (
 		<section>
@@ -488,7 +496,7 @@ export default function DetailHero() {
 							)}
 							{selectedReturnFlight && state === 'returning' && (
 								<Button
-									// onClick={() => setState('returning')}
+									onClick={handleNavigate}
 									className='text-[#605DEC] border border-[#605DEC] w-[222px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px] hover:text-white cursor-pointer'
 								>
 									Passenger information
