@@ -9,7 +9,7 @@ import bg from '@/app/assets/images/hero-login-bg.jpg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
 import LoginCookies from './LoginCookies';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import {
 	Select,
 	SelectContent,
@@ -53,7 +53,8 @@ export default function LoginPage() {
 
 	const router = useRouter();
 	
-	const handleNavigate = () => {
+	const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault()
 		router.push('/detail')
 	}
 	
@@ -295,7 +296,7 @@ export default function LoginPage() {
 								</div>
 							)}
 						</div>
-						<Button onClick={handleNavigate}  className='w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer '>
+						<Button onClick={handleNavigate} type='button'  className='w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer '>
 							Search
 						</Button>
 					</form>

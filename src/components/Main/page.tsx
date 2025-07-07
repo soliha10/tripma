@@ -1,3 +1,4 @@
+"use client"
 import Adventure from './Adventure/Adventure';
 import Explore from './Explore/Explore';
 import Footer from './Footer/Footer';
@@ -6,6 +7,7 @@ import LoginPage from './Login/LoginPage';
 import Testimonial from './Testimonial/Testimonial';
 
 export default function MainPage() {
+	
 	return (
 		<>
 			<LoginHeader />
@@ -14,6 +16,7 @@ export default function MainPage() {
 			<Explore />
 			<Testimonial />
 			<Footer />
+			
 		</>
 	);
 }

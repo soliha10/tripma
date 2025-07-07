@@ -1,7 +1,7 @@
 'use client';
 import arrow from '@/app/assets/images/chevron-down.svg';
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import {
 	Select,
 	SelectContent,
@@ -22,14 +22,26 @@ import user from '@/app/assets/images/person-solid.svg';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
 import map from '@/app/assets/images/Map.svg';
-import { DepartingFlight, flights } from './DepartingFlight';
+import { DepartingFlight } from './DepartingFlight';
 import { Button } from '@/components/ui/button';
 import Price from './Price';
 import priceGraph from '@/app/assets/images/Price History.svg';
 import SelectedItem from './SelectedItem';
+import { ReturningFlight } from './ReturningFlight';
+export type Flight = {
+	id: number;
+	pic: StaticImageData;
+	duration: string;
+	airlineType: string;
+	time: string;
+	stop?: string;
+	stopDuration: string;
+	price: string;
+	tripType: string;
+};
 
 export default function DetailHero() {
-	const [{ id, pic, duration, airlineType, time, stopDuration }] = flights;
+	// const [{ id, pic, duration, airlineType, time, stopDuration }] = flights;
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
 	const [open, setOpen] = useState(false);
 	const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
@@ -48,6 +60,12 @@ export default function DetailHero() {
 	const [adultCount, setAdultCount] = useState(1);
 	const [minorCount, setMinorCount] = useState(0);
 
+	const [selectedDepartFlight, setSelectedDepartFlight] =
+		useState<Flight | null>(null);
+	const [selectedReturnFlight, setSelectedReturnFlight] =
+		useState<Flight | null>(null);
+
+	const [state, setState] = useState<'departing' | 'returning'>('departing');
 	const toggle = () => {
 		setIsCountOpen((prev) => !prev);
 	};
@@ -407,32 +425,44 @@ export default function DetailHero() {
 					<div className='flex justify-between items-start'>
 						{/* LEFT SIDE */}
 						<div className='w-[872px]'>
-							<DepartingFlight />
-							<Button className='border-[#605DEC] text-[#605DEC] bg-white border hover:bg-[#605DEC] ms-auto block lg:text-[18px] py-3 hover:text-white cursor-pointer mb-12 '>
+							{state === 'departing' && (
+								<DepartingFlight
+									onSelect={(flight) => setSelectedDepartFlight(flight)}
+								/>
+							)}
+							{state === 'returning' && (
+								<ReturningFlight
+									onSelect={(flight) => setSelectedReturnFlight(flight)}
+								/>
+							)}
+
+							<Button
+								type='button'
+								className='border-[#605DEC] text-[#605DEC] bg-white border hover:bg-[#605DEC] ms-auto block lg:text-[18px] py-3 hover:text-white cursor-pointer mb-12 '
+							>
 								Show all flights
 							</Button>
 							<Image src={map} alt='map' />
 						</div>
+
 						{/* RIGHT SIDE */}
-						<div className='w-[400px] mt-[57px] hidden '>
-							<div className='border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 '>
-								<SelectedItem
-									id={id}
-									pic={pic}
-									duration={duration}
-									airlineType={airlineType}
-									time={time}
-									stopDuration={stopDuration}
-								/>
-								<SelectedItem
-									id={id}
-									pic={pic}
-									duration={duration}
-									airlineType={airlineType}
-									time={time}
-									stopDuration={stopDuration}
-								/>
-							</div>
+
+						<div
+							className={`w-[400px] mt-[57px] ${
+								selectedDepartFlight ? 'block' : 'hidden'
+							}  `}
+						>
+							{selectedDepartFlight && (
+								<div className='border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 '>
+									<SelectedItem {...selectedDepartFlight} />
+								</div>
+							)}
+							{selectedReturnFlight && (
+								<div className='border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 '>
+									<SelectedItem {...selectedReturnFlight} />
+								</div>
+							)}
+
 							<div className='p-4 text-right gap-2 flex flex-col text-[#27273F] font-semibold mb-8 '>
 								<div>
 									<span className='inline-block me-10 '>Subtotal</span>
@@ -447,12 +477,30 @@ export default function DetailHero() {
 									<span>$503</span>
 								</div>
 							</div>
-							<Button className='text-[#605DEC] border border-[#605DEC] w-[180px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px]  hover:text-white cursor-pointer'>
-								Save and Close
-							</Button>
+
+							{selectedDepartFlight && state === 'departing' && (
+								<Button
+									onClick={() => setState('returning')}
+									className='text-[#605DEC] border border-[#605DEC] w-[180px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px] hover:text-white cursor-pointer'
+								>
+									Save and Close
+								</Button>
+							)}
+							{selectedReturnFlight && state === 'returning' && (
+								<Button
+									// onClick={() => setState('returning')}
+									className='text-[#605DEC] border border-[#605DEC] w-[222px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px] hover:text-white cursor-pointer'
+								>
+									Passenger information
+								</Button>
+							)}
 						</div>
 
-						<div className='w-[400px] '>
+						<div
+							className={`w-[400px] ${
+								selectedDepartFlight ? 'hidden' : 'block'
+							} `}
+						>
 							<Price />
 
 							<div className='mb-10'>

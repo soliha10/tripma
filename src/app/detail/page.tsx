@@ -4,7 +4,7 @@ import SanFransiscoPlaces from "@/components/Details/SanFransiscoPlaces/SanFrans
 import Footer from "@/components/Main/Footer/Footer";
 import LoginHeader from "@/components/Main/Login/LoginHeader";
 
-export default function DetailPage() {
+export default function Detail() {
   return (
     <>
       <LoginHeader />
