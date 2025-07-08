@@ -29,6 +29,7 @@ import priceGraph from '@/app/assets/images/Price History.svg';
 import SelectedItem from './SelectedItem';
 import { ReturningFlight } from './ReturningFlight';
 import { useRouter } from 'next/navigation';
+import { useFlight } from '@/context/FlightContext';
 export type Flight = {
 	id: number;
 	pic: StaticImageData;
@@ -61,22 +62,29 @@ export default function DetailHero() {
 	const [adultCount, setAdultCount] = useState(1);
 	const [minorCount, setMinorCount] = useState(0);
 
-	const [selectedDepartFlight, setSelectedDepartFlight] =
-		useState<Flight | null>(null);
-	const [selectedReturnFlight, setSelectedReturnFlight] =
-		useState<Flight | null>(null);
+	// const [selectedDepartFlight, setSelectedDepartFlight] =
+	// 	useState<Flight | null>(null);
+	// const [selectedReturnFlight, setSelectedReturnFlight] =
+	// 	useState<Flight | null>(null);
 
 	const [state, setState] = useState<'departing' | 'returning'>('departing');
 	const toggle = () => {
 		setIsCountOpen((prev) => !prev);
 	};
 
-	 const router = useRouter();
-			
-			const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
-				e.preventDefault()
-				router.push('/order')
-			}
+	const router = useRouter();
+
+	const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		router.push('/order');
+	};
+
+	const {
+		selectedDepartFlight,
+		selectedReturnFlight,
+		setSelectedDepartFlight,
+		setSelectedReturnFlight,
+	} = useFlight();
 
 	return (
 		<section>
@@ -434,14 +442,10 @@ export default function DetailHero() {
 						{/* LEFT SIDE */}
 						<div className='w-[872px]'>
 							{state === 'departing' && (
-								<DepartingFlight
-									onSelect={(flight) => setSelectedDepartFlight(flight)}
-								/>
+								<DepartingFlight onSelect={setSelectedDepartFlight} />
 							)}
 							{state === 'returning' && (
-								<ReturningFlight
-									onSelect={(flight) => setSelectedReturnFlight(flight)}
-								/>
+								<ReturningFlight onSelect={setSelectedReturnFlight} />
 							)}
 
 							<Button
