@@ -5,17 +5,57 @@ import { Label } from '@/components/ui/label';
 import Image from 'next/image';
 import increment from '@/app/assets/images/Increment.svg';
 import decrement from '@/app/assets/images/inc.svg';
-import { useState } from 'react';
-export default function OrderForm() {
+import { MouseEvent, useState } from 'react';
+import { Calendar } from '@/components/ui/calendar';
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover';
+import { useRouter } from 'next/navigation';
+
+type OrderFormProps = {
+	firstName: string;
+	setFirstName: (value: string) => void;
+	lastName: string;
+	setLastName: (value: string) => void;
+	birthDate: string;
+	setBirthDate: (value: string) => void;
+	email: string;
+	setEmail: (value: string) => void;
+	phoneNumber: string;
+	setPhoneNumber: (value: string) => void;
+	knownTraveller: string;
+	setKnownTraveller: (value: string) => void;
+};
+
+export default function OrderForm({
+	firstName,
+	setFirstName,
+	lastName,
+	setLastName,
+	birthDate,
+	setBirthDate,
+	email,
+	setEmail,
+	phoneNumber,
+	setPhoneNumber,
+	knownTraveller,
+	setKnownTraveller,
+}: OrderFormProps) {
 	const [count, setCount] = useState(1);
 
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [email, setEmail] = useState('');
-	const [phoneNumber, setPhoneNumber] = useState('');
-	const [isChecked, setIsChecked] = useState(false);
-	const [birthDate, setBirthDate] = useState('');
+	const [open, setOpen] = useState(false);
+	const [date, setDate] = useState<Date | undefined>(undefined);
 
+	const [isChecked, setIsChecked] = useState(false);
+
+		const router = useRouter();
+	
+			const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+				e.preventDefault();
+				router.push('/select-seat');
+			};
 	return (
 		<div className='lg:w-[682px]'>
 			<h2 className='text-[#6E7491] text-[18px] font-semibold mb-6 '>
@@ -43,20 +83,48 @@ export default function OrderForm() {
 						placeholder='Suffix'
 						className='w-[200px]  border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 					/>
-					<div>
-						<Input
-							placeholder='Date of birth*'
-							className='w-[252px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
-							required
-							onChange={(e) => setBirthDate(e.target.value)}
-						/>
-						<span className='text-xs text-[#7C8DB0]'>MM/DD/YY</span>
+					<div className='flex flex-col gap-[6px]'>
+						{/* DATE */}
+
+						<Popover open={open} onOpenChange={setOpen}>
+							<PopoverTrigger asChild>
+								<Button
+									variant='default'
+									id='date'
+									className='w-[252px] py-[10px] rounded appearance-none border items-start justify-start ps-3 border-[#A1B0CC] text-[18px] text-[#7C8DB0]'
+								>
+									{date ? date.toLocaleDateString() : 'Date of birth*'}
+								</Button>
+							</PopoverTrigger>
+							<PopoverContent
+								className='w-auto overflow-hidden p-0'
+								align='start'
+							>
+								<Calendar
+									mode='single'
+									selected={date}
+									captionLayout='dropdown'
+									onSelect={(selectedDate) => {
+										setDate(selectedDate);
+										if (selectedDate) {
+											setBirthDate(selectedDate.toLocaleDateString());
+										}
+										setOpen(false);
+									}}
+								/>
+							</PopoverContent>
+						</Popover>
+
+						<span className='text-xs inline-block ms-1 text-[#7C8DB0]'>
+							MM/DD/YY
+						</span>
 					</div>
 				</div>
 
 				<div className='flex flex-wrap gap-6 mb-12'>
 					<Input
 						placeholder='Email address*'
+						type='email'
 						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 						onChange={(e) => setEmail(e.target.value)}
@@ -75,6 +143,7 @@ export default function OrderForm() {
 						placeholder='Known traveller number*'
 						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
+						onChange={(e) => setKnownTraveller(e.target.value)}
 					/>
 				</div>
 			</form>
@@ -191,10 +260,20 @@ export default function OrderForm() {
 				</Button>
 				<Button
 					className={`w-[138px]  ${
-						firstName && lastName && birthDate && email && phoneNumber
+						firstName &&
+						lastName &&
+						birthDate &&
+						email &&
+						phoneNumber &&
+						knownTraveller
 							? 'bg-[#605DEC] text-[#FAFAFA]'
-							: 'border-[#7C8DB0] text-[#7C8DB0] border bg-[#cbd4e64c]'
+							: 'border-[#7C8DB0] text-[#7C8DB0] border bg-[#cbd4e64c] cursor-not-allowed opacity-100 '
 					}  cursor-pointer py-3   rounded text-[18px]  `}
+					disabled={
+						!(firstName && lastName && birthDate && email && phoneNumber)
+					}
+					type='button'
+					onClick={handleNavigate}
 				>
 					Select seats
 				</Button>

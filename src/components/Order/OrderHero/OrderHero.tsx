@@ -7,8 +7,25 @@ import bags from '@/app/assets/images/bags.svg';
 import { useFlight } from '@/context/FlightContext';
 import SelectedItem from '@/components/Details/DetailHero/SelectedItem';
 import { Button } from '@/components/ui/button';
+import { MouseEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 export default function OrderHero() {
 	const { selectedDepartFlight, selectedReturnFlight } = useFlight();
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [email, setEmail] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
+	const [birthDate, setBirthDate] = useState('');
+	const [knownTraveller, setKnownTraveller] = useState('');
+	const router = useRouter();
+
+		const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+			e.preventDefault();
+			router.push('/select-seat');
+		};
+
+
+
 	return (
 		<>
 			<LoginHeader />
@@ -26,7 +43,20 @@ export default function OrderHero() {
 							</p>
 						</div>
 						<div className='flex justify-between'>
-							<OrderForm />
+							<OrderForm
+								firstName={firstName}
+								setFirstName={setFirstName}
+								lastName={lastName}
+								setLastName={setLastName}
+								birthDate={birthDate}
+								setBirthDate={setBirthDate}
+								email={email}
+								setEmail={setEmail}
+								phoneNumber={phoneNumber}
+								setPhoneNumber={setPhoneNumber}
+								knownTraveller={knownTraveller}
+								setKnownTraveller={setKnownTraveller}
+							/>
 
 							<div>
 								<div className={`w-[400px] mt-[57px]   `}>
@@ -58,7 +88,29 @@ export default function OrderHero() {
 										</div>
 									</div>
 
-									<Button className='w-[138px] mb-[104px] text-[#7C8DB0] border block ms-auto border-[#7C8DB0] cursor-pointer py-3 bg-[#cbd4e64c]  rounded text-[18px]  '>
+									<Button
+									type='button'
+										className={`w-[138px] ms-auto block mb-[104px] ${
+											firstName &&
+											lastName &&
+											birthDate &&
+											email &&
+											phoneNumber &&
+											knownTraveller
+												? 'bg-[#605DEC] text-[#FAFAFA]'
+												: 'border-[#7C8DB0] text-[#7C8DB0] border bg-[#cbd4e64c]'
+										}  cursor-pointer py-3   rounded text-[18px]  `}
+										disabled={
+											!(
+												firstName &&
+												lastName &&
+												birthDate &&
+												email &&
+												phoneNumber
+											)
+										}
+										onClick={handleNavigate}
+									>
 										Select seats
 									</Button>
 								</div>
