@@ -13,6 +13,7 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover';
 import { useRouter } from 'next/navigation';
+import { useFlight } from '@/context/FlightContext';
 
 type OrderFormProps = {
 	firstName: string;
@@ -50,12 +51,16 @@ export default function OrderForm({
 
 	const [isChecked, setIsChecked] = useState(false);
 
-		const router = useRouter();
-	
-			const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
-				e.preventDefault();
-				router.push('/select-seat');
-			};
+	const router = useRouter();
+const {setPassenger} = useFlight()
+	const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		setPassenger({
+			firstName,
+			lastName
+		})
+		router.push('/select-seat');
+	};
 	return (
 		<div className='lg:w-[682px]'>
 			<h2 className='text-[#6E7491] text-[18px] font-semibold mb-6 '>
@@ -226,7 +231,7 @@ export default function OrderForm({
 						Passenger 1
 					</strong>
 					<span className='text-[#6E7491] text-[17px] font-semibold  '>
-						First Last
+						{firstName} {lastName}
 					</span>
 				</div>
 

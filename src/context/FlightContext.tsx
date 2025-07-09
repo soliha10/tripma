@@ -15,11 +15,19 @@ export type Flight = {
 	tripType: string;
 };
 
+type Passenger = {
+	firstName: string;
+	lastName: string;
+}
+
 type FlightContextType = {
 	selectedDepartFlight: Flight | null;
 	selectedReturnFlight: Flight | null;
 	setSelectedDepartFlight: (flight: Flight) => void;
 	setSelectedReturnFlight: (flight: Flight) => void;
+
+	passenger: Passenger	| null;
+	setPassenger: (passenger: Passenger) => void 
 };
 
 const FlightContext = createContext<FlightContextType | undefined>(undefined);
@@ -29,7 +37,7 @@ export function FlightProvider({ children }: { children: ReactNode }) {
 		useState<Flight | null>(null);
 	const [selectedReturnFlight, setSelectedReturnFlight] =
 		useState<Flight | null>(null);
-
+const [passenger, setPassenger] = useState<Passenger | null>(null)
 	return (
 		<FlightContext.Provider
 			value={{
@@ -37,6 +45,8 @@ export function FlightProvider({ children }: { children: ReactNode }) {
 				selectedReturnFlight,
 				setSelectedDepartFlight,
 				setSelectedReturnFlight,
+				passenger,
+				setPassenger
 			}}
 		>
 			{children}
