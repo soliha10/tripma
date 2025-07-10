@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import menu from '@/app/assets/images/menu.svg';
 import logo from '@/app/assets/images/Wordmark.svg';
-import plane from '@/app/assets/images/Plane (seat selection).svg';
+// import plane from '@/app/assets/images/Plane (seat selection).svg';
 import arrow from '@/app/assets/images/arrow-white.svg';
 import economy from '@/app/assets/images/Economy Seats.svg';
 import busines from '@/app/assets/images/Business Seats.svg';
@@ -13,12 +13,17 @@ import check from '@/app/assets/images/check heavy.svg';
 import point from '@/app/assets/images/point heavy.svg';
 import chevron from '@/app/assets/images/chevron.svg';
 import { useFlight } from '@/context/FlightContext';
+import SeatMap from './SeatMap';
+import bgPlane from '@/app/assets/images/bg-plane.svg';
+
 export default function SelectSeats() {
 	// const [isSelectedDepart, setIsSelectDepart] = useState(false);
 	// const [isSelectedReturn, setIsSelectReturn] = useState(false);
+
 	const [selectTab, setSelectTab] = useState<'depart' | 'return' | null>(
 		'depart',
 	);
+
 	const { passenger } = useFlight();
 	const economyItem = [
 		'Built-in entertainment system',
@@ -42,6 +47,14 @@ export default function SelectSeats() {
 	const toggleReturn = () => {
 		setSelectTab(selectTab === 'return' ? null : 'return');
 	};
+	const [selectedSeatDepart, setSelectedSeatDepart] = useState<{
+		row: number;
+		col: string;
+	} | null>(null);
+	const [selectedSeatReturn, setSelectedSeatReturn] = useState<{
+		row: number;
+		col: string;
+	} | null>(null);
 
 	// const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
 	// 	e.preventDefault();
@@ -50,9 +63,9 @@ export default function SelectSeats() {
 	return (
 		<section>
 			<div className='max-w-[1440px]  w-full mx-auto px-3 '>
-				<div className='flex'>
+				<div className='flex overflow-hidden h-screen  '>
 					{/* left side */}
-					<div className='lg:w-[728px] border-e border-[#CBD4E6]'>
+					<div className='w-full border-e border-[#CBD4E6] overflow-y-auto h-full scrollbar-hide '>
 						<div className='flex items-center py-[21px] gap-3  '>
 							<Button className='w-8 h-8'>
 								<Image src={menu} alt='btn' />
@@ -62,10 +75,37 @@ export default function SelectSeats() {
 								<Image src={logo} alt='pic' />
 							</a>
 						</div>
-						<Image src={plane} alt='plane' />
+						<div
+							className='w-full overflow-hidden relative '
+							// style={{
+							// 	backgroundImage: `url(${bgPlane.src})`,
+							// 	backgroundSize: 'cover',
+							// 	backgroundRepeat: 'no-repeat',
+							// }}
+						>
+							<Image
+								src={bgPlane}
+								alt='plane'
+								className='relative left-[-310px] '
+							/>
+							<SeatMap
+								selectedSeat={
+									selectTab === 'depart'
+										? selectedSeatDepart
+										: selectedSeatReturn
+								}
+								setSelectedSeat={
+									selectTab === 'depart'
+										? setSelectedSeatDepart
+										: setSelectedSeatReturn
+								}
+								section={selectTab}
+							/>{' '}
+						</div>
 					</div>
+
 					{/* right side */}
-					<div className='w-[712px]'>
+					<div className='w-[712px] overflow-y-auto h-full  backdrop-blur-md scrollbar-hide fixed right-0 '>
 						<div className='bg-[#27273F] text-[#FAFAFA] flex items-center '>
 							<div className='py-5 px-6 flex flex-col w-[129px]'>
 								<strong className='text-2xl font-extrabold '>SFO</strong>
@@ -118,7 +158,7 @@ export default function SelectSeats() {
 							</div>
 						</div>
 
-						<div className='flex p-2 gap-1 backdrop:blur-md pt-2 px-4 mb-[78px] '>
+						<div className='flex p-2 gap-1   pt-2 px-4 mb-[78px] '>
 							{/* economy */}
 							<div className='pt-8 w-[335px] '>
 								<Image src={economy} alt='economy' className='mb-4' />
@@ -185,6 +225,7 @@ export default function SelectSeats() {
 								</div>
 							</div>
 						</div>
+
 						{/* footer */}
 						<div className='bg-[#FAFAFE] flex items-center gap-4 py-6 ps-6 border-t border-e border-[#CBD4E6] '>
 							<div className='flex flex-col gap-1 w-[176px] p-2 '>
@@ -195,15 +236,24 @@ export default function SelectSeats() {
 							</div>
 							<div className='flex flex-col gap-1 w-[176px] p-2 '>
 								<span className='text-[#7C8DB0] text-[14px] '>Seat number</span>
-								<strong className='text-[#6E7491] font-semibold text-[18px] '>
+								{/* <strong className='text-[#6E7491] font-semibold text-[18px] '>
 									--
+								</strong> */}
+								<strong>
+									{selectTab === 'depart'
+										? selectedSeatDepart
+											? `${selectedSeatDepart.row}${selectedSeatDepart.col}`
+											: '--'
+										: selectedSeatReturn
+										? `${selectedSeatReturn.row}${selectedSeatReturn.col}`
+										: '--'}
 								</strong>
 							</div>
 
 							<Button className='text-[#605DEC] border border-[#605DEC] w-[148px]  rounded py-3  inline-block hover:bg-[#605DEC] lg:text-base hover:text-white cursor-pointer'>
 								Save and Close
 							</Button>
-							<Button
+							{/* <Button
 								className=' border-[#7C8DB0] w-[117px] text-[#7C8DB0] border bg-[#cbd4e64c]  opacity-100 cursor-pointer py-3   rounded text-base '
 								// className={`w-[117px]  ${
 
@@ -213,6 +263,22 @@ export default function SelectSeats() {
 								disabled
 								type='button'
 								// onClick={handleNavigate}
+							>
+								Next flight
+							</Button> */}
+							<Button
+								className={`... ${
+									(selectTab === 'depart' && selectedSeatDepart) ||
+									(selectTab === 'return' && selectedSeatReturn)
+										? 'bg-[#605DEC] text-white'
+										: 'border-[#7C8DB0] text-[#7C8DB0] bg-[#cbd4e64c] cursor-not-allowed opacity-100'
+								}`}
+								disabled={
+									!(
+										(selectTab === 'depart' && selectedSeatDepart) ||
+										(selectTab === 'return' && selectedSeatReturn)
+									)
+								}
 							>
 								Next flight
 							</Button>
