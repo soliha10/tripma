@@ -20,9 +20,7 @@ export default function SelectSeats() {
 	// const [isSelectedDepart, setIsSelectDepart] = useState(false);
 	// const [isSelectedReturn, setIsSelectReturn] = useState(false);
 
-	const [selectTab, setSelectTab] = useState<'depart' | 'return' | null>(
-		'depart',
-	);
+	const [selectTab, setSelectTab] = useState<'depart' | 'return'>('depart');
 
 	const { passenger } = useFlight();
 	const economyItem = [
@@ -41,12 +39,8 @@ export default function SelectSeats() {
 
 	// const router = useRouter();
 
-	const toggleDepart = () => {
-		setSelectTab(selectTab === 'depart' ? null : 'depart');
-	};
-	const toggleReturn = () => {
-		setSelectTab(selectTab === 'return' ? null : 'return');
-	};
+	const toggleDepart = () => setSelectTab('depart');
+	const toggleReturn = () => setSelectTab('return');
 	const [selectedSeatDepart, setSelectedSeatDepart] = useState<{
 		row: number;
 		col: string;
@@ -75,32 +69,26 @@ export default function SelectSeats() {
 								<Image src={logo} alt='pic' />
 							</a>
 						</div>
-						<div
-							className='w-full overflow-hidden relative '
-							// style={{
-							// 	backgroundImage: `url(${bgPlane.src})`,
-							// 	backgroundSize: 'cover',
-							// 	backgroundRepeat: 'no-repeat',
-							// }}
-						>
+						<div className='w-full overflow-hidden relative '>
 							<Image
 								src={bgPlane}
 								alt='plane'
 								className='relative left-[-310px] '
 							/>
-							<SeatMap
-								selectedSeat={
-									selectTab === 'depart'
-										? selectedSeatDepart
-										: selectedSeatReturn
-								}
-								setSelectedSeat={
-									selectTab === 'depart'
-										? setSelectedSeatDepart
-										: setSelectedSeatReturn
-								}
-								section={selectTab}
-							/>{' '}
+								<SeatMap
+									selectedSeat={
+										selectTab === 'depart'
+											? selectedSeatDepart
+											: selectedSeatReturn
+									}
+									setSelectedSeat={
+										selectTab === 'depart'
+											? setSelectedSeatDepart
+											: setSelectedSeatReturn
+									}
+									section={selectTab}
+								/>
+							
 						</div>
 					</div>
 
