@@ -16,11 +16,14 @@ import Email from '../Main/Login/Email';
 import { Button } from '../ui/button';
 import SelectedItem from '../Details/DetailHero/SelectedItem';
 import { useFlight } from '@/context/FlightContext';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import info from '@/app/assets/images/information.svg';
 import { FiEye } from 'react-icons/fi';
 // import eye from "@/app/assets/images/eye show visible.svg"
 import { FiEyeOff } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { Calendar } from '../ui/calendar';
 export default function PaymentMethod() {
 	const { selectedDepartFlight, selectedReturnFlight } = useFlight();
 
@@ -50,7 +53,6 @@ export default function PaymentMethod() {
 	];
 	const [cardName, setCardName] = useState('');
 	const [cardNumber, setCardNumber] = useState('');
-	const [cardExpiraDate, setCardExpireDate] = useState('');
 	const [cardCVV, setCardCVV] = useState('');
 	const [accountEmail, setAccountEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -66,7 +68,14 @@ export default function PaymentMethod() {
 	};
 
 	const strength = getPasswordStrength();
+	const [open, setOpen] = useState(false);
+	const [cardExpireDate, setCardExpireDate] = useState<Date | undefined>(undefined);
 
+	const router = useRouter();
+	const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		router.push('/summary');
+	};
 	return (
 		<>
 			<LoginHeader />
@@ -107,7 +116,7 @@ export default function PaymentMethod() {
 												type='checkbox'
 												checked={checked}
 												onClick={() => setChecked(!checked)}
-												className={`w-4 h-4 appearance-none border-2 border-[#6E7491] p-1 ${
+												className={`w-4 h-4 appearance-none border-2 text-[#36374A] border-[#6E7491] p-1 ${
 													checked === true ? 'bg-[#605DEC]' : ''
 												}`}
 											/>
@@ -117,27 +126,59 @@ export default function PaymentMethod() {
 										</div>
 										<Input
 											placeholder='Name on card'
-											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
+											className=' lg:w-[480px]  border-[#A1B0CC] text-[#36374A] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
 											onChange={(e) => setCardName(e.target.value)}
 										/>
 										<Input
 											placeholder='Card number'
 											onChange={(e) => setCardNumber(e.target.value)}
-											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
+											className=' lg:w-[480px]  border-[#A1B0CC] text-[#36374A] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
 										/>
 										<div className='flex items-start mb-10'>
-											<div>
-												<Input
-													placeholder='Expiration date'
-													onChange={(e) => setCardExpireDate(e.target.value)}
-													className=' lg:w-[240px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] mb-[6px] placeholder:text-[18px] text-[18px] me-6 p-3 '
-												/>
+											<div className='flex flex-col'>
+												
+												<Popover open={open} onOpenChange={setOpen}>
+													<PopoverTrigger asChild>
+														<Button
+
+															variant='default'
+															id='date'
+															className=' lg:w-[240px] h-[45px] rounded   bg-white border justify-start  border-[#A1B0CC]   text-[#36374A] mb-[6px]  text-[18px] me-6 p-3 '
+														>
+															{cardExpireDate
+																? `${cardExpireDate.toLocaleString('default', {
+																		month: 'numeric',
+																		year: '2-digit',
+																  })}`
+																: 'Expiration date'}
+														</Button>
+													</PopoverTrigger>
+													<PopoverContent
+														className='w-auto overflow-hidden p-0'
+														align='start'
+													>
+														<Calendar
+															mode='single'
+															selected={cardExpireDate}
+															captionLayout='dropdown'
+															onSelect={(d) => {
+																setCardExpireDate(d);
+																setOpen(false);
+															}}
+															classNames={{
+																table: 'hidden',
+															}}
+														/>
+													</PopoverContent>
+												</Popover>
 												<span className='text-[#7C8DB0] text-xs '>MM/YY</span>
 											</div>
 											<Input
+												min={0}
 												placeholder='CCV'
+												type='number'
 												onChange={(e) => setCardCVV(e.target.value)}
-												className=' lg:w-[216px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px]  p-3 '
+												className=' lg:w-[216px] appearance-none  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px]  p-3  [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none '
 												style={{
 													backgroundImage: `url(${info.src})`,
 													backgroundRepeat: 'no-repeat',
@@ -258,7 +299,7 @@ export default function PaymentMethod() {
 											className={`${
 												cardName &&
 												cardNumber &&
-												cardExpiraDate &&
+												cardExpireDate &&
 												cardCVV &&
 												accountEmail &&
 												password
@@ -269,12 +310,13 @@ export default function PaymentMethod() {
 												!(
 													cardName &&
 													cardNumber &&
-													cardExpiraDate &&
+													cardExpireDate &&
 													cardCVV &&
 													accountEmail &&
 													password
 												)
 											}
+											onClick={handleNavigate}
 										>
 											Confirm and pay
 										</Button>
@@ -314,7 +356,7 @@ export default function PaymentMethod() {
 									className={`${
 										cardName &&
 										cardNumber &&
-										cardExpiraDate &&
+										cardExpireDate &&
 										cardCVV &&
 										accountEmail &&
 										password
@@ -325,12 +367,13 @@ export default function PaymentMethod() {
 										!(
 											cardName &&
 											cardNumber &&
-											cardExpiraDate &&
+											cardExpireDate &&
 											cardCVV &&
 											accountEmail &&
 											password
 										)
 									}
+									onClick={handleNavigate}
 								>
 									Confirm and pay
 								</Button>
