@@ -71,22 +71,22 @@ const {setPassenger} = useFlight()
 					<Input
 						onChange={(e) => setFirstName(e.target.value)}
 						placeholder='First name*'
-						className='w-[200px] py-2  border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[200px] py-3  border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 					/>
 					<Input
 						placeholder='Middle'
-						className='w-[200px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[200px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 					/>
 					<Input
 						placeholder='Last name*'
-						className='w-[200px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[200px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 						onChange={(e) => setLastName(e.target.value)}
 					/>
 					<Input
 						placeholder='Suffix'
-						className='w-[200px]  border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[200px]  py-3 h-12  border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 					/>
 					<div className='flex flex-col gap-[6px]'>
 						{/* DATE */}
@@ -130,23 +130,23 @@ const {setPassenger} = useFlight()
 					<Input
 						placeholder='Email address*'
 						type='email'
-						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<Input
 						placeholder='Phone number*'
-						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 						onChange={(e) => setPhoneNumber(e.target.value)}
 					/>
 					<Input
 						placeholder='Redress number'
-						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 					/>
 					<Input
 						placeholder='Known traveller number*'
-						className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+						className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 						required
 						onChange={(e) => setKnownTraveller(e.target.value)}
 					/>
@@ -170,22 +170,22 @@ const {setPassenger} = useFlight()
 					<div className='flex flex-wrap gap-6 mb-12'>
 						<Input
 							placeholder='First name*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value={firstName}
 						/>
 						<Input
 							placeholder='Last name*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value={lastName}
 						/>
 						<Input
 							placeholder='Email address*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value={email}
 						/>
 						<Input
 							placeholder='Phone number*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value={phoneNumber}
 						/>
 					</div>
@@ -193,22 +193,22 @@ const {setPassenger} = useFlight()
 					<div className='flex flex-wrap gap-6 mb-12'>
 						<Input
 							placeholder='First name*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value=''
 						/>
 						<Input
 							placeholder='Last name*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value=''
 						/>
 						<Input
 							placeholder='Email address*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value=''
 						/>
 						<Input
 							placeholder='Phone number*'
-							className='w-[300px] border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
+							className='w-[300px]  py-3 border-[#A1B0CC] bg-white placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] text-[#7C8DB0] '
 							value=''
 						/>
 					</div>
