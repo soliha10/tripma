@@ -16,6 +16,11 @@ import Email from '../Main/Login/Email';
 import { Button } from '../ui/button';
 import SelectedItem from '../Details/DetailHero/SelectedItem';
 import { useFlight } from '@/context/FlightContext';
+import { useState } from 'react';
+import info from '@/app/assets/images/information.svg';
+import { FiEye } from 'react-icons/fi';
+// import eye from "@/app/assets/images/eye show visible.svg"
+import { FiEyeOff } from 'react-icons/fi';
 export default function PaymentMethod() {
 	const { selectedDepartFlight, selectedReturnFlight } = useFlight();
 
@@ -43,6 +48,25 @@ export default function PaymentMethod() {
 		{ pic: paypal, name: 'Paypal' },
 		{ pic: crypto, name: 'Crypto' },
 	];
+	const [cardName, setCardName] = useState('');
+	const [cardNumber, setCardNumber] = useState('');
+	const [cardExpiraDate, setCardExpireDate] = useState('');
+	const [cardCVV, setCardCVV] = useState('');
+	const [accountEmail, setAccountEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+
+	const [checked, setChecked] = useState(false);
+	const [checkedSave, setCheckedSave] = useState(false);
+
+	const getPasswordStrength = () => {
+		if (password.length >= 14) return 'Strong';
+		if (password.length >= 8) return 'Weak';
+		return 'Too short';
+	};
+
+	const strength = getPasswordStrength();
+
 	return (
 		<>
 			<LoginHeader />
@@ -79,7 +103,14 @@ export default function PaymentMethod() {
 									</h3>
 									<form action=''>
 										<div className='flex items-center gap-2 mb-6'>
-											<Input type='checkbox' className='w-4 h-4' />
+											<Input
+												type='checkbox'
+												checked={checked}
+												onClick={() => setChecked(!checked)}
+												className={`w-4 h-4 appearance-none border-2 border-[#6E7491] p-1 ${
+													checked === true ? 'bg-[#605DEC]' : ''
+												}`}
+											/>
 											<Label className='text-[#6E7491] '>
 												Billing address is same as Passenger 1{' '}
 											</Label>
@@ -87,22 +118,32 @@ export default function PaymentMethod() {
 										<Input
 											placeholder='Name on card'
 											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
+											onChange={(e) => setCardName(e.target.value)}
 										/>
 										<Input
 											placeholder='Card number'
+											onChange={(e) => setCardNumber(e.target.value)}
 											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
 										/>
 										<div className='flex items-start mb-10'>
 											<div>
 												<Input
 													placeholder='Expiration date'
+													onChange={(e) => setCardExpireDate(e.target.value)}
 													className=' lg:w-[240px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] mb-[6px] placeholder:text-[18px] text-[18px] me-6 p-3 '
 												/>
 												<span className='text-[#7C8DB0] text-xs '>MM/YY</span>
 											</div>
 											<Input
 												placeholder='CCV'
+												onChange={(e) => setCardCVV(e.target.value)}
 												className=' lg:w-[216px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px]  p-3 '
+												style={{
+													backgroundImage: `url(${info.src})`,
+													backgroundRepeat: 'no-repeat',
+													backgroundSize: '32px 32px',
+													backgroundPosition: ' right 12px center',
+												}}
 											/>
 										</div>
 									</form>
@@ -119,20 +160,61 @@ export default function PaymentMethod() {
 									</p>
 									<form action=''>
 										<div className='flex items-center gap-2 mb-7'>
-											<Input type='checkbox' className='w-4 h-4' />
+											<Input
+												type='checkbox'
+												checked={checkedSave}
+												onClick={() => setCheckedSave(!checkedSave)}
+												className={`w-4 h-4 appearance-none border-2 border-[#6E7491] p-1 ${
+													checkedSave === true ? 'bg-[#605DEC]' : ''
+												}`}
+											/>{' '}
 											<Label className='text-[#6E7491]'>
 												Save card and create account for later
 											</Label>
 										</div>
 										<Input
 											placeholder='Email address or phone number'
+											type='email'
+											onChange={(e) => setAccountEmail(e.target.value)}
 											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-6 p-3 '
 										/>
-										<Input
-											placeholder='Password'
-											type='password'
-											className=' lg:w-[480px]  border-[#A1B0CC] placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] mb-[50px] p-3 '
-										/>
+										<div className='relative flex items-center justify-between pe-3 lg:w-[480px] border border-[#A1B0CC] rounded mb-[50px]'>
+											<Input
+												placeholder='Password'
+												value={password}
+												onChange={(e) => setPassword(e.target.value)}
+												type={showPassword ? 'text' : 'password'}
+												className='lg:w-[414px] border-0 shadow-none focus-visible:border-0 focus-visible:ring-0 placeholder:text-[#7C8DB0] placeholder:text-[18px] text-[18px] p-3'
+											/>
+											<div
+												onClick={() => setShowPassword(!showPassword)}
+												className='cursor-pointer '
+											>
+												{showPassword ? (
+													<FiEyeOff className='w-6 h-6 text-[#6E7491]' />
+												) : (
+													<FiEye className='w-6 h-6 text-[#6E7491] ' />
+												)}
+											</div>
+											{password && (
+												<span
+													className={`absolute bottom-[-20px] ms-1 text-xs ${
+														strength === 'Strong'
+															? 'text-[#007B65]'
+															: strength === 'Weak'
+															? 'text-[#FF9900]'
+															: 'text-[#FF302F]'
+													}`}
+												>
+													{strength === 'Strong'
+														? 'Strong password'
+														: strength === 'Weak'
+														? 'Weak password'
+														: 'Password must be at least 8 characters'}
+												</span>
+											)}{' '}
+										</div>
+
 										<div className='flex items-center gap-[10px] mb-6 '>
 											<span className='h-[1px] bg-[#CBD4E6] w-[226px] '></span>
 											<span className='text-[#7C8DB0] text-[18px] '>or</span>
@@ -157,8 +239,11 @@ export default function PaymentMethod() {
 										flights booked on Tripma are backed by our satisfaction
 										guarantee, however cancellation policies vary by airline.
 										See the
-										<a className='text-[#605DEC]  ' href=''>  full cancellation policy </a>
-										  for this flight.
+										<a className='text-[#605DEC]  ' href=''>
+											{' '}
+											full cancellation policy{' '}
+										</a>
+										for this flight.
 									</p>
 									<div>
 										<Button
@@ -167,10 +252,29 @@ export default function PaymentMethod() {
 										>
 											Back to seat select
 										</Button>
+
 										<Button
 											variant={'upgrade'}
-											className='border border-[#7C8DB0] py-3 text-[#7C8DB0] bg-[#cbd4e64c] text-[18px] cursor-not-allowed opacity-100'
-											disabled
+											className={`${
+												cardName &&
+												cardNumber &&
+												cardExpiraDate &&
+												cardCVV &&
+												accountEmail &&
+												password
+													? 'bg-[#605DEC] text-[#FAFAFA]'
+													: 'border border-[#7C8DB0] text-[#7C8DB0] bg-[#cbd4e64c] cursor-not-allowed opacity-100'
+											}  py-3  text-[18px] `}
+											disabled={
+												!(
+													cardName &&
+													cardNumber &&
+													cardExpiraDate &&
+													cardCVV &&
+													accountEmail &&
+													password
+												)
+											}
 										>
 											Confirm and pay
 										</Button>
@@ -207,8 +311,26 @@ export default function PaymentMethod() {
 								</div>
 								<Button
 									variant={'upgrade'}
-									className='border border-[#7C8DB0] py-3 text-[#7C8DB0] bg-[#cbd4e64c] text-[18px] block ms-auto cursor-not-allowed opacity-100'
-									disabled
+									className={`${
+										cardName &&
+										cardNumber &&
+										cardExpiraDate &&
+										cardCVV &&
+										accountEmail &&
+										password
+											? 'bg-[#605DEC] text-[#FAFAFA]'
+											: 'border border-[#7C8DB0] text-[#7C8DB0] bg-[#cbd4e64c] cursor-not-allowed opacity-100'
+									}  py-3  text-[18px] block ms-auto `}
+									disabled={
+										!(
+											cardName &&
+											cardNumber &&
+											cardExpiraDate &&
+											cardCVV &&
+											accountEmail &&
+											password
+										)
+									}
 								>
 									Confirm and pay
 								</Button>

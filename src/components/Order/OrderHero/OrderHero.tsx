@@ -108,7 +108,8 @@ export default function OrderHero() {
 												lastName &&
 												birthDate &&
 												email &&
-												phoneNumber
+												phoneNumber &&
+												knownTraveller
 											)
 										}
 										onClick={handleNavigate}
