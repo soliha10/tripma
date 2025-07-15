@@ -1,9 +1,9 @@
-import OrderHero from "@/components/Order/OrderHero/OrderHero";
+import OrderHero from '@/components/Order/OrderHero/OrderHero';
 
 export default function Order() {
-  return(
+  return (
     <>
-    <OrderHero/>
+      <OrderHero />
     </>
-  )
+  );
 }

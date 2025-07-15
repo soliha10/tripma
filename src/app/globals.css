@@ -1,12 +1,12 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @font-face {
   font-display: swap;
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('./assets/fonts/nunito-sans-regular.woff2') format('woff2'),
+  src:
+    url('./assets/fonts/nunito-sans-regular.woff2') format('woff2'),
     url('./assets//fonts//nunito-sans-regular.ttf') format('truetype');
 }
 
@@ -15,7 +15,8 @@
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('./assets/fonts/nunito-sans-semibold.woff2') format('woff2'),
+  src:
+    url('./assets/fonts/nunito-sans-semibold.woff2') format('woff2'),
     url('./assets/fonts/nunito-sans-semibold.ttf') format('truetype');
 }
 
@@ -24,7 +25,8 @@
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('./assets/fonts/nunito-sans-bold.woff2') format('woff2'),
+  src:
+    url('./assets/fonts/nunito-sans-bold.woff2') format('woff2'),
     url('./assets/fonts/nunito-sans-bold.ttf') format('truetype');
 }
 
@@ -33,12 +35,13 @@
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 800;
-  src: url('./assets/fonts/nunito-sans-extrabold.ttf') format('woff2'),
+  src:
+    url('./assets/fonts/nunito-sans-extrabold.ttf') format('woff2'),
     url('./assets/fonts/nunito-sans-extrabold.ttf') format('truetype');
 }
 
 body {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
@@ -47,8 +50,8 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @theme inline {

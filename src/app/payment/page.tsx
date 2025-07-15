@@ -1,10 +1,9 @@
-import PaymentMethod from "@/components/Payment/PaymentMethod";
+import PaymentMethod from '@/components/Payment/PaymentMethod';
 
 export default function Payment() {
-  return(
-
-  <>
-  <PaymentMethod/>
-  </>
-  )
+  return (
+    <>
+      <PaymentMethod />
+    </>
+  );
 }
