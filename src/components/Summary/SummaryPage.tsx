@@ -24,6 +24,7 @@ import hotel from '@/app/assets/images/hotel.png';
 import hours from '@/app/assets/images/hours.png';
 import nihon from '@/app/assets/images/nihon.png';
 import teamlab from '@/app/assets/images/teamlab.png';
+import SummaryCard from './SummaryCard';
 
 export default function SummaryPage() {
 	const [isOpen, setIsOpen] = useState(true);
@@ -126,7 +127,7 @@ export default function SummaryPage() {
 									Departing February 25th, 2021
 								</p>
 								{selectedDepartFlight && (
-									<div className='border border-[#E9E8FC] rounded-xl  flex flex-col gap-3 '>
+									<div className='border border-[#E9E8FC] rounded-xl  flex flex-col gap-3 mb-3 '>
 										<SelectedSeatsSummary {...selectedDepartFlight} />
 									</div>
 								)}
@@ -138,7 +139,7 @@ export default function SummaryPage() {
 									Arriving March 21st, 2021{' '}
 								</p>
 								{selectedReturnFlight && (
-									<div className='border border-[#E9E8FC] rounded-xl  flex flex-col gap-3 '>
+									<div className='border border-[#E9E8FC] rounded-xl  flex flex-col gap-3 mb-3 '>
 										<SelectedSeatsSummary {...selectedReturnFlight} />
 									</div>
 								)}
@@ -151,36 +152,36 @@ export default function SummaryPage() {
 										Price breakdown
 									</TableCaption>
 
-									<TableBody className='w-[400px]  '>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+									<TableBody className='w-[400px] flex  flex-col '>
+										<TableRow className='text-[#6E7491] text-[18px] mb-3 flex items-center justify-between border-b-0 '>
 											<TableCell>Departing Flight</TableCell>
 											<TableCell>$251.50</TableCell>
 										</TableRow>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+										<TableRow className='text-[#6E7491] text-[18px] mb-3 flex items-center justify-between border-b-0 '>
 											<TableCell>Arriving Flight</TableCell>
 											<TableCell>$251.50</TableCell>
 										</TableRow>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+										<TableRow className='text-[#6E7491] text-[18px] mb-3 flex items-center justify-between border-b-0 '>
 											<TableCell>Baggage fees</TableCell>
 											<TableCell>$0</TableCell>
 										</TableRow>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+										<TableRow className='text-[#6E7491] text-[18px] mb-3 flex items-center justify-between border-b-0 '>
 											<TableCell>Seat upgrade (business)</TableCell>
 											<TableCell>$199</TableCell>
 										</TableRow>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+										<TableRow className='text-[#6E7491] text-[18px] mb-3 flex items-center justify-between border-b-0 '>
 											<TableCell>Subtotal</TableCell>
 											<TableCell>$702</TableCell>
 										</TableRow>
-										<TableRow className='text-[#6E7491] text-[18px] mb-3 border-b-0 '>
+										<TableRow className='text-[#6E7491] text-[18px] flex items-center justify-between mb-[17px] border-b-0 '>
 											<TableCell>Taxes (9.4%)</TableCell>
 											<TableCell>$66</TableCell>
 										</TableRow>
 									</TableBody>
-									<TableFooter>
-										<TableRow className='text-[#36374A] text-[18px] mb-3 border-b-0 '>
+									<TableFooter className='bg-transparent flex items-center border-b mb-14 '>
+										<TableRow className='text-[#36374A] w-full  text-[18px] flex justify-between  border-b-0 py-3 '>
 											<TableCell>Amount paid</TableCell>
-											<TableCell className='text-right'>$768</TableCell>
+											<TableCell className=''>$768</TableCell>
 										</TableRow>
 									</TableFooter>
 								</Table>
@@ -188,11 +189,23 @@ export default function SummaryPage() {
 								<h2 className='text-[#6E7491] text-2xl font-bold mb-4 '>
 									Payment method
 								</h2>
-								<div>
-									<Image src={visa} alt='visa' />
-									<strong>Sophia Knowles</strong>
-									<div>
-										<span>••••••••••••3456</span>
+								<div
+									className='rounded-2xl mb-14 w-[300px] pt-7 px-6 pb-6 text-[#F6F6FE]  font-semibold '
+									style={{
+										backgroundImage:
+											'linear-gradient(180deg, #EB568C 0%, #ED5E76 100%)',
+										boxShadow:
+											'-4px -4px 16px 0px rgba(0, 0, 0, 0.10) inset, 4px 4px 16px 0px rgba(255, 255, 255, 0.20) inset',
+									}}
+								>
+									<Image src={visa} alt='visa' className='mb-[57px]  ' />
+									<strong className='inline-block mb-2 text-[18px] '>
+										Sophia Knowles
+									</strong>
+									<div className='flex items-center justify-between'>
+										<span className='font-medium'>
+											••••••••••••<span className='font-semibold'>3456</span>{' '}
+										</span>
 										<span>10/23</span>
 									</div>
 								</div>
@@ -200,20 +213,37 @@ export default function SummaryPage() {
 								<h2 className='text-[#6E7491] text-2xl font-bold mb-4 '>
 									Share your travel itinerary
 								</h2>
-								<p>
+								<p className='text-[#7C8DB0] text-[18px] mb-6 '>
 									You can email your itinerary to anyone by entering their email
 									address here.
 								</p>
-								<form action=''>
-									<Input placeholder='Email address' />
-
+								<form
+									action=''
+									className='w-[400px] mb-14 flex flex-col gap-6  '
+								>
+									<Input
+										placeholder='Email address'
+										className='w-full placeholder:text-[#7C8DB0] py-3 placeholder:text-[18px]    '
+									/>
+									<Input
+										placeholder='Email address'
+										className='w-full placeholder:text-[#7C8DB0] py-3 placeholder:text-[18px]    '
+									/>
+									<Input
+										placeholder='Email address'
+										className='w-full placeholder:text-[#7C8DB0] py-3 placeholder:text-[18px]    '
+									/>
 									<div>
-										<Button>Email itinerary</Button>
-										<Button>Add another</Button>
+										<Button className='w-[157px] bg-[#605DEC] text-[18px] me-4 rounded text-[#FAFAFA] '>
+											Email itinerary
+										</Button>
+										<Button className='w-[133px] text-[#605DEC] text-[18px] '>
+											Add another
+										</Button>
 									</div>
 								</form>
 
-								<h2 className='text-[#6E7491] text-2xl font-bold mb-4 '>
+								<h2 className='text-[#6E7491] text-2xl font-bold mb-6 '>
 									Flight Route
 								</h2>
 								<Image src={map} alt='' />
@@ -222,12 +252,59 @@ export default function SummaryPage() {
 							{/* right side */}
 							<div className='w-[400px]  '>
 								<h2 className='text-[#6E7491] text-2xl font-bold mb-4 '>
-									Shop hotels
+									Shop <span className='text-[#605DEC]  '>hotels</span>
 								</h2>
-								<p>
+								<p className='text-[#7C8DB0] text-[18px] mb-8 '>
 									Tripma partners with thousands of hotels to get you the best
 									deal. Save up to 30% when you add a hotel to your trip.
 								</p>
+								<ul className='flex flex-col gap-8 mb-10'>
+									{shopItems.map(({ id, pic, name, price, text }) => (
+										<SummaryCard
+											key={id}
+											pic={pic}
+											name={name}
+											price={price}
+											text={text}
+										/>
+									))}
+								</ul>
+								<Button
+									variant={'cancel'}
+									className='block mx-auto text-[18px] mb-16 cursor-pointer'
+								>
+									Shop all hotels
+								</Button>
+
+								<h2 className='text-[#6E7491] text-2xl font-bold mb-4 '>
+									Find unique{' '}
+									<span className='text-[#605DEC]  '>experiences</span>
+								</h2>
+
+								<p className='text-[#7C8DB0] text-[18px] mb-8 '>
+									Find events and authentic cultrual experiences available
+									exclusively to Tripma users.
+								</p>
+
+								<ul className='flex flex-col gap-8 mb-10'>
+									{experienceitems.map(({ id, pic, name, price, text }) => (
+										<SummaryCard
+											key={id}
+											pic={pic}
+											name={name}
+											price={price}
+											text={text}
+										/>
+									))}
+								</ul>
+
+<Button
+									variant={'cancel'}
+									className='block mx-auto text-[18px] w-[207px] cursor-pointer '
+								>
+									View all experiences
+								</Button>
+
 							</div>
 						</div>
 					</div>
