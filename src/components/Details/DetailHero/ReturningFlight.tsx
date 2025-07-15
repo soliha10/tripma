@@ -49,7 +49,7 @@ export function ReturningFlight({ onSelect }: FlightProps) {
 									tripType,
 								})
 							}
-							className={`text-[#27273F] flex ${
+							className={`text-[#27273F] flex pb-4 px-8 ${
 								id == 1 ? 'pt-7' : 'pt-4'
 							} hover:bg-[#F6F6FE]  `}
 						>

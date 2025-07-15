@@ -92,7 +92,7 @@ export function DepartingFlight({ onSelect }: FlightProps) {
 				Choose a <span className='text-[#605DEC]'>departing</span> flight
 			</TableCaption>
 
-			<TableBody className='border border-[#E9E8FC] rounded-xl  h-[456px] overflow-auto  '>
+			<TableBody className='border border-[#E9E8FC] rounded-xl  h-[456px]   '>
 				{flights.map(
 					({
 						id,
@@ -120,7 +120,7 @@ export function DepartingFlight({ onSelect }: FlightProps) {
 									tripType,
 								})
 							}
-							className={`text-[#27273F] flex ${
+							className={`text-[#27273F] flex pb-4 px-8 ${
 								id == 1 ? 'pt-7' : 'pt-4'
 							} hover:bg-[#F6F6FE]  `}
 						>
