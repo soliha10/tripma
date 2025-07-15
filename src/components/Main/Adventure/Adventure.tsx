@@ -5,6 +5,7 @@ import kenya from '@/app/assets/images/kenya.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
 import AdventureCard from './AdventureCard';
 import Image, { StaticImageData } from 'next/image';
+import styles from './css/Adventure.module.css';
 
 export interface Adventerus {
   id?: number;
@@ -45,29 +46,29 @@ export default function Adventure() {
   ];
 
   return (
-    <section className="py-10">
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
+    <section className={styles.section}>
+      <div className={styles.container}>
         <div>
-          <div className="flex items-center justify-between">
-            <h2 className="text-[#6E7491] text-2xl font-bold mb-6 ">
+          <div className={styles.headingRow}>
+            <h2 className={styles.heading}>
               Find your next adventure with these{' '}
-              <span className="text-[#605DEC]">flight deals</span>
+              <span className={styles.highlight}>flight deals</span>
             </h2>
-            <p className="flex items-center text-[#A1B0CC] text-2xl gap-1 ">
+            <p className={styles.allButton}>
               All
               <button className="cursor-pointer">
-                <Image src={arrow} alt="" />
+                <Image src={arrow} alt="arrow" />
               </button>
             </p>
           </div>
 
-          <ul className="flex items-center   rounded-[12px] flex-wrap">
-            <div className="flex gap-10 mb-10">
+          <ul className={styles.adventureList}>
+            <div className={styles.adventureRow}>
               {adventures.map(({ id, image, name, city, price, desc }) => (
                 <AdventureCard
                   id={id}
                   key={id}
-                  classname="w-[410px] rounded-[12px]"
+                  classname={styles.card}
                   image={image}
                   name={name}
                   city={city}
@@ -77,7 +78,7 @@ export default function Adventure() {
               ))}
             </div>
             <AdventureCard
-              classname="w-full"
+              classname={styles.fullWidthCard}
               image={kenya}
               name="Tsavo East National Park, "
               city="Kenya"

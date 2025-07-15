@@ -1,0 +1,93 @@
+.cookieBox {
+  width: 300px;
+  padding: 16px 16px 16px 24px;
+  border: 1px solid #605dec;
+  border-radius: 8px;
+  background-color: #f6f6fe;
+  position: sticky;
+  bottom: 40px;
+  box-sizing: border-box;
+}
+
+.cookieTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.cookieText {
+  color: #605dec;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.cookieActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.acceptBtn {
+  background-color: #605dec;
+  color: #fafafa;
+  width: 126px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.settingsBtn {
+  color: #605dec;
+  width: 120px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* === Responsive: ≥ 380px === */
+@media (min-width: 380px) {
+  /* .cookieText {
+    font-size: 16px;
+  } */
+
+  /* .acceptBtn,
+  .settingsBtn {
+    font-size: 15px;
+  } */
+}
+
+/* === Responsive: ≥ 768px (tablet) === */
+/* @media (min-width: 768px) {
+  .cookieBox {
+    width: 360px;
+  }
+} */
+
+/* === Responsive: ≥ 1024px === */
+/* @media (min-width: 1024px) {
+  .cookieText {
+    font-size: 18px;
+  }
+
+  .acceptBtn,
+  .settingsBtn {
+    font-size: 16px;
+  }
+
+  .cookieBox {
+    width: 400px;
+  }
+} */

@@ -1,0 +1,352 @@
+
+.container {
+  max-width: 1342px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+
+
+/* Form */
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 1.5rem;
+  border-radius: 0.375rem;
+  width: fit-content;
+  margin-inline-start: 0;
+  border: 1px solid #CBD4E6;
+  background-color: white;
+  box-shadow:
+    0px 2px 4px rgba(7, 4, 146, 0.10),
+    0px 24px 60px rgba(6, 47, 125, 0.05),
+    0px 12px 24px rgba(27, 59, 119, 0.05);
+}
+
+.selectTrigger {
+  width: 174px;
+  padding-left: 52px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0.5rem;
+  text-align: left;
+  color: #7C8DB0;
+  font-size: 18px;
+  border-inline-end: 1px solid #CBD4E6;
+  appearance: none;
+  outline: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 8px center;
+}
+
+.selectContent {
+  border-radius: 8px;
+  width: 300px;
+  height: 312px;
+  margin-inline-start: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 1rem;
+  box-shadow:
+    0px 2px 4px rgba(7, 4, 146, 0.10),
+    0px 24px 60px rgba(6, 47, 125, 0.05),
+    0px 12px 24px rgba(27, 59, 119, 0.05);
+  z-index: 10;
+}
+
+.selectItem {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.selectItem:hover,
+.selectItem:focus {
+  background-color: #605DEC;
+  color: white;
+}
+
+.datePopoverTrigger {
+  width: 228px;
+  padding-left: 52px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0.5rem;
+  color: #7C8DB0;
+  font-size: 18px;
+  border-inline-end: 1px solid #CBD4E6;
+  outline: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 8px center;
+  cursor: pointer;
+}
+
+.radioForm {
+  display: flex;
+  align-items: center;
+  padding-top: 0.25rem;
+  padding-inline: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #CBD4E6;
+}
+
+.roundOption,
+.oneWayOption {
+  display: flex;
+  align-items: center;
+  margin-right: 1.125rem;
+}
+
+.radioLabelText {
+  color: #6E7491;
+  font-size: 14px;
+  margin-left: 0.5rem;
+}
+
+.dateRangeBox {
+  width: 252px;
+  padding-left: 52px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.375rem;
+  border: 2px solid #605DEC;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 8px center;
+  cursor: pointer;
+  color: #7C8DB0;
+  font-size: 18px;
+  margin-right: 0.5rem;
+}
+
+.doneButton {
+  background-color: #605DEC;
+  width: 84px;
+  color: #FAFAFA;
+  font-size: 18px;
+  padding-block: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.passengerCount {
+  position: relative;
+  width: 174px;
+  padding-left: 52px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0.5rem;
+  color: #7C8DB0;
+  font-size: 18px;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 8px center;
+  cursor: pointer;
+}
+
+.counterDropdown {
+  width: 232px;
+  position: absolute;
+  bottom: -110px;
+  left: 1.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  border: 1px solid #CBD4E6;
+  box-shadow:
+    0px 2px 4px rgba(7, 4, 146, 0.10),
+    0px 24px 60px rgba(6, 47, 125, 0.05),
+    0px 12px 24px rgba(27, 59, 119, 0.05);
+}
+
+.counterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.counterControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.searchButton {
+  width: 96px;
+  text-align: center;
+  color: #FAFAFA;
+  padding: 0.75rem;
+  background-color: #605DEC;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+
+/* menu */
+
+.filterBar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.selectMenuTrigger {
+  border: 1px solid #CBD4E6;
+  text-align: left;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  padding-left: 1rem;
+  color: #27273F;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: right 10px;
+}
+/* selection */
+.containerSelection {
+  width: 872px;
+}
+
+.button {
+  border: 1px solid #605DEC;
+  color: #605DEC;
+  background-color: white;
+  cursor: pointer;
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem;
+  font-size: 18px;
+  display: block;
+  margin-left: auto; /* ms-auto */
+  margin-bottom: 3rem; /* mb-12 */
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #605DEC;
+  color: white;
+}
+
+
+/* rightside */
+.containerSelected {
+  width: 400px;
+  margin-top: 57px;
+}
+
+.box {
+  border: 1px solid #E9E8FC;
+  border-radius: 12px;
+  padding: 1rem; /* px-4 */
+  padding-bottom: 0; /* pt-4 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* gap-3 */
+}
+
+.summary {
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* gap-2 */
+  color: #27273F;
+  font-weight: 600;
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: end;
+}
+
+.label {
+  margin-right: 2.5rem; /* me-10 */
+  display: inline-block;
+}
+
+.button {
+  color: #605DEC;
+  border: 1px solid #605DEC;
+  border-radius: 0.5rem;
+  font-size: 18px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  display: block;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #605DEC;
+  color: white;
+}
+
+/* right info */
+
+.containerInfo {
+  width: 400px;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.mb10 {
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #6E7491;
+  margin-bottom: 16px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ratingTitle {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.ratingTag {
+  width: 84px;
+  background-color: #5CD6C0;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 15px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+}
+
+.description {
+  color: #6E7491;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.secondaryText {
+  color: #A1B0CC;
+}
+
+

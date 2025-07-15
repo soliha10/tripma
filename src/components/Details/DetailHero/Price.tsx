@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import styles from './css/Price.module.css';
 
 export default function Price() {
   const headElements = ['', '2/12', '2/13', '2/14', '2/15', '2/16'];
@@ -34,31 +35,26 @@ export default function Price() {
   ];
 
   return (
-    <Table className="w-[396px] mb-10">
-      <TableCaption className="text-[#6E7491] text-[18px] font-semibold text-left mb-4">
-        Price grid <span className="text-[#7C8DB0]">(flexible dates)</span>{' '}
+    <Table className={styles.tableWrapper}>
+      <TableCaption className={styles.caption}>
+        Price grid <span>(flexible dates)</span>
       </TableCaption>
       <TableHeader>
-        <TableRow className="border border-[#E9E8FC] ">
+        <TableRow className={styles.headerRow}>
           {headElements.map((item, index) => (
-            <TableHead
-              key={index}
-              className="w-[65px]  border-e border-[#E9E8FC] text-center text-xs text-[#52556F] font-bold "
-            >
+            <TableHead key={index} className={styles.headCell}>
               {item}
             </TableHead>
           ))}
         </TableRow>
       </TableHeader>
-      <TableBody className=" w-full border border-[#E9E8FC] ">
+      <TableBody className={styles.body}>
         {bodyElements.map((item) => (
-          <TableRow key={item.id}>
+          <TableRow key={item.id} className={styles.bodyRow}>
             {item.items.map((element, index) => (
               <TableCell
                 key={index}
-                className={`w-[65px] border-e border-[#E9E8FC] text-center text-xs py-3 ${
-                  index === 0 ? 'text-[#52556F] font-bold' : 'text-[#6E7491]'
-                }  `}
+                className={`${styles.bodyCell} ${index === 0 ? styles.bodyCellFirst : ''}`}
               >
                 {element}
               </TableCell>

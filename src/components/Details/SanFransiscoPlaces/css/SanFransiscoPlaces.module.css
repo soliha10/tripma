@@ -1,0 +1,42 @@
+.container {
+  max-width: 1342px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.section {
+  padding-bottom: 80px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #6E7491;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.highlight {
+  color: #605DEC;
+}
+
+.all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #A1B0CC;
+  font-size: 24px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,37 @@
+/* components/Testimonial/TestimonialCard.module.css */
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+  max-width: 410px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 314px;
+}
+
+.name {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.location {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feedback {
+  color: #27273f;
+  font-size: 18px;
+}
+
+.link {
+  color: #605dec;
+}

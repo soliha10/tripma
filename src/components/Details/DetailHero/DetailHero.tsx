@@ -30,6 +30,7 @@ import SelectedItem from './SelectedItem';
 import { ReturningFlight } from './ReturningFlight';
 import { useRouter } from 'next/navigation';
 import { useFlight } from '@/context/FlightContext';
+import styles from './css/DetailHero.module.css';
 export type Flight = {
   id: number;
   pic: StaticImageData;
@@ -81,142 +82,90 @@ export default function DetailHero() {
     <section>
       <div className="max-w-[1342px] w-full mx-auto px-5  ">
         <div className="pb-[80px]">
-          <form
-            action=""
-            className="flex items-center justify-start mb-6 rounded  w-fit ms-0  border border-[#CBD4E6] bg-white  mx-auto "
-            style={{
-              boxShadow:
-                '0px 2px 4px 0px rgba(7, 4, 146, 0.10), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 12px 24px 0px rgba(27, 59, 119, 0.05)',
-            }}
-          >
+          <form action="" className={styles.form}>
             {/* go */}
             <Select>
               <SelectTrigger
-                className=" w-[174px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 "
-                style={{
-                  backgroundImage: `url(${go.src})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '32px, 32px',
-                  backgroundPosition: '8px center',
-                }}
+                className={styles.selectTrigger}
+                style={{ backgroundImage: `url(${go.src})` }}
               >
                 <SelectValue placeholder="From where?" />
               </SelectTrigger>
-
-              <SelectContent
-                className="rounded-[8px] w-[300px] h-[312px] ms-6 flex flex-col gap-2 bg-white p-4  "
-                style={{
-                  boxShadow:
-                    '0px 2px 4px 0px rgba(7, 4, 146, 0.10), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 12px 24px 0px rgba(27, 59, 119, 0.05)',
-                }}
-              >
+              <SelectContent className={styles.selectContent}>
                 {goOptions.map((item, index) => (
-                  <SelectItem
-                    key={index}
-                    value={item}
-                    className="hover:bg-[#605DEC] w-full mb-2 z-10  text-base  focus:bg-[#605DEC] focus:text-white"
-                  >
+                  <SelectItem key={index} value={item} className={styles.selectItem}>
                     {item}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
+
             {/* arrive */}
             <Select>
               <SelectTrigger
-                className=" w-[174px] ps-[52px] bg-white py-[10px] pe-2 text-left  text-[#7C8DB0] placeholder:text-[#7C8DB0] text-[18px] placeholder:text-[18px] border-e border-[#CBD4E6] appearance-none outline-0 "
-                style={{
-                  backgroundImage: `url(${arrive.src})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '32px, 32px',
-                  backgroundPosition: '8px center',
-                }}
+                className={styles.selectTrigger}
+                style={{ backgroundImage: `url(${arrive.src})` }}
               >
                 <SelectValue placeholder="Where to?" />
               </SelectTrigger>
-
-              <SelectContent
-                className="rounded-[8px] w-[300px] h-[312px] ms-6 flex flex-col gap-2 bg-white p-4  "
-                style={{
-                  boxShadow:
-                    '0px 2px 4px 0px rgba(7, 4, 146, 0.10), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 12px 24px 0px rgba(27, 59, 119, 0.05)',
-                }}
-              >
+              <SelectContent className={styles.selectContent}>
                 {arriveOptions.map((item, index) => (
-                  <SelectItem
-                    key={index}
-                    value={item}
-                    className="hover:bg-[#605DEC] w-full mb-2 z-10  text-base  focus:bg-[#605DEC] focus:text-white"
-                  >
+                  <SelectItem key={index} value={item} className={styles.selectItem}>
                     {item}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {/* date */}
 
+            {/* date */}
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <div
                   onClick={() => setOpen(true)}
-                  className="w-[228px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0] text-[18px] border-e border-[#CBD4E6] outline-0 cursor-pointer  bg-white"
-                  style={{
-                    backgroundImage: `url(${calendar.src})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '32px 32px',
-                    backgroundPosition: '8px center',
-                  }}
+                  className={styles.datePopoverTrigger}
+                  style={{ backgroundImage: `url(${calendar.src})` }}
                 >
                   {dateRange?.from && dateRange?.to ? (
                     `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                   ) : (
-                    <span className="text-[#7C8DB0]">Depart - Return</span>
+                    <span>Depart - Return</span>
                   )}
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-[626px] pb-8 px-0 overflow-hidden " align="start">
-                <form className="flex pt-1 px-6 pb-5 items-center border-b border-[#CBD4E6] ">
-                  <label htmlFor="" className="me-3 flex items-center">
+              <PopoverContent className="w-[626px] pb-8 px-0 overflow-hidden" align="start">
+                <form className={styles.radioForm}>
+                  <label className={styles.roundOption}>
                     <input
                       name="tripType"
-                      id=""
                       type="radio"
                       value="radio"
                       checked={tripType === 'round'}
                       onChange={() => setTripType('round')}
                     />
-
-                    <span className="text-[#6E7491] lg:text-[14px] ms-2 ">Round trip</span>
+                    <span className={styles.radioLabelText}>Round trip</span>
                   </label>
-                  <label htmlFor="" className="me-[46px] flex items-center ">
+                  <label className={styles.oneWayOption}>
                     <input
                       name="tripType"
-                      id=""
                       type="radio"
                       value="one"
                       checked={tripType === 'one'}
                       onChange={() => setTripType('one')}
                     />
-
-                    <span className="text-[#6E7491] lg:text-[14px] ms-2">One way</span>
+                    <span className={styles.radioLabelText}>One way</span>
                   </label>
                   <div
                     onClick={() => setOpen(true)}
-                    className="w-[252px] ps-[52px] border-2  me-2 py-2 pe-2 text-[#7C8DB0] text-[18px]  rounded border-[#605DEC] outline-0 cursor-pointer  bg-white"
-                    style={{
-                      backgroundImage: `url(${calendar.src})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: '32px 32px',
-                      backgroundPosition: '8px center',
-                    }}
+                    className={styles.dateRangeBox}
+                    style={{ backgroundImage: `url(${calendar.src})` }}
                   >
                     {dateRange?.from && dateRange?.to ? (
                       `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                     ) : (
-                      <span className="text-[#7C8DB0]">Depart - Return</span>
+                      <span>Depart - Return</span>
                     )}
                   </div>
-                  <button className="bg-[#605DEC] w-[84px] text-[#FAFAFA] lg:text-[18px] py-3 rounded ">
+                  <button type="button" className={styles.doneButton}>
                     Done
                   </button>
                 </form>
@@ -226,232 +175,133 @@ export default function DetailHero() {
                   numberOfMonths={2}
                   selected={dateRange}
                   onSelect={setDateRange}
-                  className="rounded-lg w-[480px]  shadow-0 px-0 pt-6 mx-auto  "
+                  className="rounded-lg w-[480px] shadow-0 px-0 pt-6 mx-auto"
                 />
               </PopoverContent>
             </Popover>
+
             {/* count */}
             <div
-              className=" relative w-[174px] ps-[52px] py-[10px] pe-2 text-[#7C8DB0]  text-[18px] outline-0 "
-              style={{
-                backgroundImage: `url(${user.src})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '32px, 32px',
-                backgroundPosition: '8px center',
-              }}
+              className={styles.passengerCount}
+              style={{ backgroundImage: `url(${user.src})` }}
               onClick={toggle}
             >
               {adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
               {minorCount > 0 ? `${minorCount} minor` : ''}
               {isCountOpen && (
-                <div
-                  className="w-[232px] absolute bottom-[-110px] bg-white left-6 p-4 lg:text-base rounded-md border border-[#CBD4E6] "
-                  onClick={(e) => e.stopPropagation()}
-                  style={{
-                    boxShadow:
-                      ' 0px 2px 4px 0px rgba(7, 4, 146, 0.10), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 12px 24px 0px rgba(27, 59, 119, 0.05)',
-                  }}
-                >
-                  <div className="flex items-center justify-between mb-2">
+                <div className={styles.counterDropdown} onClick={(e) => e.stopPropagation()}>
+                  <div className={styles.counterRow}>
                     <span>Adults:</span>
-                    <div className="flex items-center gap-4">
+                    <div className={styles.counterControls}>
                       <button
                         type="button"
-                        onClick={() => setAdultCount((prev) => (prev > 1 ? prev - 1 : 1))}
+                        onClick={() => setAdultCount((prev) => Math.max(1, prev - 1))}
                       >
-                        <Image src={decrement} alt="" />
+                        <Image src={decrement} alt="-" />
                       </button>
-                      <span className="text-[18px]">{adultCount}</span>
+                      <span>{adultCount}</span>
                       <button type="button" onClick={() => setAdultCount((prev) => prev + 1)}>
-                        <Image src={increment} alt="" />
+                        <Image src={increment} alt="+" />
                       </button>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className={styles.counterRow}>
                     <span>Minors:</span>
-                    <div className="flex items-center gap-4">
+                    <div className={styles.counterControls}>
                       <button
                         type="button"
-                        onClick={() => setMinorCount((prev) => (prev >= 1 ? prev - 1 : 0))}
+                        onClick={() => setMinorCount((prev) => Math.max(0, prev - 1))}
                       >
-                        <Image src={decrement} alt="" />
+                        <Image src={decrement} alt="-" />
                       </button>
-                      <span className="text-[18px]">{minorCount}</span>
+                      <span>{minorCount}</span>
                       <button type="button" onClick={() => setMinorCount((prev) => prev + 1)}>
-                        <Image src={increment} alt="" />
+                        <Image src={increment} alt="+" />
                       </button>
                     </div>
                   </div>
                 </div>
               )}
             </div>
-            <button className="w-[96px] text-center text-[#FAFAFA] p-3 bg-[#605DEC] rounded cursor-pointer ">
-              Search
-            </button>
+
+            {/* search */}
+            <button className={styles.searchButton}>Search</button>
           </form>
 
-          <div className="flex gap-4 items-center mb-12">
-            <Select>
-              <SelectTrigger
-                className="w-[120px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="Max price" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Max price</SelectItem>
-                  <SelectItem value="banana">Min price</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger
-                className="w-[95px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="Shops" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Shops</SelectItem>
-                  <SelectItem value="banana">Cafes</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger
-                className="w-[95px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="Times" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Morning</SelectItem>
-                  <SelectItem value="banana">Afternoon</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger
-                className="w-[105px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="Airlines" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Airlines</SelectItem>
-                  <SelectItem value="banana">Airlines</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger
-                className="w-[123px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="Seat class" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Seat class</SelectItem>
-                  <SelectItem value="banana">Seat class</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select>
-              <SelectTrigger
-                className="w-[87px] border text-left border-[#CBD4E6] rounded  ps-4 pe-3  py-2 text-[#27273F] outline-none "
-                style={{
-                  backgroundImage: `url(${arrow})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: '30px 30px',
-                  backgroundPosition: 'right 10px',
-                }}
-              >
-                <SelectValue placeholder="More" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">More</SelectItem>
-                  <SelectItem value="banana">School</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+          <div className={styles.filterBar}>
+            {[
+              { placeholder: 'Max price', options: ['Max price', 'Min price'], width: '120px' },
+              { placeholder: 'Shops', options: ['Shops', 'Cafes'], width: '95px' },
+              { placeholder: 'Times', options: ['Morning', 'Afternoon'], width: '95px' },
+              { placeholder: 'Airlines', options: ['Airlines', 'Airlines'], width: '105px' },
+              { placeholder: 'Seat class', options: ['Seat class', 'Seat class'], width: '123px' },
+              { placeholder: 'More', options: ['More', 'School'], width: '87px' },
+            ].map(({ placeholder, options, width }, idx) => (
+              <Select key={idx}>
+                <SelectTrigger
+                  className={styles.selectMenuTrigger}
+                  style={{
+                    backgroundImage: `url(${arrow.src})`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundSize: '18px 18px',
+                    width,
+                  }}
+                >
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {options.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            ))}
           </div>
 
           <div className="flex justify-between items-start">
             {/* LEFT SIDE */}
-            <div className="w-[872px]">
+            <div className={styles.containerSelection}>
               {state === 'departing' && <DepartingFlight onSelect={setSelectedDepartFlight} />}
               {state === 'returning' && <ReturningFlight onSelect={setSelectedReturnFlight} />}
 
-              <Button
-                type="button"
-                className="border-[#605DEC] text-[#605DEC] bg-white border hover:bg-[#605DEC] ms-auto block lg:text-[18px] py-3 hover:text-white cursor-pointer mb-12 "
-              >
+              <Button type="button" className={styles.button}>
                 Show all flights
               </Button>
+
               <Image src={map} alt="map" />
             </div>
 
             {/* RIGHT SIDE */}
 
-            <div className={`w-[400px] mt-[57px] ${selectedDepartFlight ? 'block' : 'hidden'}  `}>
+            <div
+              className={`${styles.containerSelected} ${selectedDepartFlight ? 'block' : 'hidden'}`}
+            >
               {selectedDepartFlight && (
-                <div className="border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 ">
+                <div className={styles.box}>
                   <SelectedItem {...selectedDepartFlight} />
                 </div>
               )}
               {selectedReturnFlight && (
-                <div className="border border-[#E9E8FC] rounded-xl px-4 pt-4 flex flex-col gap-3 ">
+                <div className={styles.box}>
                   <SelectedItem {...selectedReturnFlight} />
                 </div>
               )}
 
-              <div className="p-4 text-right gap-2 flex flex-col text-[#27273F] font-semibold mb-8 ">
-                <div>
-                  <span className="inline-block me-10 ">Subtotal</span>
+              <div className={styles.summary}>
+                <div className={styles.summaryRow}>
+                  <span className={styles.label}>Subtotal</span>
                   <span>$503</span>
                 </div>
-                <div>
-                  <span className="inline-block me-10 ">Taxes and Fees</span>
+                <div className={styles.summaryRow}>
+                  <span className={styles.label}>Taxes and Fees</span>
                   <span>$503</span>
                 </div>
-                <div>
-                  <span className="inline-block me-10 ">Total</span>
+                <div className={styles.summaryRow}>
+                  <span className={styles.label}>Total</span>
                   <span>$503</span>
                 </div>
               </div>
@@ -459,7 +309,8 @@ export default function DetailHero() {
               {selectedDepartFlight && state === 'departing' && (
                 <Button
                   onClick={() => setState('returning')}
-                  className="text-[#605DEC] border border-[#605DEC] w-[180px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px] hover:text-white cursor-pointer"
+                  className={styles.button}
+                  style={{ width: '180px' }}
                 >
                   Save and Close
                 </Button>
@@ -467,36 +318,32 @@ export default function DetailHero() {
               {selectedReturnFlight && state === 'returning' && (
                 <Button
                   onClick={handleNavigate}
-                  className="text-[#605DEC] border border-[#605DEC] w-[222px] text-[18px] rounded py-3 ms-auto block hover:bg-[#605DEC] lg:text-[18px] hover:text-white cursor-pointer"
+                  className={styles.button}
+                  style={{ width: '222px' }}
                 >
                   Passenger information
                 </Button>
               )}
             </div>
-
-            <div className={`w-[400px] ${selectedDepartFlight ? 'hidden' : 'block'} `}>
+            <div
+              className={`${styles.containerInfo} ${selectedDepartFlight ? styles.hidden : styles.block}`}
+            >
               <Price />
 
-              <div className="mb-10">
-                <strong className="text-[#6E7491] mb-4 inline-block text-[18px] font-semibold">
-                  Price history
-                </strong>
+              <div className={styles.mb10}>
+                <strong className={styles.title}>Price history</strong>
                 <Image src={priceGraph} alt="graph" />
               </div>
 
               <div>
-                <strong className="text-[#6E7491] text-[18px] font-semibold inline-block me-4 ">
-                  Price rating
-                </strong>
-                <span className="w-[84px] bg-[#5CD6C0] rounded py-1 mb-[15px] text-white inline-block text-center ">
-                  Buy soon
-                </span>
+                <strong className={styles.ratingTitle}>Price rating</strong>
+                <span className={styles.ratingTag}>Buy soon</span>
 
-                <p className="text-[#6E7491] lg:text-base mb-4 ">
+                <p className={styles.description}>
                   We recommend booking soon. The average cost of this flight is $750, but could rise
                   18% to $885 in two weeks.
                 </p>
-                <p className="text-[#A1B0CC]">
+                <p className={styles.secondaryText}>
                   Tripma analyzes thousands of flights, prices, and trends to ensure you get the
                   best deal.
                 </p>

@@ -1,0 +1,42 @@
+.listItem {
+  width: 410px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.10), 0px 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.image {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.body {
+  padding: 16px 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.name {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.city {
+  color: #605DEC;
+}
+
+.price {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.description {
+  color: #7C8DB0;
+}

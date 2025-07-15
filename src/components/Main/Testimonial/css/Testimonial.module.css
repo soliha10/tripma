@@ -1,0 +1,26 @@
+/* components/Testimonial/Testimonial.module.css */
+
+.section {
+  padding-top: 64px;
+  padding-bottom: 104px;
+}
+
+.title {
+  text-align: center;
+  color: #6e7491;
+  font-size: 1.5rem; /* Tailwind text-2xl */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #605dec;
+}
+
+.testimonialList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}

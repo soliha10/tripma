@@ -1,0 +1,64 @@
+/* components/Footer/Footer.module.css */
+
+.container {
+  max-width: 1342px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #CBD4E6;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 76px;
+  padding-bottom: 60px;
+  padding-left: 50px;
+  padding-right: 120px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25rem;
+  gap: 1rem;
+}
+
+.header {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.link {
+  color: #7c8db0;
+  font-size: 16px;
+}
+
+.storeImage {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.bottomSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.copy {
+  color: #7c8db0;
+  font-size: 18px;
+}

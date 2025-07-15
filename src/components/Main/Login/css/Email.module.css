@@ -1,0 +1,35 @@
+.emailItem {
+  border: 1px solid #605dec;
+  border-radius: 6px;
+  padding: 12px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.emailLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+}
+
+.emailText {
+  color: #605dec;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+/* Responsive: ≥ 380px */
+@media (min-width: 380px) {
+  .emailText {
+    font-size: 15px;
+  }
+}
+
+/* Responsive: ≥ 1024px (lg) */
+@media (min-width: 1024px) {
+  .emailText {
+    font-size: 16px;
+  }
+}

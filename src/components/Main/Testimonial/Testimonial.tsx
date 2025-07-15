@@ -4,6 +4,8 @@ import user3 from '@/app/assets/images/avatar (2).png';
 import fullRating from '@/app/assets/images/star-full.svg';
 import rating from '@/app/assets/images/star row.svg';
 import TestimonialCard from './TestimonialCard';
+import styles from './css/Testimonial.module.css';
+
 export default function Testimonial() {
   const feedbacks = [
     {
@@ -37,15 +39,16 @@ export default function Testimonial() {
         'When I was looking to book my flight to Berlin from LAX, Tripma had the best browsing experiece so I figured I’d give it a try. It was my first time using Tripma, but I’d definitely recommend it to a friend and use it for ',
     },
   ];
+
   return (
     <section>
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
-        <div className="pt-[64px] pb-[104px] ">
-          <h2 className="text-center  text-[#6E7491] text-2xl font-bold mb-6 ">
-            What <span className="text-[#605DEC]">Tripma</span> users are saying
+      <div className="max-w-[1342px] w-full mx-auto px-5">
+        <div className={styles.section}>
+          <h2 className={styles.title}>
+            What <span className={styles.highlight}>Tripma</span> users are saying
           </h2>
 
-          <ul className="flex items-center justify-between">
+          <ul className={styles.testimonialList}>
             {feedbacks.map(({ id, userPic, userName, userLocation, time, rating, feedback }) => (
               <TestimonialCard
                 key={id}

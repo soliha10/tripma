@@ -1,11 +1,15 @@
+'use client';
 import { Table, TableBody, TableCaption, TableCell, TableRow } from '@/components/ui/table';
-import hawai from '@/app/assets/images/Hawaiian-Airlines.svg';
 import Image from 'next/image';
+import { Flight } from './DetailHero';
+import styles from './css/DepartingFlight.module.css';
+
+import hawai from '@/app/assets/images/Hawaiian-Airlines.svg';
 import japan from '@/app/assets/images/image 27.svg';
 import delta from '@/app/assets/images/Delta Airlines.svg';
 import hawai2 from '@/app/assets/images/United Airlines.svg';
 import qatnas from '@/app/assets/images/image 28.svg';
-import { Flight } from './DetailHero';
+
 export const flights = [
   {
     id: 1,
@@ -81,12 +85,12 @@ type FlightProps = {
 
 export function DepartingFlight({ onSelect }: FlightProps) {
   return (
-    <Table className="w-[872px] mb-6  ">
-      <TableCaption className="text-[#6E7491] text-[18px] font-semibold text-left mb-4">
+    <Table className={styles.table}>
+      <TableCaption className={styles.caption}>
         Choose a <span className="text-[#605DEC]">departing</span> flight
       </TableCaption>
 
-      <TableBody className="border border-[#E9E8FC] rounded-xl  h-[456px]   ">
+      <TableBody className={styles.tableBody}>
         {flights.map(
           ({ id, pic, duration, airlineType, time, stop, stopDuration, price, tripType }) => (
             <TableRow
@@ -104,25 +108,27 @@ export function DepartingFlight({ onSelect }: FlightProps) {
                   tripType,
                 })
               }
-              className={`text-[#27273F] flex pb-4 px-8 ${
-                id == 1 ? 'pt-7' : 'pt-4'
-              } hover:bg-[#F6F6FE]  `}
+              className={`${styles.tableRow} ${id === 1 ? styles.firstRow : styles.otherRows}`}
             >
-              <TableCell className="font-medium me-6 ">
+              <TableCell className={styles.cell}>
                 <Image src={pic} alt="pic" />
               </TableCell>
-              <TableCell className="w-[156.5px] flex flex-col gap-1 me-[34px] ">
-                <span className="text-[#27273F]">{duration}</span>{' '}
-                <span className="text-[#7C8DB0]">{airlineType}</span>
+
+              <TableCell className={styles.durationCell}>
+                <span>{duration}</span>
+                <span className={styles.secondaryText}>{airlineType}</span>
               </TableCell>
-              <TableCell className="w-[156.5px] me-[34px]">{time}</TableCell>
-              <TableCell className="text-right w-[156.5px] flex flex-col gap-1 me-[34px] ">
+
+              <TableCell className={styles.timeCell}>{time}</TableCell>
+
+              <TableCell className={styles.stopCell}>
                 <span>{stop}</span>
-                <span className="text-[#7C8DB0]">{stopDuration}</span>
+                <span className={styles.secondaryText}>{stopDuration}</span>
               </TableCell>
-              <TableCell className="text-right w-[156.5px] me-8 flex gap-1 flex-col">
+
+              <TableCell className={styles.priceCell}>
                 <span>{price}</span>
-                <span className="text-[#7C8DB0]">{tripType}</span>
+                <span className={styles.secondaryText}>{tripType}</span>
               </TableCell>
             </TableRow>
           ),

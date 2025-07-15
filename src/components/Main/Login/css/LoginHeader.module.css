@@ -1,0 +1,143 @@
+/* === GENERAL STYLES === */
+.headerBanner {
+  background-color: #605dec;
+}
+
+.bannerWrapper,
+.mainWrapper {
+  max-width: 1342px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.bannerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.bannerText {
+  color: #f6f6fe;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+  min-width: 280px;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.headerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* gap: 16px; */
+  flex-wrap: wrap;
+}
+
+/* === NAV LINKS === */
+.navLink {
+  color: #7c8db0;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #605dec;
+}
+
+.signIn {
+  cursor: pointer;
+  color: #7c8db0;
+  font-size: 14px;
+  background: none;
+  border: none;
+  transition: color 0.2s ease;
+}
+
+.signIn:hover {
+  color: #605dec;
+}
+
+.signUp {
+  background-color: #605dec;
+  border: none;
+  border-radius: 4px;
+  width: 95px;
+  /* max-width: 95px; */
+  padding: 12px 0;
+  color: #fafafa;
+  font-size: 14px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Small screens ≥ 380px */
+@media (min-width: 380px) {
+  .bannerText {
+    font-size: 16px;
+  }
+
+  .navLink,
+  .signIn,
+  .signUp {
+    font-size: 15px;
+  }
+}
+
+/* Medium screens ≥ 640px */
+/* @media (min-width: 640px) {
+  .bannerWrapper,
+  .mainWrapper {
+    padding: 0 24px;
+  }
+
+  .navList {
+    gap: 24px;
+  }
+
+  .signUp {
+    width: 95px;
+  }
+} */
+
+/* Large screens ≥ 1024px */
+@media (min-width: 1024px) {
+  .bannerText {
+    font-size: 18px;
+  }
+
+  .navLink,
+  .signIn,
+  .signUp {
+    font-size: 16px;
+  }
+
+  .navLink {
+    margin-inline-end: 36px;
+  }
+
+  .signIn {
+    margin-inline-end: 26px;
+  }
+}

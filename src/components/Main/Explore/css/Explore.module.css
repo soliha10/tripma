@@ -1,0 +1,63 @@
+/* Explore.module.css */
+.section {
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem;
+}
+
+.container {
+  max-width: 1342px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem; /* px-5 */
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headingText {
+  color: #6e7491;
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.gradientText {
+  background: linear-gradient(180deg, #5cd6c0 0%, #22c3a6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.allBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #a1b0cc;
+  font-size: 1.5rem;
+}
+
+.cardListWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 12px;
+}
+
+.cardGroup {
+  display: flex;
+  gap: 2.5rem; /* gap-10 */
+  margin-bottom: 5rem; /* mb-20 */
+}
+
+.exploreButton {
+  background-color: #605dec;
+  color: #fafafa;
+  width: 195px;
+  padding-block: 0.75rem; /* py-3 */
+  margin-inline: auto;
+  border-radius: 8px;
+  display: block;
+  cursor: pointer;
+}

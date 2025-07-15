@@ -1,0 +1,51 @@
+/* Price.module.css */
+.tableWrapper {
+  width: 396px;
+  margin-bottom: 2.5rem; /* mb-10 */
+}
+
+.caption {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.caption span {
+  color: #7c8db0;
+}
+
+.headerRow {
+  border: 1px solid #e9e8fc;
+}
+
+.headCell {
+  width: 65px;
+  border-right: 1px solid #e9e8fc;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #52556f;
+}
+
+.body {
+  border: 1px solid #e9e8fc;
+  width: 100%;
+}
+
+
+.bodyCell {
+  width: 65px;
+  border-right: 1px solid #e9e8fc;
+  text-align: center;
+  font-size: 12px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #6e7491;
+}
+
+.bodyCellFirst {
+  color: #52556f;
+  font-weight: bold;
+}

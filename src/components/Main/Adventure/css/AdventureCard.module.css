@@ -1,0 +1,45 @@
+/* AdventureCard.module.css */
+.card {
+  width: 410px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow:
+    0px 2px 4px rgba(28, 5, 77, 0.1),
+    0px 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.imageTop {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.content {
+  padding: 1rem 1.5rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.place {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.city {
+  color: #605dec;
+}
+
+.price {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.description {
+  color: #7c8db0;
+}

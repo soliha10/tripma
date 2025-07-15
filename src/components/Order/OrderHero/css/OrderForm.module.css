@@ -1,0 +1,172 @@
+.container {
+  width: 682px;
+}
+
+.sectionTitle {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.flexGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: white;
+  color: #7C8DB0;
+  font-size: 18px;
+  border: 1px solid #A1B0CC;
+  width: 200px;
+  height: fit-content;
+}
+.input::placeholder{
+  color: #7C8DB0;
+}
+
+.w300 {
+  width: 300px;
+   padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: white;
+  color: #7C8DB0;
+  font-size: 18px;
+  border: 1px solid #A1B0CC;
+  height: fit-content;
+}
+.w300::placeholder{
+  color: #7C8DB0;
+}
+.checkInput {
+  width: 16px;
+  height: 16px;
+}
+.dateWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dateBtn {
+  width: 252px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #A1B0CC;
+  font-size: 18px;
+  color: #7C8DB0;
+  text-align: left;
+}
+
+.smallText {
+  font-size: 12px;
+  margin-left: 4px;
+  color: #7C8DB0;
+}
+
+.label {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6E7491;
+  font-size: 16px;
+}
+
+.policy {
+  color: #7C8DB0;
+  font-size: 18px;
+  margin-bottom: 36px;
+}
+
+.policyHighlight {
+  color: #605DEC;
+}
+
+.bagInfo {
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  margin-bottom: 74px;
+}
+
+.passengerInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 242px;
+}
+
+.passengerName {
+  color: #6E7491;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.passengerTitle {
+  color: #7C8DB0;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.bagCountWrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.count {
+  color: #6E7491;
+  font-size: 18px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.btnPrimary {
+  color: #605DEC;
+  border: 1px solid #605DEC;
+  width: 180px;
+  font-size: 18px;
+  padding: 12px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btnPrimary:hover {
+  background-color: #605DEC;
+  color: white;
+}
+
+.btnSecondary {
+  width: 138px;
+  font-size: 18px;
+  padding: 12px 0;
+  border-radius: 6px;
+}
+.btnCount{
+  width: 32px;
+  height: 32px;
+}
+.btnActive {
+  background-color: #605DEC;
+  color: #FAFAFA;
+}
+
+.btnDisabled {
+  border: 1px solid #7C8DB0;
+  background-color: #cbd4e64c;
+  color: #7C8DB0;
+  cursor: not-allowed;
+}

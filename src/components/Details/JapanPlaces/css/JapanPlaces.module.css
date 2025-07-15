@@ -1,0 +1,49 @@
+.wrapper {
+  max-width: 1342px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sectionWrapper {
+  padding-bottom: 80px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #6E7491;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.title span {
+  color: #605DEC;
+}
+
+.all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 24px;
+  color: #A1B0CC;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}

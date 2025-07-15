@@ -1,4 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
+import styles from './css/TestimonialCard.module.css';
+
 interface Feedbacks {
   userPic: StaticImageData;
   userName: string;
@@ -7,6 +9,7 @@ interface Feedbacks {
   rating: StaticImageData;
   feedback: string;
 }
+
 export default function TestimonialCard({
   userPic,
   userName,
@@ -16,17 +19,17 @@ export default function TestimonialCard({
   feedback,
 }: Feedbacks) {
   return (
-    <li className="lg:w-[410px] flex items-start p-4 gap-4">
+    <li className={styles.card}>
       <Image src={userPic} alt={userName} width={48} height={48} />
 
-      <div className="flex flex-col w-[314px]">
-        <strong className="text-[#6E7491] text-[18px] font-semibold ">{userName}</strong>
-        <span className="text-[#6E7491] text-[18px] font-semibold mb-2 ">
-          {userLocation} <time>{time}</time>{' '}
+      <div className={styles.content}>
+        <strong className={styles.name}>{userName}</strong>
+        <span className={styles.location}>
+          {userLocation} <time>{time}</time>
         </span>
-        <Image src={rating} alt="pic" className="mb-3" />
-        <p className="text-[#27273F] text-[18px] ">
-          {feedback} <span className="text-[#605DEC]"> read more...</span>
+        <Image src={rating} alt="rating" className="mb-3" />
+        <p className={styles.feedback}>
+          {feedback} <span className={styles.link}>read more...</span>
         </p>
       </div>
     </li>

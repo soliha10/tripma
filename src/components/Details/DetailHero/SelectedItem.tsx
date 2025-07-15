@@ -1,4 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
+import styles from './css/SelectedItem.module.css';
+
 interface FlightType {
   id: number;
   pic: StaticImageData;
@@ -7,6 +9,7 @@ interface FlightType {
   time: string;
   stopDuration: string;
 }
+
 export default function SelectedItem({
   id,
   pic,
@@ -16,19 +19,16 @@ export default function SelectedItem({
   stopDuration,
 }: FlightType) {
   return (
-    <div
-      key={id}
-      className="w-full border-b border-[#E9E8FC]  pt-2 px-2 pb-6 text-[#27273F] flex items-start justify-between "
-    >
+    <div key={id} className={styles.container}>
       <Image src={pic} alt="pic" width={40} height={40} />
-      <div className="lg:w-[148px] flex flex-col">
+      <div className={styles.info}>
         <span>{airlineType}</span>
-        <span className="text-[#7C8DB0]">FIG4312</span>
+        <span className={styles.flightCode}>FIG4312</span>
       </div>
-      <div className="lg:w-[148px] flex flex-col text-right">
+      <div className={styles.timeInfo}>
         <span>{duration}</span>
         <time>{time}</time>
-        <span className="text-[#7C8DB0]">{stopDuration}</span>
+        <span className={styles.stopDuration}>{stopDuration}</span>
       </div>
     </div>
   );

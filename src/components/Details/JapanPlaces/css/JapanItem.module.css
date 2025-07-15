@@ -1,0 +1,31 @@
+.card {
+  width: 410px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.10),
+              0px 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.image {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  padding: 16px 24px;
+}
+
+.title {
+  color: #605DEC;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.description {
+  color: #7C8DB0;
+}

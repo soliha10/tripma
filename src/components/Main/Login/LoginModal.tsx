@@ -6,7 +6,8 @@ import google from '@/app/assets/images/color.svg';
 import apple from '@/app/assets/images/apple mac.svg';
 import facebook from '@/app/assets/images/facebook.svg';
 import { useEffect } from 'react';
-// import { useEffect, useState } from 'react';
+import styles from './css/LoginModal.module.css';
+
 export interface EmailType {
   id: number;
   pic: string;
@@ -15,82 +16,58 @@ export interface EmailType {
 interface Props {
   onClose: () => void;
 }
+
 export default function LoginModal({ onClose }: Props) {
   const emails: EmailType[] = [
-    {
-      id: 1,
-      pic: google,
-      text: 'Continue with Google',
-    },
-    {
-      id: 2,
-      pic: apple,
-      text: 'Continue with Apple',
-    },
-    {
-      id: 3,
-      pic: facebook,
-      text: 'Continue with Facebook',
-    },
+    { id: 1, pic: google, text: 'Continue with Google' },
+    { id: 2, pic: apple, text: 'Continue with Apple' },
+    { id: 3, pic: facebook, text: 'Continue with Facebook' },
   ];
+
   useEffect(() => {
     document.body.classList.add('overflow-hidden');
     return () => {
       document.body.classList.remove('overflow-hidden');
     };
   }, []);
+
   return (
-    <div className="w-screen fixed inset-0 top-0 bottom-0 max-h-vh overflow-y-auto scroll-auto pt-[126px] pb-20 bg-[#52527a33] z-50">
-      <div className="w-[568px] p-10 bg-white   mx-auto border border-[#CBD4E6] rounded-[12px] ">
-        <div className="flex items-center justify-between mb-3">
-          <strong className="text-[#6E7491] text-2xl font-bold ">Sign up for Tripma</strong>
-          <Image className="cursor-pointer" src={close} alt="" onClick={onClose} />
+    <div className={styles.modalWrapper}>
+      <div className={styles.modalContent}>
+        <div className={styles.modalHeader}>
+          <strong className={styles.modalTitle}>Sign up for Tripma</strong>
+          <Image src={close} alt="Close" className={styles.modalClose} onClick={onClose} />
         </div>
-        <p className="text-[#7C8DB0] text-[18px] mb-5 ">
+        <p className={styles.modalSubtitle}>
           Tripma is totally free to use. Sign up using your email address or phone number below to
           get started.
         </p>
-        <form action="" className="flex flex-col gap-3 mb-8">
-          <input
-            className="border border-[#A1B0CC] text-[#7C8DB0] placeholder:text-[#7C8DB0] placeholder:text-[18px] py-2 px-3 outline-0 rounded  "
-            name=""
-            id=""
-            type="text"
-            placeholder="Email or phone number"
-          />
-          <input
-            className="border border-[#A1B0CC] text-[#7C8DB0] placeholder:text-[#7C8DB0] placeholder:text-[18px] py-2 px-3 outline-0 rounded  "
-            name=""
-            id=""
-            type="text"
-            placeholder="Password"
-          />
-          <label htmlFor="">
-            <div className="flex items-center gap-2 mb-1">
-              <input className="w-4 h-4" name="" id="" type="checkbox" />
-              <span className="text-[#6E7491] lg:text-base ">
-                I agree to the{' '}
-                <a href="" className="text-[#605DEC]">
-                  terms and conditions
-                </a>
+
+        <form action="" className={styles.modalForm}>
+          <input className={styles.inputField} type="text" placeholder="Email or phone number" />
+          <input className={styles.inputField} type="text" placeholder="Password" />
+          <label>
+            <div className={styles.checkboxGroup}>
+              <input className="w-4 h-4" type="checkbox" />
+              <span>
+                I agree to the <a href="#">terms and conditions</a>
               </span>
             </div>
-            <div className="flex items-center gap-2 mb-1">
-              <input className="w-4 h-4" name="" id="" type="checkbox" />
-              <span className="text-[#6E7491] lg:text-base ">Send me the latest deal alerts</span>
+            <div className={styles.checkboxGroup}>
+              <input className="w-4 h-4" type="checkbox" />
+              <span>Send me the latest deal alerts</span>
             </div>
           </label>
-          <button className="bg-[#605DEC] py-3 rounded text-[#FAFAFA] text-[18px] cursor-pointer ">
-            Create account
-          </button>
+          <button className={styles.submitBtn}>Create account</button>
         </form>
 
-        <div className="flex items-center gap-[10px] mb-6 ">
-          <span className="h-[1px] bg-[#CBD4E6] w-[226px] "></span>
-          <span className="text-[#7C8DB0] text-[18px] ">or</span>
-          <span className="h-[1px] bg-[#CBD4E6] w-[226px] "></span>
+        <div className={styles.divider}>
+          <span className={styles.dividerLine}></span>
+          <span className={styles.dividerText}>or</span>
+          <span className={styles.dividerLine}></span>
         </div>
-        <ul className="flex items-center flex-col gap-3 ">
+
+        <ul className={styles.socialList}>
           {emails.map(({ id, pic, text }) => (
             <Email key={id} pic={pic} text={text} id={id} />
           ))}

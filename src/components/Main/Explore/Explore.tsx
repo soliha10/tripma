@@ -5,6 +5,8 @@ import mangolia from '@/app/assets/images/mongolia.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
 import Image from 'next/image';
 import ExploreItem from './ExploreItem';
+import styles from './css/Explore.module.css';
+
 export default function Explore() {
   const explore: Adventerus[] = [
     {
@@ -29,19 +31,17 @@ export default function Explore() {
       desc: 'Traditional Mongolian yurts consists of an angled latticework of wood or bamboo for walls, ribs, and a wheel.',
     },
   ];
+
   return (
-    <section className="py-10">
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
+    <section className={styles.section}>
+      <div className={styles.container}>
         <div>
-          <div className="flex items-center justify-between">
-            <h2 className="text-[#6E7491] text-2xl font-bold mb-6 ">
+          <div className={styles.headingRow}>
+            <h2 className={styles.headingText}>
               Explore unique
-              <span className="bg-[linear-gradient(180deg,_#5CD6C0_0%,_#22C3A6_100%)] bg-clip-text  text-transparent ">
-                {' '}
-                places to stay
-              </span>
+              <span className={styles.gradientText}> places to stay</span>
             </h2>
-            <p className="flex items-center text-[#A1B0CC] text-2xl gap-1 ">
+            <p className={styles.allBtn}>
               All
               <button className="cursor-pointer">
                 <Image src={arrow} alt="" />
@@ -49,8 +49,8 @@ export default function Explore() {
             </p>
           </div>
 
-          <ul className="flex items-center   rounded-[12px] flex-wrap">
-            <div className="flex gap-10 mb-20">
+          <ul className={styles.cardListWrapper}>
+            <div className={styles.cardGroup}>
               {explore.map(({ id, image, name, city, desc }) => (
                 <ExploreItem
                   key={id}
@@ -63,9 +63,8 @@ export default function Explore() {
               ))}
             </div>
           </ul>
-          <button className="bg-[#605DEC] text-[#fafafa] w-[195px] py-3 mx-auto rounded block cursor-pointer ">
-            Explore more stays
-          </button>
+
+          <button className={styles.exploreButton}>Explore more stays</button>
         </div>
       </div>
     </section>

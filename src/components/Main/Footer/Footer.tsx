@@ -3,6 +3,7 @@ import logo from '@/app/assets/images/Wordmark.svg';
 import appStore from '@/app/assets/images/app store.svg';
 import google from '@/app/assets/images/google play.svg';
 import { FaFacebookSquare, FaInstagram, FaTwitter } from 'react-icons/fa';
+import styles from './Footer.module.css';
 
 export default function Footer() {
   const about = ['About Tripma', 'How it works', 'Careers', 'Press', 'Blog', 'Forum'];
@@ -24,82 +25,84 @@ export default function Footer() {
     'Accessibility',
   ];
   const app = ['Tripma for Android', 'Tripma for iOS', 'Mobile site'];
+
   return (
     <footer>
-      <div className="border-b  border-[#3CBD4E6] ">
-        <div className="max-w-[1342px] w-full mx-auto px-5  ">
-          <div className="flex justify-between ps-[50px] pe-[120px] pt-[76px] pb-[60px]">
+      <div className={styles.borderBottom}>
+        <div className={styles.container}>
+          <div className={styles.topSection}>
             <a href="">
-              <Image src={logo} alt="pic" />
+              <Image src={logo} alt="Tripma Logo" />
             </a>
-            <ul className="flex flex-col gap-4 pt-5 ">
+
+            <ul className={styles.column}>
               <li>
-                <strong className="text-[#6E7491] lg:text-[18px] font-bold ">About</strong>
+                <strong className={styles.header}>About</strong>
               </li>
               {about.map((item, index) => (
                 <li key={index}>
-                  <a href="" className="text-[#7C8DB0] lg:text-base ">
+                  <a href="" className={styles.link}>
                     {item}
                   </a>
                 </li>
               ))}
             </ul>
-            <ul className="flex flex-col gap-4 pt-5">
+
+            <ul className={styles.column}>
               <li>
-                <strong className="text-[#6E7491] lg:text-[18px] font-bold ">
-                  Partner with us
-                </strong>
+                <strong className={styles.header}>Partner with us</strong>
               </li>
               {partner.map((item, index) => (
                 <li key={index}>
-                  <a href="" className="text-[#7C8DB0] lg:text-base ">
+                  <a href="" className={styles.link}>
                     {item}
                   </a>
                 </li>
               ))}
             </ul>
-            <ul className="flex flex-col gap-4 pt-5">
+
+            <ul className={styles.column}>
               <li>
-                <strong className="text-[#6E7491] lg:text-[18px] font-bold ">Support</strong>
+                <strong className={styles.header}>Support</strong>
               </li>
               {support.map((item, index) => (
                 <li key={index}>
-                  <a href="" className="text-[#7C8DB0] lg:text-base ">
+                  <a href="" className={styles.link}>
                     {item}
                   </a>
                 </li>
               ))}
             </ul>
-            <ul className="flex flex-col  pt-5">
+
+            <ul className={styles.column}>
               <li>
-                <strong className="text-[#6E7491] lg:text-[18px] font-bold mb-4 inline-block">
-                  Get the app
-                </strong>
+                <strong className={styles.header}>Get the app</strong>
               </li>
               {app.map((item, index) => (
-                <li key={index} className="mb-4">
-                  <a href="" className="text-[#7C8DB0] lg:text-base ">
+                <li key={index}>
+                  <a href="" className={styles.link}>
                     {item}
                   </a>
                 </li>
               ))}
-              <li className="mt-4 mb-3">
+              <li className={styles.storeImage}>
                 <a href="">
-                  <Image src={appStore} alt="" />
+                  <Image src={appStore} alt="App Store" />
                 </a>
               </li>
               <li>
                 <a href="">
-                  <Image src={google} alt="" />
+                  <Image src={google} alt="Google Play" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
-        <div className="py-[36px] flex items-center justify-between">
-          <ul className="flex items-center gap-5">
+
+      <div className={styles.container}>
+        <div className={styles.bottomSection}>
+          <ul className={styles.socialIcons}>
             <li>
               <a href="">
                 <FaTwitter className="text-[#6E7491] w-6 h-6" />
@@ -116,7 +119,7 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-          <span className="text-[#7C8DB0] text-[18px] ">© 2020 Tripma incorporated</span>
+          <span className={styles.copy}>© 2020 Tripma incorporated</span>
         </div>
       </div>
     </footer>

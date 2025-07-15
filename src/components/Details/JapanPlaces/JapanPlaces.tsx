@@ -4,6 +4,8 @@ import flag from '@/app/assets/images/flag.png';
 import shinjuku from '@/app/assets/images/shinjuku.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
 import Image from 'next/image';
+import styles from './css/JapanPlaces.module.css';
+
 export default function JapanPlaces() {
   const japanItems = [
     {
@@ -28,20 +30,20 @@ export default function JapanPlaces() {
 
   return (
     <section>
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
-        <div className="pb-[80px]">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-[#6E7491] text-2xl font-bold ">
-              Find <span className="text-[#605DEC]">places to stay</span> in Japan
+      <div className={styles.wrapper}>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.heading}>
+            <h2 className={styles.title}>
+              Find <span>places to stay</span> in Japan
             </h2>
-            <p className="flex items-center text-[#A1B0CC] text-2xl gap-1 ">
+            <p className={styles.all}>
               All
-              <button className="cursor-pointer">
-                <Image src={arrow} alt="" />
+              <button className={styles.button}>
+                <Image src={arrow} alt="arrow" />
               </button>
             </p>
           </div>
-          <ul className="flex justify-between">
+          <ul className={styles.list}>
             {japanItems.map(({ id, name, image, desc }) => (
               <JapanItems key={id} image={image} name={name} desc={desc} />
             ))}
