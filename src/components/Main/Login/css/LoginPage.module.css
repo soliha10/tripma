@@ -28,6 +28,7 @@
   line-height: 96px;
   background: linear-gradient(to right, #62ACFD, #893FFD, #5CA1FD);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 68px;
 }
