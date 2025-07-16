@@ -1,3 +1,7 @@
+.section {
+  padding-top: 40px;
+}
+
 .wrapper {
   max-width: 1342px;
   width: 100%;
@@ -24,7 +28,7 @@
   font-weight: 700;
 }
 
-.title span {
+.titleHighlight {
   color: #605DEC;
 }
 
@@ -43,7 +47,101 @@
   padding: 0;
 }
 
+.button img {
+  width: 24px;
+  height: 24px;
+}
+
 .list {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  width: 410px;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .section {
+    padding-top: 24px;
+  }
+
+  .wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sectionWrapper {
+    padding-bottom: 48px;
+  }
+
+  .heading {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .all {
+    font-size: 20px;
+  }
+
+  .button img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .wrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section {
+    padding-top: 16px;
+  }
+
+  .sectionWrapper {
+    padding-bottom: 32px;
+  }
+
+  .heading {
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .all {
+    font-size: 18px;
+  }
+
+  .button img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .card {
+    max-width: 300px;
+  }
 }

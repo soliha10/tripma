@@ -82,7 +82,7 @@ export default function PaymentMethod() {
                 <ul className={styles.paymentOptions}>
                   {payTypes.map(({ pic, name }, index) => (
                     <li key={index} className={styles.paymentOption}>
-                      <Image src={pic} alt={name} />
+                      <Image src={pic} alt={name} width={40} height={24} />
                       <span>{name}</span>
                     </li>
                   ))}
@@ -95,8 +95,9 @@ export default function PaymentMethod() {
                       <Input
                         type="checkbox"
                         checked={checked}
-                        onClick={() => setChecked(!checked)}
+                        onChange={() => setChecked(!checked)}
                         className={`${styles.checkbox} ${checked ? styles.checkboxChecked : ''}`}
+                        aria-label="Use same billing address as Passenger 1"
                       />
                       <Label className={styles.checkboxLabel}>
                         Billing address is same as Passenger 1
@@ -104,20 +105,29 @@ export default function PaymentMethod() {
                     </div>
                     <Input
                       placeholder="Name on card"
-                      className={styles.input}
+                      value={cardName}
                       onChange={(e) => setCardName(e.target.value)}
+                      className={styles.input}
+                      aria-label="Name on card"
                     />
                     <Input
                       type="number"
                       placeholder="Card number"
+                      value={cardNumber}
                       onChange={(e) => setCardNumber(e.target.value)}
                       className={styles.inputCard}
+                      aria-label="Card number"
                     />
                     <div className={styles.cardDetailsWrapper}>
                       <div className={styles.expiryDateWrapper}>
                         <Popover open={open} onOpenChange={setOpen}>
                           <PopoverTrigger asChild>
-                            <Button variant="default" id="date" className={styles.expiryButton}>
+                            <Button
+                              variant="default"
+                              id="date"
+                              className={styles.expiryButton}
+                              aria-label="Select expiration date"
+                            >
                               {cardExpireDate
                                 ? `${cardExpireDate.toLocaleString('default', {
                                     month: 'numeric',
@@ -147,6 +157,7 @@ export default function PaymentMethod() {
                         min={0}
                         placeholder="CCV"
                         type="number"
+                        value={cardCVV}
                         onChange={(e) => setCardCVV(e.target.value)}
                         className={styles.ccvInput}
                         style={{
@@ -155,6 +166,7 @@ export default function PaymentMethod() {
                           backgroundSize: '32px 32px',
                           backgroundPosition: 'right 12px center',
                         }}
+                        aria-label="CCV"
                       />
                     </div>
                   </form>
@@ -171,8 +183,9 @@ export default function PaymentMethod() {
                       <Input
                         type="checkbox"
                         checked={checkedSave}
-                        onClick={() => setCheckedSave(!checkedSave)}
+                        onChange={() => setCheckedSave(!checkedSave)}
                         className={`${styles.checkbox} ${checkedSave ? styles.checkboxChecked : ''}`}
+                        aria-label="Save card and create account"
                       />
                       <Label className={styles.checkboxLabel}>
                         Save card and create account for later
@@ -181,8 +194,10 @@ export default function PaymentMethod() {
                     <Input
                       placeholder="Email address or phone number"
                       type="email"
+                      value={accountEmail}
                       onChange={(e) => setAccountEmail(e.target.value)}
                       className={styles.input}
+                      aria-label="Email address or phone number"
                     />
                     <div className={styles.passwordWrapper}>
                       <Input
@@ -191,10 +206,14 @@ export default function PaymentMethod() {
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'text' : 'password'}
                         className={styles.passwordInput}
+                        aria-label="Password"
                       />
                       <div
                         onClick={() => setShowPassword(!showPassword)}
                         className={styles.passwordToggle}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={showPassword ? 'Hide password' : 'Show password'}
                       >
                         {showPassword ? (
                           <FiEyeOff className={styles.eyeIcon} />
@@ -228,7 +247,7 @@ export default function PaymentMethod() {
                     </div>
                     <ul className={styles.socialLoginList}>
                       {emails.map(({ id, pic, text }) => (
-                        <Email key={id} pic={pic} text={text} id={id} />
+                        <Email id={id} pic={pic} text={text} />
                       ))}
                     </ul>
                   </form>
@@ -240,20 +259,23 @@ export default function PaymentMethod() {
                     This flight has a flexible cancellation policy. If you cancel or change your
                     flight up to 30 days before the departure date, you are eligible for a free
                     refund. All flights booked on Tripma are backed by our satisfaction guarantee,
-                    however cancellation policies vary by airline. See the
-                    <a className={styles.link} href="">
-                      {''}
+                    however cancellation policies vary by airline. See the{' '}
+                    <a className={styles.link} href="/cancellation-policy">
                       full cancellation policy
-                      {''}
-                    </a>
+                    </a>{' '}
                     for this flight.
                   </p>
                   <div className={styles.buttonWrapper}>
-                    <Button variant={'cancel'} className={styles.backButton}>
+                    <Button
+                      variant="cancel"
+                      className={styles.backButton}
+                      onClick={() => router.back()}
+                      aria-label="Back to seat selection"
+                    >
                       Back to seat select
                     </Button>
                     <Button
-                      variant={'upgrade'}
+                      variant="upgrade"
                       className={`${styles.confirmButton} ${
                         cardName &&
                         cardNumber &&
@@ -275,6 +297,7 @@ export default function PaymentMethod() {
                         )
                       }
                       onClick={handleNavigate}
+                      aria-label="Confirm and pay"
                     >
                       Confirm and pay
                     </Button>
@@ -309,7 +332,7 @@ export default function PaymentMethod() {
                   </div>
                 </div>
                 <Button
-                  variant={'upgrade'}
+                  variant="upgrade"
                   className={`${styles.confirmButtonRight} ${
                     cardName && cardNumber && cardExpireDate && cardCVV && accountEmail && password
                       ? ''
@@ -326,6 +349,7 @@ export default function PaymentMethod() {
                     )
                   }
                   onClick={handleNavigate}
+                  aria-label="Confirm and pay"
                 >
                   Confirm and pay
                 </Button>

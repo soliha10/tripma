@@ -1,19 +1,18 @@
 'use client';
+import { useState, MouseEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Footer from '@/components/Main/Footer/Footer';
 import LoginHeader from '@/components/Main/Login/LoginHeader';
 import OrderForm from './OrderForm';
-import Image from 'next/image';
-import bags from '@/app/assets/images/bags.svg';
 import { useFlight } from '@/context/FlightContext';
 import SelectedItem from '@/components/Details/DetailHero/SelectedItem';
 import { Button } from '@/components/ui/button';
-import { MouseEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import bags from '@/app/assets/images/bags.svg';
 import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
   const { selectedDepartFlight, selectedReturnFlight } = useFlight();
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -55,7 +54,6 @@ export default function OrderHero() {
                 knownTraveller={knownTraveller}
                 setKnownTraveller={setKnownTraveller}
               />
-
               <div className={styles.summaryBox}>
                 {selectedDepartFlight && (
                   <div className={styles.selectedItemWrapper}>
@@ -67,22 +65,20 @@ export default function OrderHero() {
                     <SelectedItem {...selectedReturnFlight} />
                   </div>
                 )}
-
                 <div className={styles.priceSummary}>
                   <div>
-                    <span>Subtotal</span>
+                    <span className={styles.summaryLabel}>Subtotal</span>
                     <span>$503</span>
                   </div>
                   <div>
-                    <span>Taxes and Fees</span>
+                    <span className={styles.summaryLabel}>Taxes and Fees</span>
                     <span>$503</span>
                   </div>
                   <div>
-                    <span>Total</span>
+                    <span className={styles.summaryLabel}>Total</span>
                     <span>$503</span>
                   </div>
                 </div>
-
                 <Button
                   type="button"
                   className={`${styles.selectButton} ${
@@ -94,10 +90,17 @@ export default function OrderHero() {
                     !(firstName && lastName && birthDate && email && phoneNumber && knownTraveller)
                   }
                   onClick={handleNavigate}
+                  aria-label="Proceed to select seats"
                 >
                   Select seats
                 </Button>
-                <Image src={bags} alt="bags" />
+                <Image
+                  src={bags}
+                  alt="Baggage illustration"
+                  width={400}
+                  height={200}
+                  className={styles.bagsImage}
+                />
               </div>
             </div>
           </div>

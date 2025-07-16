@@ -1,3 +1,4 @@
+'use client';
 import {
   Table,
   TableBody,
@@ -37,7 +38,7 @@ export default function Price() {
   return (
     <Table className={styles.tableWrapper}>
       <TableCaption className={styles.caption}>
-        Price grid <span>(flexible dates)</span>
+        Price grid <span className={styles.captionHighlight}>(flexible dates)</span>
       </TableCaption>
       <TableHeader>
         <TableRow className={styles.headerRow}>

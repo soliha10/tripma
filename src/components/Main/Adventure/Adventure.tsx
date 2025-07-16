@@ -1,10 +1,11 @@
+'use client';
+import Image, { StaticImageData } from 'next/image';
 import bund from '@/app/assets/images/bund.png';
 import opera from '@/app/assets/images/opera.png';
 import kyoto from '@/app/assets/images/kyoto.png';
 import kenya from '@/app/assets/images/kenya.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
 import AdventureCard from './AdventureCard';
-import Image, { StaticImageData } from 'next/image';
 import styles from './css/Adventure.module.css';
 
 export interface Adventerus {
@@ -56,8 +57,8 @@ export default function Adventure() {
             </h2>
             <p className={styles.allButton}>
               All
-              <button className="cursor-pointer">
-                <Image src={arrow} alt="arrow" />
+              <button type="button" className={styles.arrowButton}>
+                <Image src={arrow} alt="View all" width={24} height={24} />
               </button>
             </p>
           </div>

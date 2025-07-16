@@ -1,3 +1,4 @@
+'use client';
 import { Adventerus } from '@/components/Main/Adventure/Adventure';
 import Image from 'next/image';
 import styles from './css/SanFransiscoItem.module.css';
@@ -12,8 +13,8 @@ export default function SanFransiscoItem({
   classname,
 }: Adventerus) {
   return (
-    <li key={id} className={`${styles.listItem} ${classname}`}>
-      <Image src={image} alt="" className={styles.image} />
+    <li key={id} className={`${styles.listItem} ${classname || ''}`}>
+      <Image src={image} alt={name} className={styles.image} />
       <div className={styles.body}>
         <div className={styles.header}>
           <strong className={styles.name}>

@@ -1,22 +1,30 @@
 
+.section {
+  padding-bottom: 80px;
+}
+
 .container {
   max-width: 1342px;
   width: 100%;
-  margin-inline: auto;
-  padding-inline: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Form */
 .form {
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: 1.5rem;
-  border-radius: 0.375rem;
+  margin-bottom: 24px;
+  border-radius: 6px;
   width: fit-content;
-  margin-inline-start: 0;
   border: 1px solid #CBD4E6;
   background-color: white;
   box-shadow:
@@ -30,13 +38,11 @@
   padding-left: 52px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 0.5rem;
+  padding-right: 8px;
   text-align: left;
   color: #7C8DB0;
   font-size: 18px;
-  border-inline-end: 1px solid #CBD4E6;
-  appearance: none;
-  outline: none;
+  border-right: 1px solid #CBD4E6;
   background-color: white;
   background-repeat: no-repeat;
   background-size: 32px 32px;
@@ -47,12 +53,12 @@
   border-radius: 8px;
   width: 300px;
   height: 312px;
-  margin-inline-start: 1.5rem;
+  margin-left: 24px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
   background-color: white;
-  padding: 1rem;
+  padding: 16px;
   box-shadow:
     0px 2px 4px rgba(7, 4, 146, 0.10),
     0px 24px 60px rgba(6, 47, 125, 0.05),
@@ -62,8 +68,8 @@
 
 .selectItem {
   width: 100%;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 8px;
+  font-size: 16px;
 }
 
 .selectItem:hover,
@@ -77,11 +83,10 @@
   padding-left: 52px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 0.5rem;
+  padding-right: 8px;
   color: #7C8DB0;
   font-size: 18px;
-  border-inline-end: 1px solid #CBD4E6;
-  outline: none;
+  border-right: 1px solid #CBD4E6;
   background-color: white;
   background-repeat: no-repeat;
   background-size: 32px 32px;
@@ -89,12 +94,21 @@
   cursor: pointer;
 }
 
+.popoverContent {
+  width: 626px;
+  padding-bottom: 32px;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
 .radioForm {
   display: flex;
   align-items: center;
-  padding-top: 0.25rem;
-  padding-inline: 1.5rem;
-  padding-bottom: 1.25rem;
+  padding-top: 4px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #CBD4E6;
 }
 
@@ -102,22 +116,22 @@
 .oneWayOption {
   display: flex;
   align-items: center;
-  margin-right: 1.125rem;
+  margin-right: 18px;
 }
 
 .radioLabelText {
   color: #6E7491;
   font-size: 14px;
-  margin-left: 0.5rem;
+  margin-left: 8px;
 }
 
 .dateRangeBox {
   width: 252px;
   padding-left: 52px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-right: 0.5rem;
-  border-radius: 0.375rem;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
   border: 2px solid #605DEC;
   background-color: white;
   background-repeat: no-repeat;
@@ -126,7 +140,7 @@
   cursor: pointer;
   color: #7C8DB0;
   font-size: 18px;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 
 .doneButton {
@@ -134,8 +148,9 @@
   width: 84px;
   color: #FAFAFA;
   font-size: 18px;
-  padding-block: 0.75rem;
-  border-radius: 0.375rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 6px;
 }
 
 .passengerCount {
@@ -144,10 +159,9 @@
   padding-left: 52px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 0.5rem;
+  padding-right: 8px;
   color: #7C8DB0;
   font-size: 18px;
-  outline: none;
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
@@ -158,62 +172,65 @@
   width: 232px;
   position: absolute;
   bottom: -110px;
-  left: 1.5rem;
-  padding: 1rem;
+  left: 24px;
+  padding: 16px;
   background-color: white;
-  border-radius: 0.375rem;
+  border-radius: 6px;
   border: 1px solid #CBD4E6;
   box-shadow:
     0px 2px 4px rgba(7, 4, 146, 0.10),
     0px 24px 60px rgba(6, 47, 125, 0.05),
     0px 12px 24px rgba(27, 59, 119, 0.05);
+  z-index: 10;
 }
 
 .counterRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .counterControls {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
+}
+
+.counterControls img {
+  width: 24px;
+  height: 24px;
 }
 
 .searchButton {
   width: 96px;
   text-align: center;
   color: #FAFAFA;
-  padding: 0.75rem;
+  padding: 12px;
   background-color: #605DEC;
-  border-radius: 0.375rem;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 18px;
 }
 
-
 /* menu */
-
 .filterBar {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
 }
 
 .selectMenuTrigger {
   border: 1px solid #CBD4E6;
   text-align: left;
   border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-  padding-left: 1rem;
+  padding: 8px 12px 8px 16px;
   color: #27273F;
-  outline: none;
+  font-size: 16px;
   background-repeat: no-repeat;
-  background-size: 30px 30px;
-  background-position: right 10px;
 }
+
 /* selection */
 .containerSelection {
   width: 872px;
@@ -224,12 +241,13 @@
   color: #605DEC;
   background-color: white;
   cursor: pointer;
-  padding-top: 0.75rem; /* py-3 */
-  padding-bottom: 0.75rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
   font-size: 18px;
   display: block;
-  margin-left: auto; /* ms-auto */
-  margin-bottom: 3rem; /* mb-12 */
+  margin-left: auto;
+  margin-bottom: 48px;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
@@ -237,7 +255,6 @@
   background-color: #605DEC;
   color: white;
 }
-
 
 /* rightside */
 .containerSelected {
@@ -248,53 +265,35 @@
 .box {
   border: 1px solid #E9E8FC;
   border-radius: 12px;
-  padding: 1rem; /* px-4 */
-  padding-bottom: 0; /* pt-4 */
+  padding: 16px;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; /* gap-3 */
+  gap: 12px;
 }
 
 .summary {
-  padding: 1rem;
+  padding: 16px;
   text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* gap-2 */
+  gap: 8px;
   color: #27273F;
   font-weight: 600;
-  margin-bottom: 2rem; /* mb-8 */
+  margin-bottom: 32px;
 }
 
 .summaryRow {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .label {
-  margin-right: 2.5rem; /* me-10 */
+  margin-right: 40px;
   display: inline-block;
 }
 
-.button {
-  color: #605DEC;
-  border: 1px solid #605DEC;
-  border-radius: 0.5rem;
-  font-size: 18px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  display: block;
-  margin-left: auto;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #605DEC;
-  color: white;
-}
-
 /* right info */
-
 .containerInfo {
   width: 400px;
 }
@@ -338,7 +337,11 @@
   display: inline-block;
   text-align: center;
 }
-
+.mainContent{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
 .description {
   color: #6E7491;
   font-size: 16px;
@@ -347,6 +350,400 @@
 
 .secondaryText {
   color: #A1B0CC;
+  font-size: 14px;
 }
 
+.mapImage {
+  width: 872px;
+  height: auto;
+}
 
+.priceGraph {
+  width: 400px;
+  height: auto;
+}
+
+.calendar {
+  border-radius: 8px;
+  width: 480px;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  .section {
+    padding-bottom: 48px;
+  }
+
+  .form {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .selectTrigger,
+  .datePopoverTrigger,
+  .passengerCount,
+  .searchButton {
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    background-size: 24px 24px;
+    background-position: 8px center;
+    border-right: none;
+    border-bottom: 1px solid #CBD4E6;
+  }
+
+  .selectContent {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    margin-left: 0;
+    padding: 12px;
+  }
+
+  .selectItem {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .popoverContent {
+    width: 100%;
+    max-width: 340px;
+    padding-bottom: 24px;
+  }
+
+  .radioForm {
+    padding-top: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+  }
+
+  .roundOption,
+  .oneWayOption {
+    margin-right: 12px;
+  }
+
+  .radioLabelText {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  .dateRangeBox {
+    width: 100%;
+    max-width: 200px;
+    padding-left: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 16px;
+    background-size: 24px 24px;
+  }
+
+  .doneButton {
+    width: 72px;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .passengerCount {
+    padding-left: 40px;
+  }
+
+  .counterDropdown {
+    width: 100%;
+    max-width: 280px;
+    left: 0;
+    bottom: -100px;
+    padding: 12px;
+  }
+
+  .counterRow {
+    margin-bottom: 6px;
+  }
+
+  .counterControls {
+    gap: 12px;
+  }
+
+  .counterControls img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .searchButton {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .filterBar {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .selectMenuTrigger {
+    width: 100% !important;
+    max-width: 160px;
+    padding: 6px 10px 6px 12px;
+    font-size: 14px;
+    background-size: 16px 16px !important;
+    background-position: right 10px center !important;
+  }
+
+  .mainContent {
+    /* flex-direction: column; */
+    gap: 24px;
+  }
+
+  .containerSelection {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 200px;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+
+  .containerSelected,
+  .containerInfo {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 50px;
+  }
+
+  .box {
+    padding: 12px;
+    padding-bottom: 0;
+    gap: 8px;
+  }
+
+  .summary {
+    padding: 12px;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .label {
+    margin-right: 24px;
+  }
+
+  .mb10 {
+    margin-bottom: 24px;
+  }
+
+  .title,
+  .ratingTitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .ratingTag {
+    width: 72px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .secondaryText {
+    font-size: 12px;
+  }
+
+  .mapImage {
+    display: none;
+  }
+
+  .priceGraph {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 300px;
+    padding-top: 16px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section {
+    padding-bottom: 32px;
+  }
+
+  .form {
+    max-width: 300px;
+  }
+
+  .selectTrigger,
+  .datePopoverTrigger,
+  .passengerCount,
+  .searchButton {
+    padding-left: 36px;
+    font-size: 14px;
+    background-size: 20px 20px;
+  }
+
+  .selectContent {
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  .selectItem {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .popoverContent {
+    max-width: 300px;
+    padding-bottom: 16px;
+  }
+
+  .radioForm {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+  }
+
+  .radioLabelText {
+    font-size: 11px;
+  }
+
+  .dateRangeBox {
+    max-width: 180px;
+    padding-left: 36px;
+    font-size: 14px;
+    background-size: 20px 20px;
+  }
+
+  .doneButton {
+    width: 64px;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .counterDropdown {
+    max-width: 260px;
+    bottom: -90px;
+    padding: 10px;
+  }
+
+  .counterControls img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .searchButton {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .filterBar {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .selectMenuTrigger {
+    max-width: 140px;
+    font-size: 12px;
+    padding: 4px 8px 4px 10px;
+    background-size: 14px 14px !important;
+  }
+
+  .containerSelection,
+  .containerSelected,
+  .containerInfo {
+    max-width: 300px;
+  }
+
+  .button {
+    max-width: 180px;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  .box {
+    padding: 10px;
+  }
+
+  .summary {
+    padding: 10px;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .label {
+    margin-right: 16px;
+  }
+
+  .mb10 {
+    margin-bottom: 16px;
+  }
+
+  .title,
+  .ratingTitle {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .ratingTag {
+    width: 64px;
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .secondaryText {
+    font-size: 11px;
+  }
+
+  .mapImage {
+    max-width: 300px;
+  }
+
+  .priceGraph {
+    max-width: 300px;
+  }
+
+  .calendar {
+    max-width: 280px;
+  }
+}

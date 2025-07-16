@@ -1,9 +1,10 @@
+'use client';
+import Image from 'next/image';
 import { Adventerus } from '../Adventure/Adventure';
 import maldiv from '@/app/assets/images/maldiv.png';
 import morocco from '@/app/assets/images/morocco.png';
 import mangolia from '@/app/assets/images/mongolia.png';
 import arrow from '@/app/assets/images/arrowRight.svg';
-import Image from 'next/image';
 import ExploreItem from './ExploreItem';
 import styles from './css/Explore.module.css';
 
@@ -43,8 +44,8 @@ export default function Explore() {
             </h2>
             <p className={styles.allBtn}>
               All
-              <button className="cursor-pointer">
-                <Image src={arrow} alt="" />
+              <button type="button" className={styles.arrowButton}>
+                <Image src={arrow} alt="View all" width={24} height={24} />
               </button>
             </p>
           </div>
@@ -54,7 +55,7 @@ export default function Explore() {
               {explore.map(({ id, image, name, city, desc }) => (
                 <ExploreItem
                   key={id}
-                  classname="w-[410px] rounded-[12px]"
+                  classname={styles.card}
                   image={image}
                   name={name}
                   city={city}
@@ -64,7 +65,9 @@ export default function Explore() {
             </div>
           </ul>
 
-          <button className={styles.exploreButton}>Explore more stays</button>
+          <button type="button" className={styles.exploreButton}>
+            Explore more stays
+          </button>
         </div>
       </div>
     </section>

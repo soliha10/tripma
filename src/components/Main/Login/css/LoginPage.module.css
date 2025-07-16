@@ -4,6 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
+  background-image: url('../../../../app/assets/images/hero-login-bg.jpg');
 }
 
 .container {
@@ -24,7 +25,7 @@
   font-size: 95px;
   text-align: center;
   font-weight: 800;
-  line-height: 6rem;
+  line-height: 96px;
   background: linear-gradient(to right, #62ACFD, #893FFD, #5CA1FD);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -48,23 +49,55 @@
     0px 12px 24px 0px rgba(27, 59, 119, 0.05);
 }
 
-/* Custom triggers and inputs */
-.selectTrigger {
+.selectTriggerGo,
+.selectTriggerReturn {
   width: 324.5px;
   padding-left: 52px;
   padding-right: 8px;
-  background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
   color: #7C8DB0;
   font-size: 18px;
   text-align: left;
   border-right: 1px solid #CBD4E6;
+  background-color: white;
   appearance: none;
   outline: none;
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
+}
+
+.selectTriggerGo {
+  background-image: url('../../../../app/assets/images/departure.svg');
+}
+
+.selectTriggerReturn {
+  background-image: url('../../../../app/assets/images/arrival.svg');
+}
+
+.selectContent {
+  border-radius: 8px;
+  width: 300px;
+  height: 312px;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: white;
+  padding: 16px;
+}
+
+.selectItem {
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.selectItem:hover,
+.selectItem:focus {
+  background-color: #605DEC;
+  color: white;
 }
 
 .dateTrigger {
@@ -78,6 +111,7 @@
   background-color: white;
   border-right: 1px solid #CBD4E6;
   cursor: pointer;
+  background-image: url('../../../../app/assets/images/calendar-with-dates.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
@@ -85,6 +119,7 @@
 
 .passengerInput {
   position: relative;
+  /* top: 50px; */
   width: 200px;
   padding-left: 52px;
   padding-right: 8px;
@@ -93,6 +128,7 @@
   color: #7C8DB0;
   font-size: 18px;
   outline: none;
+  background-image: url('../../../../app/assets/images/person-solid.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
@@ -114,6 +150,23 @@
     0px 12px 24px 0px rgba(27, 59, 119, 0.05);
 }
 
+.passengerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.counterText {
+  font-size: 18px;
+}
+
 .searchBtn {
   width: 96px;
   text-align: center;
@@ -124,19 +177,262 @@
   cursor: pointer;
 }
 
-/* Adjust responsive as needed */
+.popoverContent {
+  width: 626px;
+  padding-bottom: 32px;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.popoverForm {
+  display: flex;
+  padding-top: 4px;
+  padding-left: 24px;
+  padding-bottom: 20px;
+  align-items: center;
+  border-bottom: 1px solid #CBD4E6;
+}
+
+.radioLabel {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.radioText {
+  color: #6E7491;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.radioLabel:last-of-type {
+  margin-right: 46px;
+}
+
+.dateInput {
+  width: 252px;
+  padding-left: 52px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #7C8DB0;
+  font-size: 18px;
+  border: 2px solid #605DEC;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+  background-image: url('../../../../app/assets/images/calendar-with-dates.svg');
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 8px center;
+}
+
+.doneButton {
+  background-color: #605DEC;
+  width: 84px;
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.calendar {
+  border-radius: 8px;
+  width: 480px;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.placeholderText {
+  color: #7C8DB0;
+}
+
+/* Responsive styles for 768px and below */
 @media (max-width: 768px) {
+  .heroSection {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .heroTitleWrapper {
+    width: 100%;
+    padding-top: 80px;
+  }
+
   .heroTitle {
     font-size: 48px;
     line-height: 56px;
   }
 
-  .heroTitleWrapper {
-    width: 100%;
-  }
-
   .searchForm {
     flex-direction: column;
     gap: 16px;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .selectTriggerGo,
+  .selectTriggerReturn,
+  .dateTrigger,
+  .passengerInput {
+    width: 100%;
+    padding-left: 48px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    background-size: 28px 28px;
+    background-position: 8px center;
+  }
+
+  .selectContent {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  .selectItem {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .popoverContent {
+    width: 100%;
+    padding-bottom: 24px;
+  }
+
+  .popoverForm {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+  }
+
+  .radioLabel {
+    margin-right: 0;
+  }
+
+  .radioLabel:last-of-type {
+    margin-right: 0;
+  }
+
+  .dateInput {
+    width: 100%;
+    padding-left: 48px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    background-size: 28px 28px;
+    background-position: 8px center;
+  }
+
+  .doneButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .calendar {
+    width: 100%;
+    padding-top: 16px;
+  }
+
+  .passengerDropdown {
+    width: 100%;
+    left: 0;
+    bottom: -100px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .passengerRow {
+    margin-bottom: 12px;
+  }
+
+  .counterText {
+    font-size: 16px;
+  }
+
+  .searchBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .heroTitleWrapper {
+    padding-top: 60px;
+  }
+
+  .selectTriggerGo,
+  .selectTriggerReturn,
+  .dateTrigger,
+  .passengerInput {
+    font-size: 14px;
+    background-size: 24px 24px;
+  }
+
+  .selectContent {
+    padding: 12px;
+  }
+
+  .selectItem {
+    font-size: 12px;
+  }
+
+  .popoverForm {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .radioText {
+    font-size: 12px;
+  }
+
+  .dateInput {
+    font-size: 14px;
+    background-size: 24px 24px;
+  }
+
+  .doneButton {
+    font-size: 14px;
+  }
+
+  .calendar {
+    padding-top: 12px;
+  }
+
+  .passengerDropdown {
+    font-size: 12px;
+    bottom: -120px;
+  }
+
+  .counterText {
+    font-size: 14px;
+  }
+
+  .searchBtn {
+    font-size: 14px;
   }
 }

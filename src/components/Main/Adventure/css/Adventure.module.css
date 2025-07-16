@@ -1,29 +1,29 @@
-/* Adventure.module.css */
+
 .container {
   max-width: 1342px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .section {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .headingRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .heading {
   color: #6e7491;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 1.5rem;
 }
 
 .highlight {
@@ -34,8 +34,20 @@
   display: flex;
   align-items: center;
   color: #a1b0cc;
-  font-size: 1.5rem;
-  gap: 0.25rem;
+  font-size: 24px;
+  gap: 4px;
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.arrowButton img {
+  width: 24px;
+  height: 24px;
 }
 
 .adventureList {
@@ -46,15 +58,110 @@
 
 .adventureRow {
   display: flex;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.fullWidthCard {
-  width: 100%;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  gap: 35px;
+  margin-bottom: 40px;
 }
 
 .card {
   width: 410px;
   border-radius: 12px;
+}
+
+.fullWidthCard {
+  width: 100%;
+  max-width: 1342px;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .headingRow {
+    /* flex-direction: column; */
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .heading {
+    font-size: 20px;
+    width: 300px;
+  }
+
+  .allButton {
+    font-size: 20px;
+  }
+
+  .arrowButton img {
+    width: 20px;
+    height: 20px;
+  }
+.adventureList {
+  
+  justify-content: center;
+}
+  .adventureRow {
+   
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .fullWidthCard {
+    max-width: 340px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .heading {
+    font-size: 18px;
+  }
+
+  .allButton {
+    font-size: 18px;
+  }
+
+  .arrowButton img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .adventureRow {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .card {
+    max-width: 300px;
+  }
+
+  .fullWidthCard {
+    max-width: 300px;
+  }
 }

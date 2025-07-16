@@ -29,10 +29,10 @@ export default function SelectModal({ onClose }: { onClose: () => void }) {
           recline 40 percent more than economy.
         </p>
         <div className={styles.actions}>
-          <Button variant="cancel" size="cancel" onClick={onClose}>
+          <Button variant="cancel" size="cancel" onClick={onClose} aria-label="Cancel upgrade">
             Cancel
           </Button>
-          <Button variant="upgrade" size="upgrade">
+          <Button variant="upgrade" size="upgrade" aria-label="Upgrade seat for $199">
             Upgrade for $199
           </Button>
         </div>

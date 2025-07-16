@@ -1,27 +1,28 @@
-/* Explore.module.css */
 .section {
-  padding-top: 2.5rem; /* py-10 */
-  padding-bottom: 2.5rem;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .container {
   max-width: 1342px;
   width: 100%;
-  margin-inline: auto;
-  padding-inline: 1.25rem; /* px-5 */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .headingRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .headingText {
   color: #6e7491;
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 1.5rem; /* mb-6 */
 }
 
 .gradientText {
@@ -34,9 +35,21 @@
 .allBtn {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 4px;
   color: #a1b0cc;
-  font-size: 1.5rem;
+  font-size: 24px;
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.arrowButton img {
+  width: 24px;
+  height: 24px;
 }
 
 .cardListWrapper {
@@ -47,17 +60,120 @@
 
 .cardGroup {
   display: flex;
-  gap: 2.5rem; /* gap-10 */
-  margin-bottom: 5rem; /* mb-20 */
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.card {
+  width: 410px;
+  border-radius: 12px;
 }
 
 .exploreButton {
   background-color: #605dec;
   color: #fafafa;
   width: 195px;
-  padding-block: 0.75rem; /* py-3 */
-  margin-inline: auto;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 8px;
   display: block;
   cursor: pointer;
+  font-size: 18px;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .headingRow {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .headingText {
+    font-size: 20px;
+  }
+
+  .allBtn {
+    font-size: 20px;
+  }
+
+  .arrowButton img {
+    width: 20px;
+    height: 20px;
+  }
+.cardListWrapper{
+
+  justify-content: center;
+}
+  .cardGroup {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .exploreButton {
+    width: 100%;
+    max-width: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .headingText {
+    font-size: 18px;
+  }
+
+  .allBtn {
+    font-size: 18px;
+  }
+
+  .arrowButton img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cardGroup {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    max-width: 300px;
+  }
+
+  .exploreButton {
+    max-width: 180px;
+    font-size: 14px;
+  }
 }

@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import logo from '@/app/assets/images/Wordmark.svg';
 import appStore from '@/app/assets/images/app store.svg';
@@ -32,7 +33,7 @@ export default function Footer() {
         <div className={styles.container}>
           <div className={styles.topSection}>
             <a href="">
-              <Image src={logo} alt="Tripma Logo" />
+              <Image src={logo} alt="Tripma Logo" width={131} height={54} />
             </a>
 
             <ul className={styles.column}>
@@ -87,12 +88,12 @@ export default function Footer() {
               ))}
               <li className={styles.storeImage}>
                 <a href="">
-                  <Image src={appStore} alt="App Store" />
+                  <Image src={appStore} alt="App Store" width={135} height={40} />
                 </a>
               </li>
               <li>
                 <a href="">
-                  <Image src={google} alt="Google Play" />
+                  <Image src={google} alt="Google Play" width={135} height={40} />
                 </a>
               </li>
             </ul>
@@ -104,18 +105,18 @@ export default function Footer() {
         <div className={styles.bottomSection}>
           <ul className={styles.socialIcons}>
             <li>
-              <a href="">
-                <FaTwitter className="text-[#6E7491] w-6 h-6" />
+              <a href="" aria-label="Twitter">
+                <FaTwitter className={styles.socialIcon} />
               </a>
             </li>
             <li>
-              <a href="">
-                <FaInstagram className="text-[#6E7491] w-6 h-6" />
+              <a href="" aria-label="Instagram">
+                <FaInstagram className={styles.socialIcon} />
               </a>
             </li>
             <li>
-              <a href="">
-                <FaFacebookSquare className="text-[#6E7491] w-6 h-6" />
+              <a href="" aria-label="Facebook">
+                <FaFacebookSquare className={styles.socialIcon} />
               </a>
             </li>
           </ul>

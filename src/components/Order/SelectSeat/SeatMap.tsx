@@ -28,6 +28,7 @@ export default function SeatMap({
     <div className={styles.container}>
       {/* Business Class */}
       <div className={styles.sectionBox}>
+        <h3 className={styles.sectionTitle}>Business Class</h3>
         {allRows
           .filter((r) => r <= 5)
           .map((row) => (
@@ -45,18 +46,25 @@ export default function SeatMap({
           ))}
       </div>
 
-      <div style={{ height: '8px' }} />
+      <div className={styles.sectionSpacer} />
 
       {/* Economy Class */}
       <div className={styles.sectionBox}>
+        <h3 className={styles.sectionTitle}>Economy Class</h3>
         {allRows
           .filter((r) => r > 5)
           .map((row) => (
             <div key={`${section}-economy-${row}`} className={styles.economyRowWrapper}>
               {EXIT_ROWS.includes(row) && (
                 <span className={styles.exitText}>
-                  {' '}
-                  <Image src={info} alt="pic" className={styles.info} /> Exit row
+                  <Image
+                    src={info}
+                    alt="Exit row information"
+                    className={styles.info}
+                    width={18}
+                    height={18}
+                  />
+                  Exit row
                 </span>
               )}
               <SeatRow
@@ -105,7 +113,7 @@ function SeatRow({
                 type === 'economy' && styles.economy,
                 isSelected && styles.selected,
               )}
-              aria-label={`Seat ${row}${col}`}
+              aria-label={`Select seat ${row}${col} in ${type} class`}
             />
           );
         })}
@@ -128,7 +136,7 @@ function SeatRow({
                 type === 'economy' && styles.economy,
                 isSelected && styles.selected,
               )}
-              aria-label={`Seat ${row}${col}`}
+              aria-label={`Select seat ${row}${col} in ${type} class`}
             />
           );
         })}

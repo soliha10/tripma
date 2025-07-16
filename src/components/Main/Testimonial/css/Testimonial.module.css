@@ -1,16 +1,24 @@
-/* components/Testimonial/Testimonial.module.css */
 
 .section {
   padding-top: 64px;
   padding-bottom: 104px;
 }
 
+.container {
+  max-width: 1342px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .title {
   text-align: center;
   color: #6e7491;
-  font-size: 1.5rem; /* Tailwind text-2xl */
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .highlight {
@@ -23,4 +31,52 @@
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .testimonialList {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .testimonialList {
+    gap: 12px;
+  }
 }

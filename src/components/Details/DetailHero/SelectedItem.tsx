@@ -1,3 +1,4 @@
+'use client';
 import Image, { StaticImageData } from 'next/image';
 import styles from './css/SelectedItem.module.css';
 
@@ -20,7 +21,7 @@ export default function SelectedItem({
 }: FlightType) {
   return (
     <div key={id} className={styles.container}>
-      <Image src={pic} alt="pic" width={40} height={40} />
+      <Image src={pic} alt={airlineType} width={40} height={40} className={styles.airlineLogo} />
       <div className={styles.info}>
         <span>{airlineType}</span>
         <span className={styles.flightCode}>FIG4312</span>

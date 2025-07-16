@@ -55,172 +55,198 @@ export default function SelectSeats() {
   };
 
   return (
-    <section>
-      <div className={styles.selectSeats}>
-        <div className={styles.container}>
-          <div className={styles.leftSide}>
-            <div className={styles.logoRow}>
-              <Button className="w-8 h-8">
-                <Image src={menu} alt="btn" />
-              </Button>
-              <a href="">
-                <Image src={logo} alt="logo" />
-              </a>
-            </div>
-
-            <div className="w-full overflow-hidden relative">
-              <Image src={bgPlane} alt="plane" className={styles.bgPlane} />
-              <SeatMap
-                selectedSeat={selectTab === 'depart' ? selectedSeatDepart : selectedSeatReturn}
-                setSelectedSeat={
-                  selectTab === 'depart' ? setSelectedSeatDepart : setSelectedSeatReturn
-                }
-                section={selectTab}
-                onBusinessSelect={() => setIsOpenModal(true)}
-              />
-            </div>
+    <section className={styles.selectSeats}>
+      <div className={styles.container}>
+        <div className={styles.leftSide}>
+          <div className={styles.logoRow}>
+            <Button className={styles.menuButton} aria-label="Open menu">
+              <Image src={menu} alt="Menu" width={24} height={24} />
+            </Button>
+            <a href="/" className={styles.logoLink}>
+              <Image src={logo} alt="Logo" width={100} height={40} />
+            </a>
           </div>
 
-          <div className={styles.rightSide}>
-            <div className={styles.flightHeader}>
-              <div className={styles.flightInfo}>
-                <strong className="text-2xl font-extrabold">SFO</strong>
-                <span className="text-xs text-[#E9E8FC]">California, US</span>
-              </div>
+          <div className={styles.planeWrapper}>
+            <Image src={bgPlane} alt="Airplane interior" className={styles.bgPlane} />
+            <SeatMap
+              selectedSeat={selectTab === 'depart' ? selectedSeatDepart : selectedSeatReturn}
+              setSelectedSeat={
+                selectTab === 'depart' ? setSelectedSeatDepart : setSelectedSeatReturn
+              }
+              section={selectTab}
+              onBusinessSelect={() => setIsOpenModal(true)}
+            />
+          </div>
+        </div>
 
-              <Image src={arrow} alt="arrow" />
-
-              <div className={styles.flightInfo}>
-                <strong className="text-2xl font-extrabold">NRT</strong>
-                <span className="text-xs text-[#E9E8FC]">Tokyo, Japan</span>
-              </div>
-
-              <div
-                onClick={toggleDepart}
-                className={`${styles.flightTab} ${selectTab === 'depart' ? styles.activeTab : ''}`}
-              >
-                <time>Feb 25 | 7:00AM</time>
-                <span className="text-xs">Departing</span>
-                {selectTab === 'depart' && (
-                  <Image src={chevron} alt="chevron" className={styles.chevron} />
-                )}
-              </div>
-
-              <div
-                onClick={toggleReturn}
-                className={`${styles.flightTab} ${selectTab === 'return' ? styles.activeTab : ''}`}
-              >
-                <time>Mar 21 | 12:15PM</time>
-                <span className="text-xs">Arriving</span>
-                {selectTab === 'return' && (
-                  <Image src={chevron} alt="chevron" className={styles.chevron} />
-                )}
-              </div>
+        <div className={styles.rightSide}>
+          <div className={styles.flightHeader}>
+            <div className={styles.flightInfo}>
+              <strong className={styles.flightCode}>SFO</strong>
+              <span className={styles.flightLocation}>California, US</span>
             </div>
-
-            <div className={styles.cardContainer}>
-              <div className={styles.card}>
-                <Image src={economy} alt="economy" className="mb-4" />
-                <div className={styles.cardBody}>
-                  <div className={styles.cardTitle}>
-                    <h3>Economy</h3>
-                    <span className={styles.selectedTag}>Selected</span>
-                  </div>
-                  <p className={styles.description}>
-                    Rest and recharge during your flight with extended leg room, personalized
-                    service, and a multi-course meal service
-                  </p>
-                  <span className={`${styles.line} ${styles.economy}`}></span>
-
-                  <ul className={styles.features}>
-                    {economyItem.map((item, index) => (
-                      <li key={index} className={styles.featureItem}>
-                        <Image src={point} alt="point" />
-                        <p>{item}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.card}>
-                <Image src={busines} alt="business" className="mb-4" />
-                <div className={styles.cardBody}>
-                  <h3 className="text-[#6E7491] text-[18px] font-semibold mb-4">Business class</h3>
-                  <p className={styles.description}>
-                    Rest and recharge during your flight with extended leg room, personalized
-                    service, and a multi-course meal service
-                  </p>
-                  <span className={`${styles.line} ${styles.business}`}></span>
-
-                  <ul className={styles.features}>
-                    {businessItem.map((item, index) => (
-                      <li key={index} className={styles.featureItem}>
-                        <Image src={check} alt="check" />
-                        <p>{item}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            <Image src={arrow} alt="To" width={24} height={24} />
+            <div className={styles.flightInfo}>
+              <strong className={styles.flightCode}>NRT</strong>
+              <span className={styles.flightLocation}>Tokyo, Japan</span>
             </div>
-
-            <div className={styles.footer}>
-              <div className={styles.footerItem}>
-                <span>Passenger 1</span>
-                <strong>
-                  {passenger?.firstName} {passenger?.lastName}
-                </strong>
-              </div>
-
-              <div className={styles.footerItem}>
-                <span>Seat number</span>
-                <strong>
-                  {selectTab === 'depart'
-                    ? selectedSeatDepart
-                      ? `${selectedSeatDepart.row}${selectedSeatDepart.col}`
-                      : '--'
-                    : selectedSeatReturn
-                      ? `${selectedSeatReturn.row}${selectedSeatReturn.col}`
-                      : '--'}
-                </strong>
-              </div>
-
-              <Button className={styles.goBack}>Go Back</Button>
-
-              <Button
-                className={`${styles.nextFlight} ${
-                  (selectTab === 'depart' && selectedSeatDepart) ||
-                  (selectTab === 'return' && selectedSeatReturn)
-                    ? styles.nextActive
-                    : styles.nextDisabled
-                } ${selectedSeatDepart && selectedSeatReturn ? 'hidden' : ''}`}
-                disabled={
-                  !(
-                    (selectTab === 'depart' && selectedSeatDepart) ||
-                    (selectTab === 'return' && selectedSeatReturn)
-                  )
-                }
-                onClick={handleBtn}
-              >
-                Next flight
-              </Button>
-
-              {selectedSeatDepart && selectedSeatReturn && (
-                <Button
-                  onClick={handleNavigate}
-                  variant={'cancel'}
-                  size={'cancel'}
-                  className="w-[163px]"
-                >
-                  Payment Method
-                </Button>
+            <div
+              onClick={toggleDepart}
+              className={`${styles.flightTab} ${selectTab === 'depart' ? styles.activeTab : ''}`}
+              role="button"
+              tabIndex={0}
+              aria-label="Select departing flight"
+            >
+              <time className={styles.flightTime}>Feb 25 | 7:00AM</time>
+              <span className={styles.flightType}>Departing</span>
+              {selectTab === 'depart' && (
+                <Image
+                  src={chevron}
+                  alt="Active tab indicator"
+                  className={styles.chevron}
+                  width={16}
+                  height={16}
+                />
+              )}
+            </div>
+            <div
+              onClick={toggleReturn}
+              className={`${styles.flightTab} ${selectTab === 'return' ? styles.activeTab : ''}`}
+              role="button"
+              tabIndex={0}
+              aria-label="Select returning flight"
+            >
+              <time className={styles.flightTime}>Mar 21 | 12:15PM</time>
+              <span className={styles.flightType}>Arriving</span>
+              {selectTab === 'return' && (
+                <Image
+                  src={chevron}
+                  alt="Active tab indicator"
+                  className={styles.chevron}
+                  width={16}
+                  height={16}
+                />
               )}
             </div>
           </div>
 
-          {isOpenModal && <SelectModal onClose={() => setIsOpenModal(false)} />}
+          <div className={styles.cardContainer}>
+            <div className={styles.card}>
+              <Image
+                src={economy}
+                alt="Economy class"
+                className={styles.cardImage}
+                width={335}
+                height={150}
+              />
+              <div className={styles.cardBody}>
+                <div className={styles.cardTitle}>
+                  <h3>Economy</h3>
+                  <span className={styles.selectedTag}>Selected</span>
+                </div>
+                <p className={styles.description}>
+                  Rest and recharge during your flight with standard leg room, complimentary snacks,
+                  and in-flight entertainment.
+                </p>
+                <span className={`${styles.line} ${styles.economy}`}></span>
+                <ul className={styles.features}>
+                  {economyItem.map((item, index) => (
+                    <li key={index} className={styles.featureItem}>
+                      <Image src={point} alt="Feature point" width={16} height={16} />
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.card}>
+              <Image
+                src={busines}
+                alt="Business class"
+                className={styles.cardImage}
+                width={335}
+                height={150}
+              />
+              <div className={styles.cardBody}>
+                <h3 className={styles.cardTitleText}>Business class</h3>
+                <p className={styles.description}>
+                  Rest and recharge during your flight with extended leg room, personalized service,
+                  and a multi-course meal service.
+                </p>
+                <span className={`${styles.line} ${styles.business}`}></span>
+                <ul className={styles.features}>
+                  {businessItem.map((item, index) => (
+                    <li key={index} className={styles.featureItem}>
+                      <Image src={check} alt="Feature check" width={16} height={16} />
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.footer}>
+            <div className={styles.footerItem}>
+              <span className={styles.footerLabel}>Passenger 1</span>
+              <strong className={styles.footerName}>
+                {passenger?.firstName} {passenger?.lastName}
+              </strong>
+            </div>
+            <div className={styles.footerItem}>
+              <span className={styles.footerLabel}>Seat number</span>
+              <strong className={styles.footerName}>
+                {selectTab === 'depart'
+                  ? selectedSeatDepart
+                    ? `${selectedSeatDepart.row}${selectedSeatDepart.col}`
+                    : '--'
+                  : selectedSeatReturn
+                    ? `${selectedSeatReturn.row}${selectedSeatReturn.col}`
+                    : '--'}
+              </strong>
+            </div>
+            <Button
+              className={styles.goBack}
+              onClick={() => router.back()}
+              aria-label="Go back to previous page"
+            >
+              Go Back
+            </Button>
+            <Button
+              className={`${styles.nextFlight} ${
+                (selectTab === 'depart' && selectedSeatDepart) ||
+                (selectTab === 'return' && selectedSeatReturn)
+                  ? styles.nextActive
+                  : styles.nextDisabled
+              } ${selectedSeatDepart && selectedSeatReturn ? styles.hidden : ''}`}
+              disabled={
+                !(
+                  (selectTab === 'depart' && selectedSeatDepart) ||
+                  (selectTab === 'return' && selectedSeatReturn)
+                )
+              }
+              onClick={handleBtn}
+              aria-label="Proceed to next flight"
+            >
+              Next flight
+            </Button>
+            {selectedSeatDepart && selectedSeatReturn && (
+              <Button
+                onClick={handleNavigate}
+                variant="cancel"
+                size="cancel"
+                className={styles.paymentButton}
+                aria-label="Proceed to payment method"
+              >
+                Payment Method
+              </Button>
+            )}
+          </div>
         </div>
+
+        {isOpenModal && <SelectModal onClose={() => setIsOpenModal(false)} />}
       </div>
     </section>
   );

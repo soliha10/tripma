@@ -50,6 +50,11 @@
   gap: 4px;
 }
 
+.paymentOption img {
+  width: 40px;
+  height: 24px;
+}
+
 .subSectionTitle {
   color: #6E7491;
   font-size: 18px;
@@ -306,4 +311,381 @@
   width: auto;
   overflow: hidden;
   padding: 0;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  .leftSide {
+    max-width: 340px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .sectionDescription {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .paymentOptions {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .paymentOption {
+    padding: 8px 16px;
+    gap: 3px;
+  }
+
+  .paymentOption img {
+    width: 32px;
+    height: 20px;
+  }
+
+  .subSectionTitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .checkboxWrapper {
+    margin-bottom: 16px;
+    gap: 6px;
+  }
+
+  .checkbox {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkboxLabel {
+    font-size: 14px;
+  }
+
+  .input,
+  .inputCard,
+  .ccvInput {
+    max-width: 340px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+
+  .input::placeholder,
+  .inputCard::placeholder,
+  .ccvInput::placeholder {
+    font-size: 16px;
+  }
+
+  .cardDetailsWrapper {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .expiryButton {
+    width: 180px;
+    height: 40px;
+    font-size: 16px;
+    padding-inline: 10px;
+    margin-bottom: 4px;
+  }
+
+  .expiryFormat {
+    font-size: 11px;
+  }
+
+  .ccvInput {
+    width: 140px;
+  }
+
+  .passwordWrapper {
+    width: 340px;
+    margin-bottom: 40px;
+  }
+
+  .passwordInput {
+    width: 280px;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .passwordInput::placeholder {
+    font-size: 16px;
+  }
+
+  .passwordToggle {
+    padding-right: 10px;
+  }
+
+  .eyeIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .passwordStrength {
+    font-size: 11px;
+    bottom: -18px;
+  }
+
+  .orDivider {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .dividerLine {
+    width: 160px;
+  }
+
+  .orText {
+    font-size: 16px;
+  }
+
+  .socialLoginList {
+    width: 340px;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .paymentOption img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .buttonWrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .backButton,
+  .confirmButton {
+    width: 100%;
+    max-width: 160px;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .rightSide {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 24px;
+  }
+
+  .flightCard {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .priceSummary {
+    padding: 12px;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .priceRow span:first-child {
+    margin-right: 24px;
+  }
+
+  .confirmButtonRight {
+    width: 100%;
+    max-width: 160px;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .contentWrapper {
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+
+  .leftSide {
+    max-width: 300px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .sectionDescription {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .paymentOptions {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .paymentOption {
+    padding: 6px 12px;
+  }
+
+  .paymentOption img {
+    width: 28px;
+    height: 18px;
+  }
+
+  .subSectionTitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .checkboxWrapper {
+    margin-bottom: 12px;
+    gap: 4px;
+  }
+
+  .checkbox {
+    width: 12px;
+    height: 12px;
+  }
+
+  .checkboxLabel {
+    font-size: 12px;
+  }
+
+  .input,
+  .inputCard,
+  .ccvInput {
+    max-width: 300px;
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .input::placeholder,
+  .inputCard::placeholder,
+  .ccvInput::placeholder {
+    font-size: 14px;
+  }
+
+  .cardDetailsWrapper {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .expiryButton {
+    width: 160px;
+    height: 36px;
+    font-size: 14px;
+    padding-inline: 8px;
+  }
+
+  .expiryFormat {
+    font-size: 10px;
+  }
+
+  .ccvInput {
+    width: 120px;
+  }
+
+  .passwordWrapper {
+    width: 300px;
+    margin-bottom: 32px;
+  }
+
+  .passwordInput {
+    width: 240px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .passwordInput::placeholder {
+    font-size: 14px;
+  }
+
+  .passwordToggle {
+    padding-right: 8px;
+  }
+
+  .eyeIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .passwordStrength {
+    font-size: 10px;
+    bottom: -16px;
+  }
+
+  .orDivider {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .dividerLine {
+    width: 140px;
+  }
+
+  .orText {
+    font-size: 14px;
+  }
+
+  .socialLoginList {
+    width: 300px;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .paymentOption img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .buttonWrapper {
+    gap: 12px;
+  }
+
+  .backButton,
+  .confirmButton {
+    max-width: 140px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .rightSide {
+    max-width: 300px;
+    margin-top: 16px;
+  }
+
+  .flightCard {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .priceSummary {
+    padding: 10px;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .priceRow span:first-child {
+    margin-right: 16px;
+  }
+
+  .confirmButtonRight {
+    max-width: 140px;
+    font-size: 14px;
+    padding: 8px;
+  }
 }

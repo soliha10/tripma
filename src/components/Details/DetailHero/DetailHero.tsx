@@ -44,7 +44,6 @@ export type Flight = {
 };
 
 export default function DetailHero() {
-  // const [{ id, pic, duration, airlineType, time, stopDuration }] = flights;
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
@@ -53,11 +52,6 @@ export default function DetailHero() {
   const [isCountOpen, setIsCountOpen] = useState(false);
   const [adultCount, setAdultCount] = useState(1);
   const [minorCount, setMinorCount] = useState(0);
-
-  // const [selectedDepartFlight, setSelectedDepartFlight] =
-  // 	useState<Flight | null>(null);
-  // const [selectedReturnFlight, setSelectedReturnFlight] =
-  // 	useState<Flight | null>(null);
 
   const [state, setState] = useState<'departing' | 'returning'>('departing');
   const toggle = () => {
@@ -79,9 +73,9 @@ export default function DetailHero() {
   } = useFlight();
 
   return (
-    <section>
-      <div className="max-w-[1342px] w-full mx-auto px-5  ">
-        <div className="pb-[80px]">
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.content}>
           <form action="" className={styles.form}>
             {/* go */}
             <Select>
@@ -132,13 +126,13 @@ export default function DetailHero() {
                   )}
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-[626px] pb-8 px-0 overflow-hidden" align="start">
+              <PopoverContent className={styles.popoverContent} align="start">
                 <form className={styles.radioForm}>
                   <label className={styles.roundOption}>
                     <input
                       name="tripType"
                       type="radio"
-                      value="radio"
+                      value="round"
                       checked={tripType === 'round'}
                       onChange={() => setTripType('round')}
                     />
@@ -165,7 +159,11 @@ export default function DetailHero() {
                       <span>Depart - Return</span>
                     )}
                   </div>
-                  <button type="button" className={styles.doneButton}>
+                  <button
+                    type="button"
+                    className={styles.doneButton}
+                    onClick={() => setOpen(false)}
+                  >
                     Done
                   </button>
                 </form>
@@ -175,7 +173,7 @@ export default function DetailHero() {
                   numberOfMonths={2}
                   selected={dateRange}
                   onSelect={setDateRange}
-                  className="rounded-lg w-[480px] shadow-0 px-0 pt-6 mx-auto"
+                  className={styles.calendar}
                 />
               </PopoverContent>
             </Popover>
@@ -197,11 +195,11 @@ export default function DetailHero() {
                         type="button"
                         onClick={() => setAdultCount((prev) => Math.max(1, prev - 1))}
                       >
-                        <Image src={decrement} alt="-" />
+                        <Image src={decrement} alt="Decrement" width={24} height={24} />
                       </button>
                       <span>{adultCount}</span>
                       <button type="button" onClick={() => setAdultCount((prev) => prev + 1)}>
-                        <Image src={increment} alt="+" />
+                        <Image src={increment} alt="Increment" width={24} height={24} />
                       </button>
                     </div>
                   </div>
@@ -212,11 +210,11 @@ export default function DetailHero() {
                         type="button"
                         onClick={() => setMinorCount((prev) => Math.max(0, prev - 1))}
                       >
-                        <Image src={decrement} alt="-" />
+                        <Image src={decrement} alt="Decrement" width={24} height={24} />
                       </button>
                       <span>{minorCount}</span>
                       <button type="button" onClick={() => setMinorCount((prev) => prev + 1)}>
-                        <Image src={increment} alt="+" />
+                        <Image src={increment} alt="Increment" width={24} height={24} />
                       </button>
                     </div>
                   </div>
@@ -225,7 +223,9 @@ export default function DetailHero() {
             </div>
 
             {/* search */}
-            <button className={styles.searchButton}>Search</button>
+            <button type="submit" className={styles.searchButton}>
+              Search
+            </button>
           </form>
 
           <div className={styles.filterBar}>
@@ -262,7 +262,7 @@ export default function DetailHero() {
             ))}
           </div>
 
-          <div className="flex justify-between items-start">
+          <div className={styles.mainContent}>
             {/* LEFT SIDE */}
             <div className={styles.containerSelection}>
               {state === 'departing' && <DepartingFlight onSelect={setSelectedDepartFlight} />}
@@ -272,13 +272,18 @@ export default function DetailHero() {
                 Show all flights
               </Button>
 
-              <Image src={map} alt="map" />
+              <Image
+                src={map}
+                alt="Flight map"
+                width={872}
+                height={300}
+                className={styles.mapImage}
+              />
             </div>
 
             {/* RIGHT SIDE */}
-
             <div
-              className={`${styles.containerSelected} ${selectedDepartFlight ? 'block' : 'hidden'}`}
+              className={`${styles.containerSelected} ${selectedDepartFlight ? styles.block : styles.hidden}`}
             >
               {selectedDepartFlight && (
                 <div className={styles.box}>
@@ -332,7 +337,13 @@ export default function DetailHero() {
 
               <div className={styles.mb10}>
                 <strong className={styles.title}>Price history</strong>
-                <Image src={priceGraph} alt="graph" />
+                <Image
+                  src={priceGraph}
+                  alt="Price history graph"
+                  width={400}
+                  height={200}
+                  className={styles.priceGraph}
+                />
               </div>
 
               <div>

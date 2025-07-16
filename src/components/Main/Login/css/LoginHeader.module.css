@@ -1,4 +1,4 @@
-/* === GENERAL STYLES === */
+
 .headerBanner {
   background-color: #605dec;
 }
@@ -8,7 +8,7 @@
   max-width: 1342px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 4%;
 }
 
 .bannerContent {
@@ -16,14 +16,14 @@
   align-items: center;
   justify-content: center;
   padding: 16px 0;
-  gap: 12px;
+  gap: 3%;
   flex-wrap: wrap;
   text-align: center;
 }
 
 .bannerText {
   color: #f6f6fe;
-  font-size: 16px;
+  font-size: clamp(14px, 4vw, 16px);
   font-weight: 600;
   flex: 1;
   min-width: 280px;
@@ -31,15 +31,39 @@
 
 .closeIcon {
   cursor: pointer;
+  width: clamp(24px, 6vw, 32px);
+  height: clamp(24px, 6vw, 32px);
 }
 
 .headerMain {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 21px 0;
+  padding: clamp(16px, 5vw, 21px) 0;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 3%;
+}
+
+.logo {
+  width: clamp(100px, 30vw, 131px);
+  height: auto;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menuIcon {
+  width: clamp(24px, 6vw, 32px);
+  height: clamp(24px, 6vw, 32px);
+}
+
+.nav {
+  display: flex;
 }
 
 .navList {
@@ -48,14 +72,13 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  /* gap: 16px; */
   flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 36px);
 }
 
-/* === NAV LINKS === */
 .navLink {
   color: #7c8db0;
-  font-size: 14px;
+  font-size: clamp(12px, 3.5vw, 16px);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -67,7 +90,7 @@
 .signIn {
   cursor: pointer;
   color: #7c8db0;
-  font-size: 14px;
+  font-size: clamp(12px, 3.5vw, 14px);
   background: none;
   border: none;
   transition: color 0.2s ease;
@@ -81,63 +104,100 @@
   background-color: #605dec;
   border: none;
   border-radius: 4px;
-  width: 95px;
-  /* max-width: 95px; */
-  padding: 12px 0;
+  width: clamp(80px, 25vw, 95px);
+  padding: clamp(8px, 3vw, 12px) 0;
   color: #fafafa;
-  font-size: 14px;
+  font-size: clamp(12px, 3.5vw, 14px);
   display: inline-block;
   cursor: pointer;
 }
-
-/* === RESPONSIVE BREAKPOINTS === */
-
-/* Small screens ≥ 380px */
-@media (min-width: 380px) {
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
   .bannerText {
-    font-size: 16px;
+    font-size: 12px;
+  }
+
+  .closeIcon,
+  .menuIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo {
+    width: clamp(80px, 25vw, 100px);
   }
 
   .navLink,
   .signIn,
   .signUp {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
-/* Medium screens ≥ 640px */
-/* @media (min-width: 640px) {
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
   .bannerWrapper,
   .mainWrapper {
-    padding: 0 24px;
+    padding: 0 5%;
+  }
+
+  .bannerContent {
+    align-items: start;
+    gap: 8px;
+    padding: 5% 0;
+  }
+
+  .bannerText {
+    font-size: clamp(12px, 3.5vw, 14px);
+    min-width: unset;
+  }
+
+  .headerMain {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: clamp(80px, 20vw, 100px); /* Adjust based on header height */
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .navOpen {
+    display: block;
   }
 
   .navList {
-    gap: 24px;
-  }
-
-  .signUp {
-    width: 95px;
-  }
-} */
-
-/* Large screens ≥ 1024px */
-@media (min-width: 1024px) {
-  .bannerText {
-    font-size: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 5%;
   }
 
   .navLink,
   .signIn,
   .signUp {
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
+    width: 100%;
+    text-align: left;
+    padding: 8px 0;
   }
 
-  .navLink {
-    margin-inline-end: 36px;
-  }
-
-  .signIn {
-    margin-inline-end: 26px;
+  .signUp {
+    width: clamp(100px, 30vw, 120px);
+    padding: 10px 0;
+    text-align: center;
   }
 }
+

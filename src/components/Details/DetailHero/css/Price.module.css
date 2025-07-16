@@ -1,7 +1,7 @@
-/* Price.module.css */
+
 .tableWrapper {
   width: 396px;
-  margin-bottom: 2.5rem; /* mb-10 */
+  margin-bottom: 40px;
 }
 
 .caption {
@@ -9,10 +9,10 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
-.caption span {
+.captionHighlight {
   color: #7c8db0;
 }
 
@@ -34,18 +34,71 @@
   width: 100%;
 }
 
+.bodyRow {
+  border-bottom: 1px solid #e9e8fc;
+}
 
 .bodyCell {
   width: 65px;
   border-right: 1px solid #e9e8fc;
   text-align: center;
   font-size: 12px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
   color: #6e7491;
 }
 
 .bodyCellFirst {
   color: #52556f;
   font-weight: bold;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .tableWrapper {
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 24px;
+  }
+
+  .caption {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .headCell {
+    width: 56px;
+    font-size: 11px;
+  }
+
+  .bodyCell {
+    width: 56px;
+    font-size: 11px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .tableWrapper {
+    max-width: 300px;
+  }
+
+  .caption {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .headCell {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  .bodyCell {
+    width: 50px;
+    font-size: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 }

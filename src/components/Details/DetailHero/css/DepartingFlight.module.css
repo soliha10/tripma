@@ -1,8 +1,7 @@
-/* DepartingFlight.module.css */
 
 .table {
   width: 872px;
-  margin-bottom: 1.5rem; /* mb-6 */
+  margin-bottom: 24px;
 }
 
 .caption {
@@ -10,21 +9,25 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  color: #605dec;
 }
 
 .tableBody {
   border: 1px solid #e9e8fc;
-  border-radius: 0.75rem; /* rounded-xl */
+  border-radius: 12px;
   height: 456px;
 }
 
 .tableRow {
   color: #27273f;
   display: flex;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
   cursor: pointer;
 }
 
@@ -33,29 +36,34 @@
 }
 
 .firstRow {
-  padding-top: 1.75rem;
+  padding-top: 28px;
 }
 
 .otherRows {
-  padding-top: 1rem;
+  padding-top: 16px;
 }
 
 .cell {
   font-weight: 500;
-  margin-right: 1.5rem;
+  margin-right: 24px;
+}
+
+.cell img {
+  width: 40px;
+  height: 40px;
 }
 
 .durationCell {
   width: 156.5px;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-right: 2.125rem;
+  gap: 4px;
+  margin-right: 34px;
 }
 
 .timeCell {
   width: 156.5px;
-  margin-right: 2.125rem;
+  margin-right: 34px;
 }
 
 .stopCell {
@@ -63,19 +71,120 @@
   text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-right: 2.125rem;
+  gap: 4px;
+  margin-right: 34px;
 }
 
 .priceCell {
   width: 156.5px;
   text-align: right;
-  margin-right: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 4px;
 }
 
 .secondaryText {
   color: #7c8db0;
+  font-size: 14px;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 16px;
+  }
+
+  .caption {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .tableBody {
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .tableRow {
+    flex-wrap: wrap;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 12px;
+  }
+
+  .firstRow {
+    padding-top: 16px;
+  }
+
+  .otherRows {
+    padding-top: 12px;
+  }
+
+  .cell {
+    margin-right: 16px;
+  }
+
+  .cell img {
+    width: 60px;
+    height: 18px;
+  }
+
+  .durationCell,
+  .timeCell,
+  .stopCell,
+  .priceCell {
+    width: 100%;
+    margin-right: 0;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .stopCell,
+  .priceCell {
+    text-align: left;
+  }
+
+  .secondaryText {
+    font-size: 12px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .table {
+    max-width: 300px;
+  }
+
+  .caption {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .tableRow {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+  }
+
+  .firstRow {
+    padding-top: 12px;
+  }
+
+  .otherRows {
+    padding-top: 10px;
+  }
+
+  .cell {
+    margin-right: 12px;
+  }
+
+  .cell img {
+    width: 50px;
+    height: 15px;
+  }
+
+  .secondaryText {
+    font-size: 12px;
+  }
 }

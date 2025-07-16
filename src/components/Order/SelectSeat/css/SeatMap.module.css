@@ -13,24 +13,42 @@
   background-color: white;
   padding: 8px;
   border-radius: 6px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.sectionTitle {
+  color: #6E7491;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.sectionSpacer {
+  height: 8px;
 }
 
 .economyRowWrapper {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  justify-content: center;
+  align-items: flex-start;
 }
-.info{
+
+.info {
   width: 18px;
   height: 18px;
+  margin-right: 4px;
 }
+
 .exitText {
   font-size: 10px;
   color: #7C8DB0;
   margin-bottom: 4px;
   margin-left: -4px;
   display: flex;
-  align-items: end;
+  align-items: center;
 }
 
 .seatRow {
@@ -58,6 +76,8 @@
   border-radius: 4px;
   margin-bottom: 4px;
   transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
 }
 
 .business {
@@ -74,4 +94,122 @@
 
 .selected {
   background-color: #E86A6A !important;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    position: static;
+    left: 100px;
+    top: 0px;
+    padding: 16px 4px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .sectionBox {
+    max-width: 340px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sectionTitle {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .sectionSpacer {
+    height: 6px;
+  }
+
+  .exitText {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+.economyRowWrapper{
+  margin-left: 35%;
+}
+  .info {
+    width: 16px;
+    height: 16px;
+  }
+
+  .seatRow {
+    gap: 3px;
+  }
+
+  .seatCol {
+    gap: 3px;
+  }
+
+  .rowLabel {
+    font-size: 11px;
+    width: 20px;
+  }
+
+  .business {
+    width: 18px;
+    height: 22px;
+  }
+
+  .economy {
+    width: 10px;
+    height: 18px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    max-width: 300px;
+    padding: 12px 2px;
+  }
+
+  .sectionBox {
+    max-width: 300px;
+    padding: 4px;
+  }
+
+  .sectionTitle {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .sectionSpacer {
+    height: 4px;
+  }
+
+  .exitText {
+    font-size: 8px;
+    margin-bottom: 2px;
+  }
+
+  .info {
+    width: 14px;
+    height: 14px;
+  }
+
+  .seatRow {
+    gap: 2px;
+  }
+
+  .seatCol {
+    gap: 2px;
+  }
+
+  .rowLabel {
+    font-size: 10px;
+    width: 18px;
+  }
+
+  .business {
+    width: 16px;
+    height: 20px;
+  }
+
+  .economy {
+    width: 8px;
+    height: 16px;
+  }
 }

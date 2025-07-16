@@ -66,23 +66,27 @@ export default function OrderForm({
         <div className={styles.flexGroup}>
           <Input
             onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
             placeholder="First name*"
             className={styles.input}
             required
+            aria-label="First name"
           />
-          <Input placeholder="Middle" className={styles.input} />
+          <Input placeholder="Middle" className={styles.input} aria-label="Middle name" />
           <Input
             onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
             placeholder="Last name*"
             className={styles.input}
             required
+            aria-label="Last name"
           />
-          <Input placeholder="Suffix" className={styles.input} />
+          <Input placeholder="Suffix" className={styles.input} aria-label="Suffix" />
 
           <div className={styles.dateWrap}>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
-                <Button id="date" className={styles.dateBtn}>
+                <Button id="date" className={styles.dateBtn} aria-label="Select date of birth">
                   {date ? date.toLocaleDateString() : 'Date of birth*'}
                 </Button>
               </PopoverTrigger>
@@ -96,6 +100,7 @@ export default function OrderForm({
                     if (selectedDate) setBirthDate(selectedDate.toLocaleDateString());
                     setOpen(false);
                   }}
+                  className={styles.calendar}
                 />
               </PopoverContent>
             </Popover>
@@ -107,22 +112,29 @@ export default function OrderForm({
           <Input
             type="email"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             placeholder="Email address*"
             className={styles.w300}
             required
+            aria-label="Email address"
           />
           <Input
+            type="tel"
             onChange={(e) => setPhoneNumber(e.target.value)}
+            value={phoneNumber}
             placeholder="Phone number*"
             className={styles.w300}
             required
+            aria-label="Phone number"
           />
-          <Input placeholder="Redress number" className={styles.w300} />
+          <Input placeholder="Redress number" className={styles.w300} aria-label="Redress number" />
           <Input
             onChange={(e) => setKnownTraveller(e.target.value)}
+            value={knownTraveller}
             placeholder="Known traveller number*"
             className={styles.w300}
             required
+            aria-label="Known traveller number"
           />
         </div>
       </form>
@@ -130,7 +142,13 @@ export default function OrderForm({
       <h2 className={styles.sectionTitle}>Emergency contact information</h2>
       <form>
         <Label className={styles.label}>
-          <Input className={styles.checkInput} type="checkbox" onClick={() => setIsChecked(true)} />
+          <Input
+            className={styles.checkInput}
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => setIsChecked((prev) => !prev)}
+            aria-label="Use same information as Passenger 1"
+          />
           <span>Same as Passenger 1</span>
         </Label>
 
@@ -139,21 +157,29 @@ export default function OrderForm({
             placeholder="First name*"
             className={styles.w300}
             value={isChecked ? firstName : ''}
+            disabled={isChecked}
+            aria-label="Emergency contact first name"
           />
           <Input
             placeholder="Last name*"
             className={styles.w300}
             value={isChecked ? lastName : ''}
+            disabled={isChecked}
+            aria-label="Emergency contact last name"
           />
           <Input
             placeholder="Email address*"
             className={styles.w300}
             value={isChecked ? email : ''}
+            disabled={isChecked}
+            aria-label="Emergency contact email address"
           />
           <Input
             placeholder="Phone number*"
             className={styles.w300}
             value={isChecked ? phoneNumber : ''}
+            disabled={isChecked}
+            aria-label="Emergency contact phone number"
           />
         </div>
       </form>
@@ -173,31 +199,40 @@ export default function OrderForm({
           </span>
         </div>
 
-        <div>
+        <div className={styles.bagCountContainer}>
           <span className={styles.passengerTitle}>Checked bags</span>
           <div className={styles.bagCountWrap}>
             <Button
               className={styles.btnCount}
               type="button"
-              onClick={() => setCount(count > 1 ? count - 1 : count)}
+              onClick={() => setCount(count > 0 ? count - 1 : count)}
+              aria-label="Decrease bag count"
             >
-              <Image src={decrement} alt="minus" />
+              <Image src={decrement} alt="Decrease" width={24} height={24} />
             </Button>
             <span className={styles.count}>{count}</span>
-            <Button className={styles.btnCount} type="button" onClick={() => setCount(count + 1)}>
-              <Image src={increment} alt="add" />
+            <Button
+              className={styles.btnCount}
+              type="button"
+              onClick={() => setCount(count + 1)}
+              aria-label="Increase bag count"
+            >
+              <Image src={increment} alt="Increase" width={24} height={24} />
             </Button>
           </div>
         </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <Button className={styles.btnPrimary}>Save and Close</Button>
+        <Button type="button" className={styles.btnPrimary} aria-label="Save and close">
+          Save and Close
+        </Button>
         <Button
           className={`${styles.btnSecondary} ${isValid ? styles.btnActive : styles.btnDisabled}`}
           disabled={!isValid}
           type="button"
           onClick={handleNavigate}
+          aria-label="Proceed to select seats"
         >
           Select seats
         </Button>

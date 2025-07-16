@@ -1,3 +1,4 @@
+'use client';
 import user1 from '@/app/assets/images/avatar.png';
 import user2 from '@/app/assets/images/avatar (1).png';
 import user3 from '@/app/assets/images/avatar (2).png';
@@ -41,13 +42,12 @@ export default function Testimonial() {
   ];
 
   return (
-    <section>
-      <div className="max-w-[1342px] w-full mx-auto px-5">
-        <div className={styles.section}>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div>
           <h2 className={styles.title}>
             What <span className={styles.highlight}>Tripma</span> users are saying
           </h2>
-
           <ul className={styles.testimonialList}>
             {feedbacks.map(({ id, userPic, userName, userLocation, time, rating, feedback }) => (
               <TestimonialCard

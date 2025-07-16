@@ -1,5 +1,3 @@
-/* SelectSeats.module.css */
-
 .selectSeats {
   max-width: 1440px;
   width: 100%;
@@ -20,6 +18,10 @@
   scrollbar-width: none;
 }
 
+.leftSide::-webkit-scrollbar {
+  display: none;
+}
+
 .logoRow {
   display: flex;
   align-items: center;
@@ -27,9 +29,28 @@
   gap: 12px;
 }
 
+.menuButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.logoLink img {
+  width: 100px;
+  height: 40px;
+}
+
+.planeWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .bgPlane {
   position: relative;
   left: -310px;
+  width: 100%;
+  height: auto;
 }
 
 .rightSide {
@@ -41,6 +62,10 @@
   scrollbar-width: none;
   position: fixed;
   right: 24px;
+}
+
+.rightSide::-webkit-scrollbar {
+  display: none;
 }
 
 .flightHeader {
@@ -57,12 +82,30 @@
   width: 129px;
 }
 
+.flightCode {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.flightLocation {
+  font-size: 12px;
+  color: #E9E8FC;
+}
+
 .flightTab {
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
   width: 210px;
   cursor: pointer;
+}
+
+.flightTime {
+  font-size: 16px;
+}
+
+.flightType {
+  font-size: 12px;
 }
 
 .activeTab {
@@ -74,13 +117,13 @@
   position: absolute;
   bottom: 0;
   left: 45%;
+  width: 16px;
+  height: 16px;
 }
 
 .cardContainer {
   display: flex;
-  padding-top: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 8px 16px;
   margin-bottom: 78px;
   gap: 4px;
 }
@@ -88,6 +131,12 @@
 .card {
   padding-top: 32px;
   width: 335px;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 .cardBody {
@@ -101,7 +150,7 @@
   margin-bottom: 16px;
 }
 
-.cardTitle h3 {
+.cardTitleText {
   color: #6E7491;
   font-size: 18px;
   font-weight: 600;
@@ -129,6 +178,7 @@
   height: 4px;
   opacity: 0.5;
   margin-bottom: 16px;
+  display: block;
 }
 
 .line.economy {
@@ -153,6 +203,11 @@
   font-size: 14px;
 }
 
+.featureItem img {
+  width: 16px;
+  height: 16px;
+}
+
 .footer {
   background-color: #FAFAFE;
   display: flex;
@@ -171,12 +226,12 @@
   padding: 8px;
 }
 
-.footerItem span {
+.footerLabel {
   color: #7C8DB0;
   font-size: 14px;
 }
 
-.footerItem strong {
+.footerName {
   color: #6E7491;
   font-weight: 600;
   font-size: 18px;
@@ -188,6 +243,7 @@
   width: 148px;
   border-radius: 8px;
   padding: 12px 0;
+  font-size: 16px;
 }
 
 .nextFlight {
@@ -204,8 +260,326 @@
 
 .nextDisabled {
   background-color: #cbd4e64c;
-  border-color: #7C8DB0;
+  border: 1px solid #7C8DB0;
   color: #7C8DB0;
   cursor: not-allowed;
-  opacity: 1;
+}
+
+.paymentButton {
+  width: 163px;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .selectSeats {
+    padding: 0 8px;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .leftSide {
+    width: 100%;
+    height: auto;
+  }
+
+  .logoRow {
+    padding: 16px 0;
+    gap: 8px;
+  }
+
+  .menuButton {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logoLink img {
+    width: 80px;
+    height: 32px;
+  }
+
+  .planeWrapper {
+    position: relative;
+  }
+
+  .bgPlane {
+    display: none;
+    left: 0;
+    width: 100%;
+    /* max-width: 340px; */
+  }
+
+  .rightSide {
+    width: 100%;
+    position: static;
+    border-left: none;
+    border-top: 1px solid #CBD4E6;
+  }
+
+  .flightHeader {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .flightInfo {
+    padding: 16px;
+    width: 100px;
+  }
+
+  .flightCode {
+    font-size: 20px;
+  }
+
+  .flightLocation {
+    font-size: 11px;
+  }
+
+  .flightTab {
+    padding: 16px;
+    width: 160px;
+  }
+
+  .flightTime {
+    font-size: 14px;
+  }
+
+  .flightType {
+    font-size: 11px;
+  }
+
+  .chevron {
+    width: 14px;
+    height: 14px;
+    left: 48%;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+    padding: 8px;
+    margin-bottom: 48px;
+    gap: 8px;
+  }
+
+  .card {
+    padding-top: 24px;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .cardImage {
+    margin-bottom: 12px;
+  }
+
+  .cardBody {
+    padding: 12px 24px 24px;
+  }
+
+  .cardTitle {
+    margin-bottom: 12px;
+  }
+
+  .cardTitleText {
+    font-size: 16px;
+  }
+
+  .selectedTag {
+    font-size: 12px;
+    width: 60px;
+    padding: 3px 0;
+  }
+
+  .description {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .line {
+    margin-bottom: 12px;
+  }
+
+  .features {
+    gap: 12px;
+  }
+
+  .featureItem {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .featureItem img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .footerItem {
+    width: 100%;
+    padding: 6px;
+  }
+
+  .footerLabel {
+    font-size: 13px;
+  }
+
+  .footerName {
+    font-size: 16px;
+  }
+
+  .goBack {
+    width: 100%;
+    max-width: 140px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .nextFlight,
+  .paymentButton {
+    width: 100%;
+    max-width: 140px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .selectSeats {
+    padding: 0 4px;
+  }
+
+  .logoRow {
+    padding: 12px 0;
+    gap: 6px;
+  }
+
+  .menuButton {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logoLink img {
+    width: 70px;
+    height: 28px;
+  }
+
+  .bgPlane {
+    max-width: 300px;
+  }
+
+  .flightInfo {
+    padding: 12px;
+    width: 90px;
+  }
+
+  .flightCode {
+    font-size: 18px;
+  }
+
+  .flightLocation {
+    font-size: 10px;
+  }
+
+  .flightTab {
+    padding: 12px;
+    width: 140px;
+  }
+
+  .flightTime {
+    font-size: 13px;
+  }
+
+  .flightType {
+    font-size: 10px;
+  }
+
+  .chevron {
+    width: 12px;
+    height: 12px;
+  }
+
+  .card {
+    max-width: 300px;
+  }
+
+  .cardImage {
+    margin-bottom: 10px;
+  }
+
+  .cardBody {
+    padding: 10px 16px 16px;
+  }
+
+  .cardTitleText {
+    font-size: 14px;
+  }
+
+  .selectedTag {
+    font-size: 11px;
+    width: 55px;
+    padding: 2px 0;
+  }
+
+  .description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .line {
+    margin-bottom: 10px;
+  }
+
+  .features {
+    gap: 10px;
+  }
+
+  .featureItem {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .featureItem img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .footer {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .footerItem {
+    padding: 4px;
+  }
+
+  .footerLabel {
+    font-size: 12px;
+  }
+
+  .footerName {
+    font-size: 14px;
+  }
+
+  .goBack,
+  .nextFlight,
+  .paymentButton {
+    max-width: 120px;
+    padding: 8px 0;
+    font-size: 13px;
+  }
 }

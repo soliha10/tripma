@@ -57,37 +57,3 @@
   border: none;
 }
 
-/* === Responsive: ≥ 380px === */
-@media (min-width: 380px) {
-  /* .cookieText {
-    font-size: 16px;
-  } */
-
-  /* .acceptBtn,
-  .settingsBtn {
-    font-size: 15px;
-  } */
-}
-
-/* === Responsive: ≥ 768px (tablet) === */
-/* @media (min-width: 768px) {
-  .cookieBox {
-    width: 360px;
-  }
-} */
-
-/* === Responsive: ≥ 1024px === */
-/* @media (min-width: 1024px) {
-  .cookieText {
-    font-size: 18px;
-  }
-
-  .acceptBtn,
-  .settingsBtn {
-    font-size: 16px;
-  }
-
-  .cookieBox {
-    width: 400px;
-  }
-} */

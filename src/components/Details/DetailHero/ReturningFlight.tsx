@@ -12,10 +12,10 @@ export function ReturningFlight({ onSelect }: FlightProps) {
   return (
     <Table className={styles.table}>
       <TableCaption className={styles.caption}>
-        Choose a <span>returning</span> flight
+        Choose a <span className={styles.highlight}>returning</span> flight
       </TableCaption>
 
-      <TableBody className={styles.body}>
+      <TableBody className={styles.tableBody}>
         {flights.map(
           ({ id, pic, duration, airlineType, time, stop, stopDuration, price, tripType }) => (
             <TableRow
@@ -33,23 +33,27 @@ export function ReturningFlight({ onSelect }: FlightProps) {
                   tripType,
                 })
               }
-              className={`${styles.row} ${id === 1 ? styles.rowFirst : styles.rowOther}`}
+              className={`${styles.tableRow} ${id === 1 ? styles.firstRow : styles.otherRows}`}
             >
-              <TableCell className={styles.cellLogo}>
-                <Image src={pic} alt="pic" />
+              <TableCell className={styles.cell}>
+                <Image src={pic} alt={airlineType} width={80} height={24} />
               </TableCell>
-              <TableCell className={styles.cellDuration}>
-                <span className={styles.duration}>{duration}</span>
-                <span className={styles.airlineType}>{airlineType}</span>
+
+              <TableCell className={styles.durationCell}>
+                <span>{duration}</span>
+                <span className={styles.secondaryText}>{airlineType}</span>
               </TableCell>
-              <TableCell className={styles.cellTime}>{time}</TableCell>
-              <TableCell className={styles.cellStop}>
+
+              <TableCell className={styles.timeCell}>{time}</TableCell>
+
+              <TableCell className={styles.stopCell}>
                 <span>{stop}</span>
-                <span className={styles.airlineType}>{stopDuration}</span>
+                <span className={styles.secondaryText}>{stopDuration}</span>
               </TableCell>
-              <TableCell className={styles.cellPrice}>
+
+              <TableCell className={styles.priceCell}>
                 <span>{price}</span>
-                <span className={styles.tripType}>{tripType}</span>
+                <span className={styles.secondaryText}>{tripType}</span>
               </TableCell>
             </TableRow>
           ),

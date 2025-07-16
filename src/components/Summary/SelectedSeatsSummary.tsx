@@ -26,14 +26,20 @@ export default function SelectedSeatsSummary({
 }: FlightType) {
   return (
     <div className={styles.container}>
-      <Image src={pic} alt="pic" className={styles.image} />
+      <Image
+        src={pic}
+        alt={`${airlineType} flight`}
+        className={styles.image}
+        width={48}
+        height={48}
+      />
       <span className={styles.durationWrapper}>
         <span className={styles.duration}>{duration}</span>
         <span className={styles.airlineType}>{airlineType}</span>
       </span>
       <span className={styles.time}>{time}</span>
       <span className={styles.stopWrapper}>
-        <span>{stop}</span>
+        <span>{stop || 'Nonstop'}</span>
         <span className={styles.stopDuration}>{stopDuration}</span>
       </span>
       <span className={styles.priceWrapper}>

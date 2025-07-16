@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { Adventerus } from './Adventure';
 import styles from './css/AdventureCard.module.css';
@@ -13,7 +14,7 @@ export default function AdventureCard({
 }: Adventerus) {
   return (
     <li key={id} className={`${styles.card} ${classname || ''}`}>
-      <Image src={image} alt="" className={styles.imageTop} />
+      <Image src={image} alt={name} className={styles.imageTop} />
       <div className={styles.content}>
         <div className={styles.titleRow}>
           <strong className={styles.place}>

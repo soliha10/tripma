@@ -1,11 +1,15 @@
-/* components/Testimonial/TestimonialCard.module.css */
 
 .card {
   display: flex;
   align-items: flex-start;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 16px;
+  gap: 16px;
   max-width: 410px;
+}
+
+.userPic {
+  width: 48px;
+  height: 48px;
 }
 
 .content {
@@ -24,7 +28,11 @@
   color: #6e7491;
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
+}
+
+.rating {
+  margin-bottom: 12px;
 }
 
 .feedback {
@@ -34,4 +42,71 @@
 
 .link {
   color: #605dec;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .card {
+    max-width: 340px;
+    padding: 12px;
+    gap: 12px;
+    margin-inline: auto ;
+  }
+
+  .userPic {
+    width: 40px;
+    height: 40px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .name,
+  .location {
+    font-size: 16px;
+  }
+
+  .rating {
+    width: 100px;
+    height: 20px;
+    margin-bottom: 8px;
+  }
+
+  .feedback {
+    font-size: 16px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .card {
+    max-width: 300px;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .userPic {
+    width: 36px;
+    height: 36px;
+  }
+
+  .content {
+    max-width: 250px;
+  }
+
+  .name,
+  .location {
+    font-size: 14px;
+  }
+
+  .rating {
+    width: 90px;
+    height: 18px;
+  }
+
+  .feedback {
+    font-size: 14px;
+  }
 }

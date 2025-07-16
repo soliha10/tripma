@@ -77,8 +77,8 @@ export default function SummaryPage() {
 
       <main>
         <section>
-          <div className="max-w-[1342px]  w-full mx-auto px-5 ">
-            <div className="flex justify-between">
+          <div className="max-w-[1342px] w-full mx-auto px-5">
+            <div className={styles.summaryWrapper}>
               {/* left side */}
               <div className={styles.container}>
                 {isOpen && (
@@ -92,6 +92,8 @@ export default function SummaryPage() {
                       alt="close"
                       onClick={() => setIsOpen(false)}
                       className={styles.closeIcon}
+                      width={24}
+                      height={24}
                     />
                   </div>
                 )}
@@ -104,7 +106,7 @@ export default function SummaryPage() {
                   Thank you for booking your travel with Tripma! Below is a summary of your trip to
                   Narita airport in Tokyo, Japan. We’ve sent a copy of your booking confirmation to
                   your email address. You can also find this page again in{' '}
-                  <a href="" className={styles.link}>
+                  <a href="/my-trips" className={styles.link}>
                     My trips.
                   </a>
                 </p>
@@ -119,7 +121,7 @@ export default function SummaryPage() {
                 )}
                 <span className={styles.seatInfo}>Seat 9F (economy, window), 1 checked bag</span>
 
-                <p className={styles.flightDate}>arriving March 21st, 2021</p>
+                <p className={styles.flightDate}>Arriving March 21st, 2021</p>
                 {selectedReturnFlight && (
                   <div className={styles.flightCard}>
                     <SelectedSeatsSummary {...selectedReturnFlight} />
@@ -165,7 +167,13 @@ export default function SummaryPage() {
 
                 <h2 className={styles.sectionTitle}>Payment method</h2>
                 <div className={styles.paymentCard}>
-                  <Image src={visa} alt="visa" className={styles.visaImage} />
+                  <Image
+                    src={visa}
+                    alt="Visa"
+                    className={styles.visaImage}
+                    width={60}
+                    height={38}
+                  />
                   <strong className={styles.cardName}>Sophia Knowles</strong>
                   <div className={styles.cardDetails}>
                     <span className={styles.cardNumber}>
@@ -180,17 +188,39 @@ export default function SummaryPage() {
                   You can email your itinerary to anyone by entering their email address here.
                 </p>
                 <form action="" className={styles.form}>
-                  <Input placeholder="Email address" className={styles.input} />
-                  <Input placeholder="Email address" className={styles.input} />
-                  <Input placeholder="Email address" className={styles.input} />
+                  <Input
+                    placeholder="Email address"
+                    className={styles.input}
+                    aria-label="Email address"
+                  />
+                  <Input
+                    placeholder="Email address"
+                    className={styles.input}
+                    aria-label="Email address"
+                  />
+                  <Input
+                    placeholder="Email address"
+                    className={styles.input}
+                    aria-label="Email address"
+                  />
                   <div className={styles.buttonGroup}>
-                    <Button className={styles.emailButton}>Email itinerary</Button>
-                    <Button className={styles.addButton}>Add another</Button>
+                    <Button className={styles.emailButton} aria-label="Email itinerary">
+                      Email itinerary
+                    </Button>
+                    <Button className={styles.addButton} aria-label="Add another email">
+                      Add another
+                    </Button>
                   </div>
                 </form>
 
                 <h2 className={styles.sectionTitle}>Flight Route</h2>
-                <Image src={map} alt="Flight route map" className={styles.mapImage} />
+                <Image
+                  src={map}
+                  alt="Flight route map"
+                  className={styles.mapImage}
+                  width={756}
+                  height={400}
+                />
               </div>
 
               {/* right side */}
@@ -207,7 +237,7 @@ export default function SummaryPage() {
                     <SummaryCard key={id} pic={pic} name={name} price={price} text={text} />
                   ))}
                 </ul>
-                <Button variant="cancel" className={styles.shopButton}>
+                <Button variant="cancel" className={styles.shopButton} aria-label="Shop all hotels">
                   Shop all hotels
                 </Button>
 
@@ -215,7 +245,7 @@ export default function SummaryPage() {
                   Find unique <span className={styles.highlight}>experiences</span>
                 </h2>
                 <p className={styles.description}>
-                  Find events and authentic cultrual experiences available exclusively to Tripma
+                  Find events and authentic cultural experiences available exclusively to Tripma
                   users.
                 </p>
                 <ul className={styles.cardList}>
@@ -223,7 +253,11 @@ export default function SummaryPage() {
                     <SummaryCard key={id} pic={pic} name={name} price={price} text={text} />
                   ))}
                 </ul>
-                <Button variant="cancel" className={styles.experienceButton}>
+                <Button
+                  variant="cancel"
+                  className={styles.experienceButton}
+                  aria-label="View all experiences"
+                >
                   View all experiences
                 </Button>
               </div>

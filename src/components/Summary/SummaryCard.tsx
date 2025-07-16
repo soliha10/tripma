@@ -13,7 +13,7 @@ interface CardType {
 export default function SummaryCard({ pic, name, price, text }: CardType) {
   return (
     <li className={styles.container}>
-      <Image src={pic} alt={name} className={styles.image} />
+      <Image src={pic} alt={name} className={styles.image} width={400} height={150} />
       <div className={styles.content}>
         <div className={styles.header}>
           <strong>{name}</strong>

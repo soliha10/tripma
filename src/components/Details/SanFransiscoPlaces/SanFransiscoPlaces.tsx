@@ -1,3 +1,4 @@
+'use client';
 import seoul from '@/app/assets/images/seoul.png';
 import china from '@/app/assets/images/bund.png';
 import kenya from '@/app/assets/images/kenya-d.png';
@@ -35,9 +36,9 @@ export default function SanFransiscoPlaces() {
   ];
 
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.section}>
+        <div className={styles.sectionWrapper}>
           <div className={styles.header}>
             <h2 className={styles.title}>
               People in <span className={styles.highlight}>San Francisco </span>
@@ -45,8 +46,8 @@ export default function SanFransiscoPlaces() {
             </h2>
             <p className={styles.all}>
               All
-              <button className="cursor-pointer">
-                <Image src={arrow} alt="" />
+              <button type="button" className={styles.button}>
+                <Image src={arrow} alt="View all" width={24} height={24} />
               </button>
             </p>
           </div>
@@ -54,11 +55,13 @@ export default function SanFransiscoPlaces() {
             {japanItems.map(({ id, name, image, desc, price, city }) => (
               <SanFransiscoItem
                 key={id}
+                id={id}
                 image={image}
                 name={name}
                 price={price}
                 desc={desc}
                 city={city}
+                classname={styles.card}
               />
             ))}
           </ul>

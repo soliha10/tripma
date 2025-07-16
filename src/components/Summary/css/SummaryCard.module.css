@@ -5,6 +5,8 @@
 }
 
 .image {
+  width: 100%;
+  height: auto;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -24,4 +26,55 @@
 
 .text {
   color: #7C8DB0;
+  font-size: 14px;
+}
+
+/* Responsive styles for 768px and below */
+@media (max-width: 768px) {
+  .container {
+    width: 340px;
+  }
+
+  .image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .content {
+    padding: 12px 16px;
+  }
+
+  .header {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+}
+
+/* Minimum screen size (380px) */
+@media (max-width: 380px) {
+  .container {
+    width: 300px;
+  }
+
+  .image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .content {
+    padding: 10px 12px;
+  }
+
+  .header {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
 }

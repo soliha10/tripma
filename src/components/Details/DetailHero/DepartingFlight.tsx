@@ -87,7 +87,7 @@ export function DepartingFlight({ onSelect }: FlightProps) {
   return (
     <Table className={styles.table}>
       <TableCaption className={styles.caption}>
-        Choose a <span className="text-[#605DEC]">departing</span> flight
+        Choose a <span className={styles.highlight}>departing</span> flight
       </TableCaption>
 
       <TableBody className={styles.tableBody}>
@@ -111,7 +111,7 @@ export function DepartingFlight({ onSelect }: FlightProps) {
               className={`${styles.tableRow} ${id === 1 ? styles.firstRow : styles.otherRows}`}
             >
               <TableCell className={styles.cell}>
-                <Image src={pic} alt="pic" />
+                <Image src={pic} alt={airlineType} width={80} height={24} />
               </TableCell>
 
               <TableCell className={styles.durationCell}>
