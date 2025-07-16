@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 8px;
+  gap: 4px;
+  position: absolute;
+  left: 320px;
+  top: 260px;
+}
+
+.sectionBox {
+  background-color: white;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.economyRowWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.info{
+  width: 18px;
+  height: 18px;
+}
+.exitText {
+  font-size: 10px;
+  color: #7C8DB0;
+  margin-bottom: 4px;
+  margin-left: -4px;
+  display: flex;
+  align-items: end;
+}
+
+.seatRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.seatCol {
+  display: flex;
+  gap: 4px;
+}
+
+.rowLabel {
+  font-size: 12px;
+  color: #6E7491;
+  width: 24px;
+  text-align: center;
+}
+
+/* Seat styles */
+.seatBase {
+  border-radius: 4px;
+  margin-bottom: 4px;
+  transition: all 0.15s ease-in-out;
+}
+
+.business {
+  width: 20px;
+  height: 24px;
+  background-color: #5CD6C0;
+}
+
+.economy {
+  width: 12px;
+  height: 20px;
+  background-color: #605DEC;
+}
+
+.selected {
+  background-color: #E86A6A !important;
+}

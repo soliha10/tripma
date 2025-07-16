@@ -61,6 +61,7 @@
   font-size: 18px;
   color: #7C8DB0;
   text-align: left;
+  justify-content: start;
 }
 
 .smallText {

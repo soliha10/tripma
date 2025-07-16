@@ -1,29 +1,33 @@
 'use client';
 
+import styles from './css/SeatMap.module.css';
 import clsx from 'clsx';
-
+import info from '@/app/assets/images/information.svg';
+import Image from 'next/image';
 const EXIT_ROWS = [6, 14, 19, 29];
-
 const BUSINESS_COLS = ['A', 'B', 'C', 'D'];
 const ECONOMY_COLS = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+type Seat = { row: number; col: string };
+type Props = {
+  selectedSeat: Seat | null;
+  setSelectedSeat: (seat: Seat | null) => void;
+  section: 'depart' | 'return';
+  onBusinessSelect?: () => void;
+};
 
 export default function SeatMap({
   selectedSeat,
   setSelectedSeat,
   section,
   onBusinessSelect,
-}: {
-  selectedSeat: { row: number; col: string } | null;
-  setSelectedSeat: (seat: { row: number; col: string } | null) => void;
-  section: 'depart' | 'return';
-  onBusinessSelect?: () => void;
-}) {
+}: Props) {
   const allRows = Array.from({ length: 30 }, (_, i) => i + 1);
 
   return (
-    <div className="flex flex-col items-center py-6 px-2 gap-1 absolute left-[320px] top-[260px]">
+    <div className={styles.container}>
       {/* Business Class */}
-      <div className="bg-white p-2 rounded">
+      <div className={styles.sectionBox}>
         {allRows
           .filter((r) => r <= 5)
           .map((row) => (
@@ -35,22 +39,25 @@ export default function SeatMap({
               selectedSeat={selectedSeat}
               onSelect={(seat) => {
                 setSelectedSeat(seat);
-                onBusinessSelect?.(); // faqat business joy tanlansa ochiladi
+                onBusinessSelect?.();
               }}
             />
           ))}
       </div>
 
-      <div className="h-2" />
+      <div style={{ height: '8px' }} />
 
       {/* Economy Class */}
-      <div className="bg-white p-2 rounded">
+      <div className={styles.sectionBox}>
         {allRows
           .filter((r) => r > 5)
           .map((row) => (
-            <div key={`${section}-economy-${row}`} className="flex flex-col items-center">
+            <div key={`${section}-economy-${row}`} className={styles.economyRowWrapper}>
               {EXIT_ROWS.includes(row) && (
-                <span className="text-[10px] italic text-[#7C8DB0] mb-1">Exit row</span>
+                <span className={styles.exitText}>
+                  {' '}
+                  <Image src={info} alt="pic" className={styles.info} /> Exit row
+                </span>
               )}
               <SeatRow
                 row={row}
@@ -76,52 +83,51 @@ function SeatRow({
   row: number;
   cols: string[];
   type: 'business' | 'economy';
-  selectedSeat: { row: number; col: string } | null;
-  onSelect: (seat: { row: number; col: string }) => void;
+  selectedSeat: Seat | null;
+  onSelect: (seat: Seat) => void;
 }) {
   const left = cols.slice(0, cols.length / 2);
   const right = cols.slice(cols.length / 2);
 
-  const seatGap = type === 'business' ? 'gap-1' : 'gap-1'; // 4px
-  const seatSize = type === 'economy' ? 'w-3 h-5 mb-1 rounded' : 'w-5 h-6 rounded mb-1 ';
-
   return (
-    <div className={`relative flex items-center justify-center ${seatGap}`}>
+    <div className={styles.seatRow}>
       {/* Left seats */}
-      <div className={`flex ${seatGap}`}>
+      <div className={styles.seatCol}>
         {left.map((col) => {
           const isSelected = selectedSeat?.row === row && selectedSeat?.col === col;
           return (
             <button
               key={`${row}${col}`}
               onClick={() => onSelect({ row, col })}
-              className={clsx('transition-all duration-150', seatSize, {
-                'bg-[#5CD6C0]': type === 'business' && !isSelected,
-                'bg-[#605DEC]': type === 'economy' && !isSelected,
-                'bg-[#E86A6A]': isSelected,
-              })}
+              className={clsx(
+                styles.seatBase,
+                type === 'business' && styles.business,
+                type === 'economy' && styles.economy,
+                isSelected && styles.selected,
+              )}
               aria-label={`Seat ${row}${col}`}
             />
           );
         })}
       </div>
 
-      {/* Center row label */}
-      <span className="text-xs text-[#6E7491] w-6 text-center">{row}</span>
+      {/* Row label */}
+      <span className={styles.rowLabel}>{row}</span>
 
       {/* Right seats */}
-      <div className={`flex ${seatGap}`}>
+      <div className={styles.seatCol}>
         {right.map((col) => {
           const isSelected = selectedSeat?.row === row && selectedSeat?.col === col;
           return (
             <button
               key={`${row}${col}`}
               onClick={() => onSelect({ row, col })}
-              className={clsx('transition-all duration-150', seatSize, {
-                'bg-[#5CD6C0]': type === 'business' && !isSelected,
-                'bg-[#605DEC]': type === 'economy' && !isSelected,
-                'bg-[#E86A6A]': isSelected,
-              })}
+              className={clsx(
+                styles.seatBase,
+                type === 'business' && styles.business,
+                type === 'economy' && styles.economy,
+                isSelected && styles.selected,
+              )}
               aria-label={`Seat ${row}${col}`}
             />
           );

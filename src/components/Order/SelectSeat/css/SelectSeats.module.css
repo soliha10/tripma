@@ -1,0 +1,211 @@
+/* SelectSeats.module.css */
+
+.selectSeats {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.container {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.leftSide {
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: none;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  padding: 21px 0;
+  gap: 12px;
+}
+
+.bgPlane {
+  position: relative;
+  left: -310px;
+}
+
+.rightSide {
+  width: 712px;
+  border-left: 1px solid #CBD4E6;
+  overflow-y: auto;
+  height: 100%;
+  backdrop-filter: blur(16px);
+  scrollbar-width: none;
+  position: fixed;
+  right: 24px;
+}
+
+.flightHeader {
+  background-color: #27273F;
+  color: #FAFAFA;
+  display: flex;
+  align-items: center;
+}
+
+.flightInfo {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  width: 129px;
+}
+
+.flightTab {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  cursor: pointer;
+}
+
+.activeTab {
+  background-color: #605DEC;
+  position: relative;
+}
+
+.chevron {
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+}
+
+.cardContainer {
+  display: flex;
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 78px;
+  gap: 4px;
+}
+
+.card {
+  padding-top: 32px;
+  width: 335px;
+}
+
+.cardBody {
+  padding: 16px 32px 32px;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cardTitle h3 {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.selectedTag {
+  background: linear-gradient(180deg, #605DEC 0%, #2A26D9 100%);
+  color: white;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  width: 69px;
+  text-align: center;
+}
+
+.description {
+  color: #7C8DB0;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.line {
+  width: 32px;
+  height: 4px;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.line.economy {
+  background-color: #605DEC;
+}
+
+.line.business {
+  background-color: #5CD6C0;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6E7491;
+  font-size: 14px;
+}
+
+.footer {
+  background-color: #FAFAFE;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px;
+  border-top: 1px solid #CBD4E6;
+  border-right: 1px solid #CBD4E6;
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 176px;
+  padding: 8px;
+}
+
+.footerItem span {
+  color: #7C8DB0;
+  font-size: 14px;
+}
+
+.footerItem strong {
+  color: #6E7491;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.goBack {
+  color: #605DEC;
+  border: 1px solid #605DEC;
+  width: 148px;
+  border-radius: 8px;
+  padding: 12px 0;
+}
+
+.nextFlight {
+  width: 163px;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.nextActive {
+  background-color: #605DEC;
+  color: white;
+}
+
+.nextDisabled {
+  background-color: #cbd4e64c;
+  border-color: #7C8DB0;
+  color: #7C8DB0;
+  cursor: not-allowed;
+  opacity: 1;
+}

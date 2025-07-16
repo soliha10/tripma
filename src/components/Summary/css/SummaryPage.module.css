@@ -1,0 +1,243 @@
+
+.container {
+  width: 756px;
+}
+
+.successMessage {
+  width: 704px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 16px 24px 16px 16px;
+  border: 1px solid #007B65;
+  color: #007B65;
+  border-radius: 8px;
+  background-color: #EAFFFB;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.mainTitle {
+  color: #605DEC;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.confirmationNumber {
+  display: inline-block;
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: #7C8DB0;
+  font-size: 18px;
+  margin-bottom: 56px;
+}
+
+.link {
+  color: #605DEC;
+}
+
+.sectionTitle {
+  color: #6E7491;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.flightDate {
+  color: #6E7491;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.flightCard {
+  border: 1px solid #E9E8FC;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.seatInfo {
+  color: #7C8DB0;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.priceTable {
+  width: 400px;
+}
+
+.tableCaption {
+  color: #6E7491;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.tableBody {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  color: #6E7491;
+  font-size: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: none;
+}
+
+.tableFooter {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  margin-bottom: 56px;
+}
+
+.footerRow {
+  color: #36374A;
+  width: 100%;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: none;
+  padding: 12px 0;
+}
+
+.paymentCard {
+  border-radius: 16px;
+  margin-bottom: 56px;
+  width: 300px;
+  padding: 28px 24px 24px;
+  color: #F6F6FE;
+  font-weight: 600;
+  background-image: linear-gradient(180deg, #EB568C 0%, #ED5E76 100%);
+  box-shadow: -4px -4px 16px 0px rgba(0, 0, 0, 0.10) inset, 4px 4px 16px 0px rgba(255, 255, 255, 0.20) inset;
+}
+
+.visaImage {
+  margin-bottom: 57px;
+}
+
+.cardName {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.cardDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardNumber {
+  font-weight: 500;
+}
+
+.cardLastFour {
+  font-weight: 600;
+}
+
+.form {
+  width: 400px;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+}
+
+.input::placeholder {
+  color: #7C8DB0;
+  font-size: 18px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.emailButton {
+  width: 157px;
+  background-color: #605DEC;
+  font-size: 18px;
+  border-radius: 4px;
+  color: #FAFAFA;
+}
+
+.addButton {
+  width: 133px;
+  color: #605DEC;
+  font-size: 18px;
+}
+
+
+
+
+.containerRight {
+  width: 400px;
+}
+
+.sectionTitle {
+  color: #6E7491;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  color: #605DEC;
+}
+
+.description {
+  color: #7C8DB0;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.shopButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  margin-bottom: 64px;
+  cursor: pointer;
+}
+
+.experienceButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  width: 207px;
+  cursor: pointer;
+}
+
+
