@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
-import close from '@/app/assets/images/close-sign-up.svg';
+import close from '@/app/[locale]/assets/images/close-sign-up.svg';
 import Email from './Email';
-import google from '@/app/assets/images/color.svg';
-import apple from '@/app/assets/images/apple mac.svg';
-import facebook from '@/app/assets/images/facebook.svg';
+import google from '@/app/[locale]/assets/images/color.svg';
+import apple from '@/app/[locale]/assets/images/apple mac.svg';
+import facebook from '@/app/[locale]/assets/images/facebook.svg';
 import { useEffect } from 'react';
 import styles from './css/LoginModal.module.css';
 

@@ -1,9 +1,9 @@
 'use client';
-import user1 from '@/app/assets/images/avatar.png';
-import user2 from '@/app/assets/images/avatar (1).png';
-import user3 from '@/app/assets/images/avatar (2).png';
-import fullRating from '@/app/assets/images/star-full.svg';
-import rating from '@/app/assets/images/star row.svg';
+import user1 from '@/app/[locale]/assets/images/avatar.png';
+import user2 from '@/app/[locale]/assets/images/avatar (1).png';
+import user3 from '@/app/[locale]/assets/images/avatar (2).png';
+import fullRating from '@/app/[locale]/assets/images/star-full.svg';
+import rating from '@/app/[locale]/assets/images/star row.svg';
 import TestimonialCard from './TestimonialCard';
 import styles from './css/Testimonial.module.css';
 

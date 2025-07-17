@@ -2,15 +2,15 @@
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import menu from '@/app/assets/images/menu.svg';
-import logo from '@/app/assets/images/Wordmark.svg';
-import arrow from '@/app/assets/images/arrow-white.svg';
-import economy from '@/app/assets/images/Economy Seats.svg';
-import busines from '@/app/assets/images/Business Seats.svg';
-import check from '@/app/assets/images/check heavy.svg';
-import point from '@/app/assets/images/point heavy.svg';
-import chevron from '@/app/assets/images/chevron.svg';
-import bgPlane from '@/app/assets/images/bg-plane.svg';
+import menu from '@/app/[locale]/assets/images/menu.svg';
+import logo from '@/app/[locale]/assets/images/Wordmark.svg';
+import arrow from '@/app/[locale]/assets/images/arrow-white.svg';
+import economy from '@/app/[locale]/assets/images/Economy Seats.svg';
+import busines from '@/app/[locale]/assets/images/Business Seats.svg';
+import check from '@/app/[locale]/assets/images/check heavy.svg';
+import point from '@/app/[locale]/assets/images/point heavy.svg';
+import chevron from '@/app/[locale]/assets/images/chevron.svg';
+import bgPlane from '@/app/[locale]/assets/images/bg-plane.svg';
 import { useRouter } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import { useFlight } from '@/context/FlightContext';

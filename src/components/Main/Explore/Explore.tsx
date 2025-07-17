@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { Adventerus } from '../Adventure/Adventure';
-import maldiv from '@/app/assets/images/maldiv.png';
-import morocco from '@/app/assets/images/morocco.png';
-import mangolia from '@/app/assets/images/mongolia.png';
-import arrow from '@/app/assets/images/arrowRight.svg';
+import maldiv from '@/app/[locale]/assets/images/maldiv.png';
+import morocco from '@/app/[locale]/assets/images/morocco.png';
+import mangolia from '@/app/[locale]/assets/images/mongolia.png';
+import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import ExploreItem from './ExploreItem';
 import styles from './css/Explore.module.css';
 

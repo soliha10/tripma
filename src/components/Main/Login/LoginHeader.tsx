@@ -1,22 +1,38 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import close from '@/app/assets/images/x-close-no.svg';
-import logo from '@/app/assets/images/Wordmark.svg';
-import menuIcon from '@/app/assets/images/menu.svg'; // Assumed menu icon path
+import close from '@/app/[locale]/assets/images/x-close-no.svg';
+import logo from '@/app/[locale]/assets/images/Wordmark.svg';
+import menuIcon from '@/app/[locale]/assets/images/menu.svg'; // Assumed menu icon path
 import LoginModal from './LoginModal';
 import styles from './css/LoginHeader.module.css';
-import { Select, SelectContent, SelectItem } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import Link from 'next/link';
+// import { useTranslations } from 'next-intl';
 
 export default function LoginHeader() {
+  // const t = useTranslations('HomePage');
   const [isVisible, setIsVisible] = useState(true);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  // const router = useRouter();
+  // const pathName = usePathname();
+  // const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   const newLocale = e.target.value as string;
+  //   const path = pathName.split('/').slice(2).join('/');
+  //   router.push(`${newLocale}/${path}`);
+  // };
   return (
     <header>
       {isVisible && (
@@ -89,10 +105,21 @@ export default function LoginHeader() {
             </ul>
           </nav>
           <Select>
-            <SelectContent>
-              <SelectItem value="en">En</SelectItem>
-              <SelectItem value="uz">Uz</SelectItem>
-              <SelectItem value="ru">Ru</SelectItem>
+            <SelectTrigger className={styles.selectTriggerGo}>
+              <SelectValue placeholder="Lang" />
+            </SelectTrigger>
+            <SelectContent className={styles.selectContent}>
+              {/* {routing.locales.map((lang) => (
+                <SelectItem key={lang} value={lang} className={styles.selectItem}>
+                  <Link href={`/${lang}`}> {lang}</Link>
+                </SelectItem>
+              ))} */}
+              <SelectItem value="en" className={styles.selectItem}>
+                <Link href="/en">en</Link>
+              </SelectItem>
+              <SelectItem value="uz" className={styles.selectItem}>
+                <Link href="/uz">uz</Link>
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>

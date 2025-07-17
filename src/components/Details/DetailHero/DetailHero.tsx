@@ -1,5 +1,5 @@
 'use client';
-import arrow from '@/app/assets/images/chevron-down.svg';
+import arrow from '@/app/[locale]/assets/images/chevron-down.svg';
 
 import Image, { StaticImageData } from 'next/image';
 import {
@@ -15,17 +15,17 @@ import { Calendar } from '../../ui/calendar';
 import { MouseEvent, useState } from 'react';
 import { DateRange } from 'react-day-picker';
 
-import go from '@/app/assets/images/departure.svg';
-import arrive from '@/app/assets/images/arrival.svg';
-import calendar from '@/app/assets/images/calendar-with-dates.svg';
-import user from '@/app/assets/images/person-solid.svg';
-import increment from '@/app/assets/images/Increment.svg';
-import decrement from '@/app/assets/images/inc.svg';
-import map from '@/app/assets/images/Map.svg';
+import go from '@/app/[locale]/assets/images/departure.svg';
+import arrive from '@/app/[locale]/assets/images/arrival.svg';
+import calendar from '@/app/[locale]/assets/images/calendar-with-dates.svg';
+import user from '@/app/[locale]/assets/images/person-solid.svg';
+import increment from '@/app/[locale]/assets/images/Increment.svg';
+import decrement from '@/app/[locale]/assets/images/inc.svg';
+import map from '@/app/[locale]/assets/images/Map.svg';
 import { DepartingFlight } from './DepartingFlight';
 import { Button } from '@/components/ui/button';
 import Price from './Price';
-import priceGraph from '@/app/assets/images/Price History.svg';
+import priceGraph from '@/app/[locale]/assets/images/Price History.svg';
 import SelectedItem from './SelectedItem';
 import { ReturningFlight } from './ReturningFlight';
 import { useRouter } from 'next/navigation';

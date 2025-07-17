@@ -1,9 +1,9 @@
 'use client';
 import JapanItems from './JapanItem';
-import sasa from '@/app/assets/images/sasa.png';
-import flag from '@/app/assets/images/flag.png';
-import shinjuku from '@/app/assets/images/shinjuku.png';
-import arrow from '@/app/assets/images/arrowRight.svg';
+import sasa from '@/app/[locale]/assets/images/sasa.png';
+import flag from '@/app/[locale]/assets/images/flag.png';
+import shinjuku from '@/app/[locale]/assets/images/shinjuku.png';
+import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import Image from 'next/image';
 import styles from './css/JapanPlaces.module.css';
 

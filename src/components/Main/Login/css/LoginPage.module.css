@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  background-image: url('../../../../app/assets/images/hero-login-bg.jpg');
+  background-image: url('../../../../app/[locale]/assets/images/hero-login-bg.jpg');
 }
 
 .container {
@@ -70,11 +70,11 @@
 }
 
 .selectTriggerGo {
-  background-image: url('../../../../app/assets/images/departure.svg');
+  background-image: url('../../../../app/[locale]/assets/images/departure.svg');
 }
 
 .selectTriggerReturn {
-  background-image: url('../../../../app/assets/images/arrival.svg');
+  background-image: url('../../../../app/[locale]/assets/images/arrival.svg');
 }
 
 .selectContent {
@@ -112,7 +112,7 @@
   background-color: white;
   border-right: 1px solid #CBD4E6;
   cursor: pointer;
-  background-image: url('../../../../app/assets/images/calendar-with-dates.svg');
+  background-image: url('../../../../app/[locale]/assets/images/calendar-with-dates.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
@@ -129,7 +129,7 @@
   color: #7C8DB0;
   font-size: 18px;
   outline: none;
-  background-image: url('../../../../app/assets/images/person-solid.svg');
+  background-image: url('../../../../app/[locale]/assets/images/person-solid.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
@@ -223,7 +223,7 @@
   border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  background-image: url('../../../../app/assets/images/calendar-with-dates.svg');
+  background-image: url('../../../../app/[locale]/assets/images/calendar-with-dates.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;

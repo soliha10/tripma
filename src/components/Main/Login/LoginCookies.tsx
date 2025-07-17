@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import close from '@/app/assets/images/close-cookie.svg';
+import close from '@/app/[locale]/assets/images/close-cookie.svg';
 import styles from './css/LoginCookies.module.css';
 
 export default function LoginCookies() {

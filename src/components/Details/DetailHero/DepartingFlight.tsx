@@ -4,12 +4,11 @@ import Image from 'next/image';
 import { Flight } from './DetailHero';
 import styles from './css/DepartingFlight.module.css';
 
-import hawai from '@/app/assets/images/Hawaiian-Airlines.svg';
-import japan from '@/app/assets/images/image 27.svg';
-import delta from '@/app/assets/images/Delta Airlines.svg';
-import hawai2 from '@/app/assets/images/United Airlines.svg';
-import qatnas from '@/app/assets/images/image 28.svg';
-
+import hawai from '@/app/[locale]/assets/images/Hawaiian-Airlines.svg';
+import japan from '@/app/[locale]/assets/images/image 27.svg';
+import delta from '@/app/[locale]/assets/images/Delta Airlines.svg';
+import hawai2 from '@/app/[locale]/assets/images/United Airlines.svg';
+import qatnas from '@/app/[locale]/assets/images/image 28.svg';
 export const flights = [
   {
     id: 1,

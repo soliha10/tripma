@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
-import logo from '@/app/assets/images/Wordmark.svg';
-import appStore from '@/app/assets/images/app store.svg';
-import google from '@/app/assets/images/google play.svg';
+import logo from '@/app/[locale]/assets/images/Wordmark.svg';
+import appStore from '@/app/[locale]/assets/images/app store.svg';
+import google from '@/app/[locale]/assets/images/google play.svg';
 import { FaFacebookSquare, FaInstagram, FaTwitter } from 'react-icons/fa';
 import styles from './Footer.module.css';
 

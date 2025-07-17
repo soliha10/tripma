@@ -1,8 +1,8 @@
 'use client';
-import seoul from '@/app/assets/images/seoul.png';
-import china from '@/app/assets/images/bund.png';
-import kenya from '@/app/assets/images/kenya-d.png';
-import arrow from '@/app/assets/images/arrowRight.svg';
+import seoul from '@/app/[locale]/assets/images/seoul.png';
+import china from '@/app/[locale]/assets/images/bund.png';
+import kenya from '@/app/[locale]/assets/images/kenya-d.png';
+import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import SanFransiscoItem from './SanFransiscoItem';
 import Image from 'next/image';
 import styles from './css/SanFransiscoPlaces.module.css';

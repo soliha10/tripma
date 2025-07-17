@@ -10,8 +10,8 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useFlight } from '@/context/FlightContext';
 
-import increment from '@/app/assets/images/Increment.svg';
-import decrement from '@/app/assets/images/inc.svg';
+import increment from '@/app/[locale]/assets/images/Increment.svg';
+import decrement from '@/app/[locale]/assets/images/inc.svg';
 import styles from './css/OrderForm.module.css';
 
 type OrderFormProps = {

@@ -15,13 +15,8 @@ import { Button } from '@/components/ui/button';
 import { DateRange } from 'react-day-picker';
 import LoginCookies from './LoginCookies';
 
-// import go from '@/app/assets/images/departure.svg';
-// import arrive from '@/app/assets/images/arrival.svg';
-// import calendar from '@/app/assets/images/calendar-with-dates.svg';
-// import user from '@/app/assets/images/person-solid.svg';
-// import bg from '@/app/assets/images/hero-login-bg.jpg';
-import increment from '@/app/assets/images/Increment.svg';
-import decrement from '@/app/assets/images/inc.svg';
+import increment from '@/app/[locale]/assets/images/Increment.svg';
+import decrement from '@/app/[locale]/assets/images/inc.svg';
 
 import styles from './css/LoginPage.module.css';
 

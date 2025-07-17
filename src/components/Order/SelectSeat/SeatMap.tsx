@@ -2,7 +2,7 @@
 
 import styles from './css/SeatMap.module.css';
 import clsx from 'clsx';
-import info from '@/app/assets/images/information.svg';
+import info from '@/app/[locale]/assets/images/information.svg';
 import Image from 'next/image';
 const EXIT_ROWS = [6, 14, 19, 29];
 const BUSINESS_COLS = ['A', 'B', 'C', 'D'];

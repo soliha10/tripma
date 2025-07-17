@@ -8,7 +8,7 @@ import OrderForm from './OrderForm';
 import { useFlight } from '@/context/FlightContext';
 import SelectedItem from '@/components/Details/DetailHero/SelectedItem';
 import { Button } from '@/components/ui/button';
-import bags from '@/app/assets/images/bags.svg';
+import bags from '@/app/[locale]/assets/images/bags.svg';
 import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
