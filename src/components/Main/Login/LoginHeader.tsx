@@ -6,6 +6,7 @@ import logo from '@/app/assets/images/Wordmark.svg';
 import menuIcon from '@/app/assets/images/menu.svg'; // Assumed menu icon path
 import LoginModal from './LoginModal';
 import styles from './css/LoginHeader.module.css';
+import { Select, SelectContent, SelectItem } from '@/components/ui/select';
 
 export default function LoginHeader() {
   const [isVisible, setIsVisible] = useState(true);
@@ -87,6 +88,13 @@ export default function LoginHeader() {
               </li>
             </ul>
           </nav>
+          <Select>
+            <SelectContent>
+              <SelectItem value="en">En</SelectItem>
+              <SelectItem value="uz">Uz</SelectItem>
+              <SelectItem value="ru">Ru</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 

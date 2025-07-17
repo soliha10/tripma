@@ -253,6 +253,95 @@
   color: #7C8DB0;
 }
 
+/* Responsive styles for 1024px and below */
+@media (max-width: 1024px) {
+  .searchForm {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+  }
+
+  .selectTriggerGo,
+  .selectTriggerReturn {
+    width: 260px;
+    font-size: 16px;
+    padding-left: 48px;
+    background-size: 28px 28px;
+  }
+
+  .selectContent {
+    width: 260px;
+    height: 280px;
+    margin-left: 0;
+  }
+
+  .selectItem {
+    font-size: 14px;
+  }
+
+  .dateTrigger {
+    width: 220px;
+    font-size: 16px;
+    padding-left: 48px;
+    background-size: 28px 28px;
+  }
+
+  .passengerInput {
+    width: 180px;
+    font-size: 16px;
+    padding-left: 48px;
+    background-size: 28px 28px;
+  }
+
+  .passengerDropdown {
+    width: 200px;
+    bottom: -100px;
+    left: 0;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .counterText {
+    font-size: 16px;
+  }
+
+  .searchBtn {
+    width: 80px;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .popoverContent {
+    width: 500px;
+    padding-bottom: 24px;
+  }
+
+  .popoverForm {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+  }
+
+  .dateInput {
+    width: 220px;
+    font-size: 16px;
+    padding-left: 48px;
+    background-size: 28px 28px;
+  }
+
+  .doneButton {
+    width: 80px;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .calendar {
+    width: 400px;
+    padding-top: 20px;
+  }
+}
+
+
 /* Responsive styles for 768px and below */
 @media (max-width: 768px) {
   .heroSection {
@@ -437,3 +526,4 @@
     font-size: 14px;
   }
 }
+

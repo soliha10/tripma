@@ -36,67 +36,69 @@ export default function Footer() {
               <Image src={logo} alt="Tripma Logo" width={131} height={54} />
             </a>
 
-            <ul className={styles.column}>
-              <li>
-                <strong className={styles.header}>About</strong>
-              </li>
-              {about.map((item, index) => (
-                <li key={index}>
-                  <a href="" className={styles.link}>
-                    {item}
-                  </a>
+            <div className={styles.footItemsWrapper}>
+              <ul className={styles.column}>
+                <li>
+                  <strong className={styles.header}>About</strong>
                 </li>
-              ))}
-            </ul>
+                {about.map((item, index) => (
+                  <li key={index}>
+                    <a href="" className={styles.link}>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-            <ul className={styles.column}>
-              <li>
-                <strong className={styles.header}>Partner with us</strong>
-              </li>
-              {partner.map((item, index) => (
-                <li key={index}>
-                  <a href="" className={styles.link}>
-                    {item}
-                  </a>
+              <ul className={styles.column}>
+                <li>
+                  <strong className={styles.header}>Partner with us</strong>
                 </li>
-              ))}
-            </ul>
+                {partner.map((item, index) => (
+                  <li key={index}>
+                    <a href="" className={styles.link}>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-            <ul className={styles.column}>
-              <li>
-                <strong className={styles.header}>Support</strong>
-              </li>
-              {support.map((item, index) => (
-                <li key={index}>
-                  <a href="" className={styles.link}>
-                    {item}
-                  </a>
+              <ul className={styles.column}>
+                <li>
+                  <strong className={styles.header}>Support</strong>
                 </li>
-              ))}
-            </ul>
+                {support.map((item, index) => (
+                  <li key={index}>
+                    <a href="" className={styles.link}>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-            <ul className={styles.column}>
-              <li>
-                <strong className={styles.header}>Get the app</strong>
-              </li>
-              {app.map((item, index) => (
-                <li key={index}>
-                  <a href="" className={styles.link}>
-                    {item}
+              <ul className={styles.column}>
+                <li>
+                  <strong className={styles.header}>Get the app</strong>
+                </li>
+                {app.map((item, index) => (
+                  <li key={index}>
+                    <a href="" className={styles.link}>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+                <li className={styles.storeImage}>
+                  <a href="">
+                    <Image src={appStore} alt="App Store" width={135} height={40} />
                   </a>
                 </li>
-              ))}
-              <li className={styles.storeImage}>
-                <a href="">
-                  <Image src={appStore} alt="App Store" width={135} height={40} />
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <Image src={google} alt="Google Play" width={135} height={40} />
-                </a>
-              </li>
-            </ul>
+                <li>
+                  <a href="">
+                    <Image src={google} alt="Google Play" width={135} height={40} />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

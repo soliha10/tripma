@@ -134,7 +134,7 @@ export default function LoginPage() {
           {/* Passengers */}
           <div className={styles.passengerInput} onClick={toggle}>
             {adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
-            {minorCount > 0 ? `${minorCount} minor` : ''}
+            {minorCount > 0 ? `${minorCount} minor${minorCount > 1 ? 's' : ''}` : ''}
             {isCountOpen && (
               <div className={styles.passengerDropdown} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.passengerRow}>
@@ -144,11 +144,11 @@ export default function LoginPage() {
                       type="button"
                       onClick={() => setAdultCount((prev) => Math.max(1, prev - 1))}
                     >
-                      <Image src={decrement} alt="-" />
+                      <Image src={decrement} alt="Decrement adult count" width={24} height={24} />
                     </button>
                     <span className={styles.counterText}>{adultCount}</span>
                     <button type="button" onClick={() => setAdultCount((prev) => prev + 1)}>
-                      <Image src={increment} alt="+" />
+                      <Image src={increment} alt="Increment adult count" width={24} height={24} />
                     </button>
                   </div>
                 </div>
@@ -159,11 +159,11 @@ export default function LoginPage() {
                       type="button"
                       onClick={() => setMinorCount((prev) => Math.max(0, prev - 1))}
                     >
-                      <Image src={decrement} alt="-" />
+                      <Image src={decrement} alt="Decrement minor count" width={24} height={24} />
                     </button>
                     <span className={styles.counterText}>{minorCount}</span>
                     <button type="button" onClick={() => setMinorCount((prev) => prev + 1)}>
-                      <Image src={increment} alt="+" />
+                      <Image src={increment} alt="Increment minor count" width={24} height={24} />
                     </button>
                   </div>
                 </div>
