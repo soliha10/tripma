@@ -13,9 +13,9 @@ import {
 } from '@/components/ui/select'; // shadcn/ui Select
 
 const languages = [
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'uz', label: 'O‘zbekcha', flag: '🇺🇿' },
-  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+  { code: 'en', label: 'English', flag: 'EN' },
+  { code: 'uz', label: 'O‘zbekcha', flag: 'UZ' },
+  { code: 'ru', label: 'Русский', flag: 'RU' },
 ];
 
 export default function LanguageSwitcher() {

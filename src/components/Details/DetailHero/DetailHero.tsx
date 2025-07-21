@@ -30,6 +30,7 @@ import SelectedItem from './SelectedItem';
 import { ReturningFlight } from './ReturningFlight';
 import { useRouter } from 'next/navigation';
 import { useFlight } from '@/context/FlightContext';
+import { useTranslations } from 'next-intl';
 import styles from './css/DetailHero.module.css';
 export type Flight = {
   id: number;
@@ -72,6 +73,8 @@ export default function DetailHero() {
     setSelectedReturnFlight,
   } = useFlight();
 
+  const t = useTranslations('DetailPage');
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -83,7 +86,7 @@ export default function DetailHero() {
                 className={styles.selectTrigger}
                 style={{ backgroundImage: `url(${go.src})` }}
               >
-                <SelectValue placeholder="From where?" />
+                <SelectValue placeholder={t('selection.fromWhere')} />
               </SelectTrigger>
               <SelectContent className={styles.selectContent}>
                 {goOptions.map((item, index) => (
@@ -100,7 +103,7 @@ export default function DetailHero() {
                 className={styles.selectTrigger}
                 style={{ backgroundImage: `url(${arrive.src})` }}
               >
-                <SelectValue placeholder="Where to?" />
+                <SelectValue placeholder={t('selection.toWhere')} />
               </SelectTrigger>
               <SelectContent className={styles.selectContent}>
                 {arriveOptions.map((item, index) => (
@@ -122,7 +125,7 @@ export default function DetailHero() {
                   {dateRange?.from && dateRange?.to ? (
                     `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                   ) : (
-                    <span>Depart - Return</span>
+                    <span>{t('selection.departReturn')}</span>
                   )}
                 </div>
               </PopoverTrigger>
@@ -136,7 +139,7 @@ export default function DetailHero() {
                       checked={tripType === 'round'}
                       onChange={() => setTripType('round')}
                     />
-                    <span className={styles.radioLabelText}>Round trip</span>
+                    <span className={styles.radioLabelText}>{t('selection.roundTrip')}</span>
                   </label>
                   <label className={styles.oneWayOption}>
                     <input
@@ -146,7 +149,7 @@ export default function DetailHero() {
                       checked={tripType === 'one'}
                       onChange={() => setTripType('one')}
                     />
-                    <span className={styles.radioLabelText}>One way</span>
+                    <span className={styles.radioLabelText}>{t('selection.oneWay')}</span>
                   </label>
                   <div
                     onClick={() => setOpen(true)}
@@ -156,7 +159,7 @@ export default function DetailHero() {
                     {dateRange?.from && dateRange?.to ? (
                       `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                     ) : (
-                      <span>Depart - Return</span>
+                      <span>{t('selection.departReturn')}</span>
                     )}
                   </div>
                   <button
@@ -164,7 +167,7 @@ export default function DetailHero() {
                     className={styles.doneButton}
                     onClick={() => setOpen(false)}
                   >
-                    Done
+                    {t('selection.done')}
                   </button>
                 </form>
                 <Calendar
@@ -184,12 +187,13 @@ export default function DetailHero() {
               style={{ backgroundImage: `url(${user.src})` }}
               onClick={toggle}
             >
-              {adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
-              {minorCount > 0 ? `${minorCount} minor` : ''}
+              {adultCount} {t('selection.adults')}
+              {adultCount > 1 ? t('selection.plural') : ''}{' '}
+              {minorCount > 0 ? `${minorCount} ${t('selection.minors')}` : ''}
               {isCountOpen && (
                 <div className={styles.counterDropdown} onClick={(e) => e.stopPropagation()}>
                   <div className={styles.counterRow}>
-                    <span>Adults:</span>
+                    <span>{t('selection.adults')}</span>
                     <div className={styles.counterControls}>
                       <button
                         type="button"
@@ -204,7 +208,7 @@ export default function DetailHero() {
                     </div>
                   </div>
                   <div className={styles.counterRow}>
-                    <span>Minors:</span>
+                    <span>{t('selection.minors')}:</span>
                     <div className={styles.counterControls}>
                       <button
                         type="button"
@@ -224,23 +228,31 @@ export default function DetailHero() {
 
             {/* search */}
             <button type="submit" className={styles.searchButton}>
-              Search
+              {t('selection.searchFlights')}
             </button>
           </form>
 
           <div className={styles.filterBar}>
             {[
-              { placeholder: 'Max price', options: ['Max price', 'Min price'], width: '120px' },
-              { placeholder: 'Shops', options: ['Shops', 'Cafes'], width: '95px' },
-              { placeholder: 'Times', options: ['Morning', 'Afternoon'], width: '95px' },
-              { placeholder: 'Airlines', options: ['Airlines', 'Airline'], width: '105px' },
               {
-                placeholder: 'Seat class',
-                options: ['Seat class', 'Seat classes'],
-                width: '123px',
+                placeholder: t('filters.maxPrice'),
+                options: ['Max price', 'Min price'],
+                // width: '120px',
               },
-              { placeholder: 'More', options: ['More', 'School'], width: '87px' },
-            ].map(({ placeholder, options, width }, idx) => (
+              { placeholder: t('filters.shops'), options: ['Shops', 'Cafes'], width: '95px' },
+              { placeholder: t('filters.times'), options: ['Morning', 'Afternoon'], width: '95px' },
+              {
+                placeholder: t('filters.airlines'),
+                options: ['Airlines', 'Airline'],
+                // width: '105px',
+              },
+              {
+                placeholder: t('filters.seatClass'),
+                options: ['Seat class', 'Seat classes'],
+                // width: '123px',
+              },
+              { placeholder: t('filters.more'), options: ['More', 'School'] },
+            ].map(({ placeholder, options }, idx) => (
               <Select key={idx}>
                 <SelectTrigger
                   className={styles.selectMenuTrigger}
@@ -248,7 +260,7 @@ export default function DetailHero() {
                     backgroundImage: `url(${arrow.src})`,
                     backgroundPosition: 'right 12px center',
                     backgroundSize: '18px 18px',
-                    width,
+                    // width,
                   }}
                 >
                   <SelectValue placeholder={placeholder} />
@@ -273,7 +285,7 @@ export default function DetailHero() {
               {state === 'returning' && <ReturningFlight onSelect={setSelectedReturnFlight} />}
 
               <Button type="button" className={styles.button}>
-                Show all flights
+                {t('selection.showAllFlights')}
               </Button>
 
               <Image
@@ -321,7 +333,7 @@ export default function DetailHero() {
                   className={styles.button}
                   style={{ width: '180px' }}
                 >
-                  Save and Close
+                  {t('selection.saveAndClose')}
                 </Button>
               )}
               {selectedReturnFlight && state === 'returning' && (
@@ -330,7 +342,7 @@ export default function DetailHero() {
                   className={styles.button}
                   style={{ width: '222px' }}
                 >
-                  Passenger information
+                  {t('selection.passengerInfo')}
                 </Button>
               )}
             </div>
@@ -341,7 +353,7 @@ export default function DetailHero() {
               <Price />
 
               <div className={styles.mb10}>
-                <strong className={styles.title}>Price history</strong>
+                <strong className={styles.title}>{t('priceInfo.priceHistory')}</strong>
                 <Image
                   src={priceGraph}
                   alt="Price history graph"
@@ -352,17 +364,11 @@ export default function DetailHero() {
               </div>
 
               <div>
-                <strong className={styles.ratingTitle}>Price rating</strong>
-                <span className={styles.ratingTag}>Buy soon</span>
+                <strong className={styles.ratingTitle}>{t('priceInfo.priceRating')}</strong>
+                <span className={styles.ratingTag}>{t('priceInfo.buySoon')}</span>
 
-                <p className={styles.description}>
-                  We recommend booking soon. The average cost of this flight is $750, but could rise
-                  18% to $885 in two weeks.
-                </p>
-                <p className={styles.secondaryText}>
-                  Tripma analyzes thousands of flights, prices, and trends to ensure you get the
-                  best deal.
-                </p>
+                <p className={styles.description}>{t('priceInfo.priceDescription')}</p>
+                <p className={styles.secondaryText}>{t('priceInfo.analysisNote')}</p>
               </div>
             </div>
           </div>

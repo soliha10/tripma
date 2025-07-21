@@ -7,12 +7,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 12px;
   background: white;
   border: 1px solid #cbd4e6;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   transition: all 0.2s ease;
 }
 
@@ -22,7 +22,11 @@
 }
 
 .flag {
-  font-size: 16px;
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 4px;
+  color: #7c8db0;
+  font-family: 'Nunito Sans';
 }
 
 .languageName {
@@ -41,16 +45,12 @@
 }
 
 .languageDropdown {
-  /* position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0; */
   background: white;
   border: 1px solid #cbd4e6;
   border-radius: 6px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  margin-top: 4px;
+  z-index: 10;
+  width: 55px;
 }
 
 .languageOption {
@@ -58,16 +58,14 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 10px 12px;
-  background: none;
-  border: none;
+  padding: 10px 2px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s ease;
 }
 
 .languageOption:hover {
-  background-color: #f8f9ff;
+  background-color: #f8f9ffea;
 }
 
 .languageOption.active {
@@ -75,7 +73,7 @@
   color: white;
 }
 
-.languageOption.active .language-name {
+.languageOption.active .flag {
   color: white;
 }
 

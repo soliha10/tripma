@@ -1,8 +1,9 @@
 {
   "HomePage": {
     "LoginHeader": {
-      "title": "Welcome to Tripma",
-      "desc": "Your journey starts here",
+      "flights": "Flights",
+      "hotels": "Hotels",
+      "packages": "Packages",
       "signIn": "Sign in",
       "signUp": "Sign up",
       "bannerText": "Join Tripma today and save up to 20% on your flight using code TRAVEL at checkout. Promotion valid for new users only."
@@ -13,19 +14,37 @@
       "toWhere": "Where to?",
       "departReturn": "Depart - Return",
       "passengers": "1 adult",
-      "searchFlights": "Search flights",
+      "searchFlights": "Search",
       "roundTrip": "Round trip",
       "oneWay": "One way",
-      "adults": "Adults",
-      "minors": "Minors",
-      "done": "Done"
+      "adults": "adult",
+      "minors": "minor",
+      "done": "Done",
+      "plural": "s"
     },
     "CookieNotification": {
       "message": "By using our website, you agree to our Cookie Policy.",
-      "acceptCookies": "Accept cookies"
+      "acceptCookies": "Accept cookies",
+      "settingsBtn": "Go to settings"
     }
   },
   "DetailPage": {
+    "selection": {
+      "fromWhere": "From where?",
+      "toWhere": "Where to?",
+      "departReturn": "Depart - Return",
+      "passengers": "1 adult",
+      "searchFlights": "Search",
+      "roundTrip": "Round trip",
+      "oneWay": "One way",
+      "adults": "adult",
+      "minors": "minor",
+      "done": "Done",
+      "plural": "s",
+      "showAllFlights": "Show all flights",
+      "saveAndClose": "Save and Close",
+      "passengerInfo": "Passenger information"
+    },
     "filters": {
       "maxPrice": "Max price",
       "shops": "Shops",
@@ -36,9 +55,7 @@
     },
     "flightSelection": {
       "chooseDeparting": "Choose a departing flight",
-      "chooseReturning": "Choose a returning flight",
-      "saveAndClose": "Save and Close",
-      "passengerInfo": "Passenger information"
+      "chooseReturning": "Choose a returning flight"
     },
     "priceInfo": {
       "subtotal": "Subtotal",

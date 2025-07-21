@@ -1,8 +1,9 @@
 {
   "HomePage": {
     "LoginHeader": {
-      "title": "Tripma'ga xush kelibsiz",
-      "desc": "Sizning sayohatingiz shu yerdan boshlanadi",
+      "flights": "Reyslar",
+      "hotels": "Mehmonxonalar",
+      "packages": "Paketlar",
       "signIn": "Kirish",
       "signUp": "Ro'yxatdan o'tish",
       "bannerText": "Bugun Tripma'ga qo'shiling va TRAVEL kodi bilan parvozingizga 20% gacha tejang. Aksiya faqat yangi foydalanuvchilar uchun amal qiladi."
@@ -13,19 +14,38 @@
       "toWhere": "Qayerga?",
       "departReturn": "Ketish - Qaytish",
       "passengers": "1 kattalar",
-      "searchFlights": "Parvozlarni qidirish",
+      "searchFlights": "Qidirish",
       "roundTrip": "Ikki tomonlama",
       "oneWay": "Bir tomonlama",
       "adults": "Kattalar",
       "minors": "Bolalar",
-      "done": "Tayyor"
+      "done": "Tayyor",
+      "plural": ""
     },
     "CookieNotification": {
       "message": "Bizning veb-saytimizdan foydalanish orqali siz Cookie siyosatimizga rozilik bildirasiz.",
-      "acceptCookies": "Cookie'larni qabul qilish"
+      "acceptCookies": "Qabul qilish",
+      "settingsBtn": "Sozlamalar"
+
     }
   },
   "DetailPage": {
+    "selection": {
+      "fromWhere": "Qayerdan?",
+      "toWhere": "Qayerga?",
+      "departReturn": "Ketish - Qaytish",
+      "passengers": "1 kattalar",
+      "searchFlights": "Qidirish",
+      "roundTrip": "Ikki tomonlama",
+      "oneWay": "Bir tomonlama",
+      "adults": "kattalar",
+      "minors": "bolalar",
+      "done": "Tayyor",
+      "plural": "",
+      "showAllFlights": "Barcha parvozlar",
+      "saveAndClose": "Saqlash va yopish",
+      "passengerInfo": "Yo'lovchi ma'lumotlari"
+    },
     "filters": {
       "maxPrice": "Maksimal narx",
       "shops": "Do'konlar",

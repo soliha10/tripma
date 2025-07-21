@@ -6,10 +6,10 @@ import menuIcon from '@/app/[locale]/assets/images/menu.svg'; // Assumed menu ic
 import LoginModal from './LoginModal';
 import LanguageSwitcher from '@/components/Main/Login/LanguageSwitcher';
 import styles from './css/LoginHeader.module.css';
-// import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export default function LoginHeader() {
-  // const t = useTranslations('HomePage');
+  const t = useTranslations('HomePage.LoginHeader');
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
@@ -17,13 +17,7 @@ export default function LoginHeader() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  // const router = useRouter();
-  // const pathName = usePathname();
-  // const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
-  //   const newLocale = e.target.value as string;
-  //   const path = pathName.split('/').slice(2).join('/');
-  //   router.push(`${newLocale}/${path}`);
-  // };
+
   return (
     <header>
       <div className={styles.mainWrapper}>
@@ -38,17 +32,17 @@ export default function LoginHeader() {
             <ul className={styles.navList}>
               <li>
                 <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                  Flights
+                  {t('flights')}
                 </a>
               </li>
               <li>
                 <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                  Hotels
+                  {t('hotels')}
                 </a>
               </li>
               <li>
                 <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-                  Packages
+                  {t('packages')}
                 </a>
               </li>
               <li>
@@ -57,7 +51,7 @@ export default function LoginHeader() {
                   className={styles.signIn}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Sign in
+                  {t('signIn')}
                 </button>
               </li>
               <li>
@@ -69,7 +63,7 @@ export default function LoginHeader() {
                     setIsMenuOpen(false);
                   }}
                 >
-                  Sign up
+                  {t('signUp')}
                 </button>
               </li>
             </ul>

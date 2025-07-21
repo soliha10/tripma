@@ -104,8 +104,9 @@
   background-color: #605dec;
   border: none;
   border-radius: 4px;
-  width: clamp(80px, 25vw, 95px);
-  padding: clamp(8px, 3vw, 12px) 0;
+  width: clamp(80px, 25vw, fit-content);
+  padding-inline: clamp(12px, 3vw, 20px);
+  padding-block: clamp(12px, 3vw, 12px);
   color: #fafafa;
   font-size: clamp(12px, 3.5vw, 16px);
   display: inline-block;

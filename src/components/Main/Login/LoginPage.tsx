@@ -147,9 +147,16 @@ export default function LoginPage() {
           </Popover>
 
           {/* Passengers */}
-          <div ref={passengerRef} className={styles.passengerInput} onClick={toggle}>
-            {adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
-            {minorCount > 0 ? `${minorCount} minor${minorCount > 1 ? 's' : ''}` : ''}
+          <div
+            ref={passengerRef}
+            className={`${styles.passengerInput} ${minorCount > 0 ? 'w-fit' : 'w-[200px]'}`}
+            onClick={toggle}
+          >
+            {adultCount} {t('adults')}
+            {adultCount > 1 ? t('plural') : ''}{' '}
+            {minorCount > 0
+              ? `${minorCount} ${t('minors')}${minorCount > 1 ? t('plural') : ''}`
+              : ''}
             {isCountOpen && (
               <div className={styles.passengerDropdown} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.passengerRow}>

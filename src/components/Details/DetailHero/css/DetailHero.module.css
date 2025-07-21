@@ -231,10 +231,11 @@
 }
 
 .selectMenuTrigger {
+  width: fit-content;
   border: 1px solid #CBD4E6;
   text-align: left;
   border-radius: 4px;
-  padding: 8px 12px 8px 16px;
+  padding: 8px 34px 8px 16px;
   color: #27273F;
   font-size: 16px;
   background-repeat: no-repeat;

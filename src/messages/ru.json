@@ -1,8 +1,9 @@
 {
   "HomePage": {
     "LoginHeader": {
-      "title": "Добро пожаловать в Tripma",
-      "desc": "Ваше путешествие начинается здесь",
+      "flights": "Авиабилеты",
+      "hotels": "Отели",
+      "packages": "Пакеты",
       "signIn": "Войти",
       "signUp": "Регистрация",
       "bannerText": "Присоединяйтесь к Tripma сегодня и сэкономьте до 20% на авиабилетах, используя код TRAVEL при оформлении заказа. Акция действительна только для новых пользователей."
@@ -13,19 +14,38 @@
       "toWhere": "Куда?",
       "departReturn": "Туда - Обратно",
       "passengers": "1 взрослый",
-      "searchFlights": "Поиск рейсов",
+      "searchFlights": "Поиск",
       "roundTrip": "Туда и обратно",
       "oneWay": "В одну сторону",
       "adults": "Взрослые",
       "minors": "Дети",
-      "done": "Готово"
+      "done": "Готово",
+      "plural": ""
     },
     "CookieNotification": {
       "message": "Используя наш веб-сайт, вы соглашаетесь с нашей Политикой использования файлов cookie.",
-      "acceptCookies": "Принять файлы cookie"
+      "acceptCookies": "Принять файлы cookie",
+      "settingsBtn": "Настройки"
+
     }
   },
   "DetailPage": {
+    "selection": {
+      "fromWhere": "Откуда?",
+      "toWhere": "Куда?",
+      "departReturn": "Туда - Обратно",
+      "passengers": "1 взрослый",
+      "searchFlights": "Поиск",
+      "roundTrip": "Туда и обратно",
+      "oneWay": "В одну сторону",
+      "adults": "Взрослые",
+      "minors": "Дети",
+      "done": "Готово",
+      "plural": "",
+      "showAllFlights": "Показать все рейсы",
+      "saveAndClose": "Сохранить и закрыть",
+      "passengerInfo": "Информация о пассажире"
+    },
     "filters": {
       "maxPrice": "Макс. цена",
       "shops": "Магазины",

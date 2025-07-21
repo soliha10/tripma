@@ -3,10 +3,13 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import close from '@/app/[locale]/assets/images/close-cookie.svg';
 import styles from './css/LoginCookies.module.css';
+import { useTranslations } from 'next-intl';
 
 export default function LoginCookies() {
   const [isVisible, setIsVisible] = useState(true);
   const [showCookies, setShowCookies] = useState(false);
+
+  const t = useTranslations('HomePage.CookieNotification');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +42,7 @@ export default function LoginCookies() {
   return (
     <div className={styles.cookieBox}>
       <div className={styles.cookieTop}>
-        <span className={styles.cookieText}>By using our site, you agree to eat our cookies.</span>
+        <span className={styles.cookieText}>{t('message')}</span>
         <Image
           src={close}
           alt="Close"
@@ -50,9 +53,9 @@ export default function LoginCookies() {
 
       <div className={styles.cookieActions}>
         <button className={styles.acceptBtn} onClick={() => setIsVisible(false)}>
-          Accept cookies
+          {t('acceptCookies')}
         </button>
-        <button className={styles.settingsBtn}>Go to settings</button>
+        <button className={styles.settingsBtn}>{t('settingsBtn')}</button>
       </div>
     </div>
   );
