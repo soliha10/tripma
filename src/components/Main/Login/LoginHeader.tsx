@@ -4,15 +4,8 @@ import { useState } from 'react';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
 import menuIcon from '@/app/[locale]/assets/images/menu.svg'; // Assumed menu icon path
 import LoginModal from './LoginModal';
+import LanguageSwitcher from '@/components/Main/Login/LanguageSwitcher';
 import styles from './css/LoginHeader.module.css';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import Link from 'next/link';
 // import { useTranslations } from 'next-intl';
 
 export default function LoginHeader() {
@@ -80,24 +73,7 @@ export default function LoginHeader() {
                 </button>
               </li>
             </ul>
-            <Select>
-              <SelectTrigger className={styles.selectTrigger}>
-                <SelectValue placeholder="Lang" />
-              </SelectTrigger>
-              <SelectContent className={styles.selectContent}>
-                {/* {routing.locales.map((lang) => (
-                <SelectItem key={lang} value={lang} className={styles.selectItem}>
-                  <Link href={`/${lang}`}> {lang}</Link>
-                </SelectItem>
-              ))} */}
-                <SelectItem value="en" className={styles.selectItem}>
-                  <Link href="/en">en</Link>
-                </SelectItem>
-                <SelectItem value="uz" className={styles.selectItem}>
-                  <Link href="/uz">uz</Link>
-                </SelectItem>
-              </SelectContent>
-            </Select>
+            <LanguageSwitcher />
           </nav>
         </div>
       </div>

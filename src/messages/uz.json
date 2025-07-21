@@ -1,8 +1,63 @@
 {
   "HomePage": {
     "LoginHeader": {
-      "title": "salom",
-      "desc": "haa"
+      "title": "Tripma'ga xush kelibsiz",
+      "desc": "Sizning sayohatingiz shu yerdan boshlanadi",
+      "signIn": "Kirish",
+      "signUp": "Ro'yxatdan o'tish",
+      "bannerText": "Bugun Tripma'ga qo'shiling va TRAVEL kodi bilan parvozingizga 20% gacha tejang. Aksiya faqat yangi foydalanuvchilar uchun amal qiladi."
+    },
+    "SearchForm": {
+      "title": "Bu oddiy sayohatdan ko'proq narsa",
+      "fromWhere": "Qayerdan?",
+      "toWhere": "Qayerga?",
+      "departReturn": "Ketish - Qaytish",
+      "passengers": "1 kattalar",
+      "searchFlights": "Parvozlarni qidirish",
+      "roundTrip": "Ikki tomonlama",
+      "oneWay": "Bir tomonlama",
+      "adults": "Kattalar",
+      "minors": "Bolalar",
+      "done": "Tayyor"
+    },
+    "CookieNotification": {
+      "message": "Bizning veb-saytimizdan foydalanish orqali siz Cookie siyosatimizga rozilik bildirasiz.",
+      "acceptCookies": "Cookie'larni qabul qilish"
     }
+  },
+  "DetailPage": {
+    "filters": {
+      "maxPrice": "Maksimal narx",
+      "shops": "Do'konlar",
+      "times": "Vaqtlar",
+      "airlines": "Aviakompaniyalar",
+      "seatClass": "O'rindiq klassi",
+      "more": "Ko'proq"
+    },
+    "flightSelection": {
+      "chooseDeparting": "Ketish parvozini tanlang",
+      "chooseReturning": "Qaytish parvozini tanlang",
+      "saveAndClose": "Saqlash va yopish",
+      "passengerInfo": "Yo'lovchi ma'lumotlari"
+    },
+    "priceInfo": {
+      "subtotal": "Oraliq jami",
+      "taxesAndFees": "Soliqlar va to'lovlar",
+      "total": "Jami",
+      "priceHistory": "Narx tarixi",
+      "priceRating": "Narx baholash",
+      "buySoon": "Tezroq sotib oling",
+      "priceDescription": "Tezroq bron qilishni tavsiya qilamiz. Ushbu parvozning o'rtacha narxi $750, lekin ikki hafta ichida 18% ga oshib $885 ga yetishi mumkin.",
+      "analysisNote": "Tripma eng yaxshi taklifni ta'minlash uchun minglab parvozlar, narxlar va tendentsiyalarni tahlil qiladi."
+    }
+  },
+  "Common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Nimadir noto'g'ri ketdi",
+    "close": "Yopish",
+    "cancel": "Bekor qilish",
+    "confirm": "Tasdiqlash",
+    "next": "Keyingi",
+    "previous": "Oldingi"
   }
 }

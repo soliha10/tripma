@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { MouseEvent, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
@@ -21,6 +22,7 @@ import decrement from '@/app/[locale]/assets/images/inc.svg';
 import styles from './css/LoginPage.module.css';
 
 export default function LoginPage() {
+  const t = useTranslations('HomePage.SearchForm');
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
@@ -59,14 +61,14 @@ export default function LoginPage() {
     <section className={styles.heroSection}>
       <div className={styles.container}>
         <div className={styles.heroTitleWrapper}>
-          <h1 className={styles.heroTitle}>It’s more than just a trip</h1>
+          <h1 className={styles.heroTitle}>{t('title') || "It's more than just a trip"}</h1>
         </div>
 
         <form className={styles.searchForm}>
           {/* From */}
           <Select>
             <SelectTrigger className={styles.selectTriggerGo}>
-              <SelectValue placeholder="From where?" />
+              <SelectValue placeholder={t('fromWhere')} />
             </SelectTrigger>
             <SelectContent className={styles.selectContent}>
               {goOptions.map((item, index) => (
@@ -80,7 +82,7 @@ export default function LoginPage() {
           {/* To */}
           <Select>
             <SelectTrigger className={styles.selectTriggerReturn}>
-              <SelectValue placeholder="Where to?" />
+              <SelectValue placeholder={t('toWhere')} />
             </SelectTrigger>
             <SelectContent className={styles.selectContent}>
               {arriveOptions.map((item, index) => (
@@ -98,7 +100,7 @@ export default function LoginPage() {
                 {dateRange?.from && dateRange?.to ? (
                   `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                 ) : (
-                  <span className={styles.placeholderText}>Depart - Return</span>
+                  <span className={styles.placeholderText}>{t('departReturn')}</span>
                 )}
               </div>
             </PopoverTrigger>
@@ -112,7 +114,7 @@ export default function LoginPage() {
                     checked={tripType === 'round'}
                     onChange={() => setTripType('round')}
                   />
-                  <span className={styles.radioText}>Round trip</span>
+                  <span className={styles.radioText}>{t('roundTrip')}</span>
                 </label>
                 <label className={styles.radioLabel}>
                   <input
@@ -122,16 +124,16 @@ export default function LoginPage() {
                     checked={tripType === 'one'}
                     onChange={() => setTripType('one')}
                   />
-                  <span className={styles.radioText}>One way</span>
+                  <span className={styles.radioText}>{t('oneWay')}</span>
                 </label>
                 <div onClick={() => setOpen(true)} className={styles.dateInput}>
                   {dateRange?.from && dateRange?.to ? (
                     `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
                   ) : (
-                    <span className={styles.placeholderText}>Depart - Return</span>
+                    <span className={styles.placeholderText}>{t('departReturn')}</span>
                   )}
                 </div>
-                <button className={styles.doneButton}>Done</button>
+                <button className={styles.doneButton}>{t('done') || 'Done'}</button>
               </form>
               <Calendar
                 mode="range"
@@ -151,7 +153,7 @@ export default function LoginPage() {
             {isCountOpen && (
               <div className={styles.passengerDropdown} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.passengerRow}>
-                  <span>Adults:</span>
+                  <span>{t('adults')}:</span>
                   <div className={styles.counter}>
                     <button
                       type="button"
@@ -166,7 +168,7 @@ export default function LoginPage() {
                   </div>
                 </div>
                 <div className={styles.passengerRow}>
-                  <span>Minors:</span>
+                  <span>{t('minors')}:</span>
                   <div className={styles.counter}>
                     <button
                       type="button"
@@ -186,7 +188,7 @@ export default function LoginPage() {
 
           {/* Search Button */}
           <Button onClick={handleNavigate} type="button" className={styles.searchBtn}>
-            Search
+            {t('searchFlights')}
           </Button>
         </form>
 

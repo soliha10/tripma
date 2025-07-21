@@ -1,8 +1,63 @@
 {
   "HomePage": {
     "LoginHeader": {
-      "title": "hi all",
-      "desc": "yees"
+      "title": "Welcome to Tripma",
+      "desc": "Your journey starts here",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "bannerText": "Join Tripma today and save up to 20% on your flight using code TRAVEL at checkout. Promotion valid for new users only."
+    },
+    "SearchForm": {
+      "title": "It's more than just a trip",
+      "fromWhere": "From where?",
+      "toWhere": "Where to?",
+      "departReturn": "Depart - Return",
+      "passengers": "1 adult",
+      "searchFlights": "Search flights",
+      "roundTrip": "Round trip",
+      "oneWay": "One way",
+      "adults": "Adults",
+      "minors": "Minors",
+      "done": "Done"
+    },
+    "CookieNotification": {
+      "message": "By using our website, you agree to our Cookie Policy.",
+      "acceptCookies": "Accept cookies"
     }
+  },
+  "DetailPage": {
+    "filters": {
+      "maxPrice": "Max price",
+      "shops": "Shops",
+      "times": "Times",
+      "airlines": "Airlines",
+      "seatClass": "Seat class",
+      "more": "More"
+    },
+    "flightSelection": {
+      "chooseDeparting": "Choose a departing flight",
+      "chooseReturning": "Choose a returning flight",
+      "saveAndClose": "Save and Close",
+      "passengerInfo": "Passenger information"
+    },
+    "priceInfo": {
+      "subtotal": "Subtotal",
+      "taxesAndFees": "Taxes and Fees",
+      "total": "Total",
+      "priceHistory": "Price history",
+      "priceRating": "Price rating",
+      "buySoon": "Buy soon",
+      "priceDescription": "We recommend booking soon. The average cost of this flight is $750, but could rise 18% to $885 in two weeks.",
+      "analysisNote": "Tripma analyzes thousands of flights, prices, and trends to ensure you get the best deal."
+    }
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "next": "Next",
+    "previous": "Previous"
   }
 }
