@@ -92,7 +92,7 @@
 @media (max-width: 768px) {
   .table {
     width: 100%;
-    max-width: 340px;
+    /* max-width: 340px; */
     margin-bottom: 16px;
   }
 
@@ -107,7 +107,7 @@
   }
 
   .tableRow {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding-left: 16px;
     padding-right: 16px;
     padding-bottom: 12px;

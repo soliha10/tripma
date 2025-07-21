@@ -1,4 +1,3 @@
-
 .table {
   width: 872px;
   margin-bottom: 24px;
@@ -49,7 +48,7 @@
 }
 
 .cell img {
-  width: 40px;
+  max-width: 40px;
   height: 40px;
 }
 
@@ -92,7 +91,7 @@
 @media (max-width: 768px) {
   .table {
     width: 100%;
-    max-width: 340px;
+    max-width: 100%;
     margin-bottom: 16px;
   }
 
@@ -107,7 +106,7 @@
   }
 
   .tableRow {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding-left: 16px;
     padding-right: 16px;
     padding-bottom: 12px;
@@ -126,8 +125,7 @@
   }
 
   .cell img {
-    width: 60px;
-    height: 18px;
+    max-width: 60px;
   }
 
   .durationCell,
@@ -180,7 +178,7 @@
   }
 
   .cell img {
-    width: 50px;
+    max-width: 50px;
     height: 15px;
   }
 

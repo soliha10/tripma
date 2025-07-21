@@ -4,9 +4,13 @@
   border: 1px solid #605dec;
   border-radius: 8px;
   background-color: #f6f6fe;
-  position: sticky;
+  position: fixed;
   bottom: 40px;
+  left: 40px;
   box-sizing: border-box;
+  z-index: 100;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(0);
 }
 
 .cookieTop {

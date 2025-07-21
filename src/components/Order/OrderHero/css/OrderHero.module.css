@@ -137,6 +137,7 @@
 
   .selectedItemWrapper {
     padding: 12px;
+    padding-bottom: 0;
     margin-bottom: 12px;
   }
 

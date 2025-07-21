@@ -233,8 +233,12 @@ export default function DetailHero() {
               { placeholder: 'Max price', options: ['Max price', 'Min price'], width: '120px' },
               { placeholder: 'Shops', options: ['Shops', 'Cafes'], width: '95px' },
               { placeholder: 'Times', options: ['Morning', 'Afternoon'], width: '95px' },
-              { placeholder: 'Airlines', options: ['Airlines', 'Airlines'], width: '105px' },
-              { placeholder: 'Seat class', options: ['Seat class', 'Seat class'], width: '123px' },
+              { placeholder: 'Airlines', options: ['Airlines', 'Airline'], width: '105px' },
+              {
+                placeholder: 'Seat class',
+                options: ['Seat class', 'Seat classes'],
+                width: '123px',
+              },
               { placeholder: 'More', options: ['More', 'School'], width: '87px' },
             ].map(({ placeholder, options, width }, idx) => (
               <Select key={idx}>
@@ -250,7 +254,7 @@ export default function DetailHero() {
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
+                  <SelectGroup className={styles.selectGroup}>
                     {options.map((opt) => (
                       <SelectItem key={opt} value={opt}>
                         {opt}
@@ -330,6 +334,7 @@ export default function DetailHero() {
                 </Button>
               )}
             </div>
+
             <div
               className={`${styles.containerInfo} ${selectedDepartFlight ? styles.hidden : styles.block}`}
             >

@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -30,6 +30,24 @@ export default function LoginPage() {
   const [adultCount, setAdultCount] = useState(1);
   const [minorCount, setMinorCount] = useState(0);
   const router = useRouter();
+  const passengerRef = useRef<HTMLDivElement>(null);
+
+  // Tashqariga bosilganda dropdown yopish
+  useEffect(() => {
+    const handleClickOutside = (event: Event) => {
+      if (passengerRef.current && !passengerRef.current.contains(event.target as Node)) {
+        setIsCountOpen(false);
+      }
+    };
+
+    if (isCountOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isCountOpen]);
 
   const toggle = () => setIsCountOpen((prev) => !prev);
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
@@ -127,7 +145,7 @@ export default function LoginPage() {
           </Popover>
 
           {/* Passengers */}
-          <div className={styles.passengerInput} onClick={toggle}>
+          <div ref={passengerRef} className={styles.passengerInput} onClick={toggle}>
             {adultCount} adult{adultCount > 1 ? 's' : ''}{' '}
             {minorCount > 0 ? `${minorCount} minor${minorCount > 1 ? 's' : ''}` : ''}
             {isCountOpen && (

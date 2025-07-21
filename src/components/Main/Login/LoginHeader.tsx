@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import close from '@/app/[locale]/assets/images/x-close-no.svg';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
 import menuIcon from '@/app/[locale]/assets/images/menu.svg'; // Assumed menu icon path
 import LoginModal from './LoginModal';
@@ -18,7 +17,6 @@ import Link from 'next/link';
 
 export default function LoginHeader() {
   // const t = useTranslations('HomePage');
-  const [isVisible, setIsVisible] = useState(true);
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
@@ -35,27 +33,6 @@ export default function LoginHeader() {
   // };
   return (
     <header>
-      {isVisible && (
-        <div className={styles.headerBanner}>
-          <div className={styles.bannerWrapper}>
-            <div className={styles.bannerContent}>
-              <p className={styles.bannerText}>
-                Join Tripma today and save up to 20% on your flight using code TRAVEL at checkout.
-                Promotion valid for new users only.
-              </p>
-              <Image
-                src={close}
-                alt="close"
-                width={32}
-                height={32}
-                className={styles.closeIcon}
-                onClick={() => setIsVisible(false)}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className={styles.mainWrapper}>
         <div className={styles.headerMain}>
           <a href="">
@@ -103,25 +80,25 @@ export default function LoginHeader() {
                 </button>
               </li>
             </ul>
-          </nav>
-          <Select>
-            <SelectTrigger className={styles.selectTriggerGo}>
-              <SelectValue placeholder="Lang" />
-            </SelectTrigger>
-            <SelectContent className={styles.selectContent}>
-              {/* {routing.locales.map((lang) => (
+            <Select>
+              <SelectTrigger className={styles.selectTrigger}>
+                <SelectValue placeholder="Lang" />
+              </SelectTrigger>
+              <SelectContent className={styles.selectContent}>
+                {/* {routing.locales.map((lang) => (
                 <SelectItem key={lang} value={lang} className={styles.selectItem}>
                   <Link href={`/${lang}`}> {lang}</Link>
                 </SelectItem>
               ))} */}
-              <SelectItem value="en" className={styles.selectItem}>
-                <Link href="/en">en</Link>
-              </SelectItem>
-              <SelectItem value="uz" className={styles.selectItem}>
-                <Link href="/uz">uz</Link>
-              </SelectItem>
-            </SelectContent>
-          </Select>
+                <SelectItem value="en" className={styles.selectItem}>
+                  <Link href="/en">en</Link>
+                </SelectItem>
+                <SelectItem value="uz" className={styles.selectItem}>
+                  <Link href="/uz">uz</Link>
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </nav>
         </div>
       </div>
 

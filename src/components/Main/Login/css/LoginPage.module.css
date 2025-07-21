@@ -380,6 +380,8 @@
     padding-left: 48px;
     padding-top: 8px;
     padding-bottom: 8px;
+    border-right: 0;
+    border-bottom: 1px solid #CBD4E6;
     font-size: 16px;
     background-size: 28px 28px;
     background-position: 8px center;

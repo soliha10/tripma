@@ -50,6 +50,7 @@
 
 .selectContent {
   border-radius: 8px;
+  border: 1px solid #CBD4E6;
   width: 300px;
   height: 312px;
   margin-left: 24px;
@@ -78,11 +79,11 @@
 }
 
 .datePopoverTrigger {
-  width: 228px;
+  width: fit-content;
   padding-left: 52px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 8px;
+  padding-right: 30px;
   color: #7C8DB0;
   font-size: 18px;
   border-right: 1px solid #CBD4E6;
@@ -91,6 +92,10 @@
   background-size: 32px 32px;
   background-position: 8px center;
   cursor: pointer;
+}
+
+.datePopoverTrigger:focus {
+  border: 1px solid #CBD4E6;
 }
 
 .popoverContent {
@@ -154,17 +159,22 @@
 
 .passengerCount {
   position: relative;
-  width: 174px;
+  width: fit-content;
   padding-left: 52px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 8px;
+  padding-right: 30px;
   color: #7C8DB0;
   font-size: 18px;
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 8px center;
   cursor: pointer;
+  /* outline: 1px solid #CBD4E6; */
+}
+
+.passengerCount:focus {
+  border: 1px solid #CBD4E6;
 }
 
 .counterDropdown {
@@ -228,6 +238,12 @@
   color: #27273F;
   font-size: 16px;
   background-repeat: no-repeat;
+}
+
+.selectGroup {
+  background-color: white;
+  border: 1px solid #CBD4E6;
+  border-radius: 4px;
 }
 
 /* selection */
@@ -406,16 +422,19 @@
 
   .form {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 16px;
+    margin-inline: auto;
     width: 100%;
+    border-radius: 10px;
+    border: 1px solid #CBD4E6;
     max-width: 340px;
   }
 
   .selectTrigger,
   .datePopoverTrigger,
-  .passengerCount,
-  .searchButton {
+  .passengerCount {
     width: 100%;
     padding-left: 40px;
     padding-top: 8px;
@@ -425,6 +444,25 @@
     background-position: 8px center;
     border-right: none;
     border-bottom: 1px solid #CBD4E6;
+  }
+
+  .selectTrigger:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .searchButton {
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    background-size: 24px 24px;
+    background-position: 8px center;
+    border-right: none;
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
   .selectContent {
@@ -438,6 +476,10 @@
   .selectItem {
     font-size: 14px;
     margin-bottom: 6px;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .popoverContent {
@@ -514,6 +556,8 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 24px;
+    justify-content: center;
+    /* margin-inline: auto; */
   }
 
   .selectMenuTrigger {
@@ -532,7 +576,7 @@
 
   .containerSelection {
     width: 100%;
-    max-width: 340px;
+    /* max-width: 340px; */
   }
 
   .button {
@@ -544,11 +588,16 @@
     margin-bottom: 24px;
   }
 
-  .containerSelected,
+  .containerSelected {
+    margin-top: 0;
+    width: 100%;
+  }
+
   .containerInfo {
     width: 100%;
     max-width: 340px;
-    margin-top: 50px;
+    margin-inline: auto;
+    margin-top: 0;
   }
 
   .box {
@@ -682,6 +731,10 @@
   .counterControls img {
     width: 18px;
     height: 18px;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .searchButton {
