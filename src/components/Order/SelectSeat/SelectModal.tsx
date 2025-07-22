@@ -2,9 +2,11 @@
 
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 import styles from './css/SelectModal.module.css';
 
 export default function SelectModal({ onClose }: { onClose: () => void }) {
+  const t = useTranslations('SelectSeat.SelectModal'); // Use the SelectModal namespace
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,17 +25,14 @@ export default function SelectModal({ onClose }: { onClose: () => void }) {
   return (
     <div className={styles.overlay}>
       <div ref={modalRef} className={styles.modal}>
-        <strong className={styles.title}>Upgrade seat</strong>
-        <p className={styles.description}>
-          Upgrade your seat for only $199, and enjoy 45 percent more leg room, and seats that
-          recline 40 percent more than economy.
-        </p>
+        <strong className={styles.title}>{t('title')}</strong>
+        <p className={styles.description}>{t('description')}</p>
         <div className={styles.actions}>
-          <Button variant="cancel" size="cancel" onClick={onClose} aria-label="Cancel upgrade">
-            Cancel
+          <Button variant="cancel" size="cancel" onClick={onClose} aria-label={t('cancelAria')}>
+            {t('cancel')}
           </Button>
-          <Button variant="upgrade" size="upgrade" aria-label="Upgrade seat for $199">
-            Upgrade for $199
+          <Button variant="upgrade" size="upgrade" aria-label={t('upgradeAria')}>
+            {t('upgrade')}
           </Button>
         </div>
       </div>

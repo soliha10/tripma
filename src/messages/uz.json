@@ -259,7 +259,6 @@
       "qatnasTripType": "round trip"
     }
   },
-
   "OrderHero": {
     "title": "Yo'lovchi ma'lumotlari",
     "subtitle": "Har bir sayohatchi uchun zarur ma'lumotlarni kiriting va ular aeroportda taqdim etiladigan davlat tomonidan berilgan guvohnomaga aniq mos kelishiga ishonch hosil qiling.",
@@ -312,6 +311,123 @@
       "proceedToSelectSeatsAria": "O'rindiqlarni tanlashga o'tish",
       "saveAndCloseAria": "Saqlash va yopish"
     }
+  },
+  "SelectSeat": {
+    "SelectModal": {
+      "title": "O'rindiqni yangilash",
+      "description": "O'rindiqingizni atigi $199 ga yangilang va 45 foiz ko'proq oyoq joyidan bahramand bo'ling, shuningdek, iqtisodiy sinfga qaraganda 40 foiz ko'proq yotadigan o'rindiqlardan foydalaning.",
+      "cancel": "Bekor qilish",
+      "upgrade": "$199 ga yangilash",
+      "cancelAria": "Yangilashni bekor qilish",
+      "upgradeAria": "O'rindiqni $199 ga yangilash"
+    },
+
+    "SelectSeats": {
+      "flights": "Reyslar",
+      "hotels": "Mehmonxonalar",
+      "packages": "Paketlar",
+      "signIn": "Kirish",
+      "signUp": "Ro'yxatdan o'tish",
+      "economyTitle": "Iqtisodiy",
+      "selectedTag": "Tanlangan",
+      "economyDescription": "Parvoz paytida standart oyoq joyi, bepul gazaklar va parvoz ichidagi ko'ngilochar tizim bilan dam oling va quvvatlaning.",
+      "businessTitle": "Biznes sinfi",
+      "businessDescription": "Parvoz paytida kengaytirilgan oyoq joyi, shaxsiylashtirilgan xizmat va ko'p bosqichli ovqatlanish xizmati bilan dam oling va quvvatlaning.",
+      "passenger1": "Yo'lovchi 1",
+      "seatNumber": "O'rindiq raqami",
+      "goBack": "Orqaga qaytish",
+      "nextFlight": "Keyingi reys",
+      "paymentMethod": "To'lov usuli",
+      "economyFeatures": {
+        "entertainment": "O'rnatilgan ko'ngilochar tizim",
+        "snacks": "Bepul gazaklar va ichimliklar",
+        "carryOn": "Bitta bepul qo'l yuki va shaxsiy narsa"
+      },
+      "businessFeatures": {
+        "legRoom": "Kengaytirilgan oyoq joyi",
+        "checkedBags": "Dastlabki ikkita ro'yxatdan o'tkazilgan yuk bepul",
+        "priorityBoarding": "Ustuvor chiqish",
+        "personalizedService": "Shaxsiylashtirilgan xizmat",
+        "foodService": "Yaxshilangan ovqat va ichimlik xizmati",
+        "reclineSeats": "Iqtisodiy sinfga qaraganda 40% ko'proq yotadigan o'rindiqlar"
+      },
+      "openMenuAria": "Menyuni ochish",
+      "selectDepartingFlightAria": "Uchib ketadigan reysni tanlash",
+      "selectReturningFlightAria": "Qaytadigan reysni tanlash",
+      "goBackAria": "Oldingi sahifaga qaytish",
+      "nextFlightAria": "Keyingi reysga o'tish",
+      "paymentMethodAria": "To'lov usuliga o'tish",
+      "menuAlt": "Menyu",
+      "logoAlt": "Logotip",
+      "arrowAlt": "Ga",
+      "airplaneInteriorAlt": "Samolyot ichki qismi",
+      "activeTabIndicatorAlt": "Faol yorliq ko'rsatkichi",
+      "economyClassAlt": "Iqtisodiy sinf",
+      "businessClassAlt": "Biznes sinfi",
+      "featurePointAlt": "Xususiyat nuqtasi",
+      "featureCheckAlt": "Xususiyat belgilash"
+    }
+  },
+
+  "PaymentMethod": {
+    "sectionTitle": "To'lov usuli",
+    "sectionDescription": "Quyida to'lov usulini tanlang. Tripma sizning to'lovingizni to'liq shifrlash bilan xavfsiz tarzda amalga oshiradi.",
+    "creditCardDetailsTitle": "Kredit karta ma'lumotlari",
+    "billingAddressCheckbox": "Hisob-kitob manzili Yo'lovchi 1 bilan bir xil",
+    "nameOnCardPlaceholder": "Kartadagi ism",
+    "cardNumberPlaceholder": "Karta raqami",
+    "expirationDate": "Amal qilish muddati",
+    "expiryFormat": "OO/YY",
+    "ccvPlaceholder": "CCV",
+    "createAccountTitle": "Hisob yaratish",
+    "createAccountDescription": "Tripma-ni mehmon sifatida bepul foydalanish mumkin, lekin agar siz bugun hisob yaratsangiz, reyslarni saqlashingiz va ko'rishingiz, sayohatlaringizni boshqarishingiz, mukofotlarni qo'lga kiritishingiz va boshqa ko'p narsalarni amalga oshirishingiz mumkin.",
+    "saveCardCheckbox": "Kartani saqlash va keyinroq hisob yaratish",
+    "emailPlaceholder": "Elektron pochta manzili yoki telefon raqami",
+    "passwordPlaceholder": "Parol",
+    "strongPassword": "Kuchli parol",
+    "weakPassword": "Zaif parol",
+    "tooShortPassword": "Parol kamida 8 ta belgidan iborat bo'lishi kerak",
+    "orDivider": "yoki",
+    "cancellationPolicyTitle": "Bekor qilish siyosati",
+    "cancellationPolicyDescription": "Bu reys moslashuvchan bekor qilish siyosatiga ega. Agar siz reysni jo'nash sanasidan 30 kun oldin bekor qilsangiz yoki o'zgartirsangiz, bepul pul qaytarish huquqiga egasiz. Tripma-da bron qilingan barcha reyslar bizning qoniqish kafolatimiz bilan qo'llab-quvvatlanadi, ammo bekor qilish siyosatlari aviakompaniyaga qarab farq qiladi. Ushbu reys uchun <link>tolik bekor qilish siyosati</link>ni ko'ring.",
+    "fullCancellationPolicy": "tolik bekor qilish siyosati",
+    "backToSeatSelect": "O'rindiq tanlashga qaytish",
+    "confirmAndPay": "Tasdiqlash va to'lash",
+    "subtotal": "Oraliq jami",
+    "taxesAndFees": "Soliqlar va yig'imlar",
+    "total": "Jami",
+    "payTypes": {
+      "creditCard": "Kredit karta",
+      "googlePay": "Google Pay",
+      "applePay": "Apple Pay",
+      "paypal": "Paypal",
+      "crypto": "Kriptovalyuta"
+    },
+    "socialLogin": {
+      "google": "Google bilan davom etish",
+      "apple": "Apple bilan davom etish",
+      "facebook": "Facebook bilan davom etish"
+    },
+    "billingAddressAria": "Yo'lovchi 1 bilan bir xil hisob-kitob manzilidan foydalanish",
+    "nameOnCardAria": "Kartadagi ism",
+    "cardNumberAria": "Karta raqami",
+    "expirationDateAria": "Amal qilish muddatini tanlash",
+    "ccvAria": "CCV",
+    "saveCardAria": "Kartani saqlash va hisob yaratish",
+    "emailAria": "Elektron pochta manzili yoki telefon raqami",
+    "passwordAria": "Parol",
+    "showPasswordAria": "Parolni ko'rsatish",
+    "hidePasswordAria": "Parolni yashirish",
+    "backToSeatSelectionAria": "O'rindiq tanlashga qaytish",
+    "confirmAndPayAria": "Tasdiqlash va to'lash",
+    "creditCardAlt": "Kredit karta",
+    "googlePayAlt": "Google Pay",
+    "applePayAlt": "Apple Pay",
+    "paypalAlt": "Paypal",
+    "cryptoAlt": "Kriptovalyuta",
+    "googleAlt": "Google",
+    "appleAlt": "Apple",
+    "facebookAlt": "Facebook"
   },
   "Footer": {
     "about": "Tripma haqida",

@@ -39,11 +39,12 @@
   border: 1px solid #605DEC;
   color: #605DEC;
   margin-bottom: 40px;
-  font-size: 17px;
+  font-size: 16px;
   border-radius: 4px;
 }
 
 .paymentOption {
+  width: fit-content;
   display: flex;
   align-items: center;
   padding: 12px 20px;
@@ -51,8 +52,8 @@
 }
 
 .paymentOption img {
-  width: 40px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
 }
 
 .subSectionTitle {

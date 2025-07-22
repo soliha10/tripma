@@ -259,7 +259,6 @@
       "qatnasTripType": "round trip"
     }
   },
-
   "OrderHero": {
     "title": "Информация о пассажирах",
     "subtitle": "Введите необходимую информацию для каждого путешественника и убедитесь, что она точно соответствует удостоверению личности, предъявляемому в аэропорту.",
@@ -313,6 +312,125 @@
       "saveAndCloseAria": "Сохранить и закрыть"
     }
   },
+  "SelectSeat": {
+    "SelectModal": {
+      "title": "Улучшить место",
+      "description": "Улучшите свое место всего за $199 и наслаждайтесь на 45 процентов большим пространством для ног и сиденьями, которые откидываются на 40 процентов больше, чем в эконом-классе.",
+      "cancel": "Отмена",
+      "upgrade": "Улучшить за $199",
+      "cancelAria": "Отменить улучшение",
+      "upgradeAria": "Улучшить место за $199"
+    },
+    
+      "SelectSeats": {
+        "flights": "Авиабилеты",
+        "hotels": "Отели",
+        "packages": "Пакеты",
+        "signIn": "Войти",
+        "signUp": "Регистрация",
+        "economyTitle": "Эконом",
+        "selectedTag": "Выбрано",
+        "economyDescription": "Отдыхайте и подзаряжайтесь во время полета с обычным пространством для ног, бесплатными закусками и бортовой развлекательной системой.",
+        "businessTitle": "Бизнес-класс",
+        "businessDescription": "Отдыхайте и подзаряжайтесь во время полета с увеличенным пространством для ног, персонализированным обслуживанием и многоэтапным питанием.",
+        "passenger1": "Пассажир 1",
+        "seatNumber": "Номер места",
+        "goBack": "Вернуться",
+        "nextFlight": "Следующий рейс",
+        "paymentMethod": "Способ оплаты",
+        "economyFeatures": {
+          "entertainment": "Встроенная развлекательная система",
+          "snacks": "Бесплатные закуски и напитки",
+          "carryOn": "Одна бесплатная ручная кладь и личный предмет"
+        },
+        "businessFeatures": {
+          "legRoom": "Увеличенное пространство для ног",
+          "checkedBags": "Первые два зарегистрированных багажа бесплатно",
+          "priorityBoarding": "Приоритетная посадка",
+          "personalizedService": "Персонализированное обслуживание",
+          "foodService": "Улучшенное питание и напитки",
+          "reclineSeats": "Сиденья, откидывающиеся на 40% больше, чем в эконом-классе"
+        },
+        "openMenuAria": "Открыть меню",
+        "selectDepartingFlightAria": "Выбрать вылетающий рейс",
+        "selectReturningFlightAria": "Выбрать возвращающийся рейс",
+        "goBackAria": "Вернуться на предыдущую страницу",
+        "nextFlightAria": "Перейти к следующему рейсу",
+        "paymentMethodAria": "Перейти к способу оплаты",
+        "menuAlt": "Меню",
+        "logoAlt": "Логотип",
+        "arrowAlt": "К",
+        "airplaneInteriorAlt": "Интерьер самолета",
+        "activeTabIndicatorAlt": "Индикатор активной вкладки",
+        "economyClassAlt": "Эконом-класс",
+        "businessClassAlt": "Бизнес-класс",
+        "featurePointAlt": "Точка функции",
+        "featureCheckAlt": "Галочка функции"
+      }
+    
+  },
+  
+    "PaymentMethod": {
+      "sectionTitle": "Способ оплаты",
+      "sectionDescription": "Выберите способ оплаты ниже. Tripma обрабатывает ваш платеж безопасно с помощью сквозного шифрования.",
+      "creditCardDetailsTitle": "Данные кредитной карты",
+      "billingAddressCheckbox": "Адрес для выставления счета совпадает с данными Пассажира 1",
+      "nameOnCardPlaceholder": "Имя на карте",
+      "cardNumberPlaceholder": "Номер карты",
+      "expirationDate": "Дата истечения срока",
+      "expiryFormat": "ММ/ГГ",
+      "ccvPlaceholder": "CCV",
+      "createAccountTitle": "Создать аккаунт",
+      "createAccountDescription": "Tripma можно использовать бесплатно как гость, но если вы создадите аккаунт сегодня, вы сможете сохранять и просматривать рейсы, управлять поездками, зарабатывать награды и многое другое.",
+      "saveCardCheckbox": "Сохранить карту и создать аккаунт для последующего использования",
+      "emailPlaceholder": "Адрес электронной почты или номер телефона",
+      "passwordPlaceholder": "Пароль",
+      "strongPassword": "Надежный пароль",
+      "weakPassword": "Слабый пароль",
+      "tooShortPassword": "Пароль должен содержать не менее 8 символов",
+      "orDivider": "или",
+      "cancellationPolicyTitle": "Политика отмены",
+      "cancellationPolicyDescription": "Этот рейс имеет гибкую политику отмены. Если вы отмените или измените рейс за 30 дней до даты вылета, вы имеете право на бесплатный возврат средств. Все рейсы, забронированные на Tripma, подкреплены нашей гарантией удовлетворенности, однако политика отмены зависит от авиакомпании. См. <link>полную политику отмены</link> для этого рейса.",
+      "fullCancellationPolicy": "полную политику отмены",
+      "backToSeatSelect": "Вернуться к выбору мест",
+      "confirmAndPay": "Подтвердить и оплатить",
+      "subtotal": "Промежуточный итог",
+      "taxesAndFees": "Налоги и сборы",
+      "total": "Итого",
+      "payTypes": {
+        "creditCard": "Кредитная карта",
+        "googlePay": "Google Pay",
+        "applePay": "Apple Pay",
+        "paypal": "Paypal",
+        "crypto": "Криптовалюта"
+      },
+      "socialLogin": {
+        "google": "Продолжить с Google",
+        "apple": "Продолжить с Apple",
+        "facebook": "Продолжить с Facebook"
+      },
+      "billingAddressAria": "Использовать тот же адрес для выставления счета, что и для Пассажира 1",
+      "nameOnCardAria": "Имя на карте",
+      "cardNumberAria": "Номер карты",
+      "expirationDateAria": "Выбрать дату истечения срока",
+      "ccvAria": "CCV",
+      "saveCardAria": "Сохранить карту и создать аккаунт",
+      "emailAria": "Адрес электронной почты или номер телефона",
+      "passwordAria": "Пароль",
+      "showPasswordAria": "Показать пароль",
+      "hidePasswordAria": "Скрыть пароль",
+      "backToSeatSelectionAria": "Вернуться к выбору мест",
+      "confirmAndPayAria": "Подтвердить и оплатить",
+      "creditCardAlt": "Кредитная карта",
+      "googlePayAlt": "Google Pay",
+      "applePayAlt": "Apple Pay",
+      "paypalAlt": "Paypal",
+      "cryptoAlt": "Криптовалюта",
+      "googleAlt": "Google",
+      "appleAlt": "Apple",
+      "facebookAlt": "Facebook"
+    }
+  ,
   "Footer": {
     "about": "О Tripma",
     "howItWorks": "Как это работает",

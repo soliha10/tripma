@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 import menu from '@/app/[locale]/assets/images/menu.svg';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
 import arrow from '@/app/[locale]/assets/images/arrow-white.svg';
@@ -17,8 +18,11 @@ import { useFlight } from '@/context/FlightContext';
 import SeatMap from './SeatMap';
 import SelectModal from './SelectModal';
 import styles from './css/SelectSeats.module.css';
+import LanguageSwitcher from '@/components/Main/Login/LanguageSwitcher';
+import LoginModal from '@/components/Main/Login/LoginModal';
 
 export default function SelectSeats() {
+  const t = useTranslations('SelectSeat.SelectSeats'); // Use the SelectSeats namespace
   const [selectTab, setSelectTab] = useState<'depart' | 'return'>('depart');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedSeatDepart, setSelectedSeatDepart] = useState<{ row: number; col: string } | null>(
@@ -32,17 +36,17 @@ export default function SelectSeats() {
   const router = useRouter();
 
   const economyItem = [
-    'Built-in entertainment system',
-    'Complimentary snacks and drinks',
-    'One free carry-on and personal item',
+    t('economyFeatures.entertainment'),
+    t('economyFeatures.snacks'),
+    t('economyFeatures.carryOn'),
   ];
   const businessItem = [
-    'Extended leg room',
-    'First two checked bags free',
-    'Priority boarding',
-    'Personalized service',
-    'Enhanced food and drink service',
-    'Seats that recline 40% more than economy',
+    t('businessFeatures.legRoom'),
+    t('businessFeatures.checkedBags'),
+    t('businessFeatures.priorityBoarding'),
+    t('businessFeatures.personalizedService'),
+    t('businessFeatures.foodService'),
+    t('businessFeatures.reclineSeats'),
   ];
 
   const toggleDepart = () => setSelectTab('depart');
@@ -53,22 +57,76 @@ export default function SelectSeats() {
     e.preventDefault();
     router.push('/payment');
   };
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <section className={styles.selectSeats}>
       <div className={styles.container}>
         <div className={styles.leftSide}>
           <div className={styles.logoRow}>
-            <Button className={styles.menuButton} aria-label="Open menu">
-              <Image src={menu} alt="Menu" width={24} height={24} />
+            <Button className={styles.menuButton} aria-label={t('openMenuAria')}>
+              <Image src={menu} alt={t('menuAlt')} width={24} height={24} onClick={toggleMenu} />
             </Button>
+            {isMenuOpen && (
+              <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+                <ul className={styles.navList}>
+                  <li>
+                    <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                      {t('flights')}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                      {t('hotels')}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                      {t('packages')}
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className={styles.signIn}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {t('signIn')}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className={styles.signUp}
+                      onClick={() => {
+                        setIsOpen(true);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {t('signUp')}
+                    </button>
+                  </li>
+                </ul>
+                <LanguageSwitcher />
+              </nav>
+            )}
+            {isOpen && (
+              <ul>
+                <LoginModal onClose={() => setIsOpen(false)} />
+              </ul>
+            )}
             <a href="/" className={styles.logoLink}>
-              <Image src={logo} alt="Logo" width={100} height={40} />
+              <Image src={logo} alt={t('logoAlt')} width={100} height={40} />
             </a>
           </div>
 
           <div className={styles.planeWrapper}>
-            <Image src={bgPlane} alt="Airplane interior" className={styles.bgPlane} />
+            <Image src={bgPlane} alt={t('airplaneInteriorAlt')} className={styles.bgPlane} />
             <SeatMap
               selectedSeat={selectTab === 'depart' ? selectedSeatDepart : selectedSeatReturn}
               setSelectedSeat={
@@ -86,7 +144,7 @@ export default function SelectSeats() {
               <strong className={styles.flightCode}>SFO</strong>
               <span className={styles.flightLocation}>California, US</span>
             </div>
-            <Image src={arrow} alt="To" width={24} height={24} />
+            <Image src={arrow} alt={t('arrowAlt')} width={24} height={24} />
             <div className={styles.flightInfo}>
               <strong className={styles.flightCode}>NRT</strong>
               <span className={styles.flightLocation}>Tokyo, Japan</span>
@@ -96,14 +154,14 @@ export default function SelectSeats() {
               className={`${styles.flightTab} ${selectTab === 'depart' ? styles.activeTab : ''}`}
               role="button"
               tabIndex={0}
-              aria-label="Select departing flight"
+              aria-label={t('selectDepartingFlightAria')}
             >
               <time className={styles.flightTime}>Feb 25 | 7:00AM</time>
               <span className={styles.flightType}>Departing</span>
               {selectTab === 'depart' && (
                 <Image
                   src={chevron}
-                  alt="Active tab indicator"
+                  alt={t('activeTabIndicatorAlt')}
                   className={styles.chevron}
                   width={16}
                   height={16}
@@ -115,14 +173,14 @@ export default function SelectSeats() {
               className={`${styles.flightTab} ${selectTab === 'return' ? styles.activeTab : ''}`}
               role="button"
               tabIndex={0}
-              aria-label="Select returning flight"
+              aria-label={t('selectReturningFlightAria')}
             >
               <time className={styles.flightTime}>Mar 21 | 12:15PM</time>
               <span className={styles.flightType}>Arriving</span>
               {selectTab === 'return' && (
                 <Image
                   src={chevron}
-                  alt="Active tab indicator"
+                  alt={t('activeTabIndicatorAlt')}
                   className={styles.chevron}
                   width={16}
                   height={16}
@@ -135,25 +193,22 @@ export default function SelectSeats() {
             <div className={styles.card}>
               <Image
                 src={economy}
-                alt="Economy class"
+                alt={t('economyClassAlt')}
                 className={styles.cardImage}
                 width={335}
                 height={150}
               />
               <div className={styles.cardBody}>
                 <div className={styles.cardTitle}>
-                  <h3>Economy</h3>
-                  <span className={styles.selectedTag}>Selected</span>
+                  <h3>{t('economyTitle')}</h3>
+                  <span className={styles.selectedTag}>{t('selectedTag')}</span>
                 </div>
-                <p className={styles.description}>
-                  Rest and recharge during your flight with standard leg room, complimentary snacks,
-                  and in-flight entertainment.
-                </p>
+                <p className={styles.description}>{t('economyDescription')}</p>
                 <span className={`${styles.line} ${styles.economy}`}></span>
                 <ul className={styles.features}>
                   {economyItem.map((item, index) => (
                     <li key={index} className={styles.featureItem}>
-                      <Image src={point} alt="Feature point" width={16} height={16} />
+                      <Image src={point} alt={t('featurePointAlt')} width={16} height={16} />
                       <p>{item}</p>
                     </li>
                   ))}
@@ -164,22 +219,19 @@ export default function SelectSeats() {
             <div className={styles.card}>
               <Image
                 src={busines}
-                alt="Business class"
+                alt={t('businessClassAlt')}
                 className={styles.cardImage}
                 width={335}
                 height={150}
               />
               <div className={styles.cardBody}>
-                <h3 className={styles.cardTitleText}>Business class</h3>
-                <p className={styles.description}>
-                  Rest and recharge during your flight with extended leg room, personalized service,
-                  and a multi-course meal service.
-                </p>
+                <h3 className={styles.cardTitleText}>{t('businessTitle')}</h3>
+                <p className={styles.description}>{t('businessDescription')}</p>
                 <span className={`${styles.line} ${styles.business}`}></span>
                 <ul className={styles.features}>
                   {businessItem.map((item, index) => (
                     <li key={index} className={styles.featureItem}>
-                      <Image src={check} alt="Feature check" width={16} height={16} />
+                      <Image src={check} alt={t('featureCheckAlt')} width={16} height={16} />
                       <p>{item}</p>
                     </li>
                   ))}
@@ -190,13 +242,13 @@ export default function SelectSeats() {
 
           <div className={styles.footer}>
             <div className={styles.footerItem}>
-              <span className={styles.footerLabel}>Passenger 1</span>
+              <span className={styles.footerLabel}>{t('passenger1')}</span>
               <strong className={styles.footerName}>
                 {passenger?.firstName} {passenger?.lastName}
               </strong>
             </div>
             <div className={styles.footerItem}>
-              <span className={styles.footerLabel}>Seat number</span>
+              <span className={styles.footerLabel}>{t('seatNumber')}</span>
               <strong className={styles.footerName}>
                 {selectTab === 'depart'
                   ? selectedSeatDepart
@@ -210,9 +262,9 @@ export default function SelectSeats() {
             <Button
               className={styles.goBack}
               onClick={() => router.back()}
-              aria-label="Go back to previous page"
+              aria-label={t('goBackAria')}
             >
-              Go Back
+              {t('goBack')}
             </Button>
             <Button
               className={`${styles.nextFlight} ${
@@ -228,9 +280,9 @@ export default function SelectSeats() {
                 )
               }
               onClick={handleBtn}
-              aria-label="Proceed to next flight"
+              aria-label={t('nextFlightAria')}
             >
-              Next flight
+              {t('nextFlight')}
             </Button>
             {selectedSeatDepart && selectedSeatReturn && (
               <Button
@@ -238,9 +290,9 @@ export default function SelectSeats() {
                 variant="cancel"
                 size="cancel"
                 className={styles.paymentButton}
-                aria-label="Proceed to payment method"
+                aria-label={t('paymentMethodAria')}
               >
-                Payment Method
+                {t('paymentMethod')}
               </Button>
             )}
           </div>

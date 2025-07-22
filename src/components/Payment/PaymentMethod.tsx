@@ -22,22 +22,24 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Calendar } from '../ui/calendar';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 import styles from './PaymentMethod.module.css';
 
 export default function PaymentMethod() {
+  const t = useTranslations('PaymentMethod'); // Use the PaymentMethod namespace
   const { selectedDepartFlight, selectedReturnFlight } = useFlight();
 
   const emails = [
-    { id: 1, pic: google, text: 'Continue with Google' },
-    { id: 2, pic: apple, text: 'Continue with Apple' },
-    { id: 3, pic: facebook, text: 'Continue with Facebook' },
+    { id: 1, pic: google, text: t('socialLogin.google') },
+    { id: 2, pic: apple, text: t('socialLogin.apple') },
+    { id: 3, pic: facebook, text: t('socialLogin.facebook') },
   ];
   const payTypes = [
-    { pic: card, name: 'Credit card' },
-    { pic: googlePay, name: 'Google Pay' },
-    { pic: applePay, name: 'Apple pay' },
-    { pic: paypal, name: 'Paypal' },
-    { pic: crypto, name: 'Crypto' },
+    { pic: card, name: t('payTypes.creditCard'), alt: t('creditCardAlt') },
+    { pic: googlePay, name: t('payTypes.googlePay'), alt: t('googlePayAlt') },
+    { pic: applePay, name: t('payTypes.applePay'), alt: t('applePayAlt') },
+    { pic: paypal, name: t('payTypes.paypal'), alt: t('paypalAlt') },
+    { pic: crypto, name: t('payTypes.crypto'), alt: t('cryptoAlt') },
   ];
   const [cardName, setCardName] = useState('');
   const [cardNumber, setCardNumber] = useState('');
@@ -73,23 +75,20 @@ export default function PaymentMethod() {
             <div className={styles.contentWrapper}>
               {/* Left side */}
               <div className={styles.leftSide}>
-                <h2 className={styles.sectionTitle}>Payment method</h2>
-                <p className={styles.sectionDescription}>
-                  Select a payment method below. Tripma processes your payment securely with
-                  end-to-end encryption.
-                </p>
+                <h2 className={styles.sectionTitle}>{t('sectionTitle')}</h2>
+                <p className={styles.sectionDescription}>{t('sectionDescription')}</p>
 
                 <ul className={styles.paymentOptions}>
-                  {payTypes.map(({ pic, name }, index) => (
+                  {payTypes.map(({ pic, name, alt }, index) => (
                     <li key={index} className={styles.paymentOption}>
-                      <Image src={pic} alt={name} width={40} height={24} />
+                      <Image src={pic} alt={alt} width={40} height={24} />
                       <span>{name}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div>
-                  <h3 className={styles.subSectionTitle}>Credit card details</h3>
+                  <h3 className={styles.subSectionTitle}>{t('creditCardDetailsTitle')}</h3>
                   <form>
                     <div className={styles.checkboxWrapper}>
                       <Input
@@ -97,26 +96,24 @@ export default function PaymentMethod() {
                         checked={checked}
                         onChange={() => setChecked(!checked)}
                         className={`${styles.checkbox} ${checked ? styles.checkboxChecked : ''}`}
-                        aria-label="Use same billing address as Passenger 1"
+                        aria-label={t('billingAddressAria')}
                       />
-                      <Label className={styles.checkboxLabel}>
-                        Billing address is same as Passenger 1
-                      </Label>
+                      <Label className={styles.checkboxLabel}>{t('billingAddressCheckbox')}</Label>
                     </div>
                     <Input
-                      placeholder="Name on card"
+                      placeholder={t('nameOnCardPlaceholder')}
                       value={cardName}
                       onChange={(e) => setCardName(e.target.value)}
                       className={styles.input}
-                      aria-label="Name on card"
+                      aria-label={t('nameOnCardAria')}
                     />
                     <Input
                       type="number"
-                      placeholder="Card number"
+                      placeholder={t('cardNumberPlaceholder')}
                       value={cardNumber}
                       onChange={(e) => setCardNumber(e.target.value)}
                       className={styles.inputCard}
-                      aria-label="Card number"
+                      aria-label={t('cardNumberAria')}
                     />
                     <div className={styles.cardDetailsWrapper}>
                       <div className={styles.expiryDateWrapper}>
@@ -126,14 +123,14 @@ export default function PaymentMethod() {
                               variant="default"
                               id="date"
                               className={styles.expiryButton}
-                              aria-label="Select expiration date"
+                              aria-label={t('expirationDateAria')}
                             >
                               {cardExpireDate
                                 ? `${cardExpireDate.toLocaleString('default', {
                                     month: 'numeric',
                                     year: '2-digit',
                                   })}`
-                                : 'Expiration date'}
+                                : t('expirationDate')}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className={styles.popoverContent} align="start">
@@ -151,11 +148,11 @@ export default function PaymentMethod() {
                             />
                           </PopoverContent>
                         </Popover>
-                        <span className={styles.expiryFormat}>MM/YY</span>
+                        <span className={styles.expiryFormat}>{t('expiryFormat')}</span>
                       </div>
                       <Input
                         min={0}
-                        placeholder="CCV"
+                        placeholder={t('ccvPlaceholder')}
                         type="number"
                         value={cardCVV}
                         onChange={(e) => setCardCVV(e.target.value)}
@@ -166,18 +163,15 @@ export default function PaymentMethod() {
                           backgroundSize: '32px 32px',
                           backgroundPosition: 'right 12px center',
                         }}
-                        aria-label="CCV"
+                        aria-label={t('ccvAria')}
                       />
                     </div>
                   </form>
                 </div>
 
                 <div>
-                  <h3 className={styles.subSectionTitle}>Create an account</h3>
-                  <p className={styles.sectionDescription}>
-                    Tripma is free to use as a guest, but if you create an account today, you can
-                    save and view flights, manage your trips, earn rewards, and more.
-                  </p>
+                  <h3 className={styles.subSectionTitle}>{t('createAccountTitle')}</h3>
+                  <p className={styles.sectionDescription}>{t('createAccountDescription')}</p>
                   <form>
                     <div className={styles.checkboxWrapper}>
                       <Input
@@ -185,35 +179,33 @@ export default function PaymentMethod() {
                         checked={checkedSave}
                         onChange={() => setCheckedSave(!checkedSave)}
                         className={`${styles.checkbox} ${checkedSave ? styles.checkboxChecked : ''}`}
-                        aria-label="Save card and create account"
+                        aria-label={t('saveCardAria')}
                       />
-                      <Label className={styles.checkboxLabel}>
-                        Save card and create account for later
-                      </Label>
+                      <Label className={styles.checkboxLabel}>{t('saveCardCheckbox')}</Label>
                     </div>
                     <Input
-                      placeholder="Email address or phone number"
+                      placeholder={t('emailPlaceholder')}
                       type="email"
                       value={accountEmail}
                       onChange={(e) => setAccountEmail(e.target.value)}
                       className={styles.input}
-                      aria-label="Email address or phone number"
+                      aria-label={t('emailAria')}
                     />
                     <div className={styles.passwordWrapper}>
                       <Input
-                        placeholder="Password"
+                        placeholder={t('passwordPlaceholder')}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'text' : 'password'}
                         className={styles.passwordInput}
-                        aria-label="Password"
+                        aria-label={t('passwordAria')}
                       />
                       <div
                         onClick={() => setShowPassword(!showPassword)}
                         className={styles.passwordToggle}
                         role="button"
                         tabIndex={0}
-                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        aria-label={showPassword ? t('hidePasswordAria') : t('showPasswordAria')}
                       >
                         {showPassword ? (
                           <FiEyeOff className={styles.eyeIcon} />
@@ -232,47 +224,48 @@ export default function PaymentMethod() {
                           }`}
                         >
                           {strength === 'Strong'
-                            ? 'Strong password'
+                            ? t('strongPassword')
                             : strength === 'Weak'
-                              ? 'Weak password'
-                              : 'Password must be at least 8 characters'}
+                              ? t('weakPassword')
+                              : t('tooShortPassword')}
                         </span>
                       )}
                     </div>
 
                     <div className={styles.orDivider}>
                       <span className={styles.dividerLine}></span>
-                      <span className={styles.orText}>or</span>
+                      <span className={styles.orText}>{t('orDivider')}</span>
                       <span className={styles.dividerLine}></span>
                     </div>
                     <ul className={styles.socialLoginList}>
                       {emails.map(({ id, pic, text }) => (
-                        <Email id={id} pic={pic} text={text} />
+                        <Email key={id} id={id} pic={pic} text={text} />
                       ))}
                     </ul>
                   </form>
                 </div>
 
                 <div>
-                  <h3 className={styles.subSectionTitle}>Cancellation policy</h3>
-                  <p className={styles.sectionDescription}>
-                    This flight has a flexible cancellation policy. If you cancel or change your
-                    flight up to 30 days before the departure date, you are eligible for a free
-                    refund. All flights booked on Tripma are backed by our satisfaction guarantee,
-                    however cancellation policies vary by airline. See the{' '}
-                    <a className={styles.link} href="/cancellation-policy">
-                      full cancellation policy
-                    </a>{' '}
-                    for this flight.
-                  </p>
+                  <h3 className={styles.subSectionTitle}>{t('cancellationPolicyTitle')}</h3>
+                  <p
+                    className={styles.sectionDescription}
+                    dangerouslySetInnerHTML={{
+                      __html: t
+                        .raw('cancellationPolicyDescription')
+                        .replace(
+                          '<link>full cancellation policy</link>',
+                          `<a class="${styles.link}" href="/cancellation-policy">${t('fullCancellationPolicy')}</a>`,
+                        ),
+                    }}
+                  />
                   <div className={styles.buttonWrapper}>
                     <Button
                       variant="cancel"
                       className={styles.backButton}
                       onClick={() => router.back()}
-                      aria-label="Back to seat selection"
+                      aria-label={t('backToSeatSelectionAria')}
                     >
-                      Back to seat select
+                      {t('backToSeatSelect')}
                     </Button>
                     <Button
                       variant="upgrade"
@@ -297,9 +290,9 @@ export default function PaymentMethod() {
                         )
                       }
                       onClick={handleNavigate}
-                      aria-label="Confirm and pay"
+                      aria-label={t('confirmAndPayAria')}
                     >
-                      Confirm and pay
+                      {t('confirmAndPay')}
                     </Button>
                   </div>
                 </div>
@@ -319,16 +312,16 @@ export default function PaymentMethod() {
                 )}
                 <div className={styles.priceSummary}>
                   <div className={styles.priceRow}>
-                    <span>Subtotal</span>
+                    <span>{t('subtotal')}</span>
                     <span>$503</span>
                   </div>
                   <div className={styles.priceRow}>
-                    <span>Taxes and Fees</span>
+                    <span>{t('taxesAndFees')}</span>
                     <span>$503</span>
                   </div>
                   <div className={styles.priceRow}>
-                    <span>Total</span>
-                    <span>$503</span>
+                    <span>{t('total')}</span>
+                    <span>$503 DEI</span>
                   </div>
                 </div>
                 <Button
@@ -349,9 +342,9 @@ export default function PaymentMethod() {
                     )
                   }
                   onClick={handleNavigate}
-                  aria-label="Confirm and pay"
+                  aria-label={t('confirmAndPayAria')}
                 >
-                  Confirm and pay
+                  {t('confirmAndPay')}
                 </Button>
               </div>
             </div>
