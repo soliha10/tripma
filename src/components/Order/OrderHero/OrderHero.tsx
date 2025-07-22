@@ -1,6 +1,7 @@
 'use client';
 import { useState, MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 import Image from 'next/image';
 import Footer from '@/components/Main/Footer/Footer';
 import LoginHeader from '@/components/Main/Login/LoginHeader';
@@ -12,6 +13,7 @@ import bags from '@/app/[locale]/assets/images/bags.svg';
 import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
+  const t = useTranslations('OrderHero'); // Use the OrderHero namespace
   const { selectedDepartFlight, selectedReturnFlight } = useFlight();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -33,11 +35,8 @@ export default function OrderHero() {
         <div className={styles.container}>
           <div className={styles.contentWrapper}>
             <div className={styles.formIntro}>
-              <h1 className={styles.title}>Passenger information</h1>
-              <p className={styles.subtitle}>
-                Enter the required information for each traveler and be sure that it exactly matches
-                the government-issued ID presented at the airport.
-              </p>
+              <h1 className={styles.title}>{t('title')}</h1>
+              <p className={styles.subtitle}>{t('subtitle')}</p>
             </div>
             <div className={styles.mainContent}>
               <OrderForm
@@ -67,15 +66,15 @@ export default function OrderHero() {
                 )}
                 <div className={styles.priceSummary}>
                   <div>
-                    <span className={styles.summaryLabel}>Subtotal</span>
+                    <span className={styles.summaryLabel}>{t('subtotal')}</span>
                     <span>$503</span>
                   </div>
                   <div>
-                    <span className={styles.summaryLabel}>Taxes and Fees</span>
+                    <span className={styles.summaryLabel}>{t('taxesAndFees')}</span>
                     <span>$503</span>
                   </div>
                   <div>
-                    <span className={styles.summaryLabel}>Total</span>
+                    <span className={styles.summaryLabel}>{t('total')}</span>
                     <span>$503</span>
                   </div>
                 </div>
@@ -90,13 +89,13 @@ export default function OrderHero() {
                     !(firstName && lastName && birthDate && email && phoneNumber && knownTraveller)
                   }
                   onClick={handleNavigate}
-                  aria-label="Proceed to select seats"
+                  aria-label={t('proceedToSelectSeats')}
                 >
-                  Select seats
+                  {t('selectSeats')}
                 </Button>
                 <Image
                   src={bags}
-                  alt="Baggage illustration"
+                  alt={t('baggageIllustration')}
                   width={400}
                   height={200}
                   className={styles.bagsImage}

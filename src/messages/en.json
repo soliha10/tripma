@@ -143,7 +143,7 @@
       "priceDescription": "We recommend booking soon. The average cost of this flight is $750, but could rise 18% to $885 in two weeks.",
       "analysisNote": "Tripma analyzes thousands of flights, prices, and trends to ensure you get the best deal."
     },
-    "japanPlaces" : {
+    "japanPlaces": {
       "japanTitle": "Find ",
       "japanTitleSpan": "places to stay",
       "japanPart": " in Japan",
@@ -155,7 +155,7 @@
       "shinjukuTitle": "9 Hours Shinjuku",
       "shinjukuDesc": "Experience a truly unique stay in an authentic Japanese capsule hotel. 9 Hours Shinjuku is minutes from one of Japan’s busiest train stations. Just take the NEX train from Narita airport!"
     },
-    "sanFransiscoPlaces" : {
+    "sanFransiscoPlaces": {
       "sanFransiscoTitle": "People in ",
       "sanFransiscoTitleSpan": "places to stay",
       "sanFransiscoPart": " also searched for",
@@ -170,7 +170,7 @@
       "seoulCity": "South Korea",
       "seoulDesc": "This modern city is a traveler’s dream"
     },
-    "departingFlight" : {
+    "departingFlight": {
       "departingFlightName": "Choose a ",
       "departingFlightSpan": "departing",
       "departingFlightPart": "flight",
@@ -212,9 +212,9 @@
       "qatnasStop": "1 stop",
       "qatnasStopDuration": "2h 45m in HNL",
       "qatnasPrice": "$624",
-      "qatnasTripType": "round trip" 
+      "qatnasTripType": "round trip"
     },
-    "returningFlight" : {
+    "returningFlight": {
       "returningFlightName": "Choose a ",
       "returningFlightSpan": "returning",
       "returningFlightPart": "flight",
@@ -256,9 +256,60 @@
       "qatnasStop": "1 stop",
       "qatnasStopDuration": "2h 45m in HNL",
       "qatnasPrice": "$624",
-      "qatnasTripType": "round trip" 
+      "qatnasTripType": "round trip"
     }
-   
+  },
+  "OrderHero": {
+    "title": "Passenger information",
+    "subtitle": "Enter the required information for each traveler and be sure that it exactly matches the government-issued ID presented at the airport.",
+    "subtotal": "Subtotal",
+    "taxesAndFees": "Taxes and Fees",
+    "total": "Total",
+    "selectSeats": "Select seats",
+    "proceedToSelectSeats": "Proceed to select seats",
+    "baggageIllustration": "Baggage illustration",
+    "OrderForm": {
+      "passenger1Adult": "Passenger 1 (Adult)",
+      "firstNamePlaceholder": "First name*",
+      "middlePlaceholder": "Middle",
+      "lastNamePlaceholder": "Last name*",
+      "suffixPlaceholder": "Suffix",
+      "dateOfBirth": "Date of birth*",
+      "dateFormat": "MM/DD/YY",
+      "emailPlaceholder": "Email address*",
+      "phoneNumberPlaceholder": "Phone number*",
+      "redressNumberPlaceholder": "Redress number",
+      "knownTravellerPlaceholder": "Known traveller number*",
+      "emergencyContactTitle": "Emergency contact information",
+      "sameAsPassenger1": "Same as Passenger 1",
+      "bagInformationTitle": "Bag information",
+      "bagPolicy": "Each passenger is allowed one free carry-on bag and one personal item. First checked bag for each passenger is also free. Second bag check fees are waived for loyalty program members. See the <policyHighlight>full bag policy</policyHighlight>.",
+      "fullBagPolicy": "full bag policy",
+      "passenger1Title": "Passenger 1",
+      "checkedBags": "Checked bags",
+      "saveAndClose": "Save and Close",
+      "selectSeats": "Select seats",
+      "firstNameAria": "First name",
+      "middleNameAria": "Middle name",
+      "lastNameAria": "Last name",
+      "suffixAria": "Suffix",
+      "dateOfBirthAria": "Select date of birth",
+      "emailAria": "Email address",
+      "phoneNumberAria": "Phone number",
+      "redressNumberAria": "Redress number",
+      "knownTravellerAria": "Known traveller number",
+      "sameAsPassenger1Aria": "Use same information as Passenger 1",
+      "emergencyFirstNameAria": "Emergency contact first name",
+      "emergencyLastNameAria": "Emergency contact last name",
+      "emergencyEmailAria": "Emergency contact email address",
+      "emergencyPhoneNumberAria": "Emergency contact phone number",
+      "decreaseBagCountAria": "Decrease bag count",
+      "increaseBagCountAria": "Increase bag count",
+      "decreaseAlt": "Decrease",
+      "increaseAlt": "Increase",
+      "proceedToSelectSeatsAria": "Proceed to select seats",
+      "saveAndCloseAria": "Save and close"
+    }
   },
   "Footer": {
     "about": "About Tripma",

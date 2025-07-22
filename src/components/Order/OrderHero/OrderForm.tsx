@@ -1,6 +1,7 @@
 'use client';
 import { useState, MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -43,6 +44,7 @@ export default function OrderForm({
   knownTraveller,
   setKnownTraveller,
 }: OrderFormProps) {
+  const t = useTranslations('OrderHero.OrderForm'); // Use the OrderForm namespace
   const [count, setCount] = useState(1);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -61,33 +63,41 @@ export default function OrderForm({
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.sectionTitle}>Passenger 1 (Adult)</h2>
+      <h2 className={styles.sectionTitle}>{t('passenger1Adult')}</h2>
       <form>
         <div className={styles.flexGroup}>
           <Input
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            placeholder="First name*"
+            placeholder={t('firstNamePlaceholder')}
             className={styles.input}
             required
-            aria-label="First name"
+            aria-label={t('firstNameAria')}
           />
-          <Input placeholder="Middle" className={styles.input} aria-label="Middle name" />
+          <Input
+            placeholder={t('middlePlaceholder')}
+            className={styles.input}
+            aria-label={t('middleNameAria')}
+          />
           <Input
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            placeholder="Last name*"
+            placeholder={t('lastNamePlaceholder')}
             className={styles.input}
             required
-            aria-label="Last name"
+            aria-label={t('lastNameAria')}
           />
-          <Input placeholder="Suffix" className={styles.input} aria-label="Suffix" />
+          <Input
+            placeholder={t('suffixPlaceholder')}
+            className={styles.input}
+            aria-label={t('suffixAria')}
+          />
 
           <div className={styles.dateWrap}>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
-                <Button id="date" className={styles.dateBtn} aria-label="Select date of birth">
-                  {date ? date.toLocaleDateString() : 'Date of birth*'}
+                <Button id="date" className={styles.dateBtn} aria-label={t('dateOfBirthAria')}>
+                  {date ? date.toLocaleDateString() : t('dateOfBirth')}
                 </Button>
               </PopoverTrigger>
               <PopoverContent align="start">
@@ -104,7 +114,7 @@ export default function OrderForm({
                 />
               </PopoverContent>
             </Popover>
-            <span className={styles.smallText}>MM/DD/YY</span>
+            <span className={styles.smallText}>{t('dateFormat')}</span>
           </div>
         </div>
 
@@ -113,33 +123,37 @@ export default function OrderForm({
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            placeholder="Email address*"
+            placeholder={t('emailPlaceholder')}
             className={styles.w300}
             required
-            aria-label="Email address"
+            aria-label={t('emailAria')}
           />
           <Input
             type="tel"
             onChange={(e) => setPhoneNumber(e.target.value)}
             value={phoneNumber}
-            placeholder="Phone number*"
+            placeholder={t('phoneNumberPlaceholder')}
             className={styles.w300}
             required
-            aria-label="Phone number"
+            aria-label={t('phoneNumberAria')}
           />
-          <Input placeholder="Redress number" className={styles.w300} aria-label="Redress number" />
+          <Input
+            placeholder={t('redressNumberPlaceholder')}
+            className={styles.w300}
+            aria-label={t('redressNumberAria')}
+          />
           <Input
             onChange={(e) => setKnownTraveller(e.target.value)}
             value={knownTraveller}
-            placeholder="Known traveller number*"
+            placeholder={t('knownTravellerPlaceholder')}
             className={styles.w300}
             required
-            aria-label="Known traveller number"
+            aria-label={t('knownTravellerAria')}
           />
         </div>
       </form>
 
-      <h2 className={styles.sectionTitle}>Emergency contact information</h2>
+      <h2 className={styles.sectionTitle}>{t('emergencyContactTitle')}</h2>
       <form>
         <Label className={styles.label}>
           <Input
@@ -147,94 +161,100 @@ export default function OrderForm({
             type="checkbox"
             checked={isChecked}
             onChange={() => setIsChecked((prev) => !prev)}
-            aria-label="Use same information as Passenger 1"
+            aria-label={t('sameAsPassenger1Aria')}
           />
-          <span>Same as Passenger 1</span>
+          <span>{t('sameAsPassenger1')}</span>
         </Label>
 
         <div className={styles.flexGroup}>
           <Input
-            placeholder="First name*"
+            placeholder={t('firstNamePlaceholder')}
             className={styles.w300}
             value={isChecked ? firstName : ''}
             disabled={isChecked}
-            aria-label="Emergency contact first name"
+            aria-label={t('emergencyFirstNameAria')}
           />
           <Input
-            placeholder="Last name*"
+            placeholder={t('lastNamePlaceholder')}
             className={styles.w300}
             value={isChecked ? lastName : ''}
             disabled={isChecked}
-            aria-label="Emergency contact last name"
+            aria-label={t('emergencyLastNameAria')}
           />
           <Input
-            placeholder="Email address*"
+            placeholder={t('emailPlaceholder')}
             className={styles.w300}
             value={isChecked ? email : ''}
             disabled={isChecked}
-            aria-label="Emergency contact email address"
+            aria-label={t('emergencyEmailAria')}
           />
           <Input
-            placeholder="Phone number*"
+            placeholder={t('phoneNumberPlaceholder')}
             className={styles.w300}
             value={isChecked ? phoneNumber : ''}
             disabled={isChecked}
-            aria-label="Emergency contact phone number"
+            aria-label={t('emergencyPhoneNumberAria')}
           />
         </div>
       </form>
 
-      <h2 className={styles.sectionTitle}>Bag information</h2>
-      <p className={styles.policy}>
-        Each passenger is allowed one free carry-on bag and one personal item. First checked bag for
-        each passenger is also free. Second bag check fees are waived for loyalty program members.
-        See the <span className={styles.policyHighlight}>full bag policy.</span>
-      </p>
+      <h2 className={styles.sectionTitle}>{t('bagInformationTitle')}</h2>
+      <p
+        className={styles.policy}
+        dangerouslySetInnerHTML={{
+          __html: t
+            .raw('bagPolicy')
+            .replace(
+              '<policyHighlight>full bag policy</policyHighlight>',
+              `<span class="${styles.policyHighlight}">${t('fullBagPolicy')}</span>`,
+            ),
+        }}
+      />
 
       <div className={styles.bagInfo}>
         <div className={styles.passengerInfo}>
-          <strong className={styles.passengerTitle}>Passenger 1</strong>
+          <strong className={styles.passengerTitle}>{t('passenger1Title')}</strong>
           <span className={styles.passengerName}>
             {firstName} {lastName}
           </span>
         </div>
 
         <div className={styles.bagCountContainer}>
-          <span className={styles.passengerTitle}>Checked bags</span>
+          <span className={styles.passengerTitle}>{t('checkedBags')}</span>
           <div className={styles.bagCountWrap}>
             <Button
               className={styles.btnCount}
               type="button"
               onClick={() => setCount(count > 0 ? count - 1 : count)}
-              aria-label="Decrease bag count"
+              aria-label={t('decreaseBagCountAria')}
             >
-              <Image src={decrement} alt="Decrease" width={24} height={24} />
+              <Image src={decrement} alt={t('decreaseAlt')} width={24} height={24} />
             </Button>
             <span className={styles.count}>{count}</span>
             <Button
               className={styles.btnCount}
               type="button"
               onClick={() => setCount(count + 1)}
-              aria-label="Increase bag count"
+              aria-label={t('increaseBagCountAria')}
             >
-              <Image src={increment} alt="Increase" width={24} height={24} />
+              <Image src={increment} alt={t('increaseAlt')} width={24} height={24} />
             </Button>
           </div>
         </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <Button type="button" className={styles.btnPrimary} aria-label="Save and close">
-          Save and Close
+        <Button type="button" className={styles.btnPrimary} aria-label={t('saveAndCloseAria')}>
+          {t('saveAndClose')}
         </Button>
         <Button
           className={`${styles.btnSecondary} ${isValid ? styles.btnActive : styles.btnDisabled}`}
           disabled={!isValid}
           type="button"
           onClick={handleNavigate}
-          aria-label="Proceed to select seats"
+          aria-label={t('proceedToSelectSeatsAria')}
         >
-          Select seats
+          {t('selectSeats')}
         </Button>
       </div>
     </div>

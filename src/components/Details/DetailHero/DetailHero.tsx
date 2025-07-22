@@ -339,20 +339,12 @@ export default function DetailHero() {
               </div>
 
               {selectedDepartFlight && state === 'departing' && (
-                <Button
-                  onClick={() => setState('returning')}
-                  className={styles.button}
-                  style={{ width: '180px' }}
-                >
+                <Button onClick={() => setState('returning')} className={styles.button}>
                   {t('selection.saveAndClose')}
                 </Button>
               )}
               {selectedReturnFlight && state === 'returning' && (
-                <Button
-                  onClick={handleNavigate}
-                  className={styles.button}
-                  style={{ width: '222px' }}
-                >
+                <Button onClick={handleNavigate} className={styles.button}>
                   {t('selection.passengerInfo')}
                 </Button>
               )}

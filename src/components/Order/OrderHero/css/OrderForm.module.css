@@ -157,9 +157,9 @@
 .btnPrimary {
   color: #605DEC;
   border: 1px solid #605DEC;
-  width: 180px;
+  width: fit-content;
   font-size: 18px;
-  padding: 12px 0;
+  padding: 12px 20px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
@@ -171,9 +171,9 @@
 }
 
 .btnSecondary {
-  width: 138px;
+  width: fit-content;
   font-size: 18px;
-  padding: 12px 0;
+  padding: 12px 20px;
   border-radius: 6px;
 }
 

@@ -155,7 +155,7 @@
       "shinjukuTitle": "9 Hours Shinjuku",
       "shinjukuDesc": "Noyob yapon kapsulasi tajribasini boshdan kechiring. 9 Hours Shinjuku Yaponiyaning eng gavjum poyezd stantsiyalaridan biri yaqinida joylashgan. Narita aeroportidan NEX poezdiga boring!"
     },
-    "sanFransiscoPlaces" : {
+    "sanFransiscoPlaces": {
       "sanFransiscoTitle": "Insonlar ",
       "sanFransiscoTitleSpan": "turar joylarni kashf eting",
       "sanFransiscoPart": " hamkorlik qiling",
@@ -170,7 +170,7 @@
       "seoulCity": "South Korea",
       "seoulDesc": "Bu yangi shahri, yetkazib borish uchun shaxsiy shahri"
     },
-    "departingFlight" : {
+    "departingFlight": {
       "departingFlightName": "Tanlang ",
       "departingFlightSpan": "yetib borish",
       "departingFlightPart": "parvozi",
@@ -205,16 +205,16 @@
       "hawai2StopDuration": "2soat 45minut HNL",
       "hawai2Price": "$624",
       "hawai2TripType": "round trip",
-      
+
       "qatnas": "Qatar Airways",
       "qatnasDuration": "16soat 45minut",
       "qatnasTime": "7:00AM - 4:15PM",
       "qatnasStop": "1 stop",
       "qatnasStopDuration": "2soat 45minut HNL",
       "qatnasPrice": "$624",
-      "qatnasTripType": "round trip" 
+      "qatnasTripType": "round trip"
     },
-    "returningFlight" : {
+    "returningFlight": {
       "returningFlightName": "Tanlang ",
       "returningFlightSpan": "qaytish",
       "returningFlightPart": "parvozi",
@@ -256,9 +256,62 @@
       "qatnasStop": "1 stop",
       "qatnasStopDuration": "2soat 45minut HNL",
       "qatnasPrice": "$624",
-      "qatnasTripType": "round trip" 
+      "qatnasTripType": "round trip"
     }
+  },
 
+  "OrderHero": {
+    "title": "Yo'lovchi ma'lumotlari",
+    "subtitle": "Har bir sayohatchi uchun zarur ma'lumotlarni kiriting va ular aeroportda taqdim etiladigan davlat tomonidan berilgan guvohnomaga aniq mos kelishiga ishonch hosil qiling.",
+    "subtotal": "Oraliq jami",
+    "taxesAndFees": "Soliqlar va yig'imlar",
+    "total": "Jami",
+    "selectSeats": "O'rindiqlarni tanlash",
+    "proceedToSelectSeats": "O'rindiqlarni tanlashga o'tish",
+    "baggageIllustration": "Yuk tasviri",
+
+    "OrderForm": {
+      "passenger1Adult": "Yo'lovchi 1 (Katta yoshli)",
+      "firstNamePlaceholder": "Ism*",
+      "middlePlaceholder": "Otasining ismi",
+      "lastNamePlaceholder": "Familiya*",
+      "suffixPlaceholder": "Suffiks",
+      "dateOfBirth": "Tug'ilgan sana*",
+      "dateFormat": "OO/KK/YY",
+      "emailPlaceholder": "Elektron pochta manzili*",
+      "phoneNumberPlaceholder": "Telefon raqami*",
+      "redressNumberPlaceholder": "Qaytarish raqami",
+      "knownTravellerPlaceholder": "Ma'lum sayohatchi raqami*",
+      "emergencyContactTitle": "Favqulodda holatlar uchun aloqa ma'lumotlari",
+      "sameAsPassenger1": "Yo'lovchi 1 bilan bir xil",
+      "bagInformationTitle": "Yuk ma'lumotlari",
+      "bagPolicy": "Har bir yo'lovchiga bitta bepul qo'l yuki va bitta shaxsiy narsa ruxsat etiladi. Har bir yo'lovchi uchun birinchi ro'yxatdan o'tkazilgan yuk ham bepul. Ikkinchi yukni ro'yxatdan o'tkazish to'lovlari sadoqat dasturi a'zolari uchun bekor qilinadi. <policyHighlight>tolik yuk siyosati</policyHighlight>ni ko'ring.",
+      "fullBagPolicy": "tolik yuk siyosati",
+      "passenger1Title": "Yo'lovchi 1",
+      "checkedBags": "Ro'yxatdan o'tkazilgan yuklar",
+      "saveAndClose": "Saqlash va yopish",
+      "selectSeats": "O'rindiqlarni tanlash",
+      "firstNameAria": "Ism",
+      "middleNameAria": "Otasining ismi",
+      "lastNameAria": "Familiya",
+      "suffixAria": "Suffiks",
+      "dateOfBirthAria": "Tug'ilgan sanani tanlash",
+      "emailAria": "Elektron pochta manzili",
+      "phoneNumberAria": "Telefon raqami",
+      "redressNumberAria": "Qaytarish raqami",
+      "knownTravellerAria": "Ma'lum sayohatchi raqami",
+      "sameAsPassenger1Aria": "Yo'lovchi 1 bilan bir xil ma'lumotlardan foydalanish",
+      "emergencyFirstNameAria": "Favqulodda holatlar uchun aloqa ismi",
+      "emergencyLastNameAria": "Favqulodda holatlar uchun aloqa familiyasi",
+      "emergencyEmailAria": "Favqulodda holatlar uchun aloqa elektron pochta manzili",
+      "emergencyPhoneNumberAria": "Favqulodda holatlar uchun aloqa telefon raqami",
+      "decreaseBagCountAria": "Yuklar sonini kamaytirish",
+      "increaseBagCountAria": "Yuklar sonini ko'paytirish",
+      "decreaseAlt": "Kamaytirish",
+      "increaseAlt": "Ko'paytirish",
+      "proceedToSelectSeatsAria": "O'rindiqlarni tanlashga o'tish",
+      "saveAndCloseAria": "Saqlash va yopish"
+    }
   },
   "Footer": {
     "about": "Tripma haqida",
