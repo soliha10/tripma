@@ -116,13 +116,24 @@
       "times": "Times",
       "airlines": "Airlines",
       "seatClass": "Seat class",
-      "more": "More"
+      "more": "More",
+      "minPrice": "Min price",
+      "cafes": "Cafes",
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "airline": "Airline",
+      "seatClasses": "Seat classes",
+      "school": "School"
     },
     "flightSelection": {
       "chooseDeparting": "Choose a departing flight",
-      "chooseReturning": "Choose a returning flight"
+      "chooseReturning": "Choose a returning flight",
+      "saveAndClose": "Save and Close",
+      "passengerInfo": "Passenger information"
     },
     "priceInfo": {
+      "priceGrid": "Price grid",
+      "flexibleDates": "(flexible dates)",
       "subtotal": "Subtotal",
       "taxesAndFees": "Taxes and Fees",
       "total": "Total",
@@ -131,7 +142,123 @@
       "buySoon": "Buy soon",
       "priceDescription": "We recommend booking soon. The average cost of this flight is $750, but could rise 18% to $885 in two weeks.",
       "analysisNote": "Tripma analyzes thousands of flights, prices, and trends to ensure you get the best deal."
+    },
+    "japanPlaces" : {
+      "japanTitle": "Find ",
+      "japanTitleSpan": "places to stay",
+      "japanPart": " in Japan",
+      "japanBtn": "All",
+      "sasaTitle": "Hotel Kaneyamaen and Bessho SASA",
+      "sasaDesc": "Located at the base of Mount Fuji, Hotel Kaneyamaen is a traditional Japanese ryokan with a modern twist. Enjoy a private onsen bath and a private multi-course kaiseki dinner.",
+      "flagTitle": "HOTEL THE FLAG 大阪市",
+      "flagDesc": "Make a stop in Osaka and stay at HOTEL THE FLAG, just a few minutes walk to experience the food culture surrounding Dontonbori. Just one minute away is the Shinsaibashi shopping street.",
+      "shinjukuTitle": "9 Hours Shinjuku",
+      "shinjukuDesc": "Experience a truly unique stay in an authentic Japanese capsule hotel. 9 Hours Shinjuku is minutes from one of Japan’s busiest train stations. Just take the NEX train from Narita airport!"
+    },
+    "sanFransiscoPlaces" : {
+      "sanFransiscoTitle": "People in ",
+      "sanFransiscoTitleSpan": "places to stay",
+      "sanFransiscoPart": " also searched for",
+      "sanFransiscoBtn": "All",
+      "chinaTitle": "Shanghai",
+      "chinaCity": "China",
+      "chinaDesc": "An international city rich in culture",
+      "kenyaTitle": "Nairobi",
+      "kenyaCity": "Kenya",
+      "kenyaDesc": "Dubbed the Safari Capital of the World",
+      "seoul": "Seoul",
+      "seoulCity": "South Korea",
+      "seoulDesc": "This modern city is a traveler’s dream"
+    },
+    "departingFlight" : {
+      "departingFlightName": "Choose a ",
+      "departingFlightSpan": "departing",
+      "departingFlightPart": "flight",
+      "hawai": "Hawaiian Airlines",
+      "hawaiDuration": "16h 45m",
+      "hawaiTime": "7:00AM - 4:15PM",
+      "hawaiStop": "1 stop",
+      "hawaiStopDuration": "2h 45m in HNL",
+      "hawaiPrice": "$624",
+      "hawaiTripType": "round trip",
+
+      "japan": "Japan Airlines",
+      "japanDuration": "18h 22m",
+      "japanTime": "7:35 AM - 12:15 PM",
+      "japanStop": "1 stop ",
+      "japanStopDuration": "50m in HKG",
+      "japanPrice": "$663",
+      "japanTripType": "round trip",
+
+      "delta": "Delta Airlines",
+      "deltaDuration": "16h 45m",
+      "deltaTime": "7:00AM - 4:15PM",
+      "deltaStop": "1 stop",
+      "deltaStopDuration": "2h 45m in HNL",
+      "deltaPrice": "$624",
+      "deltaTripType": "round trip",
+
+      "hawai2": "United Airlines",
+      "hawai2Duration": "16h 45m",
+      "hawai2Time": "7:00AM - 4:15PM",
+      "hawai2Stop": "1 stop",
+      "hawai2StopDuration": "2h 45m in HNL",
+      "hawai2Price": "$624",
+      "hawai2TripType": "round trip",
+
+      "qatnas": "Qatar Airways",
+      "qatnasDuration": "16h 45m",
+      "qatnasTime": "7:00AM - 4:15PM",
+      "qatnasStop": "1 stop",
+      "qatnasStopDuration": "2h 45m in HNL",
+      "qatnasPrice": "$624",
+      "qatnasTripType": "round trip" 
+    },
+    "returningFlight" : {
+      "returningFlightName": "Choose a ",
+      "returningFlightSpan": "returning",
+      "returningFlightPart": "flight",
+      "hawai": "Hawaiian Airlines",
+      "hawaiDuration": "16h 45m",
+      "hawaiTime": "7:00AM - 4:15PM",
+      "hawaiStop": "1 stop",
+      "hawaiStopDuration": "2h 45m in HNL",
+      "hawaiPrice": "$624",
+      "hawaiTripType": "round trip",
+
+      "japan": "Japan Airlines",
+      "japanDuration": "18h 22m",
+      "japanTime": "7:35 AM - 12:15 PM",
+      "japanStop": "1 stop ",
+      "japanStopDuration": "50m in HKG",
+      "japanPrice": "$663",
+      "japanTripType": "round trip",
+
+      "delta": "Delta Airlines",
+      "deltaDuration": "16h 45m",
+      "deltaTime": "7:00AM - 4:15PM",
+      "deltaStop": "1 stop",
+      "deltaStopDuration": "2h 45m in HNL",
+      "deltaPrice": "$624",
+      "deltaTripType": "round trip",
+
+      "hawai2": "United Airlines",
+      "hawai2Duration": "16h 45m",
+      "hawai2Time": "7:00AM - 4:15PM",
+      "hawai2Stop": "1 stop",
+      "hawai2StopDuration": "2h 45m in HNL",
+      "hawai2Price": "$624",
+      "hawai2TripType": "round trip",
+
+      "qatnas": "Qatar Airways",
+      "qatnasDuration": "16h 45m",
+      "qatnasTime": "7:00AM - 4:15PM",
+      "qatnasStop": "1 stop",
+      "qatnasStopDuration": "2h 45m in HNL",
+      "qatnasPrice": "$624",
+      "qatnasTripType": "round trip" 
     }
+   
   },
   "Footer": {
     "about": "About Tripma",
@@ -164,8 +291,6 @@
     "appStore": "App Store",
     "googlePlay": "Google Play"
   },
-
-
   "Common": {
     "loading": "Loading...",
     "error": "Something went wrong",

@@ -9,84 +9,90 @@ import japan from '@/app/[locale]/assets/images/image 27.svg';
 import delta from '@/app/[locale]/assets/images/Delta Airlines.svg';
 import hawai2 from '@/app/[locale]/assets/images/United Airlines.svg';
 import qatnas from '@/app/[locale]/assets/images/image 28.svg';
-export const flights = [
-  {
-    id: 1,
-    pic: hawai,
-    duration: '16h 45m',
-    airlineType: 'Hawaiian Airlines',
-    time: '7:00AM - 4:15PM',
-    stop: '1 stop',
-    stopDuration: '2h 45m in HNL',
-    price: '$624',
-    tripType: 'round trip',
-  },
-  {
-    id: 2,
-    pic: japan,
-    duration: '18h 22m',
-    airlineType: 'Japan Airlines',
-    time: '7:35 AM - 12:15 PM',
-    stop: '1 stop ',
-    stopDuration: '50m in HKG',
-    price: '$663',
-    tripType: 'round trip',
-  },
-  {
-    id: 3,
-    pic: hawai,
-    duration: '18h 04m',
-    airlineType: 'Hawaiian Airlines',
-    time: '8:20 AM - 2:15 PM',
-    stop: '1 stop',
-    stopDuration: '1h 50m in PVG',
-    price: '$690',
-    tripType: 'round trip',
-  },
-  {
-    id: 4,
-    pic: delta,
-    duration: '18h 52m',
-    airlineType: 'Delta',
-    time: '9:47 AM - 4:15 PM',
-    stop: '1 stop',
-    stopDuration: '4h 05m in ICN',
-    price: '$756',
-    tripType: 'round trip',
-  },
-  {
-    id: 5,
-    pic: hawai2,
-    duration: '16h 05m',
-    airlineType: 'Hawaiian Airlines',
-    time: '11:15 AM - 7:45 PM',
-    stop: 'Nonstop',
-    stopDuration: '',
-    price: '$837',
-    tripType: 'round trip',
-  },
-  {
-    id: 6,
-    pic: qatnas,
-    duration: '16h 05m',
-    airlineType: 'Hawaiian Airlines',
-    time: '11:15 AM - 7:45 PM',
-    stop: 'Nonstop',
-    stopDuration: '',
-    price: '$837',
-    tripType: 'round trip',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 type FlightProps = {
   onSelect: (flight: Flight) => void;
 };
 
 export function DepartingFlight({ onSelect }: FlightProps) {
+  const t = useTranslations('DetailPage.departingFlight');
+
+  const flights = [
+    {
+      id: 1,
+      pic: hawai,
+      duration: t('hawaiDuration'),
+      airlineType: t('hawai'),
+      time: t('hawaiTime'),
+      stop: t('hawaiStop'),
+      stopDuration: t('hawaiStopDuration'),
+      price: '$624',
+      tripType: t('hawaiTripType'),
+    },
+    {
+      id: 2,
+      pic: japan,
+      duration: t('japanDuration'),
+      airlineType: t('japan'),
+      time: t('japanTime'),
+      stop: t('japanStop'),
+      stopDuration: t('japanStopDuration'),
+      price: '$663',
+      tripType: t('japanTripType'),
+    },
+    {
+      id: 3,
+      pic: hawai,
+      duration: t('hawai2Duration'),
+      airlineType: t('hawai2'),
+      time: t('hawai2Time'),
+      stop: t('hawai2Stop'),
+      stopDuration: t('hawai2StopDuration'),
+      price: '$690',
+      tripType: t('hawai2TripType'),
+    },
+    {
+      id: 4,
+      pic: delta,
+      duration: t('deltaDuration'),
+      airlineType: t('delta'),
+      time: t('deltaTime'),
+      stop: t('deltaStop'),
+      stopDuration: t('deltaStopDuration'),
+      price: '$756',
+      tripType: t('deltaTripType'),
+    },
+    {
+      id: 5,
+      pic: hawai2,
+      duration: t('hawai2Duration'),
+      airlineType: t('hawai2'),
+      time: t('hawai2Time'),
+      stop: t('hawai2Stop'),
+      stopDuration: t('hawai2StopDuration'),
+      price: '$837',
+      tripType: t('hawai2TripType'),
+    },
+    {
+      id: 6,
+      pic: qatnas,
+      duration: t('qatnasDuration'),
+      airlineType: t('qatnas'),
+      time: t('qatnasTime'),
+      stop: t('qatnasStop'),
+      stopDuration: t('qatnasStopDuration'),
+      price: '$837',
+      tripType: t('qatnasTripType'),
+    },
+  ];
+
   return (
     <Table className={styles.table}>
       <TableCaption className={styles.caption}>
-        Choose a <span className={styles.highlight}>departing</span> flight
+        {t('departingFlightName')}{' '}
+        <span className={styles.highlight}>{t('departingFlightSpan')}</span>{' '}
+        {t('departingFlightPart')}
       </TableCaption>
 
       <TableBody className={styles.tableBody}>

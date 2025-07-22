@@ -9,8 +9,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import styles from './css/Price.module.css';
+import { useTranslations } from 'next-intl';
 
 export default function Price() {
+  const t = useTranslations('DetailPage.priceInfo');
   const headElements = ['', '2/12', '2/13', '2/14', '2/15', '2/16'];
   const bodyElements = [
     {
@@ -38,7 +40,7 @@ export default function Price() {
   return (
     <Table className={styles.tableWrapper}>
       <TableCaption className={styles.caption}>
-        Price grid <span className={styles.captionHighlight}>(flexible dates)</span>
+        {t('priceGrid')} <span className={styles.captionHighlight}>{t('flexibleDates')}</span>
       </TableCaption>
       <TableHeader>
         <TableRow className={styles.headerRow}>

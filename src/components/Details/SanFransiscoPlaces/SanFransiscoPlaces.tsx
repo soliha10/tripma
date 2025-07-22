@@ -6,32 +6,33 @@ import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import SanFransiscoItem from './SanFransiscoItem';
 import Image from 'next/image';
 import styles from './css/SanFransiscoPlaces.module.css';
-
+import { useTranslations } from 'next-intl';
 export default function SanFransiscoPlaces() {
+  const t = useTranslations('DetailPage.sanFransiscoPlaces');
   const japanItems = [
     {
       id: 1,
       image: china,
-      name: 'Shanghai, ',
+      name: t('chinaTitle'),
       price: '$598',
-      city: 'China',
-      desc: 'An international city rich in culture',
+      city: t('chinaCity'),
+      desc: t('chinaDesc'),
     },
     {
       id: 2,
       image: kenya,
-      name: 'Nairobi, ',
+      name: t('kenyaTitle'),
       price: '$1,248',
-      city: 'Kenya',
-      desc: 'Dubbed the Safari Capital of the World',
+      city: t('kenyaCity'),
+      desc: t('kenyaDesc'),
     },
     {
       id: 3,
       image: seoul,
-      name: 'Seoul, ',
+      name: t('seoul'),
       price: '$589',
-      city: 'South Korea',
-      desc: 'This modern city is a traveler’s dream',
+      city: t('seoulCity'),
+      desc: t('seoulDesc'),
     },
   ];
 
@@ -41,11 +42,12 @@ export default function SanFransiscoPlaces() {
         <div className={styles.sectionWrapper}>
           <div className={styles.header}>
             <h2 className={styles.title}>
-              People in <span className={styles.highlight}>San Francisco </span>
-              also searched for
+              {t('sanFransiscoTitle')}{' '}
+              <span className={styles.highlight}> {t('sanFransiscoTitleSpan')}</span>
+              {t('sanFransiscoPart')}
             </h2>
             <p className={styles.all}>
-              All
+              {t('sanFransiscoBtn')}
               <button type="button" className={styles.button}>
                 <Image src={arrow} alt="View all" width={24} height={24} />
               </button>

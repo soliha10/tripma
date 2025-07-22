@@ -39,7 +39,6 @@
       "message": "Bizning veb-saytimizdan foydalanish orqali siz Cookie siyosatimizga rozilik bildirasiz.",
       "acceptCookies": "Qabul qilish",
       "settingsBtn": "Sozlamalar"
-
     },
     "Adventure": {
       "title": "Keyingi sarguzashtingizni ushbu ",
@@ -117,7 +116,14 @@
       "times": "Vaqtlar",
       "airlines": "Aviakompaniyalar",
       "seatClass": "O'rindiq klassi",
-      "more": "Ko'proq"
+      "more": "Ko'proq",
+      "minPrice": "Minimal narx",
+      "cafes": "Kafe",
+      "morning": "Shubha",
+      "afternoon": "Kechirasiz",
+      "airline": "Aviakompaniya",
+      "seatClasses": "O'rindiq klassi",
+      "school": "Maktab"
     },
     "flightSelection": {
       "chooseDeparting": "Ketish parvozini tanlang",
@@ -126,6 +132,8 @@
       "passengerInfo": "Yo'lovchi ma'lumotlari"
     },
     "priceInfo": {
+      "priceGrid": "Narx",
+      "flexibleDates": "(qulay kunlar)",
       "subtotal": "Oraliq jami",
       "taxesAndFees": "Soliqlar va to'lovlar",
       "total": "Jami",
@@ -134,7 +142,123 @@
       "buySoon": "Tezroq sotib oling",
       "priceDescription": "Tezroq bron qilishni tavsiya qilamiz. Ushbu parvozning o'rtacha narxi $750, lekin ikki hafta ichida 18% ga oshib $885 ga yetishi mumkin.",
       "analysisNote": "Tripma eng yaxshi taklifni ta'minlash uchun minglab parvozlar, narxlar va tendentsiyalarni tahlil qiladi."
+    },
+    "japanPlaces": {
+      "japanTitle": "Toping ",
+      "japanTitleSpan": "turar joylarni kashf eting",
+      "japanPart": " Yaponiyada",
+      "japanBtn": "Barchasi",
+      "sasaTitle": "Hotel Kaneyamaen and Bessho SASA",
+      "sasaDesc": "Fudzi tog'ining tepasida joylashgan Kaneyamaen mehmonxonasi zamonaviy qiyofaga ega an'anaviy yapon ryokani. Maxsus ko'l va xususiy ko'p o'tishli yapon kechki ovqatidan bahramand bo'ling.",
+      "flagTitle": "HOTEL THE FLAG 大阪市",
+      "flagDesc": "Osakada to'xtab, HOTEL THE FLAG mehmonxonasida qoling, Dontonbori atrofidagi ovqatlanish madaniyatini his qilish uchun bir necha daqiqa piyoda. Bir daqiqa narida Shinsaibashi savdo ko'chasi joylashgan.",
+      "shinjukuTitle": "9 Hours Shinjuku",
+      "shinjukuDesc": "Noyob yapon kapsulasi tajribasini boshdan kechiring. 9 Hours Shinjuku Yaponiyaning eng gavjum poyezd stantsiyalaridan biri yaqinida joylashgan. Narita aeroportidan NEX poezdiga boring!"
+    },
+    "sanFransiscoPlaces" : {
+      "sanFransiscoTitle": "Insonlar ",
+      "sanFransiscoTitleSpan": "turar joylarni kashf eting",
+      "sanFransiscoPart": " hamkorlik qiling",
+      "sanFransiscoBtn": "Barchasi",
+      "chinaTitle": "Shanghai",
+      "chinaCity": "China",
+      "chinaDesc": "Xitoyning eng xalqaro shahri",
+      "kenyaTitle": "Nairobi",
+      "kenyaCity": "Kenya",
+      "kenyaDesc": "Dunyoning Safari poytaxti deb nomlangan ",
+      "seoul": "Seoul",
+      "seoulCity": "South Korea",
+      "seoulDesc": "Bu yangi shahri, yetkazib borish uchun shaxsiy shahri"
+    },
+    "departingFlight" : {
+      "departingFlightName": "Tanlang ",
+      "departingFlightSpan": "yetib borish",
+      "departingFlightPart": "parvozi",
+      "hawai": "Hawaiian Airlines",
+      "hawaiDuration": "16soat 45minut",
+      "hawaiTime": "7:00AM - 4:15PM",
+      "hawaiStop": "1 stop",
+      "hawaiStopDuration": "2soat 45minut HNL",
+      "hawaiPrice": "$624",
+      "hawaiTripType": "round trip",
+
+      "japan": "Japan Airlines",
+      "japanDuration": "18soat 22minut",
+      "japanTime": "7:35 AM - 12:15 PM",
+      "japanStop": "1 stop ",
+      "japanStopDuration": "50minut HKG",
+      "japanPrice": "$663",
+      "japanTripType": "round trip",
+
+      "delta": "Delta Airlines",
+      "deltaDuration": "16soat 45minut",
+      "deltaTime": "7:00AM - 4:15PM",
+      "deltaStop": "1 stop",
+      "deltaStopDuration": "2soat 45minut HNL",
+      "deltaPrice": "$624",
+      "deltaTripType": "round trip",
+
+      "hawai2": "United Airlines",
+      "hawai2Duration": "16soat 45minut",
+      "hawai2Time": "7:00AM - 4:15PM",
+      "hawai2Stop": "1 stop",
+      "hawai2StopDuration": "2soat 45minut HNL",
+      "hawai2Price": "$624",
+      "hawai2TripType": "round trip",
+      
+      "qatnas": "Qatar Airways",
+      "qatnasDuration": "16soat 45minut",
+      "qatnasTime": "7:00AM - 4:15PM",
+      "qatnasStop": "1 stop",
+      "qatnasStopDuration": "2soat 45minut HNL",
+      "qatnasPrice": "$624",
+      "qatnasTripType": "round trip" 
+    },
+    "returningFlight" : {
+      "returningFlightName": "Tanlang ",
+      "returningFlightSpan": "qaytish",
+      "returningFlightPart": "parvozi",
+      "hawai": "Havaiyan avia kompaniyasi",
+      "hawaiDuration": "16soat 45minut",
+      "hawaiTime": "7:00AM - 4:15PM",
+      "hawaiStop": "1 stop",
+      "hawaiStopDuration": "2soat 45minut HNL",
+      "hawaiPrice": "$624",
+      "hawaiTripType": "round trip",
+
+      "japan": "Japan Airlines",
+      "japanDuration": "18soat 22minut",
+      "japanTime": "7:35 AM - 12:15 PM",
+      "japanStop": "1 stop ",
+      "japanStopDuration": "50minut HKG",
+      "japanPrice": "$663",
+      "japanTripType": "round trip",
+
+      "delta": "Delta Airlines",
+      "deltaDuration": "16soat 45minut",
+      "deltaTime": "7:00AM - 4:15PM",
+      "deltaStop": "1 stop",
+      "deltaStopDuration": "2soat 45minut HNL",
+      "deltaPrice": "$624",
+      "deltaTripType": "round trip",
+
+      "hawai2": "United Airlines",
+      "hawai2Duration": "16soat 45minut",
+      "hawai2Time": "7:00AM - 4:15PM",
+      "hawai2Stop": "1 stop",
+      "hawai2StopDuration": "2soat 45minut HNL",
+      "hawai2Price": "$624",
+      "hawai2TripType": "round trip",
+
+      "qatnas": "Qatar Airways",
+      "qatnasDuration": "16soat 45minut",
+      "qatnasTime": "7:00AM - 4:15PM",
+      "qatnasStop": "1 stop",
+      "qatnasStopDuration": "2soat 45minut HNL",
+      "qatnasPrice": "$624",
+      "qatnasTripType": "round trip" 
     }
+
   },
   "Footer": {
     "about": "Tripma haqida",

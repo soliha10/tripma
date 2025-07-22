@@ -236,22 +236,33 @@ export default function DetailHero() {
             {[
               {
                 placeholder: t('filters.maxPrice'),
-                options: ['Max price', 'Min price'],
+                options: [t('filters.maxPrice'), t('filters.minPrice')],
                 // width: '120px',
               },
-              { placeholder: t('filters.shops'), options: ['Shops', 'Cafes'], width: '95px' },
-              { placeholder: t('filters.times'), options: ['Morning', 'Afternoon'], width: '95px' },
+              {
+                placeholder: t('filters.shops'),
+                options: [t('filters.shops'), t('filters.cafes')],
+                width: '95px',
+              },
+              {
+                placeholder: t('filters.times'),
+                options: [t('filters.morning'), t('filters.afternoon')],
+                width: '95px',
+              },
               {
                 placeholder: t('filters.airlines'),
-                options: ['Airlines', 'Airline'],
+                options: [t('filters.airline'), t('filters.airlines')],
                 // width: '105px',
               },
               {
                 placeholder: t('filters.seatClass'),
-                options: ['Seat class', 'Seat classes'],
+                options: [t('filters.seatClass'), t('filters.seatClasses')],
                 // width: '123px',
               },
-              { placeholder: t('filters.more'), options: ['More', 'School'] },
+              {
+                placeholder: t('filters.more'),
+                options: [t('filters.more'), t('filters.school')],
+              },
             ].map(({ placeholder, options }, idx) => (
               <Select key={idx}>
                 <SelectTrigger
@@ -314,15 +325,15 @@ export default function DetailHero() {
 
               <div className={styles.summary}>
                 <div className={styles.summaryRow}>
-                  <span className={styles.label}>Subtotal</span>
+                  <span className={styles.label}>{t('priceInfo.subtotal')}</span>
                   <span>$503</span>
                 </div>
                 <div className={styles.summaryRow}>
-                  <span className={styles.label}>Taxes and Fees</span>
+                  <span className={styles.label}>{t('priceInfo.taxesAndFees')}</span>
                   <span>$503</span>
                 </div>
                 <div className={styles.summaryRow}>
-                  <span className={styles.label}>Total</span>
+                  <span className={styles.label}>{t('priceInfo.total')}</span>
                   <span>$503</span>
                 </div>
               </div>
