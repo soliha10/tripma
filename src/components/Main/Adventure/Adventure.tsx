@@ -7,7 +7,7 @@ import kenya from '@/app/[locale]/assets/images/kenya.png';
 import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import AdventureCard from './AdventureCard';
 import styles from './css/Adventure.module.css';
-
+import { useTranslations } from 'next-intl';
 export interface Adventerus {
   id?: number;
   image: StaticImageData;
@@ -19,30 +19,32 @@ export interface Adventerus {
 }
 
 export default function Adventure() {
+  const t = useTranslations('HomePage.Adventure');
+
   const adventures: Adventerus[] = [
     {
       id: 1,
       image: bund,
-      name: 'The Bund, ',
-      city: 'Shanghai',
+      name: t('bundName'),
+      city: t('bundCity'),
       price: '$598',
-      desc: 'China’s most international city',
+      desc: t('bundDesc'),
     },
     {
       id: 2,
       image: opera,
-      name: 'Sydney Opera House, ',
-      city: 'Sydney',
+      name: t('operaName'),
+      city: t('operaCity'),
       price: '$981',
-      desc: 'Take a stroll along the famous harbor',
+      desc: t('operaDesc'),
     },
     {
       id: 3,
       image: kyoto,
-      name: 'Kōdaiji Temple, ',
-      city: 'Kyoto',
+      name: t('kyotoName'),
+      city: t('kyotoCity'),
       price: '$633',
-      desc: 'Step back in time in the Gion district',
+      desc: t('kyotoDesc'),
     },
   ];
 
@@ -52,11 +54,11 @@ export default function Adventure() {
         <div>
           <div className={styles.headingRow}>
             <h2 className={styles.heading}>
-              Find your next adventure with these{' '}
-              <span className={styles.highlight}>flight deals</span>
+              {t('title')}
+              <span className={styles.highlight}>{t('titleSpan')}</span>
             </h2>
             <p className={styles.allButton}>
-              All
+              {t('allButton')}
               <button type="button" className={styles.arrowButton}>
                 <Image src={arrow} alt="View all" width={24} height={24} />
               </button>
@@ -81,10 +83,10 @@ export default function Adventure() {
             <AdventureCard
               classname={styles.fullWidthCard}
               image={kenya}
-              name="Tsavo East National Park, "
-              city="Kenya"
+              name={t('kenyaName')}
+              city={t('kenyaCity')}
               price="$1,248"
-              desc="Named after the Tsavo River, and opened in April 1984, Tsavo East National Park is one of the oldest parks in Kenya. It is located in the semi-arid Taru Desert."
+              desc={t('kenyaDesc')}
             />
           </ul>
         </div>

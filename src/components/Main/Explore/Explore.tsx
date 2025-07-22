@@ -7,29 +7,31 @@ import mangolia from '@/app/[locale]/assets/images/mongolia.png';
 import arrow from '@/app/[locale]/assets/images/arrowRight.svg';
 import ExploreItem from './ExploreItem';
 import styles from './css/Explore.module.css';
+import { useTranslations } from 'next-intl';
 
 export default function Explore() {
+  const t = useTranslations('HomePage.Explore');
   const explore: Adventerus[] = [
     {
       id: 1,
       image: maldiv,
-      name: 'Stay among the atolls in ',
-      city: 'Maldives',
-      desc: "From the 2nd century AD, the islands were known as the 'Money Isles' due to the abundance of cowry shells, a currency of the early ages.",
+      name: t('maldiveName'),
+      city: t('maldiveCity'),
+      desc: t('maldiveDesc'),
     },
     {
       id: 2,
       image: morocco,
-      name: 'Experience the Ourika Valley in ',
-      city: 'Morocco',
-      desc: 'Morocco’s Hispano-Moorish architecture blends influences from Berber culture, Spain, and contemporary artistic currents in the Middle East.',
+      name: t('moroccoName'),
+      city: t('moroccoCity'),
+      desc: t('moroccoDesc'),
     },
     {
       id: 3,
       image: mangolia,
-      name: 'Live traditionally in ',
-      city: 'Mongolia',
-      desc: 'Traditional Mongolian yurts consists of an angled latticework of wood or bamboo for walls, ribs, and a wheel.',
+      name: t('mangoliaName'),
+      city: t('mangoliaCity'),
+      desc: t('mangoliaDesc'),
     },
   ];
 
@@ -39,11 +41,11 @@ export default function Explore() {
         <div>
           <div className={styles.headingRow}>
             <h2 className={styles.headingText}>
-              Explore unique
-              <span className={styles.gradientText}> places to stay</span>
+              {t('title')}
+              <span className={styles.gradientText}>{t('titleSpan')}</span>
             </h2>
             <p className={styles.allBtn}>
-              All
+              {t('allBtn')}
               <button type="button" className={styles.arrowButton}>
                 <Image src={arrow} alt="View all" width={24} height={24} />
               </button>
@@ -66,7 +68,7 @@ export default function Explore() {
           </ul>
 
           <button type="button" className={styles.exploreButton}>
-            Explore more stays
+            {t('button')}
           </button>
         </div>
       </div>
