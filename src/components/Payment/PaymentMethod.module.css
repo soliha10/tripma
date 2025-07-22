@@ -36,6 +36,7 @@
 .paymentOptions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid #605DEC;
   color: #605DEC;
   margin-bottom: 40px;

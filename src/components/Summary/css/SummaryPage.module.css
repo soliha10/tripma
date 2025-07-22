@@ -191,17 +191,20 @@
 }
 
 .emailButton {
-  width: 157px;
+  width: fit-content;
   background-color: #605DEC;
   font-size: 18px;
+  padding-inline: 20px;
   border-radius: 4px;
   color: #FAFAFA;
 }
 
 .addButton {
-  width: 133px;
+  margin-left: 16px;
+  width: fit-content;
   color: #605DEC;
   font-size: 18px;
+  padding-inline: 16px;
 }
 
 .containerRight {
@@ -221,8 +224,9 @@
 
 .shopButton {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: fit-content;
+  padding-inline: 20px;
+  margin-inline: auto;
   font-size: 18px;
   margin-bottom: 64px;
   cursor: pointer;

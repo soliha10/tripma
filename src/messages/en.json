@@ -367,7 +367,6 @@
       "featureCheckAlt": "Feature check"
     }
   },
-
   "PaymentMethod": {
     "sectionTitle": "Payment method",
     "sectionDescription": "Select a payment method below. Tripma processes your payment securely with end-to-end encryption.",
@@ -427,6 +426,83 @@
     "googleAlt": "Google",
     "appleAlt": "Apple",
     "facebookAlt": "Facebook"
+  },
+
+  "SummaryPage": {
+    "successMessage": "Your flight has been booked successfully! Your confirmation number is #381029404387",
+    "mainTitle": "Bon voyage, Sophia!",
+    "confirmationNumber": "Confirmation number: #381029404387",
+    "description": "Thank you for booking your travel with Tripma! Below is a summary of your trip to Narita airport in Tokyo, Japan. We’ve sent a copy of your booking confirmation to your email address. You can also find this page again in <link>My trips</link>.",
+    "myTripsLink": "My trips",
+    "flightSummaryTitle": "Flight summary",
+    "departingDate": "Departing February 25th, 2021",
+    "departingSeatInfo": "Seat 9F (economy, window), 1 checked bag",
+    "arrivingDate": "Arriving March 21st, 2021",
+    "arrivingSeatInfo": "Seat 4F (business, window), 1 checked bag",
+    "priceBreakdownCaption": "Price breakdown",
+    "departingFlight": "Departing Flight",
+    "arrivingFlight": "Arriving Flight",
+    "baggageFees": "Baggage fees",
+    "seatUpgrade": "Seat upgrade (business)",
+    "subtotal": "Subtotal",
+    "taxes": "Taxes (9.4%)",
+    "amountPaid": "Amount paid",
+    "paymentMethodTitle": "Payment method",
+    "shareItineraryTitle": "Share your travel itinerary",
+    "shareItineraryDescription": "You can email your itinerary to anyone by entering their email address here.",
+    "emailPlaceholder": "Email address",
+    "emailItineraryButton": "Email itinerary",
+    "addAnotherButton": "Add another",
+    "flightRouteTitle": "Flight Route",
+    "shopHotelsTitle": "Shop <highlight>hotels</highlight>",
+    "hotelsHighlight": "hotels",
+    "shopHotelsDescription": "Tripma partners with thousands of hotels to get you the best deal. Save up to 30% when you add a hotel to your trip.",
+    "shopAllHotelsButton": "Shop all hotels",
+    "experiencesTitle": "Find unique <highlight>experiences</highlight>",
+    "experiencesHighlight": "experiences",
+    "experiencesDescription": "Find events and authentic cultural experiences available exclusively to Tripma users.",
+    "viewAllExperiencesButton": "View all experiences",
+    "shopItems": {
+      "ryokanJapan": {
+        "name": "Ryokan Japan",
+        "text": "Enjoy views of the garden from your room",
+        "alt": "Ryokan Japan"
+      },
+      "besshoSasa": {
+        "name": "Bessho SASA",
+        "text": "Japanese ryokan with private onsen bath",
+        "alt": "Bessho SASA"
+      },
+      "hotelOsaka": {
+        "name": "HOTEL THE FLAG 大阪市",
+        "text": "Modern hotel in the heart of Osaka",
+        "alt": "HOTEL THE FLAG 大阪市"
+      },
+      "nineHoursShinjuku": {
+        "name": "9 Hours Shinjuku",
+        "text": "A convenient capsule hotel at Shinjuku station",
+        "alt": "9 Hours Shinjuku"
+      }
+    },
+    "experienceItems": {
+      "nihonKimono": {
+        "name": "Nihon Kimono",
+        "text": "Wear the national dress of Japan around the city",
+        "alt": "Nihon Kimono"
+      },
+      "teamlabBorderless": {
+        "name": "teamLab Borderless",
+        "text": "A modern sensory experience of light and sound",
+        "alt": "teamLab Borderless"
+      }
+    },
+    "emailItineraryAria": "Email itinerary",
+    "addAnotherAria": "Add another email",
+    "shopAllHotelsAria": "Shop all hotels",
+    "viewAllExperiencesAria": "View all experiences",
+    "closeAlt": "close",
+    "visaAlt": "Visa",
+    "flightRouteMapAlt": "Flight route map"
   },
   "Footer": {
     "about": "About Tripma",
