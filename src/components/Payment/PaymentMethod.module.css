@@ -247,15 +247,16 @@
   gap: 24px;
 }
 
-.backButton {
-  width: 191px;
+.backButton,
+.confirmButton,
+.confirmButtonRight {
+  width: fit-content;
   font-size: 18px;
+  padding-inline: 20px;
+  cursor: pointer;
 }
 
-.confirmButton {
-  padding: 12px;
-  font-size: 18px;
-}
+
 
 .confirmButton:not(.disabledButton) {
   background-color: #605DEC;
@@ -303,8 +304,7 @@
 }
 
 .confirmButtonRight {
-  padding: 12px;
-  font-size: 18px;
+ display: block;
   margin-left: auto;
 }
 

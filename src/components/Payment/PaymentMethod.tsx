@@ -321,7 +321,7 @@ export default function PaymentMethod() {
                   </div>
                   <div className={styles.priceRow}>
                     <span>{t('total')}</span>
-                    <span>$503 DEI</span>
+                    <span>$503</span>
                   </div>
                 </div>
                 <Button
