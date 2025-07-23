@@ -49,8 +49,11 @@ import { routing } from '@/i18n/routing';
 import { FlightProvider } from '@/context/FlightContext';
 import './globals.css';
 import { Nunito_Sans } from 'next/font/google';
+import { cn } from '@/lib/utils';
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-nunito-sans',
 });
 export default async function LocaleLayout({
   children,
@@ -66,7 +69,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={nunitoSans.className}>
+      <body className={cn(nunitoSans.className, 'antialiased')}>
         <NextIntlClientProvider>
           <FlightProvider>{children}</FlightProvider>
         </NextIntlClientProvider>
