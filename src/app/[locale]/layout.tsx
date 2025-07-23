@@ -51,7 +51,7 @@ import './globals.css';
 import { Nunito_Sans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 const nunitoSans = Nunito_Sans({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   weight: ['400', '600', '700', '800'],
   variable: '--font-nunito-sans',
 });
