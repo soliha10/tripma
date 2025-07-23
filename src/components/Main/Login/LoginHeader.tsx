@@ -106,11 +106,7 @@ export default function LoginHeader() {
               ) : user ? (
                 <>
                   <li>
-                    <Link
-                      href="/my-trips"
-                      className={styles.myTrips}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                    <Link href="/" className={styles.myTrips} onClick={() => setIsMenuOpen(false)}>
                       {t('myTrips')}
                     </Link>
                   </li>

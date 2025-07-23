@@ -142,8 +142,9 @@
       "passengerInfo": "Yo'lovchi ma'lumotlari"
     },
     "priceInfo": {
-      "priceGrid": "Narx",
-      "flexibleDates": "(qulay kunlar)",
+      "priceGrid": "Narx jadvali",
+      "flexibleDates": "(moslashuvchan sanalar)",
+      "priceSummary": "Narx xulosasi",
       "subtotal": "Oraliq jami",
       "taxesAndFees": "Soliqlar va to'lovlar",
       "total": "Jami",
@@ -438,84 +439,83 @@
     "appleAlt": "Apple",
     "facebookAlt": "Facebook"
   },
-  
-    "SummaryPage": {
-      "successMessage": "Sizning reysingiz muvaffaqiyatli bron qilindi! Tasdiqlash raqamingiz: #381029404387",
-      "mainTitle": "Yoqimli sayohat, Sofiya!",
-      "confirmationNumber": "Tasdiqlash raqami: #381029404387",
-      "description": "Tripma bilan sayohatingizni bron qilganingiz uchun rahmat! Quyida Yaponiyaning Tokio shahridagi Narita aeroportiga sayohatingiz haqida ma'lumot berilgan. Bron tasdiqlashingizning nusxasi elektron pochta manzilingizga yuborildi. Siz ushbu sahifani yana <link>Mening sayohatlarim</link> bo'limida topishingiz mumkin.",
-      "myTripsLink": "Mening sayohatlarim",
-      "flightSummaryTitle": "Reys xulosasi",
-      "departingDate": "2021-yil 25-fevralda jo'nash",
-      "departingSeatInfo": "9F o'rindiq (iqtisodiy, deraza yonida), 1 ro'yxatdan o'tkazilgan yuk",
-      "arrivingDate": "2021-yil 21-martda kelish",
-      "arrivingSeatInfo": "4F o'rindiq (biznes, deraza yonida), 1 ro'yxatdan o'tkazilgan yuk",
-      "priceBreakdownCaption": "Narxlarning taqsimoti",
-      "departingFlight": "Jo'nash reysi",
-      "arrivingFlight": "Kelish reysi",
-      "baggageFees": "Yuk to'lovlari",
-      "seatUpgrade": "O'rindiqni yangilash (biznes)",
-      "subtotal": "Oraliq jami",
-      "taxes": "Soliqlar (9.4%)",
-      "amountPaid": "To'langan suma",
-      "paymentMethodTitle": "To'lov usuli",
-      "shareItineraryTitle": "Sayohat rejangizni ulashing",
-      "shareItineraryDescription": "Siz o'z rejangizni istalgan odamga ularning elektron pochta manzilini kiritish orqali yuborishingiz mumkin.",
-      "emailPlaceholder": "Elektron pochta manzili",
-      "emailItineraryButton": "Rejani email orqali yuborish",
-      "addAnotherButton": "Yana qo'shish",
-      "flightRouteTitle": "Reys marshruti",
-      "shopHotelsTitle": "<highlight>Mehmonxonalar</highlight>ni xarid qiling",
-      "hotelsHighlight": "Mehmonxonalar",
-      "shopHotelsDescription": "Tripma sizga eng yaxshi taklifni taqdim etish uchun minglab mehmonxonalar bilan hamkorlik qiladi. Sayohatingizga mehmonxona qo'shsangiz, 30% gacha tejashingiz mumkin.",
-      "shopAllHotelsButton": "Barcha mehmonxonalarni ko'rish",
-      "experiencesTitle": "Noyob <highlight>taassurotlar</highlight>ni toping",
-      "experiencesHighlight": "taassurotlar",
-      "experiencesDescription": "Tripma foydalanuvchilari uchun maxsus mavjud bo'lgan tadbirlar va haqiqiy madaniy taassurotlarni toping.",
-      "viewAllExperiencesButton": "Barcha taassurotlarni ko'rish",
-      "shopItems": {
-        "ryokanJapan": {
-          "name": "Ryokan Japan",
-          "text": "Xonangizdan bog' manzarasidan bahramand bo'ling",
-          "alt": "Ryokan Japan"
-        },
-        "besshoSasa": {
-          "name": "Bessho SASA",
-          "text": "Shaxsiy onsen vannasi bilan yapon ryokani",
-          "alt": "Bessho SASA"
-        },
-        "hotelOsaka": {
-          "name": "HOTEL THE FLAG 大阪市",
-          "text": "Osaka markazidagi zamonaviy mehmonxona",
-          "alt": "HOTEL THE FLAG 大阪市"
-        },
-        "nineHoursShinjuku": {
-          "name": "9 Hours Shinjuku",
-          "text": "Sindzuku stansiyasidagi qulay kapsula mehmonxonasi",
-          "alt": "9 Hours Shinjuku"
-        }
+
+  "SummaryPage": {
+    "successMessage": "Sizning reysingiz muvaffaqiyatli bron qilindi! Tasdiqlash raqamingiz: #381029404387",
+    "mainTitle": "Yoqimli sayohat, Sofiya!",
+    "confirmationNumber": "Tasdiqlash raqami: #381029404387",
+    "description": "Tripma bilan sayohatingizni bron qilganingiz uchun rahmat! Quyida Yaponiyaning Tokio shahridagi Narita aeroportiga sayohatingiz haqida ma'lumot berilgan. Bron tasdiqlashingizning nusxasi elektron pochta manzilingizga yuborildi. Siz ushbu sahifani yana <link>Mening sayohatlarim</link> bo'limida topishingiz mumkin.",
+    "myTripsLink": "Mening sayohatlarim",
+    "flightSummaryTitle": "Reys xulosasi",
+    "departingDate": "2021-yil 25-fevralda jo'nash",
+    "departingSeatInfo": "9F o'rindiq (iqtisodiy, deraza yonida), 1 ro'yxatdan o'tkazilgan yuk",
+    "arrivingDate": "2021-yil 21-martda kelish",
+    "arrivingSeatInfo": "4F o'rindiq (biznes, deraza yonida), 1 ro'yxatdan o'tkazilgan yuk",
+    "priceBreakdownCaption": "Narxlarning taqsimoti",
+    "departingFlight": "Jo'nash reysi",
+    "arrivingFlight": "Kelish reysi",
+    "baggageFees": "Yuk to'lovlari",
+    "seatUpgrade": "O'rindiqni yangilash (biznes)",
+    "subtotal": "Oraliq jami",
+    "taxes": "Soliqlar (9.4%)",
+    "amountPaid": "To'langan suma",
+    "paymentMethodTitle": "To'lov usuli",
+    "shareItineraryTitle": "Sayohat rejangizni ulashing",
+    "shareItineraryDescription": "Siz o'z rejangizni istalgan odamga ularning elektron pochta manzilini kiritish orqali yuborishingiz mumkin.",
+    "emailPlaceholder": "Elektron pochta manzili",
+    "emailItineraryButton": "Rejani email orqali yuborish",
+    "addAnotherButton": "Yana qo'shish",
+    "flightRouteTitle": "Reys marshruti",
+    "shopHotelsTitle": "<highlight>Mehmonxonalar</highlight>ni xarid qiling",
+    "hotelsHighlight": "Mehmonxonalar",
+    "shopHotelsDescription": "Tripma sizga eng yaxshi taklifni taqdim etish uchun minglab mehmonxonalar bilan hamkorlik qiladi. Sayohatingizga mehmonxona qo'shsangiz, 30% gacha tejashingiz mumkin.",
+    "shopAllHotelsButton": "Barcha mehmonxonalarni ko'rish",
+    "experiencesTitle": "Noyob <highlight>taassurotlar</highlight>ni toping",
+    "experiencesHighlight": "taassurotlar",
+    "experiencesDescription": "Tripma foydalanuvchilari uchun maxsus mavjud bo'lgan tadbirlar va haqiqiy madaniy taassurotlarni toping.",
+    "viewAllExperiencesButton": "Barcha taassurotlarni ko'rish",
+    "shopItems": {
+      "ryokanJapan": {
+        "name": "Ryokan Japan",
+        "text": "Xonangizdan bog' manzarasidan bahramand bo'ling",
+        "alt": "Ryokan Japan"
       },
-      "experienceItems": {
-        "nihonKimono": {
-          "name": "Nihon Kimono",
-          "text": "Shahar bo'ylab Yaponiyaning milliy libosini kiying",
-          "alt": "Nihon Kimono"
-        },
-        "teamlabBorderless": {
-          "name": "teamLab Borderless",
-          "text": "Yorug'lik va tovushning zamonaviy sezgir tajribasi",
-          "alt": "teamLab Borderless"
-        }
+      "besshoSasa": {
+        "name": "Bessho SASA",
+        "text": "Shaxsiy onsen vannasi bilan yapon ryokani",
+        "alt": "Bessho SASA"
       },
-      "emailItineraryAria": "Rejani email orqali yuborish",
-      "addAnotherAria": "Yana bir email qo'shish",
-      "shopAllHotelsAria": "Barcha mehmonxonalarni ko'rish",
-      "viewAllExperiencesAria": "Barcha taassurotlarni ko'rish",
-      "closeAlt": "Yopish",
-      "visaAlt": "Visa",
-      "flightRouteMapAlt": "Reys marshruti xaritasi"
-    }
-  ,
+      "hotelOsaka": {
+        "name": "HOTEL THE FLAG 大阪市",
+        "text": "Osaka markazidagi zamonaviy mehmonxona",
+        "alt": "HOTEL THE FLAG 大阪市"
+      },
+      "nineHoursShinjuku": {
+        "name": "9 Hours Shinjuku",
+        "text": "Sindzuku stansiyasidagi qulay kapsula mehmonxonasi",
+        "alt": "9 Hours Shinjuku"
+      }
+    },
+    "experienceItems": {
+      "nihonKimono": {
+        "name": "Nihon Kimono",
+        "text": "Shahar bo'ylab Yaponiyaning milliy libosini kiying",
+        "alt": "Nihon Kimono"
+      },
+      "teamlabBorderless": {
+        "name": "teamLab Borderless",
+        "text": "Yorug'lik va tovushning zamonaviy sezgir tajribasi",
+        "alt": "teamLab Borderless"
+      }
+    },
+    "emailItineraryAria": "Rejani email orqali yuborish",
+    "addAnotherAria": "Yana bir email qo'shish",
+    "shopAllHotelsAria": "Barcha mehmonxonalarni ko'rish",
+    "viewAllExperiencesAria": "Barcha taassurotlarni ko'rish",
+    "closeAlt": "Yopish",
+    "visaAlt": "Visa",
+    "flightRouteMapAlt": "Reys marshruti xaritasi"
+  },
   "Footer": {
     "about": "Tripma haqida",
     "howItWorks": "Qanday ishlaydi",

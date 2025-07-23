@@ -271,23 +271,28 @@
     display: none;
     width: 100%;
     position: absolute;
-    top: clamp(80px, 20vw, 100px);
+    top: clamp(50px, 20vw, 80px);
     /* Adjust based on header height */
     left: 0;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    padding: 20px 20px;
   }
 
   .navOpen {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navList {
     flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 12px;
-    padding: 16px 5%;
+    margin-bottom: 16px;
+    /* padding: 16px 5%; */
   }
 
   .navLink,

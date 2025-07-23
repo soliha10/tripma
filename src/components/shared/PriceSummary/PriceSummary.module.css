@@ -1,0 +1,86 @@
+.container {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+}
+
+.summary {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.summaryRow:last-child {
+  margin-bottom: 0;
+}
+
+.totalRow {
+  font-weight: 600;
+  font-size: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.value {
+  color: #1f2937;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.totalRow .label,
+.totalRow .value {
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.flightInfo {
+  margin-top: 16px;
+}
+
+.flightItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+}
+
+.flightItem:last-child {
+  margin-bottom: 0;
+}
+
+.flightLabel {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.flightDetails {
+  font-size: 12px;
+  color: #1f2937;
+  font-weight: 500;
+}

@@ -14,7 +14,8 @@ import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
   const t = useTranslations('OrderHero'); // Use the OrderHero namespace
-  const { selectedDepartFlight, selectedReturnFlight } = useFlight();
+  const { selectedDepartFlight, selectedReturnFlight, priceCalculations } = useFlight();
+  const { subtotal, taxesAndFees, total } = priceCalculations;
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -67,15 +68,15 @@ export default function OrderHero() {
                 <div className={styles.priceSummary}>
                   <div>
                     <span className={styles.summaryLabel}>{t('subtotal')}</span>
-                    <span>$503</span>
+                    <span>${subtotal.toFixed(2)}</span>
                   </div>
                   <div>
                     <span className={styles.summaryLabel}>{t('taxesAndFees')}</span>
-                    <span>$503</span>
+                    <span>${taxesAndFees.toFixed(2)}</span>
                   </div>
                   <div>
                     <span className={styles.summaryLabel}>{t('total')}</span>
-                    <span>$503</span>
+                    <span>${total.toFixed(2)}</span>
                   </div>
                 </div>
                 <Button

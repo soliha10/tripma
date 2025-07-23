@@ -1,6 +1,5 @@
 'use client';
 import arrow from '@/app/[locale]/assets/images/chevron-down.svg';
-
 import Image, { StaticImageData } from 'next/image';
 import {
   Select,
@@ -12,9 +11,8 @@ import {
 } from '../../ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { Calendar } from '../../ui/calendar';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useState, useEffect } from 'react';
 import { DateRange } from 'react-day-picker';
-
 import go from '@/app/[locale]/assets/images/departure.svg';
 import arrive from '@/app/[locale]/assets/images/arrival.svg';
 import calendar from '@/app/[locale]/assets/images/calendar-with-dates.svg';
@@ -32,6 +30,7 @@ import { useRouter } from 'next/navigation';
 import { useFlight } from '@/context/FlightContext';
 import { useTranslations } from 'next-intl';
 import styles from './css/DetailHero.module.css';
+
 export type Flight = {
   id: number;
   pic: StaticImageData;
@@ -45,35 +44,106 @@ export type Flight = {
 };
 
 export default function DetailHero() {
-  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
-  const [open, setOpen] = useState(false);
-  const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
-  const arriveOptions = ['NRT', 'PVG', 'STL', 'ATL', 'MSP', 'SFO', 'JFK', 'LAX'];
-  const [tripType, setTripType] = useState<'round' | 'one'>('round');
-  const [isCountOpen, setIsCountOpen] = useState(false);
-  const [adultCount, setAdultCount] = useState(1);
-  const [minorCount, setMinorCount] = useState(0);
-
-  const [state, setState] = useState<'departing' | 'returning'>('departing');
-  const toggle = () => {
-    setIsCountOpen((prev) => !prev);
-  };
-
+  const t = useTranslations('DetailPage');
   const router = useRouter();
-
-  const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    router.push('/order');
-  };
-
   const {
     selectedDepartFlight,
     selectedReturnFlight,
     setSelectedDepartFlight,
     setSelectedReturnFlight,
+    tripType: globalTripType,
+    setTripType: setGlobalTripType,
+    priceCalculations,
   } = useFlight();
 
-  const t = useTranslations('DetailPage');
+  // Initialize states
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
+  const [open, setOpen] = useState(false);
+  const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
+  const arriveOptions = ['NRT', 'PVG', 'STL', 'ATL', 'MSP', 'SFO', 'JFK', 'LAX'];
+  const [tripType, setTripType] = useState<'round' | 'one'>(globalTripType);
+  const [isCountOpen, setIsCountOpen] = useState(false);
+  const [adultCount, setAdultCount] = useState(1);
+  const [minorCount, setMinorCount] = useState(0);
+  const [fromLocation, setFromLocation] = useState<string>('');
+  const [toLocation, setToLocation] = useState<string>('');
+  const [state, setState] = useState<'departing' | 'returning'>('departing');
+
+  // Sync local tripType with global tripType
+  const handleTripTypeChange = (newTripType: 'round' | 'one') => {
+    setTripType(newTripType);
+    setGlobalTripType(newTripType);
+  };
+
+  // Get calculated values from global context
+  const { subtotal, taxesAndFees, total } = priceCalculations;
+
+  // Load data from sessionStorage on component mount
+  useEffect(() => {
+    // Add a small delay to ensure sessionStorage is available
+    const loadSearchData = () => {
+      try {
+        const searchData = sessionStorage.getItem('flightSearchData');
+        console.log('Retrieved sessionStorage data:', searchData); // Debug: Check sessionStorage data
+
+        if (searchData) {
+          const parsedData = JSON.parse(searchData);
+          console.log('Parsed sessionStorage data:', parsedData); // Debug: Check parsed data
+
+          // Set all the form values
+          if (parsedData.from) {
+            setFromLocation(parsedData.from);
+            console.log('Set fromLocation to:', parsedData.from);
+          }
+          if (parsedData.to) {
+            setToLocation(parsedData.to);
+            console.log('Set toLocation to:', parsedData.to);
+          }
+          if (parsedData.tripType) {
+            setTripType(parsedData.tripType);
+            console.log('Set tripType to:', parsedData.tripType);
+          }
+          if (parsedData.adultCount !== undefined) {
+            setAdultCount(parsedData.adultCount);
+            console.log('Set adultCount to:', parsedData.adultCount);
+          }
+          if (parsedData.minorCount !== undefined) {
+            setMinorCount(parsedData.minorCount);
+            console.log('Set minorCount to:', parsedData.minorCount);
+          }
+          if (parsedData.dateRange) {
+            const newDateRange = {
+              from: parsedData.dateRange.from ? new Date(parsedData.dateRange.from) : undefined,
+              to: parsedData.dateRange.to ? new Date(parsedData.dateRange.to) : undefined,
+            };
+            setDateRange(newDateRange);
+            console.log('Set dateRange to:', newDateRange);
+          }
+        } else {
+          console.warn('No flightSearchData found in sessionStorage'); // Debug: Warn if no data
+        }
+      } catch (error) {
+        console.error('Error loading search data:', error); // Debug: Catch any errors
+      }
+    };
+
+    // Load immediately
+    loadSearchData();
+
+    // Also try loading after a short delay in case of timing issues
+    const timeoutId = setTimeout(loadSearchData, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const toggle = () => {
+    setIsCountOpen((prev) => !prev);
+  };
+
+  const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push('/order');
+  };
 
   return (
     <section className={styles.section}>
@@ -81,7 +151,7 @@ export default function DetailHero() {
         <div className={styles.content}>
           <form action="" className={styles.form}>
             {/* go */}
-            <Select>
+            <Select value={fromLocation} onValueChange={setFromLocation}>
               <SelectTrigger
                 className={styles.selectTrigger}
                 style={{ backgroundImage: `url(${go.src})` }}
@@ -98,7 +168,7 @@ export default function DetailHero() {
             </Select>
 
             {/* arrive */}
-            <Select>
+            <Select value={toLocation} onValueChange={setToLocation}>
               <SelectTrigger
                 className={styles.selectTrigger}
                 style={{ backgroundImage: `url(${arrive.src})` }}
@@ -124,6 +194,8 @@ export default function DetailHero() {
                 >
                   {dateRange?.from && dateRange?.to ? (
                     `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                  ) : dateRange?.from ? (
+                    `${dateRange.from.toLocaleDateString()}`
                   ) : (
                     <span>{t('selection.departReturn')}</span>
                   )}
@@ -137,7 +209,7 @@ export default function DetailHero() {
                       type="radio"
                       value="round"
                       checked={tripType === 'round'}
-                      onChange={() => setTripType('round')}
+                      onChange={() => handleTripTypeChange('round')}
                     />
                     <span className={styles.radioLabelText}>{t('selection.roundTrip')}</span>
                   </label>
@@ -147,7 +219,7 @@ export default function DetailHero() {
                       type="radio"
                       value="one"
                       checked={tripType === 'one'}
-                      onChange={() => setTripType('one')}
+                      onChange={() => handleTripTypeChange('one')}
                     />
                     <span className={styles.radioLabelText}>{t('selection.oneWay')}</span>
                   </label>
@@ -158,6 +230,8 @@ export default function DetailHero() {
                   >
                     {dateRange?.from && dateRange?.to ? (
                       `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                    ) : dateRange?.from ? (
+                      `${dateRange.from.toLocaleDateString()}`
                     ) : (
                       <span>{t('selection.departReturn')}</span>
                     )}
@@ -237,7 +311,6 @@ export default function DetailHero() {
               {
                 placeholder: t('filters.maxPrice'),
                 options: [t('filters.maxPrice'), t('filters.minPrice')],
-                // width: '120px',
               },
               {
                 placeholder: t('filters.shops'),
@@ -252,12 +325,10 @@ export default function DetailHero() {
               {
                 placeholder: t('filters.airlines'),
                 options: [t('filters.airline'), t('filters.airlines')],
-                // width: '105px',
               },
               {
                 placeholder: t('filters.seatClass'),
                 options: [t('filters.seatClass'), t('filters.seatClasses')],
-                // width: '123px',
               },
               {
                 placeholder: t('filters.more'),
@@ -271,7 +342,6 @@ export default function DetailHero() {
                     backgroundImage: `url(${arrow.src})`,
                     backgroundPosition: 'right 12px center',
                     backgroundSize: '18px 18px',
-                    // width,
                   }}
                 >
                   <SelectValue placeholder={placeholder} />
@@ -326,15 +396,15 @@ export default function DetailHero() {
               <div className={styles.summary}>
                 <div className={styles.summaryRow}>
                   <span className={styles.label}>{t('priceInfo.subtotal')}</span>
-                  <span>$503</span>
+                  <span>${subtotal.toFixed(2)}</span>
                 </div>
                 <div className={styles.summaryRow}>
                   <span className={styles.label}>{t('priceInfo.taxesAndFees')}</span>
-                  <span>$503</span>
+                  <span>${taxesAndFees.toFixed(2)}</span>
                 </div>
                 <div className={styles.summaryRow}>
                   <span className={styles.label}>{t('priceInfo.total')}</span>
-                  <span>$503</span>
+                  <span>${total.toFixed(2)}</span>
                 </div>
               </div>
 

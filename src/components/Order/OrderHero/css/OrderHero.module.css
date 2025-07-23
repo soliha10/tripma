@@ -68,10 +68,10 @@
 }
 
 .selectButton {
-  width: 138px;
+  width: fit-content;
   margin-left: auto;
   display: block;
-  padding: 12px 0;
+  padding: 12px 20px;
   border-radius: 8px;
   font-size: 18px;
   text-align: center;

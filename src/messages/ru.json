@@ -127,13 +127,13 @@
       "airlines": "Авиакомпании",
       "seatClass": "Класс места",
       "more": "Больше",
-      "minPrice": "Min price",
-      "cafes": "Cafes",
-      "morning": "Morning",
-      "afternoon": "Afternoon",
-      "airline": "Airline",
-      "seatClasses": "Seat classes",
-      "school": "School"
+      "minPrice": "Мин. цена",
+      "cafes": "Кафе",
+      "morning": "Утро",
+      "afternoon": "После полудня",
+      "airline": "Авиакомпания",
+      "seatClasses": "Классы места",
+      "school": "Школа"
     },
     "flightSelection": {
       "chooseDeparting": "Выберите рейс туда",
@@ -142,8 +142,9 @@
       "passengerInfo": "Информация о пассажире"
     },
     "priceInfo": {
-      "priceGrid": "Цена",
+      "priceGrid": "Сетка цен",
       "flexibleDates": "(гибкие даты)",
+      "priceSummary": "Сводка цен",
       "subtotal": "Промежуточный итог",
       "taxesAndFees": "Налоги и сборы",
       "total": "Итого",
@@ -439,7 +440,7 @@
     "facebookAlt": "Facebook"
   },
   
-    "SummaryPage": {
+   "SummaryPage": {
       "successMessage": "Ваш рейс успешно забронирован! Ваш номер подтверждения: #381029404387",
       "mainTitle": "Счастливого пути, София!",
       "confirmationNumber": "Номер подтверждения: #381029404387",

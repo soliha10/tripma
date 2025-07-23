@@ -34,6 +34,14 @@ export default function LoginPage() {
   const router = useRouter();
   const passengerRef = useRef<HTMLDivElement>(null);
 
+  // Form validation states
+  const [fromLocation, setFromLocation] = useState<string>('');
+  const [toLocation, setToLocation] = useState<string>('');
+
+  // Validation logic - all required fields must be filled
+  const isFormValid =
+    fromLocation && toLocation && dateRange?.from && (tripType === 'one' || dateRange?.to);
+
   // Tashqariga bosilganda dropdown yopish
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
@@ -54,7 +62,42 @@ export default function LoginPage() {
   const toggle = () => setIsCountOpen((prev) => !prev);
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push('/detail');
+    if (isFormValid) {
+      // Store search data for next page
+      const searchData = {
+        from: fromLocation,
+        to: toLocation,
+        dateRange,
+        tripType,
+        adultCount,
+        minorCount,
+      };
+
+      console.log('Storing search data:', searchData); // Debug: Check what we're storing
+
+      try {
+        sessionStorage.setItem('flightSearchData', JSON.stringify(searchData));
+
+        // Verify the data was stored correctly
+        const storedData = sessionStorage.getItem('flightSearchData');
+        console.log('Verified stored data:', storedData); // Debug: Verify storage
+
+        router.push('/detail');
+      } catch (error) {
+        console.error('Error storing search data:', error);
+        // Still navigate even if storage fails
+        router.push('/detail');
+      }
+    } else {
+      console.warn('Form is not valid, cannot navigate');
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isFormValid) {
+      handleNavigate(e as any);
+    }
   };
 
   return (
@@ -64,9 +107,9 @@ export default function LoginPage() {
           <h1 className={styles.heroTitle}>{t('title') || "It's more than just a trip"}</h1>
         </div>
 
-        <form className={styles.searchForm}>
+        <form onSubmit={handleFormSubmit} className={styles.searchForm}>
           {/* From */}
-          <Select>
+          <Select value={fromLocation} onValueChange={setFromLocation}>
             <SelectTrigger className={styles.selectTriggerGo}>
               <SelectValue placeholder={t('fromWhere')} />
             </SelectTrigger>
@@ -80,7 +123,7 @@ export default function LoginPage() {
           </Select>
 
           {/* To */}
-          <Select>
+          <Select value={toLocation} onValueChange={setToLocation}>
             <SelectTrigger className={styles.selectTriggerReturn}>
               <SelectValue placeholder={t('toWhere')} />
             </SelectTrigger>
@@ -194,7 +237,13 @@ export default function LoginPage() {
           </div>
 
           {/* Search Button */}
-          <Button onClick={handleNavigate} type="button" className={styles.searchBtn}>
+          <Button
+            onClick={handleNavigate}
+            type="submit"
+            className={`${styles.searchBtn} ${!isFormValid ? styles.disabled : ''}`}
+            disabled={!isFormValid}
+            title={!isFormValid ? 'Please fill all required fields' : ''}
+          >
             {t('searchFlights')}
           </Button>
         </form>
