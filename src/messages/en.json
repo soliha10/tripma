@@ -6,6 +6,8 @@
       "packages": "Packages",
       "signIn": "Sign in",
       "signUp": "Sign up",
+      "myTrips": "My trips",
+      "logout": "Logout",
       "bannerText": "Join Tripma today and save up to 20% on your flight using code TRAVEL at checkout. Promotion valid for new users only."
     },
     "SearchForm": {
@@ -25,14 +27,22 @@
     "LoginModal": {
       "title": "Sign up for Tripma",
       "subtitle": "Tripma is totally free to use. Sign up using your email address or phone number below to get started.",
+      "signInTitle": "Sign in to Tripma",
+      "signInSubtitle": "Welcome back! Please sign in to your account.",
       "google": "Continue with Google",
       "apple": "Continue with Apple",
       "facebook": "Continue with Facebook",
       "email": "Email or phone number",
       "password": "Password",
-      "terms": "I agree to the terms and conditions",
+      "fullName": "Full Name (optional)",
+      "terms": "I agree to the ",
+      "termsLink": "terms and conditions",
       "sendAlerts": "Send me the latest deal alerts",
       "createAccount": "Create account",
+      "signInButton": "Sign In",
+      "processing": "Processing...",
+      "needAccount": "Need an account? Sign up",
+      "haveAccount": "Already have an account? Sign in",
       "devider": "or"
     },
     "CookieNotification": {

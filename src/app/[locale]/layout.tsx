@@ -47,6 +47,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { FlightProvider } from '@/context/FlightContext';
+import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
 import { Nunito_Sans } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -71,7 +72,9 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={cn(nunitoSans.className, 'antialiased')}>
         <NextIntlClientProvider>
-          <FlightProvider>{children}</FlightProvider>
+          <AuthProvider>
+            <FlightProvider>{children}</FlightProvider>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

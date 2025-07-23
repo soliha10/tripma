@@ -6,6 +6,8 @@
       "packages": "Paketlar",
       "signIn": "Kirish",
       "signUp": "Ro'yxatdan o'tish",
+      "myTrips": "Mening sayohatlarim",
+      "logout": "Chiqish",
       "bannerText": "Bugun Tripma'ga qo'shiling va TRAVEL kodi bilan parvozingizga 20% gacha tejang. Aksiya faqat yangi foydalanuvchilar uchun amal qiladi."
     },
     "SearchForm": {
@@ -25,14 +27,22 @@
     "LoginModal": {
       "title": "Tripma uchun ro'yxatdan o'ting",
       "subtitle": "Tripma-dan foydalanish mutlaqo bepul. Boshlash uchun quyidagi elektron pochta manzilingiz yoki telefon raqamingizdan foydalanib ro'yxatdan o'ting.",
+      "signInTitle": "Tripma-ga kirish",
+      "signInSubtitle": "Xush kelibsiz! Iltimos, hisobingizga kiring.",
       "google": "Google bilan tizimga kirish",
       "apple": "Apple bilan tizimga kirish",
       "facebook": "Facebook bilan tizimga kirish",
       "email": "Email yoki telefon raqami",
       "password": "Parol",
-      "terms": "Ikkita shart va shartlarga rozilik bildirishim",
+      "fullName": "To'liq ism (ixtiyoriy)",
+      "terms": "Men ",
+      "termsLink": "shart va shartlarga rozilik bildirishim",
       "sendAlerts": "Eng yangi takliflarimni yuborishim",
       "createAccount": "Ro'yxatdan o'tish",
+      "signInButton": "Kirish",
+      "processing": "Ishlanmoqda...",
+      "needAccount": "Hisob kerakmi? Ro'yxatdan o'ting",
+      "haveAccount": "Hisobingiz bormi? Kiring",
       "devider": "yoki"
     },
     "CookieNotification": {
