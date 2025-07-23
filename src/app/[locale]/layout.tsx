@@ -48,6 +48,10 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { FlightProvider } from '@/context/FlightContext';
 import './globals.css';
+import { Nunito_Sans } from 'next/font/google';
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+});
 export default async function LocaleLayout({
   children,
   params,
@@ -55,7 +59,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -63,7 +66,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className={nunitoSans.className}>
         <NextIntlClientProvider>
           <FlightProvider>{children}</FlightProvider>
         </NextIntlClientProvider>
