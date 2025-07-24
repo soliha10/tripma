@@ -344,6 +344,8 @@
     },
 
     "SelectSeats": {
+      "myTrips": "My trips",
+      "logout": "Logout",
       "economyTitle": "Economy",
       "selectedTag": "Selected",
       "economyDescription": "Rest and recharge during your flight with standard leg room, complimentary snacks, and in-flight entertainment.",

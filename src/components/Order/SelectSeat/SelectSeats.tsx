@@ -21,6 +21,8 @@ import SelectModal from './SelectModal';
 import styles from './css/SelectSeats.module.css';
 import LanguageSwitcher from '@/components/Main/Login/LanguageSwitcher';
 import LoginModal from '@/components/Main/Login/LoginModal';
+import Link from 'next/link';
+import { logout } from '@/lib/auth-actions';
 
 export default function SelectSeats() {
   const t = useTranslations('SelectSeat.SelectSeats'); // Use the SelectSeats namespace
@@ -71,6 +73,8 @@ export default function SelectSeats() {
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -80,6 +84,10 @@ export default function SelectSeats() {
     setIsOpenModal(true);
     setIsMenuOpen(false);
   };
+
+  // const getInitials = (email: string) => {
+  //   return email?.substring(0, 2).toUpperCase() || '';
+  // };
 
   return (
     <section className={styles.selectSeats}>
@@ -108,46 +116,94 @@ export default function SelectSeats() {
                     </a>
                   </li>
                   <li>
-                    {user ? (
-                      <div className={styles.userProfile}>
-                        <span className={styles.userName}>{user?.name}</span>
+                    {!user ? (
+                      <>
+                        <button type="button" className={styles.signIn} onClick={handleLogin}>
+                          {t('signIn')}
+                        </button>
                         <button
                           type="button"
-                          className={styles.signOut}
+                          className={styles.signUp}
                           onClick={() => {
-                            // Implement sign out functionality
+                            setIsLogin(false);
+                            setIsOpenModal(true);
                             setIsMenuOpen(false);
                           }}
                         >
-                          {t('signOut')}
+                          {t('signUp')}
                         </button>
-                      </div>
+                      </>
                     ) : (
-                      <button type="button" className={styles.signIn} onClick={handleLogin}>
-                        {t('signIn')}
-                      </button>
+                      <li className={styles.userMenuContainer}>
+                        <div className={styles.userProfile}>
+                          <Link href="/my-trips" className={styles.myTripsLink}>
+                            {t('myTrips')}
+                          </Link>
+                          <div
+                            className={styles.userAvatar}
+                            onClick={() => setShowUserMenu(!showUserMenu)}
+                          >
+                            {user.photoURL ? (
+                              <Image
+                                src={user.photoURL}
+                                alt={user.name || 'User'}
+                                width={32}
+                                height={32}
+                                className="rounded-full"
+                              />
+                            ) : (
+                              <div className={styles.userAvatar}>
+                                {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                              </div>
+                            )}
+                            {showUserMenu && (
+                              <div className={styles.userDropdown}>
+                                <div className={styles.userInfo}>
+                                  {user.photoURL && (
+                                    <Image
+                                      src={user.photoURL}
+                                      alt={user.name || 'User'}
+                                      width={40}
+                                      height={40}
+                                      className={styles.dropdownAvatar}
+                                    />
+                                  )}
+                                  <div>
+                                    <p className={styles.userName}>{user.name || user.email}</p>
+                                    <p className={styles.userEmail}>{user.email}</p>
+                                  </div>
+                                </div>
+                                <Button
+                                  type="button"
+                                  className={styles.signIn}
+                                  onClick={async () => {
+                                    try {
+                                      await logout();
+                                      setShowUserMenu(false);
+                                      router.push('/');
+                                    } catch (error) {
+                                      console.error('Logout error:', error);
+                                    }
+                                  }}
+                                >
+                                  {t('logout')}
+                                </Button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </li>
                     )}
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className={styles.signUp}
-                      onClick={() => {
-                        setIsOpen(true);
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      {t('signUp')}
-                    </button>
                   </li>
                 </ul>
                 <LanguageSwitcher />
               </nav>
             )}
             {isOpen && (
-              <ul>
-                <LoginModal onClose={() => setIsOpen(false)} />
-              </ul>
+              <LoginModal
+                onClose={() => setIsOpen(false)}
+                initialMode={isLogin ? 'login' : 'register'}
+              />
             )}
             <a href="/" className={styles.logoLink}>
               <Image src={logo} alt={t('logoAlt')} width={100} height={40} />

@@ -345,6 +345,8 @@
     },
 
     "SelectSeats": {
+      "myTrips": "Мои поездки",
+      "logout": "Выйти",
       "flights": "Авиабилеты",
       "hotels": "Отели",
       "packages": "Пакеты",

@@ -345,6 +345,8 @@
     },
 
     "SelectSeats": {
+      "myTrips": "Mening sayohatlarim",
+      "logout": "Chiqish",
       "flights": "Reyslar",
       "hotels": "Mehmonxonalar",
       "packages": "Paketlar",

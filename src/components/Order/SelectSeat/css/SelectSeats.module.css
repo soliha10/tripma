@@ -179,7 +179,7 @@
   padding: 30px 8px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 100;
 }
 
 .navList {
@@ -216,6 +216,19 @@
   text-align: center;
 }
 
+.userAvatar {
+  /* "w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600" */
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background-color: #CBD4E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+}
+
 .signIn {
   cursor: pointer;
   color: #7c8db0;
@@ -241,7 +254,18 @@
   display: inline-block;
   cursor: pointer;
 }
-
+.userDropdown {
+  position: absolute;
+  top: 62%;
+  left: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  min-width: 200px;
+  z-index: 1000;
+  margin-top: 8px;
+}
 .description {
   color: #7C8DB0;
   font-size: 14px;
@@ -255,7 +279,11 @@
   margin-bottom: 16px;
   display: block;
 }
-
+.userInfo {
+  color: #6E7491;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
 .line.economy {
   background-color: #605DEC;
 }
