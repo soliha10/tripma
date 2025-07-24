@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "2pos9c0ay4",
+      "email": "smt@gmail.com",
+      "name": "smt",
+      "createdAt": "2025-07-24T01:57:43.925Z"
+    }
+  ],
+  "sessions": {
+    "xayc2q77ncamdgqt18i": {
+      "id": "2pos9c0ay4",
+      "email": "smt@gmail.com",
+      "name": "smt",
+      "createdAt": "2025-07-24T01:57:43.925Z"
+    }
+  }
+}

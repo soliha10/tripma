@@ -2,12 +2,22 @@
 
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useFlight } from '@/context/FlightContext';
 import styles from './css/SelectModal.module.css';
 
 export default function SelectModal({ onClose }: { onClose: () => void }) {
-  const t = useTranslations('SelectSeat.SelectModal'); // Use the SelectModal namespace
+  const t = useTranslations('SelectSeat.SelectModal');
+  const router = useRouter();
+  const { setUpgraded } = useFlight();
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleUpgrade = () => {
+    setUpgraded(true);
+    onClose();
+    router.push('/summary');
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -31,7 +41,12 @@ export default function SelectModal({ onClose }: { onClose: () => void }) {
           <Button variant="cancel" size="cancel" onClick={onClose} aria-label={t('cancelAria')}>
             {t('cancel')}
           </Button>
-          <Button variant="upgrade" size="upgrade" aria-label={t('upgradeAria')}>
+          <Button 
+            variant="upgrade" 
+            size="upgrade" 
+            onClick={handleUpgrade}
+            aria-label={t('upgradeAria')}
+          >
             {t('upgrade')}
           </Button>
         </div>

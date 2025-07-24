@@ -140,10 +140,16 @@ export default function LoginPage() {
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <div onClick={() => setOpen(true)} className={styles.dateTrigger}>
-                {dateRange?.from && dateRange?.to ? (
-                  `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                {tripType === 'round' ? (
+                  dateRange?.from && dateRange?.to ? (
+                    `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                  ) : (
+                    <span className={styles.placeholderText}>{t('departReturn')}</span>
+                  )
+                ) : dateRange?.from ? (
+                  dateRange.from.toLocaleDateString()
                 ) : (
-                  <span className={styles.placeholderText}>{t('departReturn')}</span>
+                  <span className={styles.placeholderText}>{t('departDate')}</span>
                 )}
               </div>
             </PopoverTrigger>
@@ -155,7 +161,13 @@ export default function LoginPage() {
                     type="radio"
                     value="round"
                     checked={tripType === 'round'}
-                    onChange={() => setTripType('round')}
+                    onChange={() => {
+                      setTripType('round');
+                      // Clear return date when switching to round trip if not set
+                      if (!dateRange?.to && dateRange?.from) {
+                        setDateRange({ from: dateRange.from, to: undefined });
+                      }
+                    }}
                   />
                   <span className={styles.radioText}>{t('roundTrip')}</span>
                 </label>
@@ -165,26 +177,47 @@ export default function LoginPage() {
                     type="radio"
                     value="one"
                     checked={tripType === 'one'}
-                    onChange={() => setTripType('one')}
+                    onChange={() => {
+                      setTripType('one');
+                      // Keep only departure date for one way
+                      if (dateRange?.from) {
+                        setDateRange({ from: dateRange.from, to: undefined });
+                      }
+                    }}
                   />
                   <span className={styles.radioText}>{t('oneWay')}</span>
                 </label>
-                <div onClick={() => setOpen(true)} className={styles.dateInput}>
-                  {dateRange?.from && dateRange?.to ? (
-                    `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                <div className={styles.dateInput}>
+                  {tripType === 'round' ? (
+                    dateRange?.from && dateRange?.to ? (
+                      `${dateRange.from.toLocaleDateString()} - ${dateRange.to.toLocaleDateString()}`
+                    ) : (
+                      <span className={styles.placeholderText}>{t('departReturn')}</span>
+                    )
+                  ) : dateRange?.from ? (
+                    dateRange.from.toLocaleDateString()
                   ) : (
-                    <span className={styles.placeholderText}>{t('departReturn')}</span>
+                    <span className={styles.placeholderText}>{t('departDate')}</span>
                   )}
                 </div>
-                <button className={styles.doneButton}>{t('done') || 'Done'}</button>
+                <button type="button" className={styles.doneButton} onClick={() => setOpen(false)}>
+                  {t('done') || 'Done'}
+                </button>
               </form>
               <Calendar
-                mode="range"
+                mode={tripType === 'round' ? 'range' : 'single'}
                 defaultMonth={dateRange?.from}
-                numberOfMonths={2}
-                selected={dateRange}
-                onSelect={setDateRange}
+                numberOfMonths={tripType === 'round' ? 2 : 1}
+                selected={tripType === 'round' ? dateRange : dateRange?.from}
+                onSelect={(selected) => {
+                  if (tripType === 'round') {
+                    setDateRange(selected as DateRange);
+                  } else {
+                    setDateRange({ from: selected as Date, to: undefined });
+                  }
+                }}
                 className={styles.calendar}
+                disabled={(date) => date < new Date()}
               />
             </PopoverContent>
           </Popover>

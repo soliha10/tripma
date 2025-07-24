@@ -1,7 +1,8 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import fs from 'fs';
+import path from 'path';
 
 // Types for authentication
 export interface User {
@@ -22,9 +23,71 @@ export interface AuthState {
   success?: boolean;
 }
 
-// Simple in-memory storage for demo (replace with database in production)
-const users: User[] = [];
-const sessions: Map<string, User> = new Map();
+interface DatabaseData {
+  users: User[];
+  sessions: Record<string, User>;
+}
+
+// Database file path
+const DB_PATH = path.join(process.cwd(), 'db.json');
+
+// Helper functions for database operations
+function readDatabase(): DatabaseData {
+  try {
+    if (!fs.existsSync(DB_PATH)) {
+      const initialData: DatabaseData = { users: [], sessions: {} };
+      fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
+      return initialData;
+    }
+    const data = fs.readFileSync(DB_PATH, 'utf8');
+    const parsed = JSON.parse(data);
+    // Convert createdAt strings back to Date objects
+    parsed.users = parsed.users.map((user: User & { createdAt: string }) => ({
+      ...user,
+      createdAt: new Date(user.createdAt),
+    }));
+    return parsed;
+  } catch (error) {
+    console.error('Error reading database:', error);
+    return { users: [], sessions: {} };
+  }
+}
+
+function writeDatabase(data: DatabaseData): void {
+  try {
+    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error writing database:', error);
+  }
+}
+
+function getUsers(): User[] {
+  const db = readDatabase();
+  return db.users;
+}
+
+function addUser(user: User): void {
+  const db = readDatabase();
+  db.users.push(user);
+  writeDatabase(db);
+}
+
+function setSession(token: string, user: User): void {
+  const db = readDatabase();
+  db.sessions[token] = user;
+  writeDatabase(db);
+}
+
+function getSession(token: string): User | null {
+  const db = readDatabase();
+  return db.sessions[token] || null;
+}
+
+function removeSession(token: string): void {
+  const db = readDatabase();
+  delete db.sessions[token];
+  writeDatabase(db);
+}
 
 // Helper function to generate session token
 function generateSessionToken(): string {
@@ -63,7 +126,8 @@ export async function register(
   }
 
   // Check if user already exists
-  if (email && users.find((user) => user.email === email)) {
+  const existingUsers = getUsers();
+  if (email && existingUsers.find((user) => user.email === email)) {
     errors.email = ['An account with this email already exists'];
   }
 
@@ -80,11 +144,11 @@ export async function register(
       createdAt: new Date(),
     };
 
-    users.push(newUser);
+    addUser(newUser);
 
     // Create session
     const sessionToken = generateSessionToken();
-    sessions.set(sessionToken, newUser);
+    setSession(sessionToken, newUser);
 
     // Set session cookie
     const cookieStore = await cookies();
@@ -130,8 +194,9 @@ export async function login(
   }
 
   try {
-    // Find user (in production, you'd verify password hash)
-    const user = users.find((u) => u.email === email);
+    // Find user
+    const existingUsers = getUsers();
+    const user = existingUsers.find((u: User) => u.email === email);
 
     if (!user) {
       return {
@@ -143,7 +208,7 @@ export async function login(
 
     // Create session
     const sessionToken = generateSessionToken();
-    sessions.set(sessionToken, user);
+    setSession(sessionToken, user);
 
     // Set session cookie
     const cookieStore = await cookies();
@@ -171,7 +236,7 @@ export async function logout(): Promise<void> {
   const sessionToken = cookieStore.get('session')?.value;
 
   if (sessionToken) {
-    sessions.delete(sessionToken);
+    removeSession(sessionToken);
     cookieStore.delete('session');
   }
 
@@ -187,7 +252,7 @@ export async function getCurrentUser(): Promise<User | null> {
     return null;
   }
 
-  return sessions.get(sessionToken) || null;
+  return getSession(sessionToken);
 }
 
 // Check if user is authenticated

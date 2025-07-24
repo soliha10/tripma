@@ -7,12 +7,14 @@ import Footer from '@/components/Main/Footer/Footer';
 import LoginHeader from '@/components/Main/Login/LoginHeader';
 import OrderForm from './OrderForm';
 import { useFlight } from '@/context/FlightContext';
+import { useAuth } from '@/context/AuthContext';
 import SelectedItem from '@/components/Details/DetailHero/SelectedItem';
 import { Button } from '@/components/ui/button';
 import bags from '@/app/[locale]/assets/images/bags.svg';
 import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
+  const { user } = useAuth();
   const t = useTranslations('OrderHero'); // Use the OrderHero namespace
   const { selectedDepartFlight, selectedReturnFlight, priceCalculations } = useFlight();
   const { subtotal, taxesAndFees, total } = priceCalculations;
@@ -22,10 +24,32 @@ export default function OrderHero() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [knownTraveller, setKnownTraveller] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
   const router = useRouter();
+
+  const { setPassenger } = useFlight();
 
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (!isFormValid) return;
+
+    // Set passenger data before navigation
+    setPassenger({
+      firstName,
+      lastName,
+      birthDate,
+      email,
+      phoneNumber,
+      knownTraveller,
+      emergencyContact: {
+        firstName,
+        lastName,
+        email,
+        phone: phoneNumber,
+      },
+    });
+
     router.push('/select-seat');
   };
 
@@ -53,6 +77,7 @@ export default function OrderHero() {
                 setPhoneNumber={setPhoneNumber}
                 knownTraveller={knownTraveller}
                 setKnownTraveller={setKnownTraveller}
+                onValidationChange={setIsFormValid}
               />
               <div className={styles.summaryBox}>
                 {selectedDepartFlight && (
@@ -82,13 +107,9 @@ export default function OrderHero() {
                 <Button
                   type="button"
                   className={`${styles.selectButton} ${
-                    firstName && lastName && birthDate && email && phoneNumber && knownTraveller
-                      ? styles.active
-                      : styles.disabled
+                    isFormValid ? styles.active : styles.disabled
                   }`}
-                  disabled={
-                    !(firstName && lastName && birthDate && email && phoneNumber && knownTraveller)
-                  }
+                  disabled={!isFormValid || !user}
                   onClick={handleNavigate}
                   aria-label={t('proceedToSelectSeats')}
                 >

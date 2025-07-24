@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
 import menu from '@/app/[locale]/assets/images/menu.svg';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
 import arrow from '@/app/[locale]/assets/images/arrow-white.svg';
@@ -15,6 +15,7 @@ import bgPlane from '@/app/[locale]/assets/images/bg-plane.svg';
 import { useRouter } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import { useFlight } from '@/context/FlightContext';
+import { useAuth } from '@/context/AuthContext';
 import SeatMap from './SeatMap';
 import SelectModal from './SelectModal';
 import styles from './css/SelectSeats.module.css';
@@ -33,6 +34,7 @@ export default function SelectSeats() {
   );
 
   const { passenger } = useFlight();
+  const { user } = useAuth();
   const router = useRouter();
 
   const economyItem = [
@@ -52,16 +54,31 @@ export default function SelectSeats() {
   const toggleDepart = () => setSelectTab('depart');
   const toggleReturn = () => setSelectTab('return');
 
-  const handleBtn = () => setSelectTab(selectTab === 'depart' ? 'return' : 'depart');
+  const handleBtn = () => {
+    if (!user) {
+      setIsOpenModal(true);
+      return;
+    }
+    setSelectTab(selectTab === 'depart' ? 'return' : 'depart');
+  };
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if (!user) {
+      setIsOpenModal(true);
+      return;
+    }
     router.push('/payment');
   };
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogin = () => {
+    setIsOpenModal(true);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -91,13 +108,25 @@ export default function SelectSeats() {
                     </a>
                   </li>
                   <li>
-                    <button
-                      type="button"
-                      className={styles.signIn}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {t('signIn')}
-                    </button>
+                    {user ? (
+                      <div className={styles.userProfile}>
+                        <span className={styles.userName}>{user?.name}</span>
+                        <button
+                          type="button"
+                          className={styles.signOut}
+                          onClick={() => {
+                            // Implement sign out functionality
+                            setIsMenuOpen(false);
+                          }}
+                        >
+                          {t('signOut')}
+                        </button>
+                      </div>
+                    ) : (
+                      <button type="button" className={styles.signIn} onClick={handleLogin}>
+                        {t('signIn')}
+                      </button>
+                    )}
                   </li>
                   <li>
                     <button

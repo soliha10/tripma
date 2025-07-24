@@ -22,9 +22,16 @@ import SummaryCard from './SummaryCard';
 import styles from './css/SummaryPage.module.css';
 
 export default function SummaryPage() {
-  const t = useTranslations('SummaryPage'); // Use the SummaryPage namespace
+  const t = useTranslations('SummaryPage');
   const [isOpen, setIsOpen] = useState(true);
-  const { selectedDepartFlight, selectedReturnFlight, priceCalculations, paymentInfo } = useFlight();
+  const { 
+    selectedDepartFlight, 
+    selectedReturnFlight, 
+    priceCalculations, 
+    paymentInfo, 
+    isUpgraded 
+  } = useFlight();
+  
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
   const shopItems = [
@@ -127,7 +134,10 @@ export default function SummaryPage() {
                     <SelectedSeatsSummary {...selectedDepartFlight} />
                   </div>
                 )}
-                <span className={styles.seatInfo}>{t('departingSeatInfo')}</span>
+                <span className={styles.seatInfo}>
+                  {isUpgraded ? t('upgradedSeatInfo') : t('departingSeatInfo')}
+                  {isUpgraded && <span className={styles.upgradeBadge}>{t('upgradedBadge')}</span>}
+                </span>
 
                 <p className={styles.flightDate}>{t('arrivingDate')}</p>
                 {selectedReturnFlight && (
@@ -135,7 +145,10 @@ export default function SummaryPage() {
                     <SelectedSeatsSummary {...selectedReturnFlight} />
                   </div>
                 )}
-                <span className={styles.seatInfo}>{t('arrivingSeatInfo')}</span>
+                <span className={styles.seatInfo}>
+                  {isUpgraded ? t('upgradedSeatInfo') : t('arrivingSeatInfo')}
+                  {isUpgraded && <span className={styles.upgradeBadge}>{t('upgradedBadge')}</span>}
+                </span>
 
                 <Table className={styles.priceTable}>
                   <TableCaption className={styles.tableCaption}>
@@ -154,10 +167,12 @@ export default function SummaryPage() {
                       <TableCell>{t('baggageFees')}</TableCell>
                       <TableCell>$0.00</TableCell>
                     </TableRow>
-                    <TableRow className={styles.tableRow}>
-                      <TableCell>{t('seatUpgrade')}</TableCell>
-                      <TableCell>$0.00</TableCell>
-                    </TableRow>
+                    {isUpgraded && (
+                      <TableRow className={styles.tableRow}>
+                        <TableCell>{t('seatUpgrade')}</TableCell>
+                        <TableCell>+$150.00</TableCell>
+                      </TableRow>
+                    )}
                     <TableRow className={styles.tableRow}>
                       <TableCell>{t('subtotal')}</TableCell>
                       <TableCell>${subtotal.toFixed(2)}</TableCell>

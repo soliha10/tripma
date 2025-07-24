@@ -280,6 +280,17 @@
     "proceedToSelectSeats": "Proceed to select seats",
     "baggageIllustration": "Baggage illustration",
     "OrderForm": {
+      "errors": {
+        "firstName": "First name must be at least 2 characters and contain only letters",
+        "lastName": "Last name must be at least 2 characters and contain only letters",
+        "birthDate": "Please select your birth date",
+        "email": "Please enter a valid email address",
+        "phone": "Please enter a valid phone number",
+        "emergencyFirstName": "Emergency contact first name must be at least 2 characters and contain only letters",
+        "emergencyLastName": "Emergency contact last name must be at least 2 characters and contain only letters",
+        "emergencyEmail": "Please enter a valid emergency contact email address",
+        "emergencyPhone": "Please enter a valid emergency contact phone number"
+      },
       "passenger1Adult": "Passenger 1 (Adult)",
       "firstNamePlaceholder": "First name*",
       "middlePlaceholder": "Middle",
@@ -443,6 +454,8 @@
     "successMessage": "Your flight has been booked successfully! Your confirmation number is #381029404387",
     "mainTitle": "Bon voyage, Sophia!",
     "confirmationNumber": "Confirmation number: #381029404387",
+    "upgradedSeatInfo": "Business Class",
+    "upgradedBadge": "Upgraded",
     "description": "Thank you for booking your travel with Tripma! Below is a summary of your trip to Narita airport in Tokyo, Japan. We’ve sent a copy of your booking confirmation to your email address. You can also find this page again in <link>My trips</link>.",
     "myTripsLink": "My trips",
     "flightSummaryTitle": "Flight summary",

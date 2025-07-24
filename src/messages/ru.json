@@ -281,6 +281,17 @@
     "baggageIllustration": "Иллюстрация багажа",
 
     "OrderForm": {
+      "errors": {
+        "firstName": "Имя должно содержать минимум 2 буквы и состоять только из букв",
+        "lastName": "Фамилия должна содержать минимум 2 буквы и состоять только из букв",
+        "birthDate": "Пожалуйста, выберите дату рождения",
+        "email": "Пожалуйста, введите корректный адрес электронной почты",
+        "phone": "Пожалуйста, введите корректный номер телефона",
+        "emergencyFirstName": "Имя контактного лица должно содержать минимум 2 буквы и состоять только из букв",
+        "emergencyLastName": "Фамилия контактного лица должна содержать минимум 2 буквы и состоять только из букв",
+        "emergencyEmail": "Пожалуйста, введите корректный адрес электронной почты контактного лица",
+        "emergencyPhone": "Пожалуйста, введите корректный номер телефона контактного лица"
+      },
       "passenger1Adult": "Пассажир 1 (Взрослый)",
       "firstNamePlaceholder": "Имя*",
       "middlePlaceholder": "Отчество",
@@ -325,12 +336,12 @@
   },
   "SelectSeat": {
     "SelectModal": {
-      "title": "Улучшить место",
-      "description": "Улучшите свое место всего за $199 и наслаждайтесь на 45 процентов большим пространством для ног и сиденьями, которые откидываются на 40 процентов больше, чем в эконом-классе.",
-      "cancel": "Отмена",
-      "upgrade": "Улучшить за $199",
-      "cancelAria": "Отменить улучшение",
-      "upgradeAria": "Улучшить место за $199"
+      "title": "Повысить класс места",
+      "description": "Повысьте класс места всего за $150 и получите больше места для ног, премиальное обслуживание и питание на борту.",
+      "cancel": "Нет, спасибо",
+      "upgrade": "Повысить за $150",
+      "cancelAria": "Отказаться от повышения класса",
+      "upgradeAria": "Повысить до бизнес-класса"
     },
 
     "SelectSeats": {
@@ -439,84 +450,85 @@
     "appleAlt": "Apple",
     "facebookAlt": "Facebook"
   },
-  
-   "SummaryPage": {
-      "successMessage": "Ваш рейс успешно забронирован! Ваш номер подтверждения: #381029404387",
-      "mainTitle": "Счастливого пути, София!",
-      "confirmationNumber": "Номер подтверждения: #381029404387",
-      "description": "Спасибо за бронирование путешествия с Tripma! Ниже приведена информация о вашей поездке в аэропорт Нарита, Токио, Япония. Мы отправили копию подтверждения бронирования на ваш адрес электронной почты. Вы также можете снова найти эту страницу в <link>Мои поездки</link>.",
-      "myTripsLink": "Мои поездки",
-      "flightSummaryTitle": "Сводка рейса",
-      "departingDate": "Вылет 25 февраля 2021 года",
-      "departingSeatInfo": "Место 9F (эконом, у окна), 1 зарегистрированный багаж",
-      "arrivingDate": "Прибытие 21 марта 2021 года",
-      "arrivingSeatInfo": "Место 4F (бизнес, у окна), 1 зарегистрированный багаж",
-      "priceBreakdownCaption": "Разбивка стоимости",
-      "departingFlight": "Вылетающий рейс",
-      "arrivingFlight": "Прибывающий рейс",
-      "baggageFees": "Сборы за багаж",
-      "seatUpgrade": "Улучшение места (бизнес)",
-      "subtotal": "Промежуточный итог",
-      "taxes": "Налоги (9.4%)",
-      "amountPaid": "Оплаченная сумма",
-      "paymentMethodTitle": "Способ оплаты",
-      "shareItineraryTitle": "Поделитесь своим маршрутом",
-      "shareItineraryDescription": "Вы можете отправить свой маршрут по электронной почте, указав адрес получателя здесь.",
-      "emailPlaceholder": "Адрес электронной почты",
-      "emailItineraryButton": "Отправить маршрут по email",
-      "addAnotherButton": "Добавить другой",
-      "flightRouteTitle": "Маршрут рейса",
-      "shopHotelsTitle": "Выберите <highlight>отели</highlight>",
-      "hotelsHighlight": "отели",
-      "shopHotelsDescription": "Tripma сотрудничает с тысячами отелей, чтобы предложить вам лучшие предложения. Сэкономьте до 30%, добавив отель к вашей поездке.",
-      "shopAllHotelsButton": "Посмотреть все отели",
-      "experiencesTitle": "Найдите уникальные <highlight>впечатления</highlight>",
-      "experiencesHighlight": "впечатления",
-      "experiencesDescription": "Найдите мероприятия и аутентичные культурные впечатления, доступные исключительно пользователям Tripma.",
-      "viewAllExperiencesButton": "Посмотреть все впечатления",
-      "shopItems": {
-        "ryokanJapan": {
-          "name": "Ryokan Japan",
-          "text": "Наслаждайтесь видом на сад из вашей комнаты",
-          "alt": "Ryokan Japan"
-        },
-        "besshoSasa": {
-          "name": "Bessho SASA",
-          "text": "Японский рёкан с частной баней онсэн",
-          "alt": "Bessho SASA"
-        },
-        "hotelOsaka": {
-          "name": "HOTEL THE FLAG 大阪市",
-          "text": "Современный отель в центре Осаки",
-          "alt": "HOTEL THE FLAG 大阪市"
-        },
-        "nineHoursShinjuku": {
-          "name": "9 Hours Shinjuku",
-          "text": "Удобный капсульный отель на станции Синдзюку",
-          "alt": "9 Hours Shinjuku"
-        }
+
+  "SummaryPage": {
+    "upgradedSeatInfo": "Бизнес-класс",
+    "upgradedBadge": "Повышено",
+    "successMessage": "Ваш рейс успешно забронирован! Ваш номер подтверждения: #381029404387",
+    "mainTitle": "Счастливого пути, София!",
+    "confirmationNumber": "Номер подтверждения: #381029404387",
+    "description": "Спасибо за бронирование путешествия с Tripma! Ниже приведена информация о вашей поездке в аэропорт Нарита, Токио, Япония. Мы отправили копию подтверждения бронирования на ваш адрес электронной почты. Вы также можете снова найти эту страницу в <link>Мои поездки</link>.",
+    "myTripsLink": "Мои поездки",
+    "flightSummaryTitle": "Сводка рейса",
+    "departingDate": "Вылет 25 февраля 2021 года",
+    "departingSeatInfo": "Место 9F (эконом, у окна), 1 зарегистрированный багаж",
+    "arrivingDate": "Прибытие 21 марта 2021 года",
+    "arrivingSeatInfo": "Место 4F (бизнес, у окна), 1 зарегистрированный багаж",
+    "priceBreakdownCaption": "Разбивка стоимости",
+    "departingFlight": "Вылетающий рейс",
+    "arrivingFlight": "Прибывающий рейс",
+    "baggageFees": "Сборы за багаж",
+    "seatUpgrade": "Улучшение места (бизнес)",
+    "subtotal": "Промежуточный итог",
+    "taxes": "Налоги (9.4%)",
+    "amountPaid": "Оплаченная сумма",
+    "paymentMethodTitle": "Способ оплаты",
+    "shareItineraryTitle": "Поделитесь своим маршрутом",
+    "shareItineraryDescription": "Вы можете отправить свой маршрут по электронной почте, указав адрес получателя здесь.",
+    "emailPlaceholder": "Адрес электронной почты",
+    "emailItineraryButton": "Отправить маршрут по email",
+    "addAnotherButton": "Добавить другой",
+    "flightRouteTitle": "Маршрут рейса",
+    "shopHotelsTitle": "Выберите <highlight>отели</highlight>",
+    "hotelsHighlight": "отели",
+    "shopHotelsDescription": "Tripma сотрудничает с тысячами отелей, чтобы предложить вам лучшие предложения. Сэкономьте до 30%, добавив отель к вашей поездке.",
+    "shopAllHotelsButton": "Посмотреть все отели",
+    "experiencesTitle": "Найдите уникальные <highlight>впечатления</highlight>",
+    "experiencesHighlight": "впечатления",
+    "experiencesDescription": "Найдите мероприятия и аутентичные культурные впечатления, доступные исключительно пользователям Tripma.",
+    "viewAllExperiencesButton": "Посмотреть все впечатления",
+    "shopItems": {
+      "ryokanJapan": {
+        "name": "Ryokan Japan",
+        "text": "Наслаждайтесь видом на сад из вашей комнаты",
+        "alt": "Ryokan Japan"
       },
-      "experienceItems": {
-        "nihonKimono": {
-          "name": "Nihon Kimono",
-          "text": "Носите национальную одежду Японии по городу",
-          "alt": "Nihon Kimono"
-        },
-        "teamlabBorderless": {
-          "name": "teamLab Borderless",
-          "text": "Современное сенсорное восприятие света и звука",
-          "alt": "teamLab Borderless"
-        }
+      "besshoSasa": {
+        "name": "Bessho SASA",
+        "text": "Японский рёкан с частной баней онсэн",
+        "alt": "Bessho SASA"
       },
-      "emailItineraryAria": "Отправить маршрут по email",
-      "addAnotherAria": "Добавить другой email",
-      "shopAllHotelsAria": "Посмотреть все отели",
-      "viewAllExperiencesAria": "Посмотреть все впечатления",
-      "closeAlt": "Закрыть",
-      "visaAlt": "Visa",
-      "flightRouteMapAlt": "Карта маршрута рейса"
-    }
-  ,
+      "hotelOsaka": {
+        "name": "HOTEL THE FLAG 大阪市",
+        "text": "Современный отель в центре Осаки",
+        "alt": "HOTEL THE FLAG 大阪市"
+      },
+      "nineHoursShinjuku": {
+        "name": "9 Hours Shinjuku",
+        "text": "Удобный капсульный отель на станции Синдзюку",
+        "alt": "9 Hours Shinjuku"
+      }
+    },
+    "experienceItems": {
+      "nihonKimono": {
+        "name": "Nihon Kimono",
+        "text": "Носите национальную одежду Японии по городу",
+        "alt": "Nihon Kimono"
+      },
+      "teamlabBorderless": {
+        "name": "teamLab Borderless",
+        "text": "Современное сенсорное восприятие света и звука",
+        "alt": "teamLab Borderless"
+      }
+    },
+    "emailItineraryAria": "Отправить маршрут по email",
+    "addAnotherAria": "Добавить другой email",
+    "shopAllHotelsAria": "Посмотреть все отели",
+    "viewAllExperiencesAria": "Посмотреть все впечатления",
+    "closeAlt": "Закрыть",
+    "visaAlt": "Visa",
+    "flightRouteMapAlt": "Карта маршрута рейса"
+  },
   "Footer": {
     "about": "О Tripma",
     "howItWorks": "Как это работает",

@@ -281,6 +281,17 @@
     "baggageIllustration": "Yuk tasviri",
 
     "OrderForm": {
+      "errors": {
+        "firstName": "Ism kamida 2 ta harfdan iborat va faqat harflardan iborat bo'lishi kerak",
+        "lastName": "Familiya kamida 2 ta harfdan iborat va faqat harflardan iborat bo'lishi kerak",
+        "birthDate": "Iltimos, tug'ilgan sanangizni tanlang",
+        "email": "Iltimos, to'g'ri elektron pochta manzilini kiriting",
+        "phone": "Iltimos, to'g'ri telefon raqamini kiriting",
+        "emergencyFirstName": "Xavfsizlik shaxsi ismi kamida 2 ta harfdan iborat va faqat harflardan iborat bo'lishi kerak",
+        "emergencyLastName": "Xavfsizlik shaxsi familiyasi kamida 2 ta harfdan iborat va faqat harflardan iborat bo'lishi kerak",
+        "emergencyEmail": "Iltimos, to'g'ri xavfsizlik shaxsi elektron pochta manzilini kiriting",
+        "emergencyPhone": "Iltimos, to'g'ri xavfsizlik shaxsi telefon raqamini kiriting"
+      },
       "passenger1Adult": "Yo'lovchi 1 (Katta yoshli)",
       "firstNamePlaceholder": "Ism*",
       "middlePlaceholder": "Otasining ismi",
@@ -325,12 +336,12 @@
   },
   "SelectSeat": {
     "SelectModal": {
-      "title": "O'rindiqni yangilash",
-      "description": "O'rindiqingizni atigi $199 ga yangilang va 45 foiz ko'proq oyoq joyidan bahramand bo'ling, shuningdek, iqtisodiy sinfga qaraganda 40 foiz ko'proq yotadigan o'rindiqlardan foydalaning.",
-      "cancel": "Bekor qilish",
-      "upgrade": "$199 ga yangilash",
-      "cancelAria": "Yangilashni bekor qilish",
-      "upgradeAria": "O'rindiqni $199 ga yangilash"
+      "title": "Biznes-klassga o'tish",
+      "description": "O'rindingizni atigi $150 evaziga yangilang va qo'shimcha oyoq joyi, yuqori darajadagi xizmat va bepul ovqatlanishdan bahramand bo'ling.",
+      "cancel": "Yo'q, rahmat",
+      "upgrade": "$150 evaziga yangilash",
+      "cancelAria": "Yangilashdan bosh tortish",
+      "upgradeAria": "Biznes-klassga o'tish"
     },
 
     "SelectSeats": {
@@ -441,6 +452,8 @@
   },
 
   "SummaryPage": {
+    "upgradedSeatInfo": "Biznes-klass",
+    "upgradedBadge": "Yangilangan",
     "successMessage": "Sizning reysingiz muvaffaqiyatli bron qilindi! Tasdiqlash raqamingiz: #381029404387",
     "mainTitle": "Yoqimli sayohat, Sofiya!",
     "confirmationNumber": "Tasdiqlash raqami: #381029404387",

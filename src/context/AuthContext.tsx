@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getCurrentUser, type User } from '@/lib/auth-actions';
+import { ClientStorage } from '@/lib/client-storage';
 
 interface AuthContextType {
   user: User | null;
@@ -20,15 +21,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoading(true);
       const currentUser = await getCurrentUser();
       setUser(currentUser);
+      // Store user in localStorage for persistence
+      ClientStorage.setUser(currentUser);
     } catch (error) {
       console.error('Error fetching user:', error);
       setUser(null);
+      ClientStorage.clearUser();
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    // First, try to get user from localStorage for immediate UI update
+    const cachedUser = ClientStorage.getUser();
+    if (cachedUser) {
+      setUser(cachedUser);
+      setLoading(false);
+    }
+
+    // Then refresh from server to ensure data is up to date
     refreshUser();
   }, []);
 
