@@ -96,7 +96,8 @@ export default function LoginPage() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
-      handleNavigate(e as any);
+      // Handle form submission logic here if needed
+      router.push('/detail');
     }
   };
 
@@ -204,21 +205,36 @@ export default function LoginPage() {
                   {t('done') || 'Done'}
                 </button>
               </form>
-              <Calendar
-                mode={tripType === 'round' ? 'range' : 'single'}
-                defaultMonth={dateRange?.from}
-                numberOfMonths={tripType === 'round' ? 2 : 1}
-                selected={tripType === 'round' ? dateRange : dateRange?.from}
-                onSelect={(selected) => {
-                  if (tripType === 'round') {
-                    setDateRange(selected as DateRange);
-                  } else {
-                    setDateRange({ from: selected as Date, to: undefined });
-                  }
-                }}
-                className={styles.calendar}
-                disabled={(date) => date < new Date()}
-              />
+              {tripType === 'round' ? (
+                <Calendar
+                  mode="range"
+                  required
+                  defaultMonth={dateRange?.from}
+                  numberOfMonths={2}
+                  selected={dateRange}
+                  onSelect={(selected: DateRange) => {
+                    setDateRange(selected);
+                  }}
+                  className={styles.calendar}
+                  disabled={(date) => {
+                    // Disable dates before today
+                    return date < new Date();
+                  }}
+                />
+              ) : (
+                <Calendar
+                  mode="single"
+                  defaultMonth={dateRange?.from}
+                  numberOfMonths={1}
+                  selected={dateRange?.from}
+                  onSelect={(selected: Date) => {
+                    setDateRange({ from: selected, to: undefined });
+                  }}
+                  className={styles.calendar}
+                  disabled={(date) => date < new Date()}
+                  required
+                />
+              )}
             </PopoverContent>
           </Popover>
 
