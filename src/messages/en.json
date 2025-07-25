@@ -104,6 +104,29 @@
     }
   },
   "DetailPage": {
+    "globalPriceDemo": {
+      "title": "Global Price Calculations Demo",
+      "flightSelectionStatus": "Flight Selection Status",
+      "tripTypeLabel": "Trip Type",
+      "roundTrip": "Round Trip",
+      "oneWay": "One Way",
+      "departingFlightLabel": "Departing Flight",
+      "returnFlightLabel": "Return Flight",
+      "notSelected": "Not selected",
+      "directAccessTitle": "Direct Access to Global Calculations",
+      "subtotalLabel": "Subtotal",
+      "taxesFeesLabel": "Taxes & Fees (15%)",
+      "totalLabel": "Total",
+      "priceSummaryTitle": "Using Reusable PriceSummary Component",
+      "successTitle": "✅ Success!",
+      "successMessage": "The price calculations are now globally accessible and update automatically when:",
+      "successList": {
+        "flightsSelected": "Flights are selected or deselected",
+        "tripTypeChanges": "Trip type changes (round trip vs one way)",
+        "pageNavigation": "User navigates between pages"
+      },
+      "successFooter": "This works on any page in the application!"
+    },
     "selection": {
       "fromWhere": "From where?",
       "toWhere": "Where to?",

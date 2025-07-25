@@ -11,49 +11,65 @@ import { useTranslations } from 'next-intl';
  */
 export default function GlobalPriceDemo() {
   const t = useTranslations('DetailPage');
-  const { 
-    selectedDepartFlight, 
-    selectedReturnFlight, 
-    priceCalculations,
-    tripType 
-  } = useFlight();
+  const { selectedDepartFlight, selectedReturnFlight, priceCalculations, tripType } = useFlight();
 
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Global Price Calculations Demo</h2>
-      
+      <h2>{t('globalPriceDemo.title')}</h2>
+
       <div style={{ marginBottom: '20px' }}>
-        <h3>Flight Selection Status:</h3>
-        <p><strong>Trip Type:</strong> {tripType === 'round' ? 'Round Trip' : 'One Way'}</p>
-        <p><strong>Departing Flight:</strong> {selectedDepartFlight ? `${selectedDepartFlight.airlineType} - ${selectedDepartFlight.price}` : 'Not selected'}</p>
-        <p><strong>Return Flight:</strong> {selectedReturnFlight ? `${selectedReturnFlight.airlineType} - ${selectedReturnFlight.price}` : 'Not selected'}</p>
+        <h3>{t('globalPriceDemo.flightSelectionStatus')}</h3>
+        <p>
+          <strong>{t('globalPriceDemo.tripTypeLabel')}:</strong>{' '}
+          {tripType === 'round' ? t('globalPriceDemo.roundTrip') : t('globalPriceDemo.oneWay')}
+        </p>
+        <p>
+          <strong>{t('globalPriceDemo.departingFlightLabel')}:</strong>{' '}
+          {selectedDepartFlight
+            ? `${selectedDepartFlight.airlineType} - ${selectedDepartFlight.price}`
+            : t('globalPriceDemo.notSelected')}
+        </p>
+        <p>
+          <strong>{t('globalPriceDemo.returnFlightLabel')}:</strong>{' '}
+          {selectedReturnFlight
+            ? `${selectedReturnFlight.airlineType} - ${selectedReturnFlight.price}`
+            : t('globalPriceDemo.notSelected')}
+        </p>
       </div>
 
       <div style={{ marginBottom: '20px' }}>
-        <h3>Direct Access to Global Calculations:</h3>
+        <h3>{t('globalPriceDemo.directAccessTitle')}</h3>
         <div style={{ background: '#f5f5f5', padding: '15px', borderRadius: '8px' }}>
-          <p><strong>Subtotal:</strong> ${subtotal.toFixed(2)}</p>
-          <p><strong>Taxes & Fees (15%):</strong> ${taxesAndFees.toFixed(2)}</p>
-          <p><strong>Total:</strong> ${total.toFixed(2)}</p>
+          <p>
+            <strong>{t('globalPriceDemo.subtotalLabel')}:</strong> ${subtotal.toFixed(2)}
+          </p>
+          <p>
+            <strong>{t('globalPriceDemo.taxesFeesLabel')}:</strong> ${taxesAndFees.toFixed(2)}
+          </p>
+          <p>
+            <strong>{t('globalPriceDemo.totalLabel')}:</strong> ${total.toFixed(2)}
+          </p>
         </div>
       </div>
 
       <div>
-        <h3>Using Reusable PriceSummary Component:</h3>
+        <h3>{t('globalPriceDemo.priceSummaryTitle')}</h3>
         <PriceSummary />
       </div>
 
-      <div style={{ marginTop: '20px', padding: '15px', background: '#e8f5e8', borderRadius: '8px' }}>
-        <h4>✅ Success!</h4>
-        <p>The price calculations are now globally accessible and update automatically when:</p>
+      <div
+        style={{ marginTop: '20px', padding: '15px', background: '#e8f5e8', borderRadius: '8px' }}
+      >
+        <h4>{t('globalPriceDemo.successTitle')}</h4>
+        <p>{t('globalPriceDemo.successMessage')}</p>
         <ul>
-          <li>Flights are selected or deselected</li>
-          <li>Trip type changes (round trip vs one way)</li>
-          <li>User navigates between pages</li>
+          <li>{t('globalPriceDemo.successList.flightsSelected')}</li>
+          <li>{t('globalPriceDemo.successList.tripTypeChanges')}</li>
+          <li>{t('globalPriceDemo.successList.pageNavigation')}</li>
         </ul>
-        <p>This works on <strong>any page</strong> in the application!</p>
+        <p>{t('globalPriceDemo.successFooter')}</p>
       </div>
     </div>
   );

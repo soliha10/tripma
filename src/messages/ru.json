@@ -104,6 +104,29 @@
     }
   },
   "DetailPage": {
+    "globalPriceDemo": {
+      "title": "Демонстрация глобальных расчетов цен",
+      "flightSelectionStatus": "Статус выбора рейсов",
+      "tripTypeLabel": "Тип поездки",
+      "roundTrip": "Туда и обратно",
+      "oneWay": "В одну сторону",
+      "departingFlightLabel": "Рейс туда",
+      "returnFlightLabel": "Рейс обратно",
+      "notSelected": "Не выбрано",
+      "directAccessTitle": "Прямой доступ к глобальным расчетам",
+      "subtotalLabel": "Промежуточный итог",
+      "taxesFeesLabel": "Налоги и сборы (15%)",
+      "totalLabel": "Итого",
+      "priceSummaryTitle": "Использование повторно используемого компонента PriceSummary",
+      "successTitle": "✅ Успех!",
+      "successMessage": "Расчеты цен теперь доступны глобально и автоматически обновляются, когда:",
+      "successList": {
+        "flightsSelected": "Рейсы выбираются или отменяются",
+        "tripTypeChanges": "Изменяется тип поездки (туда и обратно или в одну сторону)",
+        "pageNavigation": "Пользователь переходит между страницами"
+      },
+      "successFooter": "Это работает на любой странице приложения!"
+    },
     "selection": {
       "fromWhere": "Откуда?",
       "toWhere": "Куда?",

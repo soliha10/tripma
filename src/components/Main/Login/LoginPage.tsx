@@ -150,7 +150,7 @@ export default function LoginPage() {
                 ) : dateRange?.from ? (
                   dateRange.from.toLocaleDateString()
                 ) : (
-                  <span className={styles.placeholderText}>{t('departDate')}</span>
+                  <span className={styles.placeholderText}>{t('departReturn')}</span>
                 )}
               </div>
             </PopoverTrigger>
@@ -198,7 +198,7 @@ export default function LoginPage() {
                   ) : dateRange?.from ? (
                     dateRange.from.toLocaleDateString()
                   ) : (
-                    <span className={styles.placeholderText}>{t('departDate')}</span>
+                    <span className={styles.placeholderText}>{t('departReturn')}</span>
                   )}
                 </div>
                 <button type="button" className={styles.doneButton} onClick={() => setOpen(false)}>

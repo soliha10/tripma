@@ -24,14 +24,9 @@ import styles from './css/SummaryPage.module.css';
 export default function SummaryPage() {
   const t = useTranslations('SummaryPage');
   const [isOpen, setIsOpen] = useState(true);
-  const { 
-    selectedDepartFlight, 
-    selectedReturnFlight, 
-    priceCalculations, 
-    paymentInfo, 
-    isUpgraded 
-  } = useFlight();
-  
+  const { selectedDepartFlight, selectedReturnFlight, priceCalculations, paymentInfo, isUpgraded } =
+    useFlight();
+
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
   const shopItems = [
@@ -157,11 +152,15 @@ export default function SummaryPage() {
                   <TableBody className={styles.tableBody}>
                     <TableRow className={styles.tableRow}>
                       <TableCell>{t('departingFlight')}</TableCell>
-                      <TableCell>{selectedDepartFlight ? selectedDepartFlight.price : '$0.00'}</TableCell>
+                      <TableCell>
+                        {selectedDepartFlight ? selectedDepartFlight.price : '$0.00'}
+                      </TableCell>
                     </TableRow>
                     <TableRow className={styles.tableRow}>
                       <TableCell>{t('arrivingFlight')}</TableCell>
-                      <TableCell>{selectedReturnFlight ? selectedReturnFlight.price : '$0.00'}</TableCell>
+                      <TableCell>
+                        {selectedReturnFlight ? selectedReturnFlight.price : '$0.00'}
+                      </TableCell>
                     </TableRow>
                     <TableRow className={styles.tableRow}>
                       <TableCell>{t('baggageFees')}</TableCell>
@@ -199,10 +198,13 @@ export default function SummaryPage() {
                     width={60}
                     height={38}
                   />
-                  <strong className={styles.cardName}>{paymentInfo?.cardName || 'Sophia Knowles'}</strong>
+                  <strong className={styles.cardName}>
+                    {paymentInfo?.cardName || 'Sophia Knowles'}
+                  </strong>
                   <div className={styles.cardDetails}>
                     <span className={styles.cardNumber}>
-                      ••••••••••••<span className={styles.cardLastFour}>
+                      ••••••••••••
+                      <span className={styles.cardLastFour}>
                         {paymentInfo?.cardNumber ? paymentInfo.cardNumber.slice(-4) : '3456'}
                       </span>
                     </span>

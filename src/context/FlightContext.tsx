@@ -81,7 +81,7 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     }
     return null;
   });
-  
+
   const [selectedReturnFlight, setSelectedReturnFlight] = useState<Flight | null>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('selectedReturnFlight');
@@ -89,7 +89,7 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     }
     return null;
   });
-  
+
   const [passenger, setPassenger] = useState<Passenger | null>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('flightPassenger');
@@ -97,7 +97,7 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     }
     return null;
   });
-  
+
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo | null>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('flightPaymentInfo');
@@ -105,7 +105,7 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     }
     return null;
   });
-  
+
   const [tripType, setTripType] = useState<'round' | 'one'>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('flightTripType');

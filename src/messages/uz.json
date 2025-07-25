@@ -104,6 +104,29 @@
     }
   },
   "DetailPage": {
+    "globalPriceDemo": {
+      "title": "Global narxlar hisoblash demo",
+      "flightSelectionStatus": "Parvozlar tanlash holati",
+      "tripTypeLabel": "Sayohat turi",
+      "roundTrip": "Borish va qaytish",
+      "oneWay": "Bir yo'nalish",
+      "departingFlightLabel": "Jo'nab ketish parvozi",
+      "returnFlightLabel": "Qaytish parvozi",
+      "notSelected": "Tanlanmagan",
+      "directAccessTitle": "Global hisob-kitoblarga to'g'ridan-to'g'ri kirish",
+      "subtotalLabel": "Oraliq jami",
+      "taxesFeesLabel": "Soliqlar va yig'imlar (15%)",
+      "totalLabel": "Jami",
+      "priceSummaryTitle": "Qayta ishlatiladigan PriceSummary komponentidan foydalanish",
+      "successTitle": "✅ Muvaffaqiyat!",
+      "successMessage": "Narxlar hisob-kitoblari endi global ravishda mavjud va quyidagi hollarda avtomatik ravishda yangilanadi:",
+      "successList": {
+        "flightsSelected": "Parvozlar tanlanadi yoki bekor qilinadi",
+        "tripTypeChanges": "Sayohat turi o'zgaradi (borish va qaytish yoki bir yo'nalish)",
+        "pageNavigation": "Foydalanuvchi sahifalar o'rtasida harakat qiladi"
+      },
+      "successFooter": "Bu ilovaning istalgan sahifasida ishlaydi!"
+    },
     "selection": {
       "fromWhere": "Qayerdan?",
       "toWhere": "Qayerga?",
