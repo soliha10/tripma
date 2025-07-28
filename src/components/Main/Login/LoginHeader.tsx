@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
-import menuIcon from '@/app/[locale]/assets/images/menu.svg'; // Assumed menu icon path
+import menuIcon from '@/app/[locale]/assets/images/menu.svg';
 import LoginModal from './LoginModal';
 import LanguageSwitcher from '@/components/Main/Login/LanguageSwitcher';
 import styles from './css/LoginHeader.module.css';
@@ -16,8 +16,8 @@ export default function LoginHeader() {
   const { user, loading, refreshUser } = useAuth();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false); // Track if modal should show login or register
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu toggle
+  const [isLogin, setIsLogin] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -28,9 +28,7 @@ export default function LoginHeader() {
     try {
       await logout();
       setShowUserMenu(false);
-      // Refresh user state after logout to update UI immediately
       await refreshUser();
-      // Optional: redirect to home page after logout
       window.location.href = '/';
     } catch (error) {
       console.error('Logout error:', error);

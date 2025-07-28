@@ -56,7 +56,6 @@ export default function DetailHero() {
     priceCalculations,
   } = useFlight();
 
-  // Initialize states
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const goOptions = ['SFO', 'ATL', 'LAX', 'STL', 'PVG', 'MSP', 'NRT', 'JFK'];
@@ -69,31 +68,24 @@ export default function DetailHero() {
   const [toLocation, setToLocation] = useState<string>('');
   const [state, setState] = useState<'departing' | 'returning'>('departing');
 
-  // Sync local tripType with global tripType
   const handleTripTypeChange = (newTripType: 'round' | 'one') => {
     setTripType(newTripType);
     setGlobalTripType(newTripType);
   };
-
-  // Get calculated values from global context
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
-  // Load data from sessionStorage on component mount
   useEffect(() => {
-    // Add a small delay to ensure sessionStorage is available
     const loadSearchData = () => {
       try {
         const searchData = sessionStorage.getItem('flightSearchData');
-        console.log('Retrieved sessionStorage data:', searchData); // Debug: Check sessionStorage data
+        console.log('Retrieved sessionStorage data:', searchData);
 
         if (searchData) {
           const parsedData = JSON.parse(searchData);
-          console.log('Parsed sessionStorage data:', parsedData); // Debug: Check parsed data
+          console.log('Parsed sessionStorage data:', parsedData);
 
-          // Set all the form values
           if (parsedData.from) {
             setFromLocation(parsedData.from);
-            console.log('Set fromLocation to:', parsedData.from);
           }
           if (parsedData.to) {
             setToLocation(parsedData.to);
@@ -117,20 +109,17 @@ export default function DetailHero() {
               to: parsedData.dateRange.to ? new Date(parsedData.dateRange.to) : undefined,
             };
             setDateRange(newDateRange);
-            console.log('Set dateRange to:', newDateRange);
           }
         } else {
-          console.warn('No flightSearchData found in sessionStorage'); // Debug: Warn if no data
+          console.warn('No flightSearchData found in sessionStorage');
         }
       } catch (error) {
-        console.error('Error loading search data:', error); // Debug: Catch any errors
+        console.error('Error loading search data:', error);
       }
     };
 
-    // Load immediately
     loadSearchData();
 
-    // Also try loading after a short delay in case of timing issues
     const timeoutId = setTimeout(loadSearchData, 100);
 
     return () => clearTimeout(timeoutId);

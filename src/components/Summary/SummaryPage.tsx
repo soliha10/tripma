@@ -4,7 +4,7 @@ import Footer from '../Main/Footer/Footer';
 import LoginHeader from '../Main/Login/LoginHeader';
 import close from '@/app/[locale]/assets/images/close-summary.svg';
 import { useState } from 'react';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
 import { useFlight } from '@/context/FlightContext';
 import SelectedSeatsSummary from './SelectedSeatsSummary';
 import visa from '@/app/[locale]/assets/images/visa.svg';

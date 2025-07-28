@@ -2,9 +2,7 @@
 
 import { User } from './auth-actions';
 
-// Client-side storage utilities for better UX
 export const ClientStorage = {
-  // Store user data in localStorage for persistence across browser sessions
   setUser: (user: User | null) => {
     if (typeof window !== 'undefined') {
       if (user) {
@@ -15,14 +13,12 @@ export const ClientStorage = {
     }
   },
 
-  // Get user data from localStorage
   getUser: (): User | null => {
     if (typeof window !== 'undefined') {
       const userData = localStorage.getItem('tripma_user');
       if (userData) {
         try {
           const parsed = JSON.parse(userData);
-          // Convert createdAt string back to Date object
           return {
             ...parsed,
             createdAt: new Date(parsed.createdAt),
@@ -37,14 +33,12 @@ export const ClientStorage = {
     return null;
   },
 
-  // Clear all user data
   clearUser: () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('tripma_user');
     }
   },
 
-  // Store authentication token
   setAuthToken: (token: string | null) => {
     if (typeof window !== 'undefined') {
       if (token) {
@@ -55,7 +49,6 @@ export const ClientStorage = {
     }
   },
 
-  // Get authentication token
   getAuthToken: (): string | null => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('tripma_auth_token');
@@ -63,7 +56,6 @@ export const ClientStorage = {
     return null;
   },
 
-  // Clear authentication token
   clearAuthToken: () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('tripma_auth_token');

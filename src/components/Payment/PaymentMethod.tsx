@@ -22,12 +22,13 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Calendar } from '../ui/calendar';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
 import styles from './PaymentMethod.module.css';
 
 export default function PaymentMethod() {
-  const t = useTranslations('PaymentMethod'); // Use the PaymentMethod namespace
-  const { selectedDepartFlight, selectedReturnFlight, priceCalculations, paymentInfo, setPaymentInfo } = useFlight();
+  const t = useTranslations('PaymentMethod');
+  const { selectedDepartFlight, selectedReturnFlight, priceCalculations, setPaymentInfo } =
+    useFlight();
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
   const emails = [
@@ -52,9 +53,8 @@ export default function PaymentMethod() {
   const [checkedSave, setCheckedSave] = useState(false);
   const [open, setOpen] = useState(false);
   const [cardExpireDate, setCardExpireDate] = useState<Date | undefined>(undefined);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  // Validation functions
   const validateCardName = (name: string): string => {
     if (!name.trim()) return 'Card name is required';
     if (name.trim().length < 2) return 'Card name must be at least 2 characters';
@@ -95,20 +95,21 @@ export default function PaymentMethod() {
     return '';
   };
 
-  // Handle input changes with validation
   const handleCardNameChange = (value: string) => {
     setCardName(value);
     const error = validateCardName(value);
-    setErrors(prev => ({ ...prev, cardName: error }));
+    setErrors((prev) => ({ ...prev, cardName: error }));
   };
 
   const handleCardNumberChange = (value: string) => {
-    // Format card number with spaces
-    const formatted = value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
+    const formatted = value
+      .replace(/\s/g, '')
+      .replace(/(\d{4})/g, '$1 ')
+      .trim();
     if (formatted.replace(/\s/g, '').length <= 16) {
       setCardNumber(formatted);
       const error = validateCardNumber(formatted);
-      setErrors(prev => ({ ...prev, cardNumber: error }));
+      setErrors((prev) => ({ ...prev, cardNumber: error }));
     }
   };
 
@@ -116,26 +117,26 @@ export default function PaymentMethod() {
     if (/^\d{0,4}$/.test(value)) {
       setCardCVV(value);
       const error = validateCVV(value);
-      setErrors(prev => ({ ...prev, cardCVV: error }));
+      setErrors((prev) => ({ ...prev, cardCVV: error }));
     }
   };
 
   const handleEmailChange = (value: string) => {
     setAccountEmail(value);
     const error = validateEmail(value);
-    setErrors(prev => ({ ...prev, email: error }));
+    setErrors((prev) => ({ ...prev, email: error }));
   };
 
   const handlePasswordChange = (value: string) => {
     setPassword(value);
     const error = validatePassword(value);
-    setErrors(prev => ({ ...prev, password: error }));
+    setErrors((prev) => ({ ...prev, password: error }));
   };
 
   const handleExpiryChange = (date: Date | undefined) => {
     setCardExpireDate(date);
     const error = validateCardExpiry(date);
-    setErrors(prev => ({ ...prev, cardExpiry: error }));
+    setErrors((prev) => ({ ...prev, cardExpiry: error }));
   };
 
   const getPasswordStrength = () => {
@@ -149,17 +150,19 @@ export default function PaymentMethod() {
 
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    
-    // Save payment info to global context
+
     if (cardName && cardNumber && cardExpireDate && cardCVV) {
       setPaymentInfo({
         cardName,
         cardNumber,
-        cardExpiry: cardExpireDate.toLocaleDateString('en-US', { month: '2-digit', year: '2-digit' }),
-        cardCVV
+        cardExpiry: cardExpireDate.toLocaleDateString('en-US', {
+          month: '2-digit',
+          year: '2-digit',
+        }),
+        cardCVV,
       });
     }
-    
+
     router.push('/summary');
   };
 
@@ -205,7 +208,9 @@ export default function PaymentMethod() {
                         className={`${styles.input} ${errors.cardName ? styles.inputError : ''}`}
                         aria-label={t('nameOnCardAria')}
                       />
-                      {errors.cardName && <span className={styles.errorText}>{errors.cardName}</span>}
+                      {errors.cardName && (
+                        <span className={styles.errorText}>{errors.cardName}</span>
+                      )}
                     </div>
                     <div>
                       <Input
@@ -217,7 +222,9 @@ export default function PaymentMethod() {
                         aria-label={t('cardNumberAria')}
                         maxLength={19}
                       />
-                      {errors.cardNumber && <span className={styles.errorText}>{errors.cardNumber}</span>}
+                      {errors.cardNumber && (
+                        <span className={styles.errorText}>{errors.cardNumber}</span>
+                      )}
                     </div>
                     <div className={styles.cardDetailsWrapper}>
                       <div className={styles.expiryDateWrapper}>
@@ -253,7 +260,9 @@ export default function PaymentMethod() {
                           </PopoverContent>
                         </Popover>
                         <span className={styles.expiryFormat}>{t('expiryFormat')}</span>
-                        {errors.cardExpiry && <span className={styles.errorText}>{errors.cardExpiry}</span>}
+                        {errors.cardExpiry && (
+                          <span className={styles.errorText}>{errors.cardExpiry}</span>
+                        )}
                       </div>
                       <div>
                         <Input
@@ -271,7 +280,9 @@ export default function PaymentMethod() {
                           aria-label={t('ccvAria')}
                           maxLength={4}
                         />
-                        {errors.cardCVV && <span className={styles.errorText}>{errors.cardCVV}</span>}
+                        {errors.cardCVV && (
+                          <span className={styles.errorText}>{errors.cardCVV}</span>
+                        )}
                       </div>
                     </div>
                   </form>
@@ -311,7 +322,9 @@ export default function PaymentMethod() {
                         className={`${styles.passwordInput} ${errors.password ? styles.inputError : ''}`}
                         aria-label={t('passwordAria')}
                       />
-                      {errors.password && <span className={styles.errorText}>{errors.password}</span>}
+                      {errors.password && (
+                        <span className={styles.errorText}>{errors.password}</span>
+                      )}
                       <div
                         onClick={() => setShowPassword(!showPassword)}
                         className={styles.passwordToggle}

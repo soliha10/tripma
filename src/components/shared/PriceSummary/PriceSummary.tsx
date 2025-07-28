@@ -14,17 +14,14 @@ export default function PriceSummary({ showTitle = true, className = '' }: Price
   const { selectedDepartFlight, selectedReturnFlight, priceCalculations } = useFlight();
   const { subtotal, taxesAndFees, total } = priceCalculations;
 
-  // Don't show anything if no flights are selected
   if (!selectedDepartFlight && !selectedReturnFlight) {
     return null;
   }
 
   return (
     <div className={`${styles.container} ${className}`}>
-      {showTitle && (
-        <h3 className={styles.title}>{t('priceInfo.priceSummary')}</h3>
-      )}
-      
+      {showTitle && <h3 className={styles.title}>{t('priceInfo.priceSummary')}</h3>}
+
       <div className={styles.summary}>
         <div className={styles.summaryRow}>
           <span className={styles.label}>{t('priceInfo.subtotal')}</span>

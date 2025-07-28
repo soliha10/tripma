@@ -1,7 +1,7 @@
 'use client';
 import { useState, MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Footer from '@/components/Main/Footer/Footer';
 import LoginHeader from '@/components/Main/Login/LoginHeader';
@@ -15,7 +15,7 @@ import styles from './css/OrderHero.module.css';
 
 export default function OrderHero() {
   const { user } = useAuth();
-  const t = useTranslations('OrderHero'); // Use the OrderHero namespace
+  const t = useTranslations('OrderHero');
   const { selectedDepartFlight, selectedReturnFlight, priceCalculations } = useFlight();
   const { subtotal, taxesAndFees, total } = priceCalculations;
   const [firstName, setFirstName] = useState('');
@@ -34,7 +34,6 @@ export default function OrderHero() {
 
     if (!isFormValid) return;
 
-    // Set passenger data before navigation
     setPassenger({
       firstName,
       lastName,

@@ -1,4 +1,3 @@
-// import { Link } from '@/i18n/navigation';
 'use client';
 import MainPage from '@/components/Main/page';
 import Image from 'next/image';

@@ -34,15 +34,12 @@ export default function LoginPage() {
   const router = useRouter();
   const passengerRef = useRef<HTMLDivElement>(null);
 
-  // Form validation states
   const [fromLocation, setFromLocation] = useState<string>('');
   const [toLocation, setToLocation] = useState<string>('');
 
-  // Validation logic - all required fields must be filled
   const isFormValid =
     fromLocation && toLocation && dateRange?.from && (tripType === 'one' || dateRange?.to);
 
-  // Tashqariga bosilganda dropdown yopish
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
       if (passengerRef.current && !passengerRef.current.contains(event.target as Node)) {
@@ -63,7 +60,6 @@ export default function LoginPage() {
   const handleNavigate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (isFormValid) {
-      // Store search data for next page
       const searchData = {
         from: fromLocation,
         to: toLocation,
@@ -73,19 +69,16 @@ export default function LoginPage() {
         minorCount,
       };
 
-      console.log('Storing search data:', searchData); // Debug: Check what we're storing
+      console.log('Storing search data:', searchData);
 
       try {
         sessionStorage.setItem('flightSearchData', JSON.stringify(searchData));
-
-        // Verify the data was stored correctly
         const storedData = sessionStorage.getItem('flightSearchData');
-        console.log('Verified stored data:', storedData); // Debug: Verify storage
+        console.log('Verified stored data:', storedData);
 
         router.push('/detail');
       } catch (error) {
         console.error('Error storing search data:', error);
-        // Still navigate even if storage fails
         router.push('/detail');
       }
     } else {
@@ -96,7 +89,6 @@ export default function LoginPage() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
-      // Handle form submission logic here if needed
       router.push('/detail');
     }
   };

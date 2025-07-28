@@ -25,7 +25,7 @@ import Link from 'next/link';
 import { logout } from '@/lib/auth-actions';
 
 export default function SelectSeats() {
-  const t = useTranslations('SelectSeat.SelectSeats'); // Use the SelectSeats namespace
+  const t = useTranslations('SelectSeat.SelectSeats');
   const [selectTab, setSelectTab] = useState<'depart' | 'return'>('depart');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedSeatDepart, setSelectedSeatDepart] = useState<{ row: number; col: string } | null>(
@@ -84,10 +84,6 @@ export default function SelectSeats() {
     setIsOpenModal(true);
     setIsMenuOpen(false);
   };
-
-  // const getInitials = (email: string) => {
-  //   return email?.substring(0, 2).toUpperCase() || '';
-  // };
 
   return (
     <section className={styles.selectSeats}>

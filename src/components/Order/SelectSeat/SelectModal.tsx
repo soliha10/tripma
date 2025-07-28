@@ -41,9 +41,9 @@ export default function SelectModal({ onClose }: { onClose: () => void }) {
           <Button variant="cancel" size="cancel" onClick={onClose} aria-label={t('cancelAria')}>
             {t('cancel')}
           </Button>
-          <Button 
-            variant="upgrade" 
-            size="upgrade" 
+          <Button
+            variant="upgrade"
+            size="upgrade"
             onClick={handleUpgrade}
             aria-label={t('upgradeAria')}
           >

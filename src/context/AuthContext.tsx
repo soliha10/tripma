@@ -21,7 +21,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoading(true);
       const currentUser = await getCurrentUser();
       setUser(currentUser);
-      // Store user in localStorage for persistence
       ClientStorage.setUser(currentUser);
     } catch (error) {
       console.error('Error fetching user:', error);
@@ -33,14 +32,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    // First, try to get user from localStorage for immediate UI update
     const cachedUser = ClientStorage.getUser();
     if (cachedUser) {
       setUser(cachedUser);
       setLoading(false);
     }
 
-    // Then refresh from server to ensure data is up to date
     refreshUser();
   }, []);
 

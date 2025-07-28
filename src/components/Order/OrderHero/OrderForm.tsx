@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl'; // Import useTranslations
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -46,11 +46,10 @@ export default function OrderForm({
   setKnownTraveller,
   onValidationChange,
 }: OrderFormProps) {
-  const t = useTranslations('OrderHero.OrderForm'); // Use the OrderForm namespace
+  const t = useTranslations('OrderHero.OrderForm');
   const [count, setCount] = useState(0);
   const [formIsValid, setFormIsValid] = useState(false);
 
-  // Update form validation state based on input values
   useEffect(() => {
     const isValid =
       firstName.trim() !== '' &&
@@ -71,7 +70,6 @@ export default function OrderForm({
   const [emergencyEmail, setEmergencyEmail] = useState('');
   const [emergencyPhone, setEmergencyPhone] = useState('');
 
-  // Validation functions
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -89,7 +87,6 @@ export default function OrderForm({
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    // Basic validations
     if (!firstName || !validateName(firstName)) {
       newErrors.firstName = t('errors.firstName');
     }
@@ -106,7 +103,6 @@ export default function OrderForm({
       newErrors.phoneNumber = t('errors.phone');
     }
 
-    // Emergency contact validations
     if (!isChecked) {
       if (!emergencyFirstName || !validateName(emergencyFirstName)) {
         newErrors.emergencyFirstName = t('errors.emergencyFirstName');
@@ -131,7 +127,6 @@ export default function OrderForm({
   const router = useRouter();
   const { setPassenger } = useFlight();
 
-  // Update form validity when any field changes
   useEffect(() => {
     const formIsValid = Boolean(
       firstName &&

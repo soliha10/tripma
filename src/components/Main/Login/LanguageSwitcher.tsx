@@ -10,7 +10,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from '@/components/ui/select'; // shadcn/ui Select
+} from '@/components/ui/select';
 
 const languages = [
   { code: 'en', label: 'English', flag: 'EN' },
@@ -25,11 +25,9 @@ export default function LanguageSwitcher() {
 
   const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0];
 
-  // Sizdagi segmentlarni almashtirish funksiyasi
   const getPathWithLocale = (newLocale: string) => {
     if (!pathname) return '/';
     const segments = pathname.split('/');
-    // segments[0] = "", segments[1] = locale
     if (segments.length > 1 && ['en', 'uz', 'ru'].includes(segments[1])) {
       segments[1] = newLocale;
     } else {

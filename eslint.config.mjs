@@ -6,7 +6,6 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-  // Core ESLint + TypeScript support
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
@@ -36,24 +35,20 @@ export default [
     },
     settings: {
       react: {
-        version: 'detect', // Detect from package.json
+        version: 'detect', 
       },
     },
     rules: {
-      // Prettier
       'prettier/prettier': 'warn',
 
-      // React
-      'react/react-in-jsx-scope': 'off', // Not needed for Next.js
+      'react/react-in-jsx-scope': 'off', 
       'react/jsx-uses-react': 'off',
       'react/jsx-uses-vars': 'warn',
 
-      // React hooks
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // TypeScript
-      'no-undef': 'off', // TS handles this
+      'no-undef': 'off', 
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
@@ -61,7 +56,6 @@ export default [
     },
   },
 
-  // Ignored files
   {
     ignores: ['node_modules', '.next', 'out', 'dist', 'public'],
   },

@@ -13,13 +13,10 @@ export default function LoginCookies() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Form elementini topish uchun
       const formElement = document.querySelector('form');
       if (formElement) {
         const formRect = formElement.getBoundingClientRect();
         const distanceFromTop = formRect.top;
-
-        // Agar form tepadan 115px yoki undan kam masofada bo'lsa, cookies ko'rsatish
         if (distanceFromTop <= 400) {
           setShowCookies(true);
         } else {
@@ -29,7 +26,6 @@ export default function LoginCookies() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Dastlabki holatni tekshirish
     handleScroll();
 
     return () => {

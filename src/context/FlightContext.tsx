@@ -54,26 +54,21 @@ type FlightContextType = {
   passenger: Passenger | null;
   setPassenger: (passenger: Passenger) => void;
 
-  // Payment information
   paymentInfo: PaymentInfo | null;
   setPaymentInfo: (paymentInfo: PaymentInfo) => void;
 
-  // Trip type for price calculations
   tripType: 'round' | 'one';
   setTripType: (type: 'round' | 'one') => void;
 
-  // Checked bags count
   checkedBagsCount: number;
   setCheckedBagsCount: (count: number) => void;
 
-  // Price calculations
   priceCalculations: PriceCalculations;
 };
 
 const FlightContext = createContext<FlightContextType | undefined>(undefined);
 
 export function FlightProvider({ children }: { children: ReactNode }) {
-  // Initialize state with localStorage data if available
   const [selectedDepartFlight, setSelectedDepartFlight] = useState<Flight | null>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('selectedDepartFlight');
@@ -130,7 +125,6 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     return false;
   });
 
-  // Persist to localStorage when state changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (selectedDepartFlight) {
@@ -189,14 +183,10 @@ export function FlightProvider({ children }: { children: ReactNode }) {
     }
   }, [isUpgraded]);
 
-  // Price calculation helper function
   const parsePrice = (priceString: string): number => {
-    // Remove $ and any other non-numeric characters except decimal point
     const numericString = priceString.replace(/[^0-9.]/g, '');
     return parseFloat(numericString) || 0;
   };
-
-  // Memoized price calculations that update when flights or trip type change
   const priceCalculations = useMemo((): PriceCalculations => {
     let subtotal = 0;
     if (selectedDepartFlight) {

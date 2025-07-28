@@ -4,11 +4,6 @@ import { useFlight } from '@/context/FlightContext';
 import PriceSummary from '@/components/shared/PriceSummary/PriceSummary';
 import { useTranslations } from 'next-intl';
 
-/**
- * Demo component to show how global price calculations work across any page
- * This demonstrates that subtotal, taxes/fees, and total are now accessible
- * from any component in the application via the FlightContext
- */
 export default function GlobalPriceDemo() {
   const t = useTranslations('DetailPage');
   const { selectedDepartFlight, selectedReturnFlight, priceCalculations, tripType } = useFlight();

@@ -51,7 +51,6 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
 
   useEffect(() => {
     if (currentState?.success) {
-      // Refresh user state and close modal on successful auth
       refreshUser().then(() => {
         setTimeout(() => {
           onClose();
@@ -69,7 +68,6 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
         </div>
         <p className={styles.modalSubtitle}>{isLogin ? t('signInSubtitle') : t('subtitle')}</p>
 
-        {/* Auth Status Messages */}
         {currentState?.success && (
           <div className={styles.successMessage}>{currentState.message}</div>
         )}
@@ -135,7 +133,6 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
             {isPending ? t('processing') : isLogin ? t('signInButton') : t('createAccount')}
           </Button>
 
-          {/* Toggle between login and register */}
           <div className={styles.toggleContainer}>
             <button
               type="button"
