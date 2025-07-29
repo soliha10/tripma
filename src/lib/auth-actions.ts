@@ -1,8 +1,23 @@
 'use server';
-
 import { cookies } from 'next/headers';
-import fs from 'fs';
-import path from 'path';
+import mongoose, { Document, Model } from 'mongoose';
+import bcrypt from 'bcrypt';
+import { MONGODB_URI } from '../../env.mjs';
+
+interface Session {
+  token: string;
+  expiresAt: Date;
+}
+
+interface UserDocument extends Document {
+  _id: string;
+  email: string;
+  name?: string;
+  photoURL?: string;
+  password: string;
+  sessions: Session[];
+  createdAt: Date;
+}
 
 export interface User {
   id: string;
@@ -12,7 +27,7 @@ export interface User {
   createdAt: Date;
 }
 
-export interface AuthState {
+interface AuthState {
   errors?: {
     email?: string[];
     password?: string[];
@@ -21,74 +36,91 @@ export interface AuthState {
   };
   message?: string;
   success?: boolean;
+  user?: User;
 }
 
-interface DatabaseData {
-  users: User[];
-  sessions: Record<string, User>;
+function isUser(doc: UserDocument | null | undefined): doc is UserDocument {
+  return (
+    doc !== null &&
+    doc !== undefined &&
+    typeof doc.email === 'string' &&
+    doc.createdAt instanceof Date
+  );
 }
 
-const DB_PATH = path.join(process.cwd(), 'db.json');
+function transformToUser(doc: UserDocument): User {
+  if (!isUser(doc)) {
+    throw new Error('Invalid user document');
+  }
+  return {
+    id: doc._id.toString(),
+    email: doc.email,
+    name: doc.name,
+    photoURL: doc.photoURL,
+    createdAt: doc.createdAt,
+  };
+}
 
-function readDatabase(): DatabaseData {
-  try {
-    if (!fs.existsSync(DB_PATH)) {
-      const initialData: DatabaseData = { users: [], sessions: {} };
-      fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
-      return initialData;
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: true, unique: true },
+    name: String,
+    photoURL: String,
+    password: { type: String, required: true },
+    sessions: [
+      {
+        token: String,
+        expiresAt: Date,
+      },
+    ],
+    createdAt: Date,
+  },
+  { timestamps: true },
+);
+
+const User: Model<UserDocument> =
+  mongoose.models.User || mongoose.model<UserDocument>('User', userSchema);
+
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable');
+}
+
+mongoose.set('strictQuery', true);
+
+let cached = global.mongoose as {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function connectDB(): Promise<typeof mongoose> {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    try {
+      cached.promise = mongoose.connect(MONGODB_URI);
+      cached.conn = await cached.promise;
+      console.log('MongoDB connected successfully');
+    } catch (error) {
+      console.error('MongoDB connection error:', error);
+      cached.promise = null;
+      throw error;
     }
-    const data = fs.readFileSync(DB_PATH, 'utf8');
-    const parsed = JSON.parse(data);
-    parsed.users = parsed.users.map((user: User & { createdAt: string }) => ({
-      ...user,
-      createdAt: new Date(user.createdAt),
-    }));
-    return parsed;
-  } catch (error) {
-    console.error('Error reading database:', error);
-    return { users: [], sessions: {} };
+  } else {
+    cached.conn = await cached.promise;
   }
-}
-
-function writeDatabase(data: DatabaseData): void {
-  try {
-    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing database:', error);
-  }
-}
-
-function getUsers(): User[] {
-  const db = readDatabase();
-  return db.users;
-}
-
-function addUser(user: User): void {
-  const db = readDatabase();
-  db.users.push(user);
-  writeDatabase(db);
-}
-
-function setSession(token: string, user: User): void {
-  const db = readDatabase();
-  db.sessions[token] = user;
-  writeDatabase(db);
-}
-
-function getSession(token: string): User | null {
-  const db = readDatabase();
-  return db.sessions[token] || null;
-}
-
-function removeSession(token: string): void {
-  const db = readDatabase();
-  delete db.sessions[token];
-  writeDatabase(db);
+  return cached.conn;
 }
 
 function generateSessionToken(): string {
-  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+  return crypto.randomUUID();
 }
+
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -97,13 +129,16 @@ function isValidEmail(email: string): boolean {
 function isValidPassword(password: string): boolean {
   return password.length >= 6;
 }
+
 export async function register(
   prevState: AuthState | undefined,
   formData: FormData,
 ): Promise<AuthState> {
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
-  const name = formData.get('name') as string;
+  await connectDB();
+
+  const email = formData.get('email')?.toString().trim() || '';
+  const password = formData.get('password')?.toString() || '';
+  const name = formData.get('name')?.toString().trim() || '';
 
   const errors: AuthState['errors'] = {};
 
@@ -115,27 +150,35 @@ export async function register(
     errors.password = ['Password must be at least 6 characters long'];
   }
 
-  const existingUsers = getUsers();
-  if (email && existingUsers.find((user) => user.email === email)) {
-    errors.email = ['An account with this email already exists'];
-  }
-
   if (Object.keys(errors).length > 0) {
     return { errors };
   }
 
   try {
-    const newUser: User = {
-      id: Math.random().toString(36).substring(2),
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      errors.email = ['This email is already registered'];
+      return { errors };
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({
       email,
       name: name || email.split('@')[0],
+      password: hashedPassword,
+      sessions: [],
       createdAt: new Date(),
-    };
-
-    addUser(newUser);
+    });
 
     const sessionToken = generateSessionToken();
-    setSession(sessionToken, newUser);
+    await User.findByIdAndUpdate(newUser._id, {
+      $push: {
+        sessions: {
+          token: sessionToken,
+          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        },
+      },
+    });
 
     const cookieStore = await cookies();
     cookieStore.set('session', sessionToken, {
@@ -143,11 +186,16 @@ export async function register(
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
     });
 
-    return { success: true, message: 'Account created successfully!' };
+    return {
+      success: true,
+      message: 'Account created successfully!',
+      user: transformToUser(newUser),
+    };
   } catch (error) {
-    console.log(error);
+    console.error('Registration error:', error);
     return {
       errors: {
         general: ['Something went wrong. Please try again.'],
@@ -160,8 +208,10 @@ export async function login(
   prevState: AuthState | undefined,
   formData: FormData,
 ): Promise<AuthState> {
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
+  await connectDB();
+
+  const email = formData.get('email')?.toString().trim() || '';
+  const password = formData.get('password')?.toString() || '';
 
   const errors: AuthState['errors'] = {};
 
@@ -170,7 +220,7 @@ export async function login(
   }
 
   if (!password) {
-    errors.password = ['Password is required'];
+    errors.password = ['Please enter a password'];
   }
 
   if (Object.keys(errors).length > 0) {
@@ -178,8 +228,7 @@ export async function login(
   }
 
   try {
-    const existingUsers = getUsers();
-    const user = existingUsers.find((u: User) => u.email === email);
+    const user = await User.findOne({ email });
 
     if (!user) {
       return {
@@ -189,8 +238,24 @@ export async function login(
       };
     }
 
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return {
+        errors: {
+          general: ['Invalid email or password'],
+        },
+      };
+    }
+
     const sessionToken = generateSessionToken();
-    setSession(sessionToken, user);
+    await User.findByIdAndUpdate(user._id, {
+      $push: {
+        sessions: {
+          token: sessionToken,
+          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        },
+      },
+    });
 
     const cookieStore = await cookies();
     cookieStore.set('session', sessionToken, {
@@ -198,11 +263,16 @@ export async function login(
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
     });
 
-    return { success: true, message: 'Logged in successfully!' };
+    return {
+      success: true,
+      message: 'You have successfully logged in!',
+      user: transformToUser(user),
+    };
   } catch (error) {
-    console.log(error);
+    console.error('Login error:', error);
     return {
       errors: {
         general: ['Something went wrong. Please try again.'],
@@ -216,7 +286,11 @@ export async function logout(): Promise<void> {
   const sessionToken = cookieStore.get('session')?.value;
 
   if (sessionToken) {
-    removeSession(sessionToken);
+    await connectDB();
+    await User.updateOne(
+      { 'sessions.token': sessionToken },
+      { $pull: { sessions: { token: sessionToken } } },
+    );
     cookieStore.delete('session');
   }
 }
@@ -224,12 +298,15 @@ export async function logout(): Promise<void> {
 export async function getCurrentUser(): Promise<User | null> {
   const cookieStore = await cookies();
   const sessionToken = cookieStore.get('session')?.value;
+  if (!sessionToken) return null;
 
-  if (!sessionToken) {
-    return null;
-  }
+  await connectDB();
+  const user = await User.findOne({
+    'sessions.token': sessionToken,
+    'sessions.expiresAt': { $gt: new Date() },
+  });
 
-  return getSession(sessionToken);
+  return user ? transformToUser(user) : null;
 }
 
 export async function isAuthenticated(): Promise<boolean> {

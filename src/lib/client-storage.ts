@@ -2,13 +2,25 @@
 
 import { User } from './auth-actions';
 
+interface StoredUser extends Omit<User, 'createdAt'> {
+  createdAt: string;
+}
+
 export const ClientStorage = {
   setUser: (user: User | null) => {
     if (typeof window !== 'undefined') {
-      if (user) {
-        localStorage.setItem('tripma_user', JSON.stringify(user));
-      } else {
-        localStorage.removeItem('tripma_user');
+      try {
+        if (user) {
+          const userForStorage: StoredUser = {
+            ...user,
+            createdAt: user.createdAt.toISOString(),
+          };
+          localStorage.setItem('tripma_user', JSON.stringify(userForStorage));
+        } else {
+          localStorage.removeItem('tripma_user');
+        }
+      } catch (error) {
+        console.error('Error saving user to localStorage:', error);
       }
     }
   },
@@ -36,29 +48,6 @@ export const ClientStorage = {
   clearUser: () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('tripma_user');
-    }
-  },
-
-  setAuthToken: (token: string | null) => {
-    if (typeof window !== 'undefined') {
-      if (token) {
-        localStorage.setItem('tripma_auth_token', token);
-      } else {
-        localStorage.removeItem('tripma_auth_token');
-      }
-    }
-  },
-
-  getAuthToken: (): string | null => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('tripma_auth_token');
-    }
-    return null;
-  },
-
-  clearAuthToken: () => {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('tripma_auth_token');
     }
   },
 };
