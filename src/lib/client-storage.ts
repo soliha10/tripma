@@ -1,53 +1,37 @@
-'use client';
-
 import { User } from './auth-actions';
 
-interface StoredUser extends Omit<User, 'createdAt'> {
-  createdAt: string;
-}
-
 export const ClientStorage = {
-  setUser: (user: User | null) => {
-    if (typeof window !== 'undefined') {
-      try {
-        if (user) {
-          const userForStorage: StoredUser = {
-            ...user,
-            createdAt: user.createdAt.toISOString(),
-          };
-          localStorage.setItem('tripma_user', JSON.stringify(userForStorage));
-        } else {
-          localStorage.removeItem('tripma_user');
-        }
-      } catch (error) {
-        console.error('Error saving user to localStorage:', error);
-      }
+  setUser(user: User | null) {
+    if (!user) {
+      localStorage.removeItem('user');
+      return;
+    }
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        photoURL: user.photoURL,
+        createdAt: user.createdAt instanceof Date ? user.createdAt.toISOString() : user.createdAt,
+      }),
+    );
+  },
+  getUser(): User | null {
+    const user = localStorage.getItem('user');
+    if (!user) return null;
+    try {
+      const parsed = JSON.parse(user);
+      return {
+        ...parsed,
+        createdAt: new Date(parsed.createdAt),
+      };
+    } catch (error) {
+      console.error('Error parsing user from localStorage:', error);
+      return null;
     }
   },
-
-  getUser: (): User | null => {
-    if (typeof window !== 'undefined') {
-      const userData = localStorage.getItem('tripma_user');
-      if (userData) {
-        try {
-          const parsed = JSON.parse(userData);
-          return {
-            ...parsed,
-            createdAt: new Date(parsed.createdAt),
-          };
-        } catch (error) {
-          console.error('Error parsing user data from localStorage:', error);
-          localStorage.removeItem('tripma_user');
-          return null;
-        }
-      }
-    }
-    return null;
-  },
-
-  clearUser: () => {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('tripma_user');
-    }
+  clearUser() {
+    localStorage.removeItem('user');
   },
 };

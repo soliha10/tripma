@@ -27,7 +27,7 @@ export interface User {
   createdAt: Date;
 }
 
-interface AuthState {
+export interface AuthState {
   errors?: {
     email?: string[];
     password?: string[];
@@ -78,6 +78,8 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+userSchema.index({ 'sessions.token': 1 });
+
 const User: Model<UserDocument> =
   mongoose.models.User || mongoose.model<UserDocument>('User', userSchema);
 
@@ -98,14 +100,19 @@ if (!cached) {
 
 async function connectDB(): Promise<typeof mongoose> {
   if (cached.conn) {
+    console.log('Using cached MongoDB connection');
     return cached.conn;
   }
 
   if (!cached.promise) {
     try {
-      cached.promise = mongoose.connect(MONGODB_URI);
+      cached.promise = mongoose.connect(MONGODB_URI as string, {
+        connectTimeoutMS: 30000,
+        socketTimeoutMS: 30000,
+        dbName: 'tripma',
+      });
       cached.conn = await cached.promise;
-      console.log('MongoDB connected successfully');
+      console.log('MongoDB connected successfully to tripma database');
     } catch (error) {
       console.error('MongoDB connection error:', error);
       cached.promise = null;
@@ -155,13 +162,16 @@ export async function register(
   }
 
   try {
+    console.log('Checking for existing user:', { email });
     const existingUser = await User.findOne({ email });
     if (existingUser) {
+      console.log('Email already registered:', { email });
       errors.email = ['This email is already registered'];
       return { errors };
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 8);
+    console.log('Creating user:', { email, name });
     const newUser = await User.create({
       email,
       name: name || email.split('@')[0],
@@ -171,6 +181,7 @@ export async function register(
     });
 
     const sessionToken = generateSessionToken();
+    console.log('Setting session for user:', { userId: newUser._id.toString(), sessionToken });
     await User.findByIdAndUpdate(newUser._id, {
       $push: {
         sessions: {
@@ -184,18 +195,27 @@ export async function register(
     cookieStore.set('session', sessionToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      maxAge: 60 * 60 * 24 * 7,
       path: '/',
     });
 
+    console.log('User registered successfully:', { userId: newUser._id.toString() });
     return {
       success: true,
       message: 'Account created successfully!',
       user: transformToUser(newUser),
     };
-  } catch (error) {
-    console.error('Registration error:', error);
+  } catch (error: unknown) {
+    console.error('Registration error:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      code: (error as { code?: number }).code,
+    });
+    if ((error as { code?: number }).code === 11000) {
+      errors.email = ['This email is already registered'];
+      return { errors };
+    }
     return {
       errors: {
         general: ['Something went wrong. Please try again.'],
@@ -228,9 +248,11 @@ export async function login(
   }
 
   try {
+    console.log('Attempting login for:', { email });
     const user = await User.findOne({ email });
 
     if (!user) {
+      console.log('User not found:', { email });
       return {
         errors: {
           general: ['Invalid email or password'],
@@ -240,6 +262,7 @@ export async function login(
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
+      console.log('Invalid password for:', { email });
       return {
         errors: {
           general: ['Invalid email or password'],
@@ -248,6 +271,7 @@ export async function login(
     }
 
     const sessionToken = generateSessionToken();
+    console.log('Setting session for login:', { userId: user._id.toString(), sessionToken });
     await User.findByIdAndUpdate(user._id, {
       $push: {
         sessions: {
@@ -261,18 +285,22 @@ export async function login(
     cookieStore.set('session', sessionToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      maxAge: 60 * 60 * 24 * 7,
       path: '/',
     });
 
+    console.log('User logged in successfully:', { userId: user._id.toString() });
     return {
       success: true,
       message: 'You have successfully logged in!',
       user: transformToUser(user),
     };
-  } catch (error) {
-    console.error('Login error:', error);
+  } catch (error: unknown) {
+    console.error('Login error:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     return {
       errors: {
         general: ['Something went wrong. Please try again.'],
@@ -287,6 +315,7 @@ export async function logout(): Promise<void> {
 
   if (sessionToken) {
     await connectDB();
+    console.log('Removing session:', { sessionToken });
     await User.updateOne(
       { 'sessions.token': sessionToken },
       { $pull: { sessions: { token: sessionToken } } },
@@ -298,9 +327,13 @@ export async function logout(): Promise<void> {
 export async function getCurrentUser(): Promise<User | null> {
   const cookieStore = await cookies();
   const sessionToken = cookieStore.get('session')?.value;
-  if (!sessionToken) return null;
+  if (!sessionToken) {
+    console.log('No session token found');
+    return null;
+  }
 
   await connectDB();
+  console.log('Checking session:', { sessionToken });
   const user = await User.findOne({
     'sessions.token': sessionToken,
     'sessions.expiresAt': { $gt: new Date() },

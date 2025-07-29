@@ -1,7 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getCurrentUser, type User } from '@/lib/auth-actions';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { User } from '@/lib/auth-actions';
 import { ClientStorage } from '@/lib/client-storage';
 
 interface AuthContextType {
@@ -10,18 +10,35 @@ interface AuthContextType {
   refreshUser: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  loading: true,
+  refreshUser: async () => {},
+});
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   const refreshUser = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-      ClientStorage.setUser(currentUser);
+      console.log('Fetching current user from /api/auth/current-user');
+      const response = await fetch('/api/auth/current-user', { credentials: 'include' });
+      if (response.ok) {
+        const userData = await response.json();
+        // Convert createdAt to Date object
+        if (userData.createdAt) {
+          userData.createdAt = new Date(userData.createdAt);
+        }
+        console.log('User data fetched:', userData);
+        setUser(userData);
+        ClientStorage.setUser(userData);
+      } else {
+        console.error('Failed to fetch user:', response.status, response.statusText);
+        setUser(null);
+        ClientStorage.clearUser();
+      }
     } catch (error) {
       console.error('Error fetching user:', error);
       setUser(null);
@@ -32,12 +49,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const cachedUser = ClientStorage.getUser();
-    if (cachedUser) {
-      setUser(cachedUser);
-      setLoading(false);
-    }
-
     refreshUser();
   }, []);
 
@@ -47,9 +58,5 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+  return useContext(AuthContext);
 }

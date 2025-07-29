@@ -1,1 +1,7 @@
-export const MONGODB_URI = 'mongodb+srv://toxtamurodovagulshodaa:3bocuMKZ4seoXkGi@cluster0.tif7grc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+/* eslint-env node */
+import process from 'node:process';
+
+export const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+  throw new Error('MONGODB_URI is not defined in environment variables');
+}

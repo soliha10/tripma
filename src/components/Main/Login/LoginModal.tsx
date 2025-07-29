@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import close from '@/app/[locale]/assets/images/close-sign-up.svg';
 import Email from './Email';
@@ -12,13 +13,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { register, login } from '@/lib/auth-actions';
+import { register, login, AuthState } from '@/lib/auth-actions';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
+
 export interface EmailType {
   id: number;
   pic: string;
   text: string;
 }
+
 interface Props {
   onClose: () => void;
   initialMode?: 'login' | 'register';
@@ -27,6 +31,7 @@ interface Props {
 export default function LoginModal({ onClose, initialMode = 'register' }: Props) {
   const t = useTranslations('HomePage.LoginModal');
   const { refreshUser } = useAuth();
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
 
   const emails: EmailType[] = [
@@ -35,8 +40,14 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
     { id: 3, pic: facebook, text: t('facebook') },
   ];
 
-  const [registerState, registerAction, isRegisterPending] = useActionState(register, undefined);
-  const [loginState, loginAction, isLoginPending] = useActionState(login, undefined);
+  const [registerState, registerAction, isRegisterPending] = useActionState<AuthState, FormData>(
+    register,
+    { errors: {}, message: '' },
+  );
+  const [loginState, loginAction, isLoginPending] = useActionState<AuthState, FormData>(login, {
+    errors: {},
+    message: '',
+  });
 
   const currentState = isLogin ? loginState : registerState;
   const currentAction = isLogin ? loginAction : registerAction;
@@ -51,13 +62,16 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
 
   useEffect(() => {
     if (currentState?.success) {
-      refreshUser().then(() => {
-        setTimeout(() => {
+      refreshUser()
+        .then(() => {
           onClose();
-        }, 1500);
-      });
+          // router.push('/dashboard');
+        })
+        .catch((error) => {
+          console.error('Error refreshing user:', error);
+        });
     }
-  }, [currentState?.success, onClose, refreshUser]);
+  }, [currentState?.success, onClose, refreshUser, router]);
 
   return (
     <div className={styles.modalWrapper}>

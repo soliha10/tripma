@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import logo from '@/app/[locale]/assets/images/Wordmark.svg';
@@ -10,10 +11,12 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { logout } from '@/lib/auth-actions';
+import { useRouter } from 'next/navigation';
 
 export default function LoginHeader() {
   const t = useTranslations('HomePage.LoginHeader');
   const { user, loading, refreshUser } = useAuth();
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -29,7 +32,7 @@ export default function LoginHeader() {
       await logout();
       setShowUserMenu(false);
       await refreshUser();
-      window.location.href = '/';
+      router.push('/');
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -43,14 +46,8 @@ export default function LoginHeader() {
     <header>
       <div className={styles.mainWrapper}>
         <div className={styles.headerMain}>
-          <Link href="">
-            <Image
-              src={logo}
-              alt="TripmLink logo"
-              width={131}
-              height={54}
-              className={styles.logo}
-            />
+          <Link href="/">
+            <Image src={logo} alt="Tripma logo" width={131} height={54} className={styles.logo} />
           </Link>
           <button type="button" className={styles.menuToggle} onClick={toggleMenu}>
             <Image src={menuIcon} alt="menu" width={32} height={32} className={styles.menuIcon} />
@@ -58,17 +55,29 @@ export default function LoginHeader() {
           <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
             <ul className={styles.navList}>
               <li>
-                <Link href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  href="/flights"
+                  className={styles.navLink}
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   {t('flights')}
                 </Link>
               </li>
               <li>
-                <Link href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  href="/hotels"
+                  className={styles.navLink}
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   {t('hotels')}
                 </Link>
               </li>
               <li>
-                <Link href="" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  href="/packages"
+                  className={styles.navLink}
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   {t('packages')}
                 </Link>
               </li>
@@ -119,7 +128,7 @@ export default function LoginHeader() {
                     {showUserMenu && (
                       <div className={styles.userDropdown}>
                         <div className={styles.userInfo}>
-                          <span className={styles.userName}>{user.name}</span>
+                          <span className={styles.userName}>{user.name || user.email}</span>
                           <span className={styles.userEmail}>{user.email}</span>
                         </div>
                         <button type="button" className={styles.logoutBtn} onClick={handleLogout}>
@@ -137,12 +146,7 @@ export default function LoginHeader() {
       </div>
 
       {isOpen && (
-        <ul>
-          <LoginModal
-            onClose={() => setIsOpen(false)}
-            initialMode={isLogin ? 'login' : 'register'}
-          />
-        </ul>
+        <LoginModal onClose={() => setIsOpen(false)} initialMode={isLogin ? 'login' : 'register'} />
       )}
     </header>
   );
