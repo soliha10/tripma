@@ -109,7 +109,7 @@ async function connectDB(): Promise<typeof mongoose> {
       cached.promise = mongoose.connect(MONGODB_URI as string, {
         connectTimeoutMS: 30000,
         socketTimeoutMS: 30000,
-        dbName: 'tripma',
+        dbName: 'test',
       });
       cached.conn = await cached.promise;
       console.log('MongoDB connected successfully to tripma database');
