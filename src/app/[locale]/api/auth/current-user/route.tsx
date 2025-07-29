@@ -3,6 +3,7 @@ import { getCurrentUser } from '@/lib/auth-actions';
 export async function GET() {
   const user = await getCurrentUser();
   if (!user) {
+    console.log('User not found');
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   return NextResponse.json(user);
