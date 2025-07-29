@@ -65,7 +65,6 @@ export default function LoginModal({ onClose, initialMode = 'register' }: Props)
       refreshUser()
         .then(() => {
           onClose();
-          // router.push('/dashboard');
         })
         .catch((error) => {
           console.error('Error refreshing user:', error);

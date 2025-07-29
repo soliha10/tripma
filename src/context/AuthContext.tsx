@@ -27,7 +27,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const response = await fetch('/api/auth/current-user', { credentials: 'include' });
       if (response.ok) {
         const userData = await response.json();
-        // Convert createdAt to Date object
         if (userData.createdAt) {
           userData.createdAt = new Date(userData.createdAt);
         }

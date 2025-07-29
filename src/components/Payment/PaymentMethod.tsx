@@ -313,18 +313,18 @@ export default function PaymentMethod() {
                       />
                       {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                     </div>
-                    <div className={styles.passwordWrapper}>
+                    <div
+                      className={`${styles.passwordWrapper} ${errors.password ? styles.inputError : ''}`}
+                    >
                       <Input
                         placeholder={t('passwordPlaceholder')}
                         value={password}
                         onChange={(e) => handlePasswordChange(e.target.value)}
                         type={showPassword ? 'text' : 'password'}
-                        className={`${styles.passwordInput} ${errors.password ? styles.inputError : ''}`}
+                        className={`${styles.passwordInput} `}
                         aria-label={t('passwordAria')}
                       />
-                      {errors.password && (
-                        <span className={styles.errorText}>{errors.password}</span>
-                      )}
+
                       <div
                         onClick={() => setShowPassword(!showPassword)}
                         className={styles.passwordToggle}
